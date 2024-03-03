@@ -1,0 +1,33 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34330.188
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ion.Server", "Ion.Server\Ion.Server.csproj", "{FFE7B74E-9309-4F95-AF5C-A163B2680B3A}"
+EndProject
+Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "ion.client", "ion.client\ion.client.esproj", "{CCFC1D72-F398-426E-A569-8C30EC686976}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FFE7B74E-9309-4F95-AF5C-A163B2680B3A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FFE7B74E-9309-4F95-AF5C-A163B2680B3A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FFE7B74E-9309-4F95-AF5C-A163B2680B3A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FFE7B74E-9309-4F95-AF5C-A163B2680B3A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCFC1D72-F398-426E-A569-8C30EC686976}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{CCFC1D72-F398-426E-A569-8C30EC686976}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{CCFC1D72-F398-426E-A569-8C30EC686976}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{CCFC1D72-F398-426E-A569-8C30EC686976}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{CCFC1D72-F398-426E-A569-8C30EC686976}.Release|Any CPU.Build.0 = Release|Any CPU
+		{CCFC1D72-F398-426E-A569-8C30EC686976}.Release|Any CPU.Deploy.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {D1B7C767-86C6-4B34-8D6F-A3F5C9175231}
+	EndGlobalSection
+EndGlobal
