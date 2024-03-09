@@ -5,9 +5,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ion.Application.Common
+namespace Ion.Application.Common.Interfaces
 {
-    public interface IRepository<TEntity, Tid> where TEntity : BaseEntity<Tid> where Tid : struct
+    public interface IReadRepository<TEntity, Tid> where TEntity : BaseEntity<Tid> where Tid : struct
     {
         public IQueryable<TEntity> GetAll();
 
