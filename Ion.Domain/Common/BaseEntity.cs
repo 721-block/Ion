@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Ion.Domain.Common
 {
-    public abstract class BaseEntity<TKey> where TKey : struct
+    public abstract class BaseEntity<TKey>
     {
         public TKey Key { get; set; }
     }

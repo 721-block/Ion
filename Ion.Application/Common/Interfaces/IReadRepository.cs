@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace Ion.Application.Common.Interfaces
 {
-    public interface IReadRepository<TEntity, Tid> where TEntity : BaseEntity<Tid> where Tid : struct
+    public interface IReadRepository<TEntity, Tid> where TEntity : BaseEntity<Tid>
     {
         public IQueryable<TEntity> GetAll();
 
