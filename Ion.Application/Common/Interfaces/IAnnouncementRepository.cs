@@ -1,8 +1,7 @@
 ﻿using Ion.Domain.Entities;
 
-namespace Ion.Application.Common.Interfaces
+namespace Ion.Application.Common.Interfaces;
+
+public interface IAnnouncementRepository : IRepository<Announcement, int>, IReadRepository<Announcement, int>
 {
-    public interface IAnnouncementRepository : IRepository<Announcement, int>, IReadRepository<Announcement, int>
-    {
-    }
 }

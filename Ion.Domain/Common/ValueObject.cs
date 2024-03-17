@@ -1,61 +1,54 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace Ion.Domain.Common;
 
-namespace Ion.Domain.Common
+public abstract class ValueObject
 {
-    public abstract class ValueObject
+    protected static bool EqualOperator(ValueObject left, ValueObject right)
     {
-        protected static bool EqualOperator(ValueObject left, ValueObject right)
+        if (left is null ^ right is null)
         {
-            if (left is null ^ right is null)
-            {
-                return false;
-            }
-            return left?.Equals(right!) != false;
+            return false;
+        }
+        return left?.Equals(right!) != false;
+    }
+
+    protected static bool NotEqualOperator(ValueObject left, ValueObject right)
+    {
+        return !(EqualOperator(left, right));
+    }
+
+    protected abstract IEnumerable<object> GetEqualityComponents();
+
+    public override bool Equals(object? obj)
+    {
+        if (obj == null || obj.GetType() != GetType())
+        {
+            return false;
         }
 
-        protected static bool NotEqualOperator(ValueObject left, ValueObject right)
+        var other = (ValueObject)obj;
+
+        return GetEqualityComponents().SequenceEqual(other.GetEqualityComponents());
+    }
+
+    public override int GetHashCode()
+    {
+        var hash = new HashCode();
+
+        foreach(var component in GetEqualityComponents())
         {
-            return !(EqualOperator(left, right));
+            hash.Add(component.GetHashCode());
         }
 
-        protected abstract IEnumerable<object> GetEqualityComponents();
+        return hash.ToHashCode();
+    }
 
-        public override bool Equals(object? obj)
-        {
-            if (obj == null || obj.GetType() != GetType())
-            {
-                return false;
-            }
+    public static bool operator ==(ValueObject one, ValueObject two)
+    {
+        return EqualOperator(one, two);
+    }
 
-            var other = (ValueObject)obj;
-
-            return GetEqualityComponents().SequenceEqual(other.GetEqualityComponents());
-        }
-
-        public override int GetHashCode()
-        {
-            var hash = new HashCode();
-
-            foreach(var component in GetEqualityComponents())
-            {
-                hash.Add(component.GetHashCode());
-            }
-
-            return hash.ToHashCode();
-        }
-
-        public static bool operator ==(ValueObject one, ValueObject two)
-        {
-            return EqualOperator(one, two);
-        }
-
-        public static bool operator !=(ValueObject one, ValueObject two)
-        {
-            return NotEqualOperator(one, two);
-        }
+    public static bool operator !=(ValueObject one, ValueObject two)
+    {
+        return NotEqualOperator(one, two);
     }
 }

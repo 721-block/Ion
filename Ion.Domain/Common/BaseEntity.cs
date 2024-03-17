@@ -1,13 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
+﻿namespace Ion.Domain.Common;
 
-namespace Ion.Domain.Common
+public abstract class BaseEntity<TKey>
 {
-    public abstract class BaseEntity<TKey>
-    {
-        public TKey Key { get; set; }
-    }
+    public TKey Key { get; set; }
 }

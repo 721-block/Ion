@@ -4,20 +4,19 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ion.Domain.Enums
+namespace Ion.Domain.Enums;
+
+public enum BodyType
 {
-    public enum BodyType
-    {
-        Sedan,
-        Hatchback,
-        Liftback,
-        Universal,
-        Pickup,
-        Minivan,
-        Crossover,
-        Offroad,
-        Coupe,
-        Roadster,
-        Cabriolet
-    }
+    Sedan,
+    Hatchback,
+    Liftback,
+    Universal,
+    Pickup,
+    Minivan,
+    Crossover,
+    Offroad,
+    Coupe,
+    Roadster,
+    Cabriolet
 }
