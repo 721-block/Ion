@@ -2,7 +2,7 @@
 
 namespace Ion.Application.Common.Interfaces;
 
-public interface IRepository<TEntity, Tid> where TEntity : BaseEntity<Tid> where Tid : struct
+public interface IRepository<TEntity>
 {
     Task<TEntity> AddAsync(TEntity entity, CancellationToken cancellationToken = default);
     Task<IEnumerable<TEntity>> AddRangeAsync(IEnumerable<TEntity> entities, CancellationToken cancellationToken = default);
