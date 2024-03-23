@@ -1,8 +1,9 @@
+using Ion.Domain.Common;
+
 namespace Ion.Domain.Entities;
 
-public class License
+public class License : BaseEntity<int>
 {
-    public int Id { get; set; }
     public DateOnly StartDate { get; set; }
     public DateOnly EndDate { get; set; }
 }

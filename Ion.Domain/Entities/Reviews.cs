@@ -1,8 +1,9 @@
+using Ion.Domain.Common;
+
 namespace Ion.Domain.Entities;
 
-public class Reviews
+public class Reviews : BaseEntity<int>
 {
-    public int Id { get; set; }
     public int AnnouncementId { get; set; }
     public int UserId { get; set; }
     public string Content { get; set; }

@@ -1,8 +1,9 @@
+using Ion.Domain.Common;
+
 namespace Ion.Domain.Entities;
 
-public class Booking
+public class Booking : BaseEntity<int>
 {
-    public int Id { get; set; }
     public int AnnouncementId { get; set; }
     public int ClientId { get; set; }
     public DateTime StartTime { get; set; }

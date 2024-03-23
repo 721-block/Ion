@@ -2,6 +2,6 @@
 
 namespace Ion.Application.Common.Interfaces;
 
-public interface IAnnouncementRepository : IRepository<Announcement>, IReadRepository<Announcement>
+public interface IAnnouncementRepository : IRepository<Announcement, int>, IReadRepository<Announcement, int>
 {
 }
