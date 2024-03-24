@@ -2,7 +2,7 @@ using Ion.Domain.Common;
 
 namespace Ion.Domain.Entities;
 
-public class Booking : BaseEntity<int>
+public class Booking : BaseEntity
 {
     public int AnnouncementId { get; set; }
     public int ClientId { get; set; }

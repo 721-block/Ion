@@ -4,7 +4,7 @@ using NetTopologySuite.Geometries;
 
 namespace Ion.Domain.Entities;
 
-public class Announcement : BaseEntity<int>
+public class Announcement : BaseEntity
 {
     public Geometry CarLocation { get; set; }
     public int PricePerUnit { get; set; }

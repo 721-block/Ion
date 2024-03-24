@@ -2,6 +2,7 @@
 
 namespace Ion.Application.Common.Interfaces;
 
-public interface IAnnouncementRepository : IBaseRepository<Announcement>
+public interface IBookingRepository : IBaseRepository<Booking>
 {
 }
+

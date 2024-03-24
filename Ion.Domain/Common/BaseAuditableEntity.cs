@@ -1,6 +1,6 @@
 ﻿namespace Ion.Domain.Common;
 
-public abstract class BaseAuditableEntity<TKey> : BaseEntity<TKey>
+public abstract class BaseAuditableEntity : BaseEntity
 {
     public DateTimeOffset Created { get; set; }
     public string? CreatedBy { get; set; }

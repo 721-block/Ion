@@ -4,7 +4,7 @@ using Ion.Domain.ValueObjects;
 
 namespace Ion.Domain.Entities;
 
-public class Car : BaseEntity<int>
+public class Car : BaseEntity
 {
     public GearboxType GearboxType { get; set; }
     public CarName CarName { get; set; } 
