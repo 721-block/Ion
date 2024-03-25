@@ -1,6 +1,6 @@
 ﻿using Ion.Domain.Common;
 
-namespace Ion.Application.Common.Interfaces;
+namespace Ion.Application.Interfaces;
 
 public interface IRepository<TEntity> where TEntity : BaseEntity
 {

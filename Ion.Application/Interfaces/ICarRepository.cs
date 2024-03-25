@@ -1,6 +1,6 @@
 ﻿using Ion.Domain.Entities;
 
-namespace Ion.Application.Common.Interfaces;
+namespace Ion.Application.Interfaces;
 
 public interface ICarRepository : IBaseRepository<Car>
 {
