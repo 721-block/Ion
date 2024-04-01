@@ -10,4 +10,5 @@ public class User : BaseEntity
     public string Password { get; set; }
     public string PhoneNumber { get; set; }
     public int LicenseId { get; set; }
+    public License License { get; set; }
 }

@@ -2,7 +2,7 @@
 
 namespace Ion.Application.Interfaces;
 
-public interface IReviewsRepository : IBaseRepository<Reviews>
+public interface IMessageRepository : IBaseRepository<Message>
 {
     Task<IEnumerable<Message>> GetByAnnouncementIdAsync(int id);
 }
