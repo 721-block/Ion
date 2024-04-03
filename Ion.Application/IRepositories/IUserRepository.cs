@@ -1,6 +1,6 @@
 ﻿using Ion.Domain.Entities;
 
-namespace Ion.Application.Interfaces;
+namespace Ion.Application.IRepositories;
 
 public interface IUserRepository : IBaseRepository<User>
 {

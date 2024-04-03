@@ -7,14 +7,14 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ion.Server", "Ion.Server\Io
 EndProject
 Project("{54A90642-561A-4BB1-A94E-469ADEE60C69}") = "ion.client", "ion.client\ion.client.esproj", "{CCFC1D72-F398-426E-A569-8C30EC686976}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ion.Domain", "Ion.Domain\Ion.Domain.csproj", "{4A40B8C4-9A6E-4BD3-B299-E5F31459EA8F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ion.Domain", "Ion.Domain\Ion.Domain.csproj", "{4A40B8C4-9A6E-4BD3-B299-E5F31459EA8F}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ion.Application", "Ion.Application\Ion.Application.csproj", "{CF67EE0C-76B0-4D94-8326-C74A9DB96AB7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ion.Application", "Ion.Application\Ion.Application.csproj", "{CF67EE0C-76B0-4D94-8326-C74A9DB96AB7}"
 	ProjectSection(ProjectDependencies) = postProject
 		{4A40B8C4-9A6E-4BD3-B299-E5F31459EA8F} = {4A40B8C4-9A6E-4BD3-B299-E5F31459EA8F}
 	EndProjectSection
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Ion.Infrastructure", "Ion.Infrastructure\Ion.Infrastructure.csproj", "{F20F8D4F-0968-439D-8F2E-957D1168FFB3}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Ion.Infrastructure", "Ion.Infrastructure\Ion.Infrastructure.csproj", "{F20F8D4F-0968-439D-8F2E-957D1168FFB3}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
