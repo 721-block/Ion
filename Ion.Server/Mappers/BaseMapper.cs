@@ -1,6 +1,6 @@
 ﻿using Ion.Application.IMappers;
 using Ion.Domain.Common;
-using Ion.Server.ViewModels;
+using Ion.Server.Common.Base;
 using Mapster;
 
 namespace Ion.Server.Mappers;
@@ -16,17 +16,17 @@ public class BaseMapper<Entity, ViewModel> : IFromEntityMapper<Entity, ViewModel
         return entity.Adapt<ViewModel>();
     }
 
-    public void MapFromEntity(Entity entity, ViewModel model)
+    public virtual void MapFromEntity(Entity entity, ViewModel model)
     {
         entity.Adapt(model);
     }
 
-    public Entity MapToEntity(ViewModel model)
+    public virtual Entity MapToEntity(ViewModel model)
     {
         return model.Adapt<Entity>();
     }
 
-    public void MapToEntity(ViewModel model, Entity entity)
+    public virtual void MapToEntity(ViewModel model, Entity entity)
     {
         model.Adapt(entity);
     }

@@ -9,7 +9,6 @@ public class Message : BaseEntity
     public int ReceiverId { get; set; }
     public User Receiver { get; set; }
     public int AnnouncementId { get; set; }
-    public Announcement Announcement { get; set; }
     public string Text { get; set; }
     public DateTimeOffset CreationTime { get; set; }
 }
