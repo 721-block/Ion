@@ -10,7 +10,7 @@ public class Announcement : BaseEntity
     public int PricePerUnit { get; set; }
     public string Description { get; set; }
     public int AuthorId { get; set; }
-    public User User { get; set; }
+    public User Author { get; set; }
     public int CarId { get; set; }
     public Car Car { get; set; }
     public Day AvailableDays { get; set; }

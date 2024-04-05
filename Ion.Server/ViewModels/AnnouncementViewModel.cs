@@ -18,5 +18,5 @@ public class AnnouncementViewModel : BaseViewModel
     public BodyType CarBodyType { get; set; }
     public Day AvailableDays { get; set; }
     public bool IsActive { get; set; }
-    public required string PathToImages { get; set; }
+    public string PathToImages { get; set; }
 }

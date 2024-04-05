@@ -9,7 +9,18 @@ public class BaseMapper<Entity, ViewModel> : IFromEntityMapper<Entity, ViewModel
     where Entity : BaseEntity 
     where ViewModel : BaseViewModel
 {
-    protected TypeAdapterConfig Config { get; init; } = new TypeAdapterConfig();
+    protected TypeAdapterConfig config { get; } = new TypeAdapterConfig();
+
+    protected BaseMapper()
+    {
+        Configure()
+            .TwoWays();
+    }
+
+    protected virtual TypeAdapterSetter<Entity, ViewModel> Configure()
+    {
+        return config.NewConfig<Entity, ViewModel>();
+    }
 
     public virtual ViewModel MapFromEntity(Entity entity)
     {
