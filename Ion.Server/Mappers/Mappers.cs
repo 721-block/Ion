@@ -4,7 +4,7 @@ using Mapster;
 
 namespace Ion.Server.Mappers
 {
-    public partial class AnnouncementMapper : BaseMapper<Announcement, AnnouncementViewModel>
+    public partial class AnnouncementMapper : BaseMapper<Announcement, MessageViewModel>
     {
     }
 

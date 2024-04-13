@@ -1,5 +1,15 @@
-﻿namespace Ion.Application.IServices;
+﻿using Ion.Application.ViewModels;
+using Ion.Domain.Entities;
 
-internal interface IUserService
+namespace Ion.Application.IServices;
+
+public interface IUserService
 {
+    IEnumerable<UserViewModel> GetAll();
+    UserViewModel GetById(int id);
+    void Add(UserViewModel model);
+    void Update(UserViewModel model);
+    void Delete(int id);
+    void AddLicenseToUser(int userId, LicenseViewModel license);
+    void UpdateLicense(LicenseViewModel license);
 }

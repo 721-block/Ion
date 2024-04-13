@@ -4,5 +4,5 @@ namespace Ion.Application.IRepositories;
 
 public interface ITripRecordRepository : IBaseRepository<TripRecord>
 {
-    IEnumerable<TripRecord> GeByUserId(int id);
+    IEnumerable<TripRecord> GetByUserId(int id);
 }

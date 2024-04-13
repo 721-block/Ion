@@ -1,5 +1,17 @@
-﻿namespace Ion.Application.IServices;
+﻿using Ion.Application.ViewModels;
+using Ion.Domain.Entities;
 
-internal interface IBookingService
+namespace Ion.Application.IServices;
+
+public interface IBookingService
 {
+    IEnumerable<BookingViewModel> GetAll();
+    BookingViewModel GetById(int id);
+    IEnumerable<BookingViewModel> GetByAnnouncementId(int id);
+    IEnumerable<BookingViewModel> GetByClientId(int id);
+    IEnumerable<BookingViewModel> GetByAuthorId(int id);
+    void Add(BookingViewModel model);
+    void Update(BookingViewModel model);
+    void Delete(int id);
+    void EndTrip(int bookingId);
 }
