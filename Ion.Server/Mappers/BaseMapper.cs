@@ -1,11 +1,11 @@
 ﻿using Ion.Application.IMappers;
+using Ion.Application.ViewModels;
 using Ion.Domain.Common;
-using Ion.Server.Common.Base;
 using Mapster;
 
 namespace Ion.Server.Mappers;
 
-public class BaseMapper<Entity, ViewModel> : IFromEntityMapper<Entity, ViewModel>, IToEntityMapper<Entity, ViewModel> 
+public class BaseMapper<Entity, ViewModel> : IBaseMapper<Entity, ViewModel>
     where Entity : BaseEntity 
     where ViewModel : BaseViewModel
 {

@@ -4,5 +4,5 @@ namespace Ion.Application.IRepositories;
 
 public interface ICarRepository : IBaseRepository<Car>
 {
-    Task<IEnumerable<Car>> GetByUserIdAsync(int id);
+    IEnumerable<Car> GetByUserId(int id);
 }

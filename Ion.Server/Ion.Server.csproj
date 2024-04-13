@@ -27,4 +27,8 @@
     <ProjectReference Include="..\Ion.Infrastructure\Ion.Infrastructure.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="Common\" />
+  </ItemGroup>
+
 </Project>

@@ -1,8 +1,7 @@
 ﻿using Ion.Domain.Enums;
 using Ion.Domain.ValueObjects;
-using Ion.Server.Common.Base;
 
-namespace Ion.Server.ViewModels;
+namespace Ion.Application.ViewModels;
 
 public class AnnouncementViewModel : BaseViewModel
 {

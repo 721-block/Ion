@@ -1,6 +1,4 @@
-﻿using Ion.Server.Common.Base;
-
-namespace Ion.Server.ViewModels;
+﻿namespace Ion.Application.ViewModels;
 
 public class ReviewViewModel : BaseViewModel
 {
@@ -8,5 +6,5 @@ public class ReviewViewModel : BaseViewModel
     public required string UserLastName { get; set; }
     public string Content { get; set; }
     public float Rating { get; set; }
-    public DateTime CreationDate { get; set; }
+    public DateTimeOffset CreationDate { get; set; }
 }
