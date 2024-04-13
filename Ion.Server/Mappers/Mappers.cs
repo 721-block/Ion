@@ -1,5 +1,5 @@
-﻿using Ion.Domain.Entities;
-using Ion.Server.ViewModels;
+﻿using Ion.Application.ViewModels;
+using Ion.Domain.Entities;
 using Mapster;
 
 namespace Ion.Server.Mappers
