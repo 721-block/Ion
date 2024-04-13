@@ -2,6 +2,7 @@
 
 public class BookingViewModel : BaseViewModel
 {
+    public int ClientId { get; set; }
     public required string ClientFirstName { get; set; }
     public required string ClientLastName { get; set; }
     public string ClientEmail { get; set; }

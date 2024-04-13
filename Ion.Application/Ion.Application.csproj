@@ -10,8 +10,4 @@
     <ProjectReference Include="..\Ion.Domain\Ion.Domain.csproj" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Services\" />
-  </ItemGroup>
-
 </Project>
