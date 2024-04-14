@@ -1,6 +1,9 @@
+using Ion.Application.Extensions;
 using Ion.Application.IRepositories;
 using Ion.Infrastructure;
+using Ion.Infrastructure.Extensions;
 using Ion.Infrastructure.Repositories;
+using Ion.Server.Extensions;
 using Microsoft.EntityFrameworkCore;
 
 namespace Ion.Server;
@@ -15,15 +18,11 @@ public static class DiContainerBuilder
         {
             options.UseSqlServer(connectionString);
         });
-        builder.Services.AddScoped<IAnnouncementRepository, AnnouncementRepository>();
-        builder.Services.AddScoped<IBookingRepository, BookingRepository>();
-        builder.Services.AddScoped<ICarRepository, CarRepository>();
-        builder.Services.AddScoped<ILicenseRepository, LicenseRepository>();
-        builder.Services.AddScoped<IMessageRepository, MessageRepository>();
-        builder.Services.AddScoped<IReviewsRepository, ReviewRepository>();
-        builder.Services.AddScoped<ITripRecordRepository, TripRecordRepository>();
-        builder.Services.AddScoped<IUserRepository, UserRepository>();
-        
+
+        builder.Services.AddRepositories();
+        builder.Services.AddMappers();
+        builder.Services.AddServices();
+
         builder.Services.AddControllers();
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
