@@ -1,18 +1,6 @@
-using Ion.Infrastructure;
-using Microsoft.EntityFrameworkCore;
+using Ion.Server;
 
-var builder = WebApplication.CreateBuilder(args);
-
-// Add services to the container.
-
-builder.Services.AddControllers();
-// Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
-builder.Services.AddEndpointsApiExplorer();
-builder.Services.AddSwaggerGen();
-builder.Services.AddDbContext<CarRentContext>(options =>
-{
-    options.UseSqlServer(builder.Configuration.GetConnectionString("Ion"));
-});
+var builder = DiContainerBuilder.BuildContainer(args);
 
 var app = builder.Build();
 
