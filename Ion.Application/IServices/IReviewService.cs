@@ -10,5 +10,5 @@ public interface IReviewService
     IEnumerable<ReviewViewModel> GetByAnnouncementId(int id);
     void Add(ReviewViewModel model);
     void Update(ReviewViewModel model);
-    void Delete(int id);
+    void Delete(ReviewViewModel model);
 }
