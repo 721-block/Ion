@@ -9,5 +9,5 @@ public interface IAnnouncementService
     IEnumerable<AnnouncementViewModel> GetByAuthorId(int id);
     void Add(AnnouncementViewModel model);
     void Update(AnnouncementViewModel model);
-    void Delete(int id);
+    void Delete(AnnouncementViewModel model);
 }

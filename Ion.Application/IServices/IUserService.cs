@@ -9,7 +9,7 @@ public interface IUserService
     UserViewModel GetById(int id);
     void Add(UserViewModel model);
     void Update(UserViewModel model);
-    void Delete(int id);
+    void Delete(UserViewModel model);
     void AddLicenseToUser(int userId, LicenseViewModel license);
     void UpdateLicense(LicenseViewModel license);
 }

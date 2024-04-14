@@ -12,6 +12,6 @@ public interface IBookingService
     IEnumerable<BookingViewModel> GetByAuthorId(int id);
     void Add(BookingViewModel model);
     void Update(BookingViewModel model);
-    void Delete(int id);
-    void EndTrip(int bookingId);
+    void Delete(BookingViewModel model);
+    void EndTrip(BookingViewModel model);
 }

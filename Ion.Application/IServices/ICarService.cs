@@ -10,5 +10,5 @@ internal interface ICarService
     IEnumerable<CarViewModel> GetByUserId(int id);
     void Add(CarViewModel model);
     void Update(CarViewModel model);
-    void Delete(int id);
+    void Delete(CarViewModel model);
 }
