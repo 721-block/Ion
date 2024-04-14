@@ -10,8 +10,8 @@ public class ReviewRepository : BaseRepository<Review>, IReviewsRepository
         set = context.Reviews;
     }
 
-    public IEnumerable<Message> GetByAnnouncementId(int id)
+    public IEnumerable<Review> GetByAnnouncementId(int id)
     {
-        return context.Messages.Where(m => m.AnnouncementId == id);
+        return set.Where(r => r.AnnouncementId == id);
     }
 }
