@@ -22,14 +22,14 @@ namespace Ion.Application.Services
 
         public void Add(BookingViewModel model)
         {
-            bookingRepository.Add(mapper.MapToEntity(model));
-            bookingRepository.SaveChanges();
+            bookingRepository.AddAsync(mapper.MapToEntity(model));
+            bookingRepository.SaveChangesAsync();
         }
 
         public void Delete(BookingViewModel model)
         {
             bookingRepository.Delete(mapper.MapToEntity(model));
-            bookingRepository.SaveChanges();
+            bookingRepository.SaveChangesAsync();
         }
 
         public void EndTrip(BookingViewModel model)
@@ -40,9 +40,9 @@ namespace Ion.Application.Services
                 AnnouncementId = model.Announcement.Id,
                 UserId = model.ClientId
             };
-            tripRecordRepository.Add(tripRecord);
-            tripRecordRepository.SaveChanges();
-            bookingRepository.SaveChanges();
+            tripRecordRepository.AddAsync(tripRecord);
+            tripRecordRepository.SaveChangesAsync();
+            bookingRepository.SaveChangesAsync();
         }
 
         public IEnumerable<BookingViewModel> GetAll()
@@ -73,7 +73,7 @@ namespace Ion.Application.Services
         public void Update(BookingViewModel model)
         {
             bookingRepository.Update(mapper.MapToEntity(model));
-            bookingRepository.SaveChanges();
+            bookingRepository.SaveChangesAsync();
         }
     }
 }

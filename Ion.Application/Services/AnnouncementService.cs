@@ -13,14 +13,14 @@ public class AnnouncementService(IBaseMapper<Announcement, AnnouncementViewModel
 
     public void Add(AnnouncementViewModel model)
     {
-        repository.Add(mapper.MapToEntity(model));
-        repository.SaveChanges();
+        repository.AddAsync(mapper.MapToEntity(model));
+        repository.SaveChangesAsync();
     }
 
     public void Delete(AnnouncementViewModel model)
     {
         repository.Delete(mapper.MapToEntity(model));
-        repository.SaveChanges();
+        repository.SaveChangesAsync();
     }
 
     public IEnumerable<AnnouncementViewModel> GetAll()
@@ -41,6 +41,6 @@ public class AnnouncementService(IBaseMapper<Announcement, AnnouncementViewModel
     public void Update(AnnouncementViewModel model)
     {
         repository.Update(mapper.MapToEntity(model));
-        repository.SaveChanges();
+        repository.SaveChangesAsync();
     }
 }

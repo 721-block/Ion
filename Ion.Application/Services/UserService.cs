@@ -24,24 +24,24 @@ namespace Ion.Application.Services
 
         public void Add(UserViewModel model)
         {
-            userRepository.Add(userMapper.MapToEntity(model));
-            userRepository.SaveChanges();
+            userRepository.AddAsync(userMapper.MapToEntity(model));
+            userRepository.SaveChangesAsync();
         }
 
         public void AddLicenseToUser(int userId, LicenseViewModel license)
         {
             var user = userRepository.GetByID(userId);
-            licenseRepository.Add(licenseMapper.MapToEntity(license));
+            licenseRepository.AddAsync(licenseMapper.MapToEntity(license));
             user.LicenseId = licenseRepository.GetAll().Last().Id;
             userRepository.Update(user);
-            userRepository.SaveChanges();
-            licenseRepository.SaveChanges();
+            userRepository.SaveChangesAsync();
+            licenseRepository.SaveChangesAsync();
         }
 
         public void Delete(UserViewModel model)
         {
             userRepository.Delete(userMapper.MapToEntity(model));
-            userRepository.SaveChanges();
+            userRepository.SaveChangesAsync();
         }
 
         public IEnumerable<UserViewModel> GetAll()
@@ -57,13 +57,13 @@ namespace Ion.Application.Services
         public void Update(UserViewModel model)
         {
             userRepository.Update(userMapper.MapToEntity(model));
-            userRepository.SaveChanges();
+            userRepository.SaveChangesAsync();
         }
 
         public void UpdateLicense(LicenseViewModel license)
         {
             licenseRepository.Update(licenseMapper.MapToEntity(license));
-            licenseRepository.SaveChanges();
+            licenseRepository.SaveChangesAsync();
         }
     }
 }

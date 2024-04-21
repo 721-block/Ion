@@ -13,14 +13,14 @@ public class ReviewService(IBaseMapper<Review, ReviewViewModel> mapper, IReviews
 
     public void Add(ReviewViewModel model)
     {
-        repository.Add(mapper.MapToEntity(model));
-        repository.SaveChanges();
+        repository.AddAsync(mapper.MapToEntity(model));
+        repository.SaveChangesAsync();
     }
 
     public void Delete(ReviewViewModel model)
     {
         repository.Delete(mapper.MapToEntity(model));
-        repository.SaveChanges();
+        repository.SaveChangesAsync();
     }
 
     public IEnumerable<ReviewViewModel> GetAll()
@@ -41,6 +41,6 @@ public class ReviewService(IBaseMapper<Review, ReviewViewModel> mapper, IReviews
     public void Update(ReviewViewModel model)
     {
         repository.Update(mapper.MapToEntity(model));
-        repository.SaveChanges();
+        repository.SaveChangesAsync();
     }
 }

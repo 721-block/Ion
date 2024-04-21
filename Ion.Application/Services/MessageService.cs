@@ -13,14 +13,14 @@ public class MessageService(IBaseMapper<Message, MessageViewModel> mapper, IMess
 
     public void Add(MessageViewModel model)
     {
-        repository.Add(mapper.MapToEntity(model));
-        repository.SaveChanges();
+        repository.AddAsync(mapper.MapToEntity(model));
+        repository.SaveChangesAsync();
     }
 
     public void Delete(MessageViewModel model)
     {
         repository.Delete(mapper.MapToEntity(model));
-        repository.SaveChanges();
+        repository.SaveChangesAsync();
     }
 
     public IEnumerable<MessageViewModel> GetAll()
@@ -41,6 +41,6 @@ public class MessageService(IBaseMapper<Message, MessageViewModel> mapper, IMess
     public void Update(MessageViewModel model)
     {
         repository.Update(mapper.MapToEntity(model));
-        repository.SaveChanges();
+        repository.SaveChangesAsync();
     }
 }

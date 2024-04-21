@@ -6,20 +6,20 @@ namespace Ion.Infrastructure.Repositories;
 
 public abstract class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity: BaseEntity
 {
-    protected DbSet<TEntity> set;
-    protected readonly CarRentContext context;
+    private protected DbSet<TEntity> set;
+    private readonly CarRentContext context;
     
     protected BaseRepository(CarRentContext context)
     {
         this.context = context;
     }
     
-    public async void Add(TEntity entity)
+    public async Task<TEntity> AddAsync(TEntity entity)
     {
-        await set.AddAsync(entity);
+        return (await set.AddAsync(entity)).Entity;
     }
 
-    public async void AddRange(IEnumerable<TEntity> entities)
+    public async void AddRangeAsync(IEnumerable<TEntity> entities)
     {
         await set.AddRangeAsync(entities);
     }
@@ -44,7 +44,7 @@ public abstract class BaseRepository<TEntity> : IBaseRepository<TEntity> where T
         set.RemoveRange(entities);
     }
 
-    public async void SaveChanges()
+    public async void SaveChangesAsync()
     {
         await context.SaveChangesAsync();
     }

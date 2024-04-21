@@ -18,14 +18,14 @@ namespace Ion.Application.Services
 
         public void Add(CarViewModel model)
         {
-            repository.Add(mapper.MapToEntity(model));
-            repository.SaveChanges();
+            repository.AddAsync(mapper.MapToEntity(model));
+            repository.SaveChangesAsync();
         }
 
         public void Delete(CarViewModel model)
         {
             repository.Delete(mapper.MapToEntity(model));
-            repository.SaveChanges();
+            repository.SaveChangesAsync();
         }
 
         public IEnumerable<CarViewModel> GetAll()
@@ -46,7 +46,7 @@ namespace Ion.Application.Services
         public void Update(CarViewModel model)
         {
             repository.Update(mapper.MapToEntity(model));
-            repository.SaveChanges();
+            repository.SaveChangesAsync();
         }
     }
 }

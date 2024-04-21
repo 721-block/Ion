@@ -19,7 +19,7 @@ namespace Ion.Application.Services
         public void Delete(TripRecordViewModel model)
         {
             repository.Delete(mapper.MapToEntity(model));
-            repository.SaveChanges();
+            repository.SaveChangesAsync();
         }
 
         public IEnumerable<TripRecordViewModel> GeByUserId(int id)
