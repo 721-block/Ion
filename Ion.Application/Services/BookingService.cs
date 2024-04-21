@@ -11,9 +11,9 @@ internal class BookingService(
     IBookingRepository bookingRepository,
     ITripRecordRepository tripRecordRepository) : IBookingService
 {
-    public void Add(BookingViewModel model)
+    public async void AddAsync(BookingViewModel model)
     {
-        bookingRepository.AddAsync(mapper.MapToEntity(model));
+        await bookingRepository.AddAsync(mapper.MapToEntity(model));
         bookingRepository.SaveChangesAsync();
     }
 

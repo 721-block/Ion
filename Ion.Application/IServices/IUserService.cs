@@ -6,9 +6,9 @@ public interface IUserService
 {
     IEnumerable<UserViewModel> GetAll();
     UserViewModel GetById(int id);
-    void Add(UserViewModel model);
+    void AddAsync(UserViewModel model);
     void Update(UserViewModel model);
     void Delete(UserViewModel model);
-    void AddLicenseToUser(int userId, LicenseViewModel license);
+    void AddLicenseToUserAsync(int userId, LicenseViewModel license);
     void UpdateLicense(LicenseViewModel license);
 }
