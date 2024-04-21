@@ -2,7 +2,7 @@
 
 namespace Ion.Application.IMappers;
 
-public interface IToEntityMapper<Entity,in Model> where Entity : BaseEntity
+public interface IToEntityMapper<Entity, in Model> where Entity : BaseEntity
 {
     Entity MapToEntity(Model model);
 

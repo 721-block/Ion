@@ -6,21 +6,16 @@ using Mapster;
 namespace Ion.Server.Mappers;
 
 public class BaseMapper<Entity, ViewModel> : IBaseMapper<Entity, ViewModel>
-    where Entity : BaseEntity 
+    where Entity : BaseEntity
     where ViewModel : BaseViewModel
 {
-    protected TypeAdapterConfig config { get; } = new TypeAdapterConfig();
-
     protected BaseMapper()
     {
         Configure()
             .TwoWays();
     }
 
-    protected virtual TypeAdapterSetter<Entity, ViewModel> Configure()
-    {
-        return config.NewConfig<Entity, ViewModel>();
-    }
+    protected TypeAdapterConfig config { get; } = new();
 
     public virtual ViewModel MapFromEntity(Entity entity)
     {
@@ -40,5 +35,10 @@ public class BaseMapper<Entity, ViewModel> : IBaseMapper<Entity, ViewModel>
     public virtual void MapToEntity(ViewModel model, Entity entity)
     {
         model.Adapt(entity);
+    }
+
+    protected virtual TypeAdapterSetter<Entity, ViewModel> Configure()
+    {
+        return config.NewConfig<Entity, ViewModel>();
     }
 }

@@ -1,5 +1,4 @@
 ﻿using Ion.Application.ViewModels;
-using Ion.Domain.Entities;
 
 namespace Ion.Application.IServices;
 

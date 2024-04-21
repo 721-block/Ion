@@ -6,11 +6,9 @@ using Ion.Domain.Entities;
 
 namespace Ion.Application.Services;
 
-public class MessageService(IBaseMapper<Message, MessageViewModel> mapper, IMessageRepository repository) : IMessageService
+public class MessageService(IBaseMapper<Message, MessageViewModel> mapper, IMessageRepository repository)
+    : IMessageService
 {
-    private readonly IBaseMapper<Message, MessageViewModel> mapper = mapper;
-    private readonly IMessageRepository repository = repository;
-
     public void Add(MessageViewModel model)
     {
         repository.AddAsync(mapper.MapToEntity(model));

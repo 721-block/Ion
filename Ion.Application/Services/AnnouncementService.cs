@@ -6,11 +6,10 @@ using Ion.Domain.Entities;
 
 namespace Ion.Application.Services;
 
-public class AnnouncementService(IBaseMapper<Announcement, AnnouncementViewModel> mapper, IAnnouncementRepository repository) : IAnnouncementService
+public class AnnouncementService(
+    IBaseMapper<Announcement, AnnouncementViewModel> mapper,
+    IAnnouncementRepository repository) : IAnnouncementService
 {
-    private readonly IBaseMapper<Announcement, AnnouncementViewModel> mapper = mapper;
-    private readonly IAnnouncementRepository repository = repository;
-
     public void Add(AnnouncementViewModel model)
     {
         repository.AddAsync(mapper.MapToEntity(model));

@@ -8,9 +8,6 @@ namespace Ion.Application.Services;
 
 public class ReviewService(IBaseMapper<Review, ReviewViewModel> mapper, IReviewsRepository repository) : IReviewService
 {
-    private readonly IBaseMapper<Review, ReviewViewModel> mapper = mapper;
-    private readonly IReviewsRepository repository = repository;
-
     public void Add(ReviewViewModel model)
     {
         repository.AddAsync(mapper.MapToEntity(model));

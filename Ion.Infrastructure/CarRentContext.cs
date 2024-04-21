@@ -5,6 +5,11 @@ namespace Ion.Infrastructure;
 
 public class CarRentContext : DbContext
 {
+    public CarRentContext(DbContextOptions<CarRentContext> contextOptions) : base(contextOptions)
+    {
+        Database.EnsureCreated();
+    }
+
     public DbSet<Announcement> Announcements { get; set; }
     public DbSet<Booking> Bookings { get; set; }
     public DbSet<Car> Cars { get; set; }
@@ -13,9 +18,4 @@ public class CarRentContext : DbContext
     public DbSet<Review> Reviews { get; set; }
     public DbSet<TripRecord> TripRecords { get; set; }
     public DbSet<User> Users { get; set; }
-    
-    public CarRentContext(DbContextOptions<CarRentContext> contextOptions) : base(contextOptions)
-    {
-        Database.EnsureCreated();
-    }
 }

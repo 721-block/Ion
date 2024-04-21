@@ -3,50 +3,41 @@ using Ion.Application.IRepositories;
 using Ion.Application.IServices;
 using Ion.Application.ViewModels;
 using Ion.Domain.Entities;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
-namespace Ion.Application.Services
+namespace Ion.Application.Services;
+
+public class CarService(IBaseMapper<Car, CarViewModel> mapper, ICarRepository repository) : ICarService
 {
-    public class CarService(IBaseMapper<Car, CarViewModel> mapper, ICarRepository repository) : ICarService
+    public void Add(CarViewModel model)
     {
-        private readonly IBaseMapper<Car, CarViewModel> mapper = mapper;
-        private readonly ICarRepository repository = repository;
+        repository.AddAsync(mapper.MapToEntity(model));
+        repository.SaveChangesAsync();
+    }
 
-        public void Add(CarViewModel model)
-        {
-            repository.AddAsync(mapper.MapToEntity(model));
-            repository.SaveChangesAsync();
-        }
+    public void Delete(CarViewModel model)
+    {
+        repository.Delete(mapper.MapToEntity(model));
+        repository.SaveChangesAsync();
+    }
 
-        public void Delete(CarViewModel model)
-        {
-            repository.Delete(mapper.MapToEntity(model));
-            repository.SaveChangesAsync();
-        }
+    public IEnumerable<CarViewModel> GetAll()
+    {
+        return repository.GetAll().Select(mapper.MapFromEntity);
+    }
 
-        public IEnumerable<CarViewModel> GetAll()
-        {
-            return repository.GetAll().Select(mapper.MapFromEntity);
-        }
+    public CarViewModel GetById(int id)
+    {
+        return mapper.MapFromEntity(repository.GetByID(id));
+    }
 
-        public CarViewModel GetById(int id)
-        {
-            return mapper.MapFromEntity(repository.GetByID(id));
-        }
+    public IEnumerable<CarViewModel> GetByUserId(int id)
+    {
+        return repository.GetByUserId(id).Select(mapper.MapFromEntity);
+    }
 
-        public IEnumerable<CarViewModel> GetByUserId(int id)
-        {
-            return repository.GetByUserId(id).Select(mapper.MapFromEntity);
-        }
-
-        public void Update(CarViewModel model)
-        {
-            repository.Update(mapper.MapToEntity(model));
-            repository.SaveChangesAsync();
-        }
+    public void Update(CarViewModel model)
+    {
+        repository.Update(mapper.MapToEntity(model));
+        repository.SaveChangesAsync();
     }
 }

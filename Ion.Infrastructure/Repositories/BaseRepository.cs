@@ -4,16 +4,16 @@ using Microsoft.EntityFrameworkCore;
 
 namespace Ion.Infrastructure.Repositories;
 
-public abstract class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity: BaseEntity
+public abstract class BaseRepository<TEntity> : IBaseRepository<TEntity> where TEntity : BaseEntity
 {
-    private protected DbSet<TEntity> set;
     private readonly CarRentContext context;
-    
+    private protected DbSet<TEntity> set;
+
     protected BaseRepository(CarRentContext context)
     {
         this.context = context;
     }
-    
+
     public async Task<TEntity> AddAsync(TEntity entity)
     {
         return (await set.AddAsync(entity)).Entity;
