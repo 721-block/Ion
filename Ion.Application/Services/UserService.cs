@@ -9,61 +9,60 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ion.Application.Services
+namespace Ion.Application.Services;
+
+internal class UserService(
+    IBaseMapper<User, UserViewModel> userMapper,
+    IUserRepository userRepository,
+    IBaseMapper<License, LicenseViewModel> licenseMapper,
+    ILicenseRepository licenseRepository) : IUserService
 {
-    internal class UserService(
-        IBaseMapper<User, UserViewModel> userMapper, 
-        IUserRepository userRepository,
-        IBaseMapper<License, LicenseViewModel> licenseMapper,
-        ILicenseRepository licenseRepository) : IUserService
+    private readonly IBaseMapper<User, UserViewModel> userMapper = userMapper;
+    private readonly IUserRepository userRepository = userRepository;
+    private readonly IBaseMapper<License, LicenseViewModel> licenseMapper = licenseMapper;
+    private readonly ILicenseRepository licenseRepository = licenseRepository;
+
+    public void Add(UserViewModel model)
     {
-        private readonly IBaseMapper<User, UserViewModel> userMapper = userMapper;
-        private readonly IUserRepository userRepository = userRepository;
-        private readonly IBaseMapper<License, LicenseViewModel> licenseMapper = licenseMapper;
-        private readonly ILicenseRepository licenseRepository = licenseRepository;
+        userRepository.Add(userMapper.MapToEntity(model));
+        userRepository.SaveChanges();
+    }
 
-        public void Add(UserViewModel model)
-        {
-            userRepository.Add(userMapper.MapToEntity(model));
-            userRepository.SaveChanges();
-        }
+    public void AddLicenseToUser(int userId, LicenseViewModel license)
+    {
+        var user = userRepository.GetByID(userId);
+        licenseRepository.Add(licenseMapper.MapToEntity(license));
+        user.LicenseId = licenseRepository.GetAll().Last().Id;
+        userRepository.Update(user);
+        userRepository.SaveChanges();
+        licenseRepository.SaveChanges();
+    }
 
-        public void AddLicenseToUser(int userId, LicenseViewModel license)
-        {
-            var user = userRepository.GetByID(userId);
-            licenseRepository.Add(licenseMapper.MapToEntity(license));
-            user.LicenseId = licenseRepository.GetAll().Last().Id;
-            userRepository.Update(user);
-            userRepository.SaveChanges();
-            licenseRepository.SaveChanges();
-        }
+    public void Delete(UserViewModel model)
+    {
+        userRepository.Delete(userMapper.MapToEntity(model));
+        userRepository.SaveChanges();
+    }
 
-        public void Delete(UserViewModel model)
-        {
-            userRepository.Delete(userMapper.MapToEntity(model));
-            userRepository.SaveChanges();
-        }
+    public IEnumerable<UserViewModel> GetAll()
+    {
+        return userRepository.GetAll().Select(userMapper.MapFromEntity);
+    }
 
-        public IEnumerable<UserViewModel> GetAll()
-        {
-            return userRepository.GetAll().Select(userMapper.MapFromEntity);
-        }
+    public UserViewModel GetById(int id)
+    {
+        return userMapper.MapFromEntity(userRepository.GetByID(id));
+    }
 
-        public UserViewModel GetById(int id)
-        {
-            return userMapper.MapFromEntity(userRepository.GetByID(id));
-        }
+    public void Update(UserViewModel model)
+    {
+        userRepository.Update(userMapper.MapToEntity(model));
+        userRepository.SaveChanges();
+    }
 
-        public void Update(UserViewModel model)
-        {
-            userRepository.Update(userMapper.MapToEntity(model));
-            userRepository.SaveChanges();
-        }
-
-        public void UpdateLicense(LicenseViewModel license)
-        {
-            licenseRepository.Update(licenseMapper.MapToEntity(license));
-            licenseRepository.SaveChanges();
-        }
+    public void UpdateLicense(LicenseViewModel license)
+    {
+        licenseRepository.Update(licenseMapper.MapToEntity(license));
+        licenseRepository.SaveChanges();
     }
 }

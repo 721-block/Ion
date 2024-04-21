@@ -14,10 +14,7 @@ public static class DiContainerBuilder
     {
         var builder = WebApplication.CreateBuilder(args);
         var connectionString = builder.Configuration.GetConnectionString("Ion");
-        builder.Services.AddDbContext<CarRentContext>(options =>
-        {
-            options.UseSqlServer(connectionString);
-        });
+        builder.Services.AddDbContext<CarRentContext>(options => { options.UseSqlServer(connectionString); });
 
         builder.Services.AddRepositories();
         builder.Services.AddMappers();
@@ -27,7 +24,7 @@ public static class DiContainerBuilder
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
 
-        
+
         return builder;
     }
 }

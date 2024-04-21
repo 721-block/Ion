@@ -6,10 +6,10 @@ using Mapster;
 namespace Ion.Server.Mappers;
 
 public class BaseMapper<Entity, ViewModel> : IBaseMapper<Entity, ViewModel>
-    where Entity : BaseEntity 
+    where Entity : BaseEntity
     where ViewModel : BaseViewModel
 {
-    protected TypeAdapterConfig config { get; } = new TypeAdapterConfig();
+    protected TypeAdapterConfig config { get; } = new();
 
     protected BaseMapper()
     {

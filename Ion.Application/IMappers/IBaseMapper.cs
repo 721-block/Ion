@@ -6,11 +6,11 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ion.Application.IMappers
+namespace Ion.Application.IMappers;
+
+public interface IBaseMapper<Entity, ViewModel> : IFromEntityMapper<Entity, ViewModel>,
+    IToEntityMapper<Entity, ViewModel>
+    where Entity : BaseEntity
+    where ViewModel : BaseViewModel
 {
-    public interface IBaseMapper<Entity, ViewModel> : IFromEntityMapper<Entity, ViewModel>, IToEntityMapper<Entity, ViewModel> 
-        where Entity : BaseEntity 
-        where ViewModel : BaseViewModel
-    {
-    }
 }

@@ -8,7 +8,7 @@ public class Car : BaseEntity
 {
     public int UserId { get; set; }
     public GearboxType GearboxType { get; set; }
-    public string Name { get; set; } 
+    public string Name { get; set; }
     public BodyType BodyType { get; set; }
     public bool IsAnnounced { get; set; }
 }

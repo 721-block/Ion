@@ -6,13 +6,12 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace Ion.Application.IServices
+namespace Ion.Application.IServices;
+
+internal interface ITripRecordService
 {
-    internal interface ITripRecordService
-    {
-        IEnumerable<TripRecordViewModel> GetAll();
-        TripRecordViewModel GetById(int id);
-        IEnumerable<TripRecordViewModel> GeByUserId(int id);
-        void Delete(TripRecordViewModel model);
-    }
+    IEnumerable<TripRecordViewModel> GetAll();
+    TripRecordViewModel GetById(int id);
+    IEnumerable<TripRecordViewModel> GeByUserId(int id);
+    void Delete(TripRecordViewModel model);
 }

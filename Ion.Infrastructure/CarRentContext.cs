@@ -13,7 +13,7 @@ public class CarRentContext : DbContext
     public DbSet<Review> Reviews { get; set; }
     public DbSet<TripRecord> TripRecords { get; set; }
     public DbSet<User> Users { get; set; }
-    
+
     public CarRentContext(DbContextOptions<CarRentContext> contextOptions) : base(contextOptions)
     {
         Database.EnsureCreated();

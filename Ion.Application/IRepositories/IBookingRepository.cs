@@ -8,4 +8,3 @@ public interface IBookingRepository : IBaseRepository<Booking>
     IEnumerable<Booking> GetByClientId(int id);
     IEnumerable<Booking> GetByAuthorId(int id);
 }
-
