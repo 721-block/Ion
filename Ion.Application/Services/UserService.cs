@@ -12,20 +12,22 @@ internal class UserService(
     IBaseMapper<License, LicenseViewModel> licenseMapper,
     ILicenseRepository licenseRepository) : IUserService
 {
-    public async void AddAsync(UserViewModel model)
+    public async Task<UserViewModel> AddAsync(UserViewModel model)
     {
-        await userRepository.AddAsync(userMapper.MapToEntity(model));
-        userRepository.SaveChangesAsync();
+        var user = await userRepository.AddAsync(userMapper.MapToEntity(model));
+        await userRepository.SaveChangesAsync();
+        return userMapper.MapFromEntity(user);
     }
 
-    public async void AddLicenseToUserAsync(int userId, LicenseViewModel license)
+    public async Task<LicenseViewModel> AddLicenseToUserAsync(int userId, LicenseViewModel license)
     {
         var user = userRepository.GetByID(userId);
         var newLicense = await licenseRepository.AddAsync(licenseMapper.MapToEntity(license));
         user.LicenseId = newLicense.Id;
         userRepository.Update(user);
-        userRepository.SaveChangesAsync();
-        licenseRepository.SaveChangesAsync();
+        await userRepository.SaveChangesAsync();
+        await licenseRepository.SaveChangesAsync();
+        return licenseMapper.MapFromEntity(newLicense);
     }
 
     public void Delete(UserViewModel model)

@@ -8,10 +8,11 @@ namespace Ion.Application.Services;
 
 public class CarService(IBaseMapper<Car, CarViewModel> mapper, ICarRepository repository) : ICarService
 {
-    public async void AddAsync(CarViewModel model)
+    public async Task<CarViewModel> AddAsync(CarViewModel model)
     {
-        await repository.AddAsync(mapper.MapToEntity(model));
-        repository.SaveChangesAsync();
+        var car = await repository.AddAsync(mapper.MapToEntity(model));
+        await repository.SaveChangesAsync();
+        return mapper.MapFromEntity(car);
     }
 
     public void Delete(CarViewModel model)

@@ -9,10 +9,11 @@ namespace Ion.Application.Services;
 public class MessageService(IBaseMapper<Message, MessageViewModel> mapper, IMessageRepository repository)
     : IMessageService
 {
-    public async void AddAsync(MessageViewModel model)
+    public async Task<MessageViewModel> AddAsync(MessageViewModel model)
     {
-        await repository.AddAsync(mapper.MapToEntity(model));
-        repository.SaveChangesAsync();
+        var message = await repository.AddAsync(mapper.MapToEntity(model));
+        await repository.SaveChangesAsync();
+        return mapper.MapFromEntity(message);
     }
 
     public void Delete(MessageViewModel model)

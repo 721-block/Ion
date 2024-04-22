@@ -7,7 +7,7 @@ public interface IReviewService
     IEnumerable<ReviewViewModel> GetAll();
     ReviewViewModel GetById(int id);
     IEnumerable<ReviewViewModel> GetByAnnouncementId(int id);
-    void AddAsync(ReviewViewModel model);
+    Task<ReviewViewModel> AddAsync(ReviewViewModel model);
     void Update(ReviewViewModel model);
     void Delete(ReviewViewModel model);
 }

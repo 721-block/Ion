@@ -10,10 +10,11 @@ public class AnnouncementService(
     IBaseMapper<Announcement, AnnouncementViewModel> mapper,
     IAnnouncementRepository repository) : IAnnouncementService
 {
-    public async void AddAsync(AnnouncementViewModel model)
+    public async Task<AnnouncementViewModel> AddAsync(AnnouncementViewModel model)
     {
-        await repository.AddAsync(mapper.MapToEntity(model));
-        repository.SaveChangesAsync();
+        var announcement = await repository.AddAsync(mapper.MapToEntity(model));
+        await repository.SaveChangesAsync();
+        return mapper.MapFromEntity(announcement);
     }
 
     public void Delete(AnnouncementViewModel model)
