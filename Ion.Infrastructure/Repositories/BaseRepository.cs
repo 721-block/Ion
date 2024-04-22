@@ -19,7 +19,7 @@ public abstract class BaseRepository<TEntity> : IBaseRepository<TEntity> where T
         return (await set.AddAsync(entity)).Entity;
     }
 
-    public async void AddRangeAsync(IEnumerable<TEntity> entities)
+    public async Task AddRangeAsync(IEnumerable<TEntity> entities)
     {
         await set.AddRangeAsync(entities);
     }
@@ -44,7 +44,7 @@ public abstract class BaseRepository<TEntity> : IBaseRepository<TEntity> where T
         set.RemoveRange(entities);
     }
 
-    public async void SaveChangesAsync()
+    public async Task SaveChangesAsync()
     {
         await context.SaveChangesAsync();
     }

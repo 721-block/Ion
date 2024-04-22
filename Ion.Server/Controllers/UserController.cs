@@ -26,10 +26,12 @@ public class UserController(IUserService userService) : Controller
     [HttpPost(Name = nameof(CreateUser))]
     public IActionResult CreateUser([FromBody] UserViewModel user)
     {
-        if (user is null)
-            return BadRequest("User is empty");
+        if (user is null) 
+            BadRequest("User is empty");
         if (!ModelState.IsValid)
-            return UnprocessableEntity();
+            UnprocessableEntity();
+        userService.AddAsync(user);
+        //return CreatedAtRoute(nameof(GetUserById), new {userId = c});
         return Ok();
     }
 }
