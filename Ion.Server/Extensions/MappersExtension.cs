@@ -7,15 +7,16 @@ namespace Ion.Server.Extensions;
 
 public static class MappersExtension
 {
-    public static void AddMappers(this IServiceCollection collection)
+    public static IServiceCollection AddMappers(this IServiceCollection collection)
     {
-        collection.AddScoped<IBaseMapper<Announcement, AnnouncementViewModel>, AnnouncementMapper>();
-        collection.AddScoped<IBaseMapper<Booking, BookingViewModel>, BookingMapper>();
-        collection.AddScoped<IBaseMapper<Car, CarViewModel>, CarMapper>();
-        collection.AddScoped<IBaseMapper<License, LicenseViewModel>, LicenseMapper>();
-        collection.AddScoped<IBaseMapper<Message, MessageViewModel>, MessageMapper>();
-        collection.AddScoped<IBaseMapper<Review, ReviewViewModel>, ReviewMapper>();
-        collection.AddScoped<IBaseMapper<TripRecord, TripRecordViewModel>, TripRecordMapper>();
-        collection.AddScoped<IBaseMapper<User, UserViewModel>, UserMapper>();
+        return collection
+            .AddScoped<IBaseMapper<Announcement, AnnouncementViewModel>, AnnouncementMapper>()
+            .AddScoped<IBaseMapper<Booking, BookingViewModel>, BookingMapper>()
+            .AddScoped<IBaseMapper<Car, CarViewModel>, CarMapper>()
+            .AddScoped<IBaseMapper<License, LicenseViewModel>, LicenseMapper>()
+            .AddScoped<IBaseMapper<Message, MessageViewModel>, MessageMapper>()
+            .AddScoped<IBaseMapper<Review, ReviewViewModel>, ReviewMapper>()
+            .AddScoped<IBaseMapper<TripRecord, TripRecordViewModel>, TripRecordMapper>()
+            .AddScoped<IBaseMapper<User, UserViewModel>, UserMapper>();
     }
 }
