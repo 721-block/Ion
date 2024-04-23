@@ -5,6 +5,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Ion.Server.Controllers;
 
 [Route("api/[controller]")]
+[ApiController]
 public class UserController(IUserService userService) : Controller
 {
     [HttpGet("{userId:int}", Name = nameof(GetUserById))]
@@ -24,14 +25,13 @@ public class UserController(IUserService userService) : Controller
     }
 
     [HttpPost(Name = nameof(CreateUser))]
-    public IActionResult CreateUser([FromBody] UserViewModel user)
+    public async Task<IActionResult> CreateUser([FromBody] UserViewModel user)
     {
         if (user is null) 
-            BadRequest("User is empty");
+            return BadRequest("User is empty");
         if (!ModelState.IsValid)
-            UnprocessableEntity();
-        userService.AddAsync(user);
-        //return CreatedAtRoute(nameof(GetUserById), new {userId = c});
-        return Ok();
+            return UnprocessableEntity();
+        var createdUser = await userService.AddAsync(user);
+        return CreatedAtRoute(nameof(GetUserById), new {userId = createdUser.Id}, createdUser.Id);
     }
 }

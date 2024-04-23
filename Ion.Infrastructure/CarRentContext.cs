@@ -18,4 +18,18 @@ public class CarRentContext : DbContext
     public DbSet<Review> Reviews { get; set; }
     public DbSet<TripRecord> TripRecords { get; set; }
     public DbSet<User> Users { get; set; }
+
+    protected override void OnModelCreating(ModelBuilder modelBuilder)
+    {
+        modelBuilder
+            .Entity<Announcement>()
+            .HasMany(a => a.Bookings)
+            .WithOne(a => a.Announcement)
+            .OnDelete(DeleteBehavior.NoAction);
+        modelBuilder
+            .Entity<User>()
+            .HasMany(u => u.UserBookings)
+            .WithOne(b => b.Client)
+            .OnDelete(DeleteBehavior.NoAction);
+    }
 }

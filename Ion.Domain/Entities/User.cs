@@ -7,8 +7,9 @@ public class User : BaseEntity
     public string FirstName { get; set; }
     public string LastName { get; set; }
     public string Email { get; set; }
-    public string JWT { get; set; }
+    public string HashPassword { get; set; }
     public string PhoneNumber { get; set; }
     public int? LicenseId { get; set; }
     public License License { get; set; }
+    public virtual ICollection<Booking> UserBookings { get; set; }
 }
