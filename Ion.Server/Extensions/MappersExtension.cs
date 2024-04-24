@@ -1,22 +1,24 @@
-﻿using Ion.Application.IMappers;
-using Ion.Application.ViewModels;
+﻿using Ion.Application.ViewModels;
 using Ion.Domain.Entities;
-using Ion.Server.Mappers;
+using Mapster;
 
 namespace Ion.Server.Extensions;
 
 public static class MappersExtension
 {
-    public static IServiceCollection AddMappers(this IServiceCollection collection)
+    private static readonly TypeAdapterConfig config = new();
+    public static IServiceCollection RegisterMapster(this IServiceCollection services)
     {
-        return collection
-            .AddScoped<IBaseMapper<Announcement, AnnouncementViewModel>, AnnouncementMapper>()
-            .AddScoped<IBaseMapper<Booking, BookingViewModel>, BookingMapper>()
-            .AddScoped<IBaseMapper<Car, CarViewModel>, CarMapper>()
-            .AddScoped<IBaseMapper<License, LicenseViewModel>, LicenseMapper>()
-            .AddScoped<IBaseMapper<Message, MessageViewModel>, MessageMapper>()
-            .AddScoped<IBaseMapper<Review, ReviewViewModel>, ReviewMapper>()
-            .AddScoped<IBaseMapper<TripRecord, TripRecordViewModel>, TripRecordMapper>()
-            .AddScoped<IBaseMapper<User, UserViewModel>, UserMapper>();
+        config.NewConfig<TripRecord, TripRecordViewModel>()
+            .Map(dest => dest.Description, src => src.Announcement.Description)
+            .Map(dest => dest.AuthorFirstName, src => src.Announcement.Author.FirstName)
+            .Map(dest => dest.AuthorLastName, src => src.Announcement.Author.LastName)
+            .Map(dest => dest.CarName, src => src.Announcement.Car.Name)
+            .Map(dest => dest.PricePerUnit, src => src.Announcement.PricePerUnit)
+            .Map(dest => dest.PathToImages, src => src.Announcement.PathToImages)
+            .TwoWays();
+
+        services.AddMapster();
+        return services;
     }
 }

@@ -15,7 +15,7 @@ public static class DiContainerBuilder
         builder.Services.AddDbContext<CarRentContext>(options => { options.UseSqlServer(connectionString); });
 
         builder.Services.AddRepositories();
-        builder.Services.AddMappers();
+        builder.Services.RegisterMapster();
         builder.Services.AddServices();
 
         builder.Services.AddControllers();
