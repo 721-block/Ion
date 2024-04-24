@@ -1,44 +1,44 @@
-﻿using Ion.Application.IMappers;
-using Ion.Application.IRepositories;
+﻿using Ion.Application.IRepositories;
 using Ion.Application.IServices;
 using Ion.Application.ViewModels;
 using Ion.Domain.Entities;
+using MapsterMapper;
 
 namespace Ion.Application.Services;
 
-public class CarService(IBaseMapper<Car, CarViewModel> mapper, ICarRepository repository) : ICarService
+public class CarService(IMapper mapper, ICarRepository repository) : ICarService
 {
     public async Task<CarViewModel> AddAsync(CarViewModel model)
     {
-        var car = await repository.AddAsync(mapper.MapToEntity(model));
+        var car = await repository.AddAsync(mapper.Map<Car>(model));
         await repository.SaveChangesAsync();
-        return mapper.MapFromEntity(car);
+        return mapper.Map<CarViewModel>(car);
     }
 
-    public void Delete(CarViewModel model)
+    public async Task DeleteAsync(CarViewModel model)
     {
-        repository.Delete(mapper.MapToEntity(model));
-        repository.SaveChangesAsync();
+        repository.Delete(mapper.Map<Car>(model));
+        await repository.SaveChangesAsync();
     }
 
     public IEnumerable<CarViewModel> GetAll()
     {
-        return repository.GetAll().Select(mapper.MapFromEntity);
+        return repository.GetAll().Select(mapper.Map<CarViewModel>);
     }
 
     public CarViewModel GetById(int id)
     {
-        return mapper.MapFromEntity(repository.GetByID(id));
+        return mapper.Map<CarViewModel>(repository.GetByID(id));
     }
 
     public IEnumerable<CarViewModel> GetByUserId(int id)
     {
-        return repository.GetByUserId(id).Select(mapper.MapFromEntity);
+        return repository.GetByUserId(id).Select(mapper.Map<CarViewModel>);
     }
 
-    public void Update(CarViewModel model)
+    public async Task UpdateAsync(CarViewModel model)
     {
-        repository.Update(mapper.MapToEntity(model));
-        repository.SaveChangesAsync();
+        repository.Update(mapper.Map<Car>(model));
+        await repository.SaveChangesAsync();
     }
 }

@@ -8,6 +8,6 @@ internal interface IMessageService
     MessageViewModel GetById(int id);
     IEnumerable<MessageViewModel> GetByAnnouncementId(int id);
     Task<MessageViewModel> AddAsync(MessageViewModel model);
-    void Update(MessageViewModel model);
-    void Delete(MessageViewModel model);
+    Task UpdateAsync(MessageViewModel model);
+    Task DeleteAsync(MessageViewModel model);
 }

@@ -7,5 +7,5 @@ internal interface ITripRecordService
     IEnumerable<TripRecordViewModel> GetAll();
     TripRecordViewModel GetById(int id);
     IEnumerable<TripRecordViewModel> GeByUserId(int id);
-    void Delete(TripRecordViewModel model);
+    Task DeleteAsync(TripRecordViewModel model);
 }

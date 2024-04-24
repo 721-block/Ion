@@ -1,70 +1,70 @@
-﻿using Ion.Application.IMappers;
-using Ion.Application.IRepositories;
+﻿using Ion.Application.IRepositories;
 using Ion.Application.IServices;
 using Ion.Application.ViewModels;
 using Ion.Domain.Entities;
+using MapsterMapper;
 
 namespace Ion.Application.Services;
 
 internal class BookingService(
-    IBaseMapper<Booking, BookingViewModel> mapper,
+    IMapper mapper,
     IBookingRepository bookingRepository,
     ITripRecordRepository tripRecordRepository) : IBookingService
 {
     public async Task<BookingViewModel> AddAsync(BookingViewModel model)
     {
-        var booking = await bookingRepository.AddAsync(mapper.MapToEntity(model));
+        var booking = await bookingRepository.AddAsync(mapper.Map<Booking>(model));
         await bookingRepository.SaveChangesAsync();
-        return mapper.MapFromEntity(booking);
+        return mapper.Map<BookingViewModel>(booking);
     }
 
-    public void Delete(BookingViewModel model)
+    public async Task DeleteAsync(BookingViewModel model)
     {
-        bookingRepository.Delete(mapper.MapToEntity(model));
-        bookingRepository.SaveChangesAsync();
+        bookingRepository.Delete(mapper.Map<Booking>(model));
+        await bookingRepository.SaveChangesAsync();
     }
 
-    public void EndTrip(BookingViewModel model)
+    public async Task EndTripAsync(BookingViewModel model)
     {
-        bookingRepository.Delete(mapper.MapToEntity(model));
+        bookingRepository.Delete(mapper.Map<Booking>(model));
         var tripRecord = new TripRecord
         {
             AnnouncementId = model.Announcement.Id,
             UserId = model.ClientId
         };
-        tripRecordRepository.AddAsync(tripRecord);
-        tripRecordRepository.SaveChangesAsync();
-        bookingRepository.SaveChangesAsync();
+        await tripRecordRepository.AddAsync(tripRecord);
+        await tripRecordRepository.SaveChangesAsync();
+        await bookingRepository.SaveChangesAsync();
     }
 
     public IEnumerable<BookingViewModel> GetAll()
     {
-        return bookingRepository.GetAll().Select(mapper.MapFromEntity);
+        return bookingRepository.GetAll().Select(mapper.Map<BookingViewModel>);
     }
 
     public IEnumerable<BookingViewModel> GetByAnnouncementId(int id)
     {
-        return bookingRepository.GetByAnnouncementId(id).Select(mapper.MapFromEntity);
+        return bookingRepository.GetByAnnouncementId(id).Select(mapper.Map<BookingViewModel>);
     }
 
     public IEnumerable<BookingViewModel> GetByAuthorId(int id)
     {
-        return bookingRepository.GetByAuthorId(id).Select(mapper.MapFromEntity);
+        return bookingRepository.GetByAuthorId(id).Select(mapper.Map<BookingViewModel>);
     }
 
     public IEnumerable<BookingViewModel> GetByClientId(int id)
     {
-        return bookingRepository.GetByClientId(id).Select(mapper.MapFromEntity);
+        return bookingRepository.GetByClientId(id).Select(mapper.Map<BookingViewModel>);
     }
 
     public BookingViewModel GetById(int id)
     {
-        return mapper.MapFromEntity(bookingRepository.GetByID(id));
+        return mapper.Map<BookingViewModel>(bookingRepository.GetByID(id));
     }
 
-    public void Update(BookingViewModel model)
+    public async Task UpdateAsync(BookingViewModel model)
     {
-        bookingRepository.Update(mapper.MapToEntity(model));
-        bookingRepository.SaveChangesAsync();
+        bookingRepository.Update(mapper.Map<Booking>(model));
+        await bookingRepository.SaveChangesAsync();
     }
 }

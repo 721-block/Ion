@@ -8,6 +8,6 @@ internal interface ICarService
     CarViewModel GetById(int id);
     IEnumerable<CarViewModel> GetByUserId(int id);
     Task<CarViewModel> AddAsync(CarViewModel model);
-    void Update(CarViewModel model);
-    void Delete(CarViewModel model);
+    Task UpdateAsync(CarViewModel model);
+    Task DeleteAsync(CarViewModel model);
 }

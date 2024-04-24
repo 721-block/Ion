@@ -8,6 +8,6 @@ public interface IReviewService
     ReviewViewModel GetById(int id);
     IEnumerable<ReviewViewModel> GetByAnnouncementId(int id);
     Task<ReviewViewModel> AddAsync(ReviewViewModel model);
-    void Update(ReviewViewModel model);
-    void Delete(ReviewViewModel model);
+    Task UpdateAsync(ReviewViewModel model);
+    Task DeleteAsync(ReviewViewModel model);
 }

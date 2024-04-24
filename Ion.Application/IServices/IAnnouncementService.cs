@@ -9,6 +9,6 @@ public interface IAnnouncementService
     AnnouncementViewModel GetById(int id);
     IEnumerable<AnnouncementViewModel> GetByAuthorId(int id);
     Task<AnnouncementViewModel> AddAsync(AnnouncementViewModel model);
-    void Update(AnnouncementViewModel model);
-    void Delete(AnnouncementViewModel model);
+    Task UpdateAsync(AnnouncementViewModel model);
+    Task DeleteAsync(AnnouncementViewModel model);
 }

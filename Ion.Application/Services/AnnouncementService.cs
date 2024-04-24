@@ -3,44 +3,45 @@ using Ion.Application.IRepositories;
 using Ion.Application.IServices;
 using Ion.Application.ViewModels;
 using Ion.Domain.Entities;
+using MapsterMapper;
 
 namespace Ion.Application.Services;
 
 public class AnnouncementService(
-    IBaseMapper<Announcement, AnnouncementViewModel> mapper,
+    IMapper mapper,
     IAnnouncementRepository repository) : IAnnouncementService
 {
     public async Task<AnnouncementViewModel> AddAsync(AnnouncementViewModel model)
     {
-        var announcement = await repository.AddAsync(mapper.MapToEntity(model));
+        var announcement = await repository.AddAsync(mapper.Map<Announcement>(model));
         await repository.SaveChangesAsync();
-        return mapper.MapFromEntity(announcement);
+        return mapper.Map<AnnouncementViewModel>(announcement);
     }
 
-    public void Delete(AnnouncementViewModel model)
+    public async Task DeleteAsync(AnnouncementViewModel model)
     {
-        repository.Delete(mapper.MapToEntity(model));
-        repository.SaveChangesAsync();
+        repository.Delete(mapper.Map<Announcement>(model));
+        await repository.SaveChangesAsync();
     }
 
     public IEnumerable<AnnouncementViewModel> GetAll()
     {
-        return repository.GetAll().Select(mapper.MapFromEntity);
+        return repository.GetAll().Select(mapper.Map<AnnouncementViewModel>);
     }
 
     public IEnumerable<AnnouncementViewModel> GetByAuthorId(int id)
     {
-        return repository.GetByAuthorId(id).Select(mapper.MapFromEntity);
+        return repository.GetByAuthorId(id).Select(mapper.Map<AnnouncementViewModel>);
     }
 
     public AnnouncementViewModel GetById(int id)
     {
-        return mapper.MapFromEntity(repository.GetByID(id));
+        return mapper.Map<AnnouncementViewModel>(repository.GetByID(id));
     }
 
-    public void Update(AnnouncementViewModel model)
+    public async Task UpdateAsync(AnnouncementViewModel model)
     {
-        repository.Update(mapper.MapToEntity(model));
-        repository.SaveChangesAsync();
+        repository.Update(mapper.Map<Announcement>(model));
+        await repository.SaveChangesAsync();
     }
 }

@@ -1,45 +1,45 @@
-﻿using Ion.Application.IMappers;
-using Ion.Application.IRepositories;
+﻿using Ion.Application.IRepositories;
 using Ion.Application.IServices;
 using Ion.Application.ViewModels;
 using Ion.Domain.Entities;
+using MapsterMapper;
 
 namespace Ion.Application.Services;
 
-public class MessageService(IBaseMapper<Message, MessageViewModel> mapper, IMessageRepository repository)
+public class MessageService(IMapper mapper, IMessageRepository repository)
     : IMessageService
 {
     public async Task<MessageViewModel> AddAsync(MessageViewModel model)
     {
-        var message = await repository.AddAsync(mapper.MapToEntity(model));
+        var message = await repository.AddAsync(mapper.Map<Message>(model));
         await repository.SaveChangesAsync();
-        return mapper.MapFromEntity(message);
+        return mapper.Map<MessageViewModel>(message);
     }
 
-    public void Delete(MessageViewModel model)
+    public async Task DeleteAsync(MessageViewModel model)
     {
-        repository.Delete(mapper.MapToEntity(model));
-        repository.SaveChangesAsync();
+        repository.Delete(mapper.Map<Message>(model));
+        await repository.SaveChangesAsync();
     }
 
     public IEnumerable<MessageViewModel> GetAll()
     {
-        return repository.GetAll().Select(mapper.MapFromEntity);
+        return repository.GetAll().Select(mapper.Map<MessageViewModel>);
     }
 
     public IEnumerable<MessageViewModel> GetByAnnouncementId(int id)
     {
-        return repository.GetByAnnouncementIdAsync(id).Select(mapper.MapFromEntity);
+        return repository.GetByAnnouncementIdAsync(id).Select(mapper.Map<MessageViewModel>);
     }
 
     public MessageViewModel GetById(int id)
     {
-        return mapper.MapFromEntity(repository.GetByID(id));
+        return mapper.Map<MessageViewModel>(repository.GetByID(id));
     }
 
-    public void Update(MessageViewModel model)
+    public async Task UpdateAsync(MessageViewModel model)
     {
-        repository.Update(mapper.MapToEntity(model));
-        repository.SaveChangesAsync();
+        repository.Update(mapper.Map<Message>(model));
+        await repository.SaveChangesAsync();
     }
 }

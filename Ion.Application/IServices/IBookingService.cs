@@ -10,7 +10,7 @@ public interface IBookingService
     IEnumerable<BookingViewModel> GetByClientId(int id);
     IEnumerable<BookingViewModel> GetByAuthorId(int id);
     Task<BookingViewModel> AddAsync(BookingViewModel model);
-    void Update(BookingViewModel model);
-    void Delete(BookingViewModel model);
-    void EndTrip(BookingViewModel model);
+    Task UpdateAsync(BookingViewModel model);
+    Task DeleteAsync(BookingViewModel model);
+    Task EndTripAsync(BookingViewModel model);
 }

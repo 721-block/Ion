@@ -1,69 +1,68 @@
 ﻿using Ion.Application.Base.Hashers;
-using Ion.Application.IMappers;
 using Ion.Application.IRepositories;
 using Ion.Application.IServices;
 using Ion.Application.ViewModels;
 using Ion.Domain.Entities;
+using MapsterMapper;
 
 namespace Ion.Application.Services;
 
 internal class UserService(
-    IBaseMapper<User, UserViewModel> userMapper,
+    IMapper mapper,
     IUserRepository userRepository,
-    IBaseMapper<License, LicenseViewModel> licenseMapper,
     ILicenseRepository licenseRepository,
     IHasher passwordHasher) : IUserService
 {
     public async Task<UserViewModel> AddAsync(UserViewModel model)
     {
-        var user = userMapper.MapToEntity(model);
+        var user = mapper.Map<User>(model);
         user.HashPassword = passwordHasher.Hash(model.Password);
         user = await userRepository.AddAsync(user);
         await userRepository.SaveChangesAsync();
-        return userMapper.MapFromEntity(user);
+        return mapper.Map<UserViewModel>(user);
     }
 
     public async Task<LicenseViewModel> AddLicenseToUserAsync(int userId, LicenseViewModel license)
     {
         var user = userRepository.GetByID(userId);
-        var newLicense = await licenseRepository.AddAsync(licenseMapper.MapToEntity(license));
+        var newLicense = await licenseRepository.AddAsync(mapper.Map<License>(license));
         user.LicenseId = newLicense.Id;
         userRepository.Update(user);
         await userRepository.SaveChangesAsync();
         await licenseRepository.SaveChangesAsync();
-        return licenseMapper.MapFromEntity(newLicense);
+        return mapper.Map<LicenseViewModel>(newLicense);
     }
 
-    public void Delete(UserViewModel model)
+    public async Task DeleteAsync(UserViewModel model)
     {
-        userRepository.Delete(userMapper.MapToEntity(model));
-        userRepository.SaveChangesAsync();
+        userRepository.Delete(mapper.Map<User>(model));
+        await userRepository.SaveChangesAsync();
     }
 
     public IEnumerable<UserViewModel> GetAll()
     {
-        return userRepository.GetAll().Select(userMapper.MapFromEntity);
+        return userRepository.GetAll().Select(mapper.Map<UserViewModel>);
     }
 
     public UserViewModel GetById(int id)
     {
-        return userMapper.MapFromEntity(userRepository.GetByID(id));
+        return mapper.Map<UserViewModel>(userRepository.GetByID(id));
     }
 
     public UserViewModel GetByNamesAndEmail(string firstName, string lastName, string email)
     {
-        return userMapper.MapFromEntity(userRepository.GetByNamesAndEmail(firstName, lastName, email));
+        return mapper.Map<UserViewModel>(userRepository.GetByNamesAndEmail(firstName, lastName, email));
     }
 
-    public void Update(UserViewModel model)
+    public async Task UpdateAsync(UserViewModel model)
     {
-        userRepository.Update(userMapper.MapToEntity(model));
-        userRepository.SaveChangesAsync();
+        userRepository.Update(mapper.Map<User>(model));
+        await userRepository.SaveChangesAsync();
     }
 
-    public void UpdateLicense(LicenseViewModel license)
+    public async Task UpdateLicenseAsync(LicenseViewModel license)
     {
-        licenseRepository.Update(licenseMapper.MapToEntity(license));
-        licenseRepository.SaveChangesAsync();
+        licenseRepository.Update(mapper.Map<License>(license));
+        await licenseRepository.SaveChangesAsync();
     }
 }
