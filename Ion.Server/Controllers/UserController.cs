@@ -1,5 +1,6 @@
 using Ion.Application.IServices;
 using Ion.Application.ViewModels;
+using Ion.Server.RequestEntities.User;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Ion.Server.Controllers;
@@ -9,7 +10,7 @@ namespace Ion.Server.Controllers;
 public class UserController(IUserService userService) : Controller
 {
     [HttpGet("{userId:int}", Name = nameof(GetUserById))]
-    public ActionResult<UserViewModel> GetUserById([FromRoute] int userId)
+    public ActionResult<UserToGet> GetUserById([FromRoute] int userId)
     {
         var user = userService.GetById(userId);
         if (user is null)
@@ -18,7 +19,7 @@ public class UserController(IUserService userService) : Controller
     }
 
     [HttpGet(Name = nameof(GetAllUsers))]
-    public ActionResult<IEnumerable<UserViewModel>> GetAllUsers()
+    public ActionResult<IEnumerable<UserToGet>> GetAllUsers()
     {
         var users = userService.GetAll();
         return Ok(users);
@@ -33,5 +34,12 @@ public class UserController(IUserService userService) : Controller
             return UnprocessableEntity();
         var createdUser = await userService.AddAsync(user);
         return CreatedAtRoute(nameof(GetUserById), new {userId = createdUser.Id}, createdUser.Id);
+    }
+
+    [HttpPatch("{userId:int}")]
+    public async Task<IActionResult> UpdateUser([FromBody] UserViewModel userToPatch)
+    {
+        await userService.UpdateAsync(userToPatch);
+        return Ok();
     }
 }

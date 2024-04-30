@@ -26,6 +26,7 @@ public abstract class BaseRepository<TEntity> : IBaseRepository<TEntity> where T
 
     public void Update(TEntity entity)
     {
+        context.ChangeTracker.Clear();
         set.Update(entity);
     }
 

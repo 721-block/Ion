@@ -9,4 +9,9 @@ public class UserRepository : BaseRepository<User>, IUserRepository
     {
         set = context.Users;
     }
+
+    public User? GetByNamesAndEmail(string firstName, string lastName, string email)
+    {
+        return set.FirstOrDefault(u => u.FirstName == firstName && u.LastName == lastName && u.Email == email);
+    }
 }
