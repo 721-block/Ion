@@ -29,8 +29,8 @@ internal class BookingService(
         bookingRepository.Delete(mapper.Map<Booking>(model));
         var tripRecord = new TripRecord
         {
-            AnnouncementId = model.Announcement.Id,
-            UserId = model.ClientId
+            AnnouncementId = model.Announcement!.Id,
+            UserId = (int)model.ClientId!
         };
         await tripRecordRepository.AddAsync(tripRecord);
         await tripRecordRepository.SaveChangesAsync();

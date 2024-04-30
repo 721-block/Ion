@@ -26,14 +26,8 @@ public abstract class BaseRepository<TEntity> : IBaseRepository<TEntity> where T
 
     public void Update(TEntity entity)
     {
-        var startEntity = set.First(e => e.Id == entity.Id);
         context.ChangeTracker.Clear();
-        foreach (var prop in typeof(TEntity).GetProperties())
-        {
-            if (prop.GetValue(entity) is not null)
-                prop.SetValue(startEntity, prop.GetValue(entity));
-        }
-        set.Update(startEntity);
+        set.Update(entity);
     }
 
     public void UpdateRange(IEnumerable<TEntity> entities)
