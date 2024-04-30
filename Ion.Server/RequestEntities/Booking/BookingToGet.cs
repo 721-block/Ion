@@ -1,13 +1,15 @@
-﻿namespace Ion.Application.ViewModels;
+using Ion.Server.RequestEntities.Announcement;
 
-public class BookingViewModel : BaseViewModel
+namespace Ion.Server.RequestEntities.Bookings;
+
+public class BookingToGet
 {
     public int ClientId { get; set; }
     public string ClientFirstName { get; set; }
     public string ClientLastName { get; set; }
     public string ClientEmail { get; set; }
     public string ClientPhoneNumber { get; set; }
-    public AnnouncementViewModel Announcement { get; set; }
+    public AnnouncementToGet Announcement { get; set; }
     public DateTimeOffset StartTime { get; set; }
     public DateTimeOffset EndTime { get; set; }
 }

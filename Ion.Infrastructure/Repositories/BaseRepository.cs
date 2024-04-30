@@ -26,8 +26,14 @@ public abstract class BaseRepository<TEntity> : IBaseRepository<TEntity> where T
 
     public void Update(TEntity entity)
     {
+        var startEntity = set.First(e => e.Id == entity.Id);
         context.ChangeTracker.Clear();
-        set.Update(entity);
+        foreach (var prop in typeof(TEntity).GetProperties())
+        {
+            if (prop.GetValue(entity) is not null)
+                prop.SetValue(startEntity, prop.GetValue(entity));
+        }
+        set.Update(startEntity);
     }
 
     public void UpdateRange(IEnumerable<TEntity> entities)
@@ -37,7 +43,8 @@ public abstract class BaseRepository<TEntity> : IBaseRepository<TEntity> where T
 
     public void Delete(TEntity entity)
     {
-        set.Remove(entity);
+        var entityToDelete = set.First(e => e.Id == entity.Id);
+        set.Remove(entityToDelete);
     }
 
     public void DeleteRange(IEnumerable<TEntity> entities)

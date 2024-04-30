@@ -2,7 +2,7 @@
 
 namespace Ion.Application.IServices;
 
-internal interface IMessageService
+public interface IMessageService
 {
     IEnumerable<MessageViewModel> GetAll();
     MessageViewModel GetById(int id);

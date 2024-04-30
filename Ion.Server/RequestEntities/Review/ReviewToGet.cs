@@ -1,6 +1,6 @@
-﻿namespace Ion.Application.ViewModels;
+namespace Ion.Server.RequestEntities.Review;
 
-public class ReviewViewModel : BaseViewModel
+public class ReviewToGet
 {
     public string UserFirstName { get; set; }
     public string UserLastName { get; set; }

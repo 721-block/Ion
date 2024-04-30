@@ -15,7 +15,7 @@ internal class TripRecordService(IMapper mapper, ITripRecordRepository repositor
         await repository.SaveChangesAsync();
     }
 
-    public IEnumerable<TripRecordViewModel> GeByUserId(int id)
+    public IEnumerable<TripRecordViewModel> GetByUserId(int id)
     {
         return repository.GetByUserId(id).Select(mapper.Map<TripRecordViewModel>);
     }

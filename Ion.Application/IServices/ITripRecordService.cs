@@ -2,10 +2,10 @@
 
 namespace Ion.Application.IServices;
 
-internal interface ITripRecordService
+public interface ITripRecordService
 {
     IEnumerable<TripRecordViewModel> GetAll();
     TripRecordViewModel GetById(int id);
-    IEnumerable<TripRecordViewModel> GeByUserId(int id);
+    IEnumerable<TripRecordViewModel> GetByUserId(int id);
     Task DeleteAsync(TripRecordViewModel model);
 }

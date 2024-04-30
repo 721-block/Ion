@@ -31,5 +31,9 @@ public class CarRentContext : DbContext
             .HasMany(u => u.UserBookings)
             .WithOne(b => b.Client)
             .OnDelete(DeleteBehavior.NoAction);
+        modelBuilder
+            .Entity<User>()
+            .HasIndex(u => u.Email)
+            .IsUnique();
     }
 }

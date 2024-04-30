@@ -2,7 +2,7 @@
 
 namespace Ion.Application.IServices;
 
-internal interface ICarService
+public interface ICarService
 {
     IEnumerable<CarViewModel> GetAll();
     CarViewModel GetById(int id);
