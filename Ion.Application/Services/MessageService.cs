@@ -39,7 +39,10 @@ public class MessageService(IMapper mapper, IMessageRepository repository)
 
     public async Task UpdateAsync(MessageViewModel model)
     {
-        repository.Update(mapper.Map<Message>(model));
+        var entity = repository.GetByID(model.Id);
+        var updatedEntity = mapper.Map(model, entity);
+
+        repository.Update(updatedEntity);
         await repository.SaveChangesAsync();
     }
 }

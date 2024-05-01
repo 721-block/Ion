@@ -38,7 +38,10 @@ public class CarService(IMapper mapper, ICarRepository repository) : ICarService
 
     public async Task UpdateAsync(CarViewModel model)
     {
-        repository.Update(mapper.Map<Car>(model));
+        var entity = repository.GetByID(model.Id);
+        var updatedEntity = mapper.Map(model, entity);
+
+        repository.Update(updatedEntity);
         await repository.SaveChangesAsync();
     }
 }

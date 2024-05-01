@@ -1,5 +1,4 @@
-﻿using Ion.Application.IMappers;
-using Ion.Application.IRepositories;
+﻿using Ion.Application.IRepositories;
 using Ion.Application.IServices;
 using Ion.Application.ViewModels;
 using Ion.Domain.Entities;
@@ -41,7 +40,10 @@ public class AnnouncementService(
 
     public async Task UpdateAsync(AnnouncementViewModel model)
     {
-        repository.Update(mapper.Map<Announcement>(model));
+        var entity = repository.GetByID(model.Id);
+        var updatedEntity = mapper.Map(model, entity);
+
+        repository.Update(updatedEntity);
         await repository.SaveChangesAsync();
     }
 }

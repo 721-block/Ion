@@ -17,7 +17,7 @@ public static class MappersExtension
             .Map(dest => dest.PricePerUnit, src => src.Announcement.PricePerUnit)
             .Map(dest => dest.PathToImages, src => src.Announcement.PathToImages)
             .TwoWays();
-
+        
         services.AddMapster();
         return services;
     }

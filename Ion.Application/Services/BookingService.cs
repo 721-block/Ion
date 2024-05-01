@@ -64,7 +64,10 @@ internal class BookingService(
 
     public async Task UpdateAsync(BookingViewModel model)
     {
-        bookingRepository.Update(mapper.Map<Booking>(model));
+        var entity = bookingRepository.GetByID(model.Id);
+        var updatedEntity = mapper.Map(model, entity);
+
+        bookingRepository.Update(updatedEntity);
         await bookingRepository.SaveChangesAsync();
     }
 }

@@ -1,5 +1,4 @@
-﻿using Ion.Application.IMappers;
-using Ion.Application.IRepositories;
+﻿using Ion.Application.IRepositories;
 using Ion.Application.IServices;
 using Ion.Application.ViewModels;
 using Ion.Domain.Entities;
@@ -39,7 +38,10 @@ public class ReviewService(IMapper mapper, IReviewsRepository repository) : IRev
 
     public async Task UpdateAsync(ReviewViewModel model)
     {
-        repository.Update(mapper.Map<Review>(model));
+        var entity = repository.GetByID(model.Id);
+        var updatedEntity = mapper.Map(model, entity);
+
+        repository.Update(updatedEntity);
         await repository.SaveChangesAsync();
     }
 }
