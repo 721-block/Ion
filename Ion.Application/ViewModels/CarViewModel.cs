@@ -4,7 +4,7 @@ namespace Ion.Application.ViewModels;
 
 public class CarViewModel : BaseViewModel
 {
-    public int UserId { get; set; }
+    public int? UserId { get; set; }
     public GearboxType? GearboxType { get; set; }
     public string? Name { get; set; }
     public BodyType? BodyType { get; set; }
