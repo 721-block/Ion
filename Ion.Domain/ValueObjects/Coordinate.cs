@@ -3,6 +3,8 @@
 namespace Ion.Domain.ValueObjects;
 
 [NotMapped]
-public record Coordinate(double X, double Y)
+public class Coordinate
 {
+    public double X { get; set; }
+    public double Y { get; set; }
 }

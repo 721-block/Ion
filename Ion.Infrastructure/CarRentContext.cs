@@ -1,4 +1,6 @@
+using System.Text.Json;
 using Ion.Domain.Entities;
+using Ion.Domain.ValueObjects;
 using Microsoft.EntityFrameworkCore;
 
 namespace Ion.Infrastructure;
@@ -67,5 +69,11 @@ public class CarRentContext : DbContext
             .Entity<User>()
             .HasIndex(u => u.Email)
             .IsUnique();
+
+        modelBuilder
+            .Entity<Announcement>()
+            .Property(a => a.CarLocation)
+            .HasConversion(c => JsonSerializer.Serialize(c, JsonSerializerOptions.Default), 
+                c => JsonSerializer.Deserialize<Coordinate>(c, JsonSerializerOptions.Default));
     }
 }

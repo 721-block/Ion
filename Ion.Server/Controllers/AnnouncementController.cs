@@ -44,7 +44,7 @@ public class AnnouncementController(IAnnouncementService announcementService, IM
             return UnprocessableEntity();
         var announcementViewModel = mapper.Map<AnnouncementViewModel>(announcementToPost);
         var createdAnnouncement = await announcementService.AddAsync(announcementViewModel);
-        return CreatedAtRoute(nameof(GetAnnouncementById), new {userId = createdAnnouncement.Id}, createdAnnouncement.Id);
+        return CreatedAtRoute(nameof(GetAnnouncementById), new {announcementId = createdAnnouncement.Id}, createdAnnouncement.Id);
     }
 
     [HttpPatch("{announcementId:int}", Name = nameof(UpdateAnnouncement))]
