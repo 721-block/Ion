@@ -1,3 +1,4 @@
+using System.Collections;
 using Ion.Domain.Common;
 
 namespace Ion.Domain.Entities;
@@ -12,4 +13,9 @@ public class User : BaseEntity
     public int? LicenseId { get; set; }
     public License License { get; set; }
     public virtual ICollection<Booking> UserBookings { get; set; }
+    public virtual ICollection<Message> SendedMessages { get; set; }
+    public virtual ICollection<Message> RecievedMessages { get; set; }
+    public virtual ICollection<Announcement> Announcements { get; set; }
+    public virtual ICollection<Review> Reviews { get; set; }
+    public virtual ICollection<TripRecord> TripRecords { get; set; }
 }

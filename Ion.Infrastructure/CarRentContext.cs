@@ -24,13 +24,45 @@ public class CarRentContext : DbContext
         modelBuilder
             .Entity<Announcement>()
             .HasMany(a => a.Bookings)
-            .WithOne(a => a.Announcement)
+            .WithOne(b => b.Announcement)
             .OnDelete(DeleteBehavior.NoAction);
+        
         modelBuilder
             .Entity<User>()
             .HasMany(u => u.UserBookings)
             .WithOne(b => b.Client)
             .OnDelete(DeleteBehavior.NoAction);
+
+        modelBuilder
+            .Entity<User>()
+            .HasMany(u => u.SendedMessages)
+            .WithOne(m => m.Sender)
+            .OnDelete(DeleteBehavior.ClientCascade);
+
+        modelBuilder
+            .Entity<User>()
+            .HasMany(u => u.RecievedMessages)
+            .WithOne(m => m.Reciever)
+            .OnDelete(DeleteBehavior.ClientCascade);
+
+        modelBuilder
+            .Entity<User>()
+            .HasMany(u => u.Announcements)
+            .WithOne(a => a.Author)
+            .OnDelete(DeleteBehavior.ClientCascade);
+
+        modelBuilder
+            .Entity<User>()
+            .HasMany(u => u.Reviews)
+            .WithOne(r => r.User)
+            .OnDelete(DeleteBehavior.NoAction);
+
+        modelBuilder
+            .Entity<User>()
+            .HasMany(u => u.TripRecords)
+            .WithOne(t => t.User)
+            .OnDelete(DeleteBehavior.NoAction);
+        
         modelBuilder
             .Entity<User>()
             .HasIndex(u => u.Email)

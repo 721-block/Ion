@@ -5,6 +5,7 @@ namespace Ion.Domain.Entities;
 public class Review : BaseEntity
 {
     public int AnnouncementId { get; set; }
+    public Announcement Announcement { get; set; }
     public int UserId { get; set; }
     public User User { get; set; }
     public string Content { get; set; }
