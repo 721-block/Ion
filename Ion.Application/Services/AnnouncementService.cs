@@ -35,7 +35,9 @@ public class AnnouncementService(
 
     public AnnouncementViewModel GetById(int id)
     {
-        return mapper.Map<AnnouncementViewModel>(repository.GetByID(id));
+        var entity = repository.GetByID(id);
+        var viewModel = mapper.Map<AnnouncementViewModel>(entity);
+        return viewModel;
     }
 
     public async Task UpdateAsync(AnnouncementViewModel model)
