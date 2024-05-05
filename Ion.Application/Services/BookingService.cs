@@ -9,7 +9,9 @@ namespace Ion.Application.Services;
 internal class BookingService(
     IMapper mapper,
     IBookingRepository bookingRepository,
-    ITripRecordRepository tripRecordRepository) : IBookingService
+    ITripRecordRepository tripRecordRepository,
+    IAnnouncementRepository announcementRepository,
+    IUserRepository userRepository) : IBookingService
 {
     public async Task<BookingViewModel> AddAsync(BookingViewModel model)
     {
@@ -44,22 +46,32 @@ internal class BookingService(
 
     public IEnumerable<BookingViewModel> GetByAnnouncementId(int id)
     {
-        return bookingRepository.GetByAnnouncementId(id).Select(mapper.Map<BookingViewModel>);
+        return bookingRepository
+            .GetByAnnouncementId(id)
+            .Select(SetUserAndAnnouncement)
+            .Select(mapper.Map<BookingViewModel>);
     }
 
     public IEnumerable<BookingViewModel> GetByAuthorId(int id)
     {
-        return bookingRepository.GetByAuthorId(id).Select(mapper.Map<BookingViewModel>);
+        return bookingRepository
+            .GetByAuthorId(id)
+            .Select(SetUserAndAnnouncement)
+            .Select(mapper.Map<BookingViewModel>);
     }
 
     public IEnumerable<BookingViewModel> GetByClientId(int id)
     {
-        return bookingRepository.GetByClientId(id).Select(mapper.Map<BookingViewModel>);
+        return bookingRepository
+            .GetByClientId(id)
+            .Select(SetUserAndAnnouncement)
+            .Select(mapper.Map<BookingViewModel>);
     }
 
     public BookingViewModel GetById(int id)
     {
-        return mapper.Map<BookingViewModel>(bookingRepository.GetByID(id));
+        var booking = SetUserAndAnnouncement(bookingRepository.GetByID(id));
+        return mapper.Map<BookingViewModel>(SetUserAndAnnouncement(bookingRepository.GetByID(id)));
     }
 
     public async Task UpdateAsync(BookingViewModel model)
@@ -69,5 +81,12 @@ internal class BookingService(
 
         bookingRepository.Update(updatedEntity);
         await bookingRepository.SaveChangesAsync();
+    }
+
+    private Booking SetUserAndAnnouncement(Booking booking)
+    {
+        booking.Announcement = announcementRepository.GetByID(booking.AnnouncementId);
+        booking.Client = userRepository.GetByID(booking.ClientId);
+        return booking;
     }
 }

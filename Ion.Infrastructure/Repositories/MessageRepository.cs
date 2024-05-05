@@ -9,8 +9,8 @@ public class MessageRepository : BaseRepository<Message>, IMessageRepository
     {
         set = context.Messages;
     }
-
-    public IEnumerable<Message> GetByAnnouncementIdAsync(int id)
+    
+    public IEnumerable<Message> GetByAnnouncementId(int id)
     {
         return set.Where(m => m.AnnouncementId == id);
     }

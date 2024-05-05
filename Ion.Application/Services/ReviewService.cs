@@ -6,7 +6,10 @@ using MapsterMapper;
 
 namespace Ion.Application.Services;
 
-public class ReviewService(IMapper mapper, IReviewsRepository repository) : IReviewService
+public class ReviewService(IMapper mapper,
+    IReviewsRepository repository,
+    IUserRepository userRepository,
+    IAnnouncementRepository announcementRepository) : IReviewService
 {
     public async Task<ReviewViewModel> AddAsync(ReviewViewModel model)
     {
@@ -23,17 +26,23 @@ public class ReviewService(IMapper mapper, IReviewsRepository repository) : IRev
 
     public IEnumerable<ReviewViewModel> GetAll()
     {
-        return repository.GetAll().Select(mapper.Map<ReviewViewModel>);
+        return repository
+            .GetAll()
+            .Select(SetUserAndAnnouncement)
+            .Select(mapper.Map<ReviewViewModel>);
     }
 
     public IEnumerable<ReviewViewModel> GetByAnnouncementId(int id)
     {
-        return repository.GetByAnnouncementId(id).Select(mapper.Map<ReviewViewModel>);
+        return repository
+            .GetByAnnouncementId(id)
+            .Select(SetUserAndAnnouncement)
+            .Select(mapper.Map<ReviewViewModel>);
     }
 
     public ReviewViewModel GetById(int id)
     {
-        return mapper.Map<ReviewViewModel>(repository.GetByID(id));
+        return mapper.Map<ReviewViewModel>(SetUserAndAnnouncement(repository.GetByID(id)));
     }
 
     public async Task UpdateAsync(ReviewViewModel model)
@@ -43,5 +52,12 @@ public class ReviewService(IMapper mapper, IReviewsRepository repository) : IRev
 
         repository.Update(updatedEntity);
         await repository.SaveChangesAsync();
+    }
+
+    private Review SetUserAndAnnouncement(Review review)
+    {
+        review.Announcement = announcementRepository.GetByID(review.AnnouncementId);
+        review.User = userRepository.GetByID(review.UserId);
+        return review;
     }
 }

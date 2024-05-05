@@ -1,5 +1,6 @@
 using Ion.Application.IServices;
 using Ion.Application.ViewModels;
+using Ion.Server.RequestEntities.Booking;
 using Ion.Server.RequestEntities.Bookings;
 using MapsterMapper;
 using Microsoft.AspNetCore.Mvc;

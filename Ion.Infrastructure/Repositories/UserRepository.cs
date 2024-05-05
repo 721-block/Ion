@@ -1,5 +1,6 @@
 using Ion.Application.IRepositories;
 using Ion.Domain.Entities;
+using Microsoft.EntityFrameworkCore;
 
 namespace Ion.Infrastructure.Repositories;
 

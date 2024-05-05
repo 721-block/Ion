@@ -27,20 +27,20 @@ public class CarRentContext : DbContext
             .Entity<Announcement>()
             .HasMany(a => a.Bookings)
             .WithOne(b => b.Announcement)
-            .OnDelete(DeleteBehavior.NoAction);
+            .OnDelete(DeleteBehavior.ClientCascade);
         
         modelBuilder
             .Entity<User>()
             .HasMany(u => u.UserBookings)
             .WithOne(b => b.Client)
-            .OnDelete(DeleteBehavior.NoAction);
+            .OnDelete(DeleteBehavior.ClientCascade);
 
         modelBuilder
             .Entity<User>()
             .HasMany(u => u.SendedMessages)
             .WithOne(m => m.Sender)
             .OnDelete(DeleteBehavior.ClientCascade);
-
+    
         modelBuilder
             .Entity<User>()
             .HasMany(u => u.RecievedMessages)
@@ -57,13 +57,13 @@ public class CarRentContext : DbContext
             .Entity<User>()
             .HasMany(u => u.Reviews)
             .WithOne(r => r.User)
-            .OnDelete(DeleteBehavior.NoAction);
+            .OnDelete(DeleteBehavior.ClientCascade);
 
         modelBuilder
             .Entity<User>()
             .HasMany(u => u.TripRecords)
             .WithOne(t => t.User)
-            .OnDelete(DeleteBehavior.NoAction);
+            .OnDelete(DeleteBehavior.ClientCascade);
         
         modelBuilder
             .Entity<User>()

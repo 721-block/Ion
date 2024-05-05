@@ -9,7 +9,7 @@ public class TripRecordRepository : BaseRepository<TripRecord>, ITripRecordRepos
     {
         set = context.TripRecords;
     }
-
+    
     public IEnumerable<TripRecord> GetByUserId(int id)
     {
         return set.Where(t => t.UserId == id);

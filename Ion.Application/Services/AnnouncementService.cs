@@ -8,7 +8,9 @@ namespace Ion.Application.Services;
 
 public class AnnouncementService(
     IMapper mapper,
-    IAnnouncementRepository repository) : IAnnouncementService
+    IAnnouncementRepository repository,
+    IUserRepository userRepository,
+    ICarRepository carRepository) : IAnnouncementService
 {
     public async Task<AnnouncementViewModel> AddAsync(AnnouncementViewModel model)
     {
@@ -25,17 +27,20 @@ public class AnnouncementService(
 
     public IEnumerable<AnnouncementViewModel> GetAll()
     {
-        return repository.GetAll().Select(mapper.Map<AnnouncementViewModel>);
+        return repository.GetAll().Select(SetUserAndCar).Select(mapper.Map<AnnouncementViewModel>);
     }
 
     public IEnumerable<AnnouncementViewModel> GetByAuthorId(int id)
     {
-        return repository.GetByAuthorId(id).Select(mapper.Map<AnnouncementViewModel>);
+        var announcements = repository.GetByAuthorId(id);
+        announcements = announcements.Select(SetUserAndCar);
+        return announcements.Select(mapper.Map<AnnouncementViewModel>);
     }
 
     public AnnouncementViewModel GetById(int id)
     {
         var entity = repository.GetByID(id);
+        entity = SetUserAndCar(entity);
         var viewModel = mapper.Map<AnnouncementViewModel>(entity);
         return viewModel;
     }
@@ -47,5 +52,12 @@ public class AnnouncementService(
 
         repository.Update(updatedEntity);
         await repository.SaveChangesAsync();
+    }
+
+    private Announcement SetUserAndCar(Announcement announcement)
+    {
+        announcement.Author = userRepository.GetByID(announcement.Id);
+        announcement.Car = carRepository.GetByID(announcement.CarId);
+        return announcement;
     }
 }

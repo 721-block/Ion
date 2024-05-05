@@ -1,6 +1,6 @@
 using Ion.Server.RequestEntities.Announcement;
 
-namespace Ion.Server.RequestEntities.Bookings;
+namespace Ion.Server.RequestEntities.Booking;
 
 public class BookingToGet
 {

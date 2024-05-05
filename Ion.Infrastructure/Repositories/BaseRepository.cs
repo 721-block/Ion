@@ -51,7 +51,7 @@ public abstract class BaseRepository<TEntity> : IBaseRepository<TEntity> where T
         await context.SaveChangesAsync();
     }
 
-    public IQueryable<TEntity> GetAll()
+    public IEnumerable<TEntity> GetAll()
     {
         return set;
     }

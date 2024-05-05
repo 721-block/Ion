@@ -6,7 +6,9 @@ using MapsterMapper;
 
 namespace Ion.Application.Services;
 
-public class MessageService(IMapper mapper, IMessageRepository repository)
+public class MessageService(IMapper mapper, 
+    IMessageRepository repository,
+    IUserRepository userRepository)
     : IMessageService
 {
     public async Task<MessageViewModel> AddAsync(MessageViewModel model)
@@ -24,17 +26,23 @@ public class MessageService(IMapper mapper, IMessageRepository repository)
 
     public IEnumerable<MessageViewModel> GetAll()
     {
-        return repository.GetAll().Select(mapper.Map<MessageViewModel>);
+        return repository
+            .GetAll()
+            .Select(SetUsers)
+            .Select(mapper.Map<MessageViewModel>);
     }
 
     public IEnumerable<MessageViewModel> GetByAnnouncementId(int id)
     {
-        return repository.GetByAnnouncementIdAsync(id).Select(mapper.Map<MessageViewModel>);
+        return repository
+            .GetByAnnouncementId(id)
+            .Select(SetUsers)
+            .Select(mapper.Map<MessageViewModel>);
     }
 
     public MessageViewModel GetById(int id)
     {
-        return mapper.Map<MessageViewModel>(repository.GetByID(id));
+        return mapper.Map<MessageViewModel>(SetUsers(repository.GetByID(id)));
     }
 
     public async Task UpdateAsync(MessageViewModel model)
@@ -44,5 +52,12 @@ public class MessageService(IMapper mapper, IMessageRepository repository)
 
         repository.Update(updatedEntity);
         await repository.SaveChangesAsync();
+    }
+
+    private Message SetUsers(Message message)
+    {
+        message.Sender = userRepository.GetByID(message.SenderId);
+        message.Reciever = userRepository.GetByID(message.ReceiverId);
+        return message;
     }
 }

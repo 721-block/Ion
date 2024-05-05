@@ -4,5 +4,5 @@ namespace Ion.Application.IRepositories;
 
 public interface IMessageRepository : IBaseRepository<Message>
 {
-    IEnumerable<Message> GetByAnnouncementIdAsync(int id);
+    IEnumerable<Message> GetByAnnouncementId(int id);
 }

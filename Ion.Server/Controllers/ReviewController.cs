@@ -23,7 +23,7 @@ public class ReviewController(IReviewService reviewService, IMapper mapper) : Co
     [HttpGet(Name = nameof(GetAllReviews))]
     public ActionResult<IEnumerable<ReviewToGet>> GetAllReviews()
     {
-        var reviewViewModels = reviewService.GetAll();
+        var reviewViewModels = reviewService.GetAll().Select(mapper.Map<ReviewToGet>);
         return Ok(reviewViewModels);
     }
 

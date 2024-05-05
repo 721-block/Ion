@@ -9,7 +9,7 @@ public class BookingRepository : BaseRepository<Booking>, IBookingRepository
     {
         set = context.Bookings;
     }
-
+    
     public IEnumerable<Booking> GetByAnnouncementId(int id)
     {
         return set.Where(b => b.AnnouncementId == id);
