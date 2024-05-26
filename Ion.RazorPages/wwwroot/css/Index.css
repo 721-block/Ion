@@ -1,0 +1,75 @@
+html, body {
+    width: 100%;
+}
+
+body > * {
+    width: 1620px;
+    margin: auto;
+}
+
+header {
+    margin-top: 0;
+}
+
+.logo-link {
+    color: orange;
+    font-size: 20pt;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+}
+
+.search-car {
+    margin-top: 60px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.search-form {
+    width: 580px;
+}
+
+.filters-box {
+    width: 850px;
+}
+
+.filters-buttons {
+    display: flex;
+    justify-content: center;
+}
+
+form .filters-form {
+    display: flex;
+}
+
+.filters > div {
+    width: 225px;
+}
+
+.filters {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.cars-list {
+    margin-top: 130px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.car-card {
+    width: 450px;
+    margin-right: 135px;
+}
+
+.car-card:nth-child(3) {
+    margin-right: 0;
+}
+
+.map {
+    margin-top: 100px;
+}

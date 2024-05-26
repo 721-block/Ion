@@ -1,0 +1,71 @@
+html, body {
+    width: 100%;
+}
+
+body > * {
+    width: 1620px;
+    margin: auto;
+}
+
+header {
+    margin-top: 0;
+}
+
+.logo-link {
+    color: orange;
+    font-size: 20pt;
+}
+
+.user-info {
+    margin-top: 100px;
+    display: flex;
+    justify-content: center;
+}
+
+.user-info img {
+    margin-right: 300px;
+}
+
+.user-creds {
+    width: 500px;
+}
+
+.user-reviews {
+    margin-top: 80px;
+    text-align: center;
+}
+
+.orders-history {
+    margin-top: 80px;
+    text-align: center;
+}
+
+.reviews-list {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.review {
+    width: 430px;
+    margin-right: 95px;
+}
+
+.review:nth-child(3) {
+    margin-right: 0;
+}
+
+.cars-list {
+    margin-top: 130px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+.car-card {
+    width: 450px;
+    margin-right: 135px;
+}
+
+.car-card:nth-child(3) {
+    margin-right: 0;
+}

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="../css/Index.css">
+</head>
+
+<body>
+    <header>
+        <div class="header">
+            <a href="#" class="logo-link">
+                <p class="logo">ION</p>
+            </a>
+            <a href="#" class="profile-link"><img src="../static/UserLogo.png" alt="Фото профиля" width="50px"></a>
+        </div>
+    </header>
+    <div class="search-car">
+        <div class="search-form">
+            <form class="search-form">
+                <div class="address-form">
+                    <label for="address">Адрес </label></br>
+                    <select name="address-menu" class="address-list">
+                        <option selected disabled></option>
+                        <option value="">Екатеринбург</option>
+                    </select>
+                </div>
+                <div class="date-form">
+                    <label for="date">С какой даты</label></br>
+                    <input type="date" value="2017-06-01" name="date" class="date-start" required />
+                    <input type="time" value="13:30" name="time" class="time-start" required />
+                </div>
+                <div class="form-example">
+                    <label for="email">По какую дату</label></br>
+                    <input type="date" value="2017-06-01" name="date" class="date-start" required />
+                    <input type="time" value="13:30" name="time" class="time-start" required />
+                </div>
+                <div class="form-example">
+                    <input type="submit" value="Поиск автомобилей" />
+                </div>
+            </form>
+        </div>
+        <div class="filters-box">
+            <div class="filters-buttons">
+                <form class="filters-form">
+                    <div class="filters-buttons">
+                        <button type="">
+                            <img src="../static/Filters.jpg" alt="Фильтры">
+                            <P>Фильтры</P>
+                        </button>
+                        <button type="submit">Применить</button>
+                        <button type="reset">Сбросить фильтры</button>
+                    </div>
+                    <div class="filters">
+                        <div class="car-body-filter">
+                            <img src="../static/CarType.png" alt="Тип кузова" height="100">
+                            <p>Тип кузова</p>
+                            <select class="body-type">
+                                <option selected disabled></option>
+                                <option value="">Седан</option>
+                            </select>
+                        </div>
+                        <div class="car-passengers-filter">
+                            <img src="../static/Passenger.png" alt="Число пассажиров" height="100">
+                            <p>Число пассажиров</p>
+                            <input type="number" value="5">
+                        </div>
+                        <div class="car-transmission-filter">
+                            <img src="../static/Transmission.png" alt="Тип КПП" height="100">
+                            <p>Тип КПП</p>
+                            <select class="body-type">
+                                <option selected disabled></option>
+                                <option value="">Механическая</option>
+                            </select>
+                        </div>
+                        <div class="car-mark-filter">
+                            <img src="../static/CarMark.png" alt="Марка авто" height="100">
+                            <p>Марка авто</p>
+                            <select class="mark-type">
+                                <option selected disabled></option>
+                                <option value="">Lada</option>
+                            </select>
+                        </div>
+                        <div class="price-filter">
+                            <img src="../static/Money.png" alt="Цена" height="100">
+                            <p>Цена</p>
+                            <input type="number" value="5000">
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div class="map">
+        <img src="../static/Map-example.png" alt="Карта автомобилей" width="1620">
+    </div>
+    <div class="cars-list">
+        <div class="car-card">
+            <img src="../static/Car.png" width="450px">
+            <div class="car-info">
+                <p class="mark">Марка машины</p>
+                <div class="rating">
+                    <p class="score">X,X</p>
+                    <p class="reviews-count">xxx оценок</p>
+                </div>
+                <p class="price">xxx р/день</p>
+            </div>
+        </div>
+        <div class="car-card">
+            <img src="../static/Car.png" width="450px">
+            <div class="car-info">
+                <p class="mark">Марка машины</p>
+                <div class="rating">
+                    <p class="score">X,X</p>
+                    <p class="reviews-count">xxx оценок</p>
+                </div>
+                <p class="price">xxx р/день</p>
+            </div>
+        </div>
+        <div class="car-card">
+            <img src="../static/Car.png" width="450px">
+            <div class="car-info">
+                <p class="mark">Марка машины</p>
+                <div class="rating">
+                    <p class="score">X,X</p>
+                    <p class="reviews-count">xxx оценок</p>
+                </div>
+                <p class="price">xxx р/день</p>
+            </div>
+        </div>
+        <div class="car-card">
+            <img src="../static/Car.png" width="450px">
+            <div class="car-info">
+                <p class="mark">Марка машины</p>
+                <div class="rating">
+                    <p class="score">X,X</p>
+                    <p class="reviews-count">xxx оценок</p>
+                </div>
+                <p class="price">xxx р/день</p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
