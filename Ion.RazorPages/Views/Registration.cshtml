@@ -23,10 +23,11 @@
     <img src="#">
     <form>
         <p>Регистрация</p>
-        <input type="text" value="Логин">
-        <input type="email" value="Email">
-        <input type="text" value="Пароль">
-        <input type="text" value="Повторите пароль">
+        <input type="text" value="Имя" asp-for="UserToPost.FirstName">
+        <input type="text" value="Фамилия" asp-for="UserToPost.LastName">
+        <input type="email" value="Email" asp-for="UserToPost.Email">
+        <input type="text" value="Пароль" asp-for="UserToPost.Password">
+        <input type="text" value="Повторите пароль" asp-for="RepeatedPassword">
         <div>
             <input type="radio" class="user-choice-1" name="user-type" value="Арендатор" />
             <label htmlfor="user-choice-1">Арендатор</label>

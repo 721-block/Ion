@@ -10,6 +10,8 @@
 
 <head>
     <link rel="stylesheet" href="css/Login.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
 </head>
 
 <body>
@@ -23,8 +25,8 @@
     <img src="#">
     <form>
         <p>Авторизация</p>
-        <input type="text" value="Логин/email">
-        <input type="text" value="Пароль">
+        <input type="email" value="Email" asp-for="UserToPost.Email">
+        <input type="text" value="Пароль" asp-for="UserToPost.Password">
         <input type="submit" value="Продолжить">
     </form>
 </div>

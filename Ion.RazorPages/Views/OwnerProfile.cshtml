@@ -1,4 +1,4 @@
-@page
+@page "{id:int}"
 @model Ion.RazorPages.wwwroot.RazorPages.OwnerProfile
 
 @{
@@ -19,76 +19,51 @@
         </a>
     </header>
     <div class="user-info">
-        <img src="static/UserLogo.png" height="75px">
+        <img src="@Model.User.PathToPhoto" height="75px">
         <div class="user-creds">
-            <p>Иванов Иван Иванович</p>
-            <p>8-800-535-35-35</p>
+            <p>@Model.User.FirstName @Model.User.LastName</p>
+            <p>@Model.User.PhoneNumber</p>
             <div class="rating">
-                <p class="score">X,X</p>
-                <p class="reviews-count">xxx оценок</p>
+                <p class="score">@Model.UserRating</p>
+                <p class="reviews-count">@Model.UserReviews.Count</p>
             </div>
         </div>
     </div>
-    <div class="orders-history">
-        <p>Поданные объявления</p>
-        <div>
-            <p>26 Мая 2024</p>
-            <div class="cars-list">
-                <div class="car-card">
-                    <img src="static/Car.png">
-                    <div class="car-info">
-                        <p class="mark">Марка машины</p>
-                        <div class="rating">
-                            <p class="score">X,X</p>
-                            <p class="reviews-count">xxx оценок</p>
-                        </div>
-                        <p class="price">xxx р/день</p>
+<div class="orders-history">
+    <p>Поданные объявления</p>
+    <div class="cars-list">
+        @foreach (var announcement in Model.UserAnnouncements)
+        {
+            <div class="car-card">
+                <img src="@Directory.GetFiles(announcement.PathToImages)[0]">
+                <div class="car-info">
+                    <p class="mark">@announcement.CarName</p>
+                    <div class="rating">
+                        <p class="score">@Model.GetAnnouncementRating(announcement)</p>
+                        <p class="reviews-count">@Model.GetReviewsCount(announcement))</p>
                     </div>
-                </div>
-                <div class="car-card">
-                    <img src="static/Car.png">
-                    <div class="car-info">
-                        <p class="mark">Марка машины</p>
-                        <div class="rating">
-                            <p class="score">X,X</p>
-                            <p class="reviews-count">xxx оценок</p>
-                        </div>
-                        <p class="price">xxx р/день</p>
-                    </div>
+                    <p class="price">@announcement.PricePerUnit р/день</p>
                 </div>
             </div>
-        </div>
+        }
     </div>
-    <div class="user-reviews">
-        <p>Отзывы</p>
-        <div class="reviews-list">
+</div>
+
+<div class="user-reviews">
+    <p>Отзывы</p>
+    <div class="reviews-list">
+        @foreach (var review in Model.UserReviews)
+        {
             <div class="review">
                 <div class="review-box">
                     <p>Отзыв</p>
                 </div>
                 <div class="reviewer">
-                    <img src="static/UserLogo.png" height="25px">
-                    <p>Иван Иванов</p>
+                    <img src=@review.PathToPhoto height="25px">
+                    <p>@review.UserFirstName @review.UserLastName</p>
                 </div>
             </div>
-            <div class="review">
-                <div class="review-box">
-                    <p>Отзыв</p>
-                </div>
-                <div class="reviewer">
-                    <img src="static/UserLogo.png" height="25px">
-                    <p>Иван Иванов</p>
-                </div>
-            </div>
-            <div class="review">
-                <div class="review-box">
-                    <p>Отзыв</p>
-                </div>
-                <div class="reviewer">
-                    <img src="static/UserLogo.png" height="25px">
-                    <p>Иван Иванов</p>
-                </div>
-            </div>
-        </div>
+        }
     </div>
+</div>
 </body>

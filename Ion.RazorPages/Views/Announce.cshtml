@@ -1,10 +1,7 @@
-@page
+@page "{id:int}"
 @model Ion.RazorPages.Views.Announce
 @{
     Layout = null;
-}
-@{
-    Model.AnnouncementId = (int)HttpContext.Request.RouteValues["id"];
 }
 
 @{
@@ -34,6 +31,16 @@
         <div class="rating">
             <p class="score">@score</p>
             <p class="reviews-count">@Model.Reviews.Count</p>
+        </div>
+    </div>
+    <div class="car-specs">
+        <div class="car-feature">
+            <p>Коробка передач</p>
+            <p>@Model.Annoncement.CarBodyType.ToString()</p>
+        </div>
+        <div class="car-price">
+            <p>Цена аренды</p>
+            <p>@Model.Annoncement.PricePerUnit р/день</p>
         </div>
     </div>
 </div>
