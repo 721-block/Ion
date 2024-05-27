@@ -42,30 +42,50 @@ header {
 
 .reviews-list {
     display: flex;
+    justify-content: space-evenly;
     flex-wrap: wrap;
 }
 
 .review {
     width: 430px;
-    margin-right: 95px;
-}
-
-.review:nth-child(3n) {
-    margin-right: 0;
 }
 
 .cars-list {
-    margin-top: 130px;
+    margin-top: 30px;
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     flex-wrap: wrap;
 }
 
 .car-card {
+    margin-top: 100px;
     width: 450px;
-    margin-right: 135px;
+    border-radius: 20px;
+    background-color: #B1B3C2;
 }
 
-.car-card:nth-child(3n) {
-    margin-right: 0;
+.car-card img {
+    border-radius: 10px;
+}
+
+.car-info {
+    margin: auto;
+    width: 350px;
+}
+
+.mark, .rating {
+    text-align: center;
+}
+
+.rating {
+    display: flex;
+    justify-content: space-around;
+}
+
+.price {
+    text-align: right;
+}
+
+.map {
+    margin-top: 100px;
 }

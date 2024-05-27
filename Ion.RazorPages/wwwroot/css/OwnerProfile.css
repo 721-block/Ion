@@ -42,30 +42,21 @@ header {
 
 .reviews-list {
     display: flex;
+    justify-content: space-evenly;
     flex-wrap: wrap;
 }
 
 .review {
     width: 430px;
-    margin-right: 95px;
-}
-
-.review:nth-child(3n) {
-    margin-right: 0;
 }
 
 .cars-list {
     margin-top: 130px;
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
     flex-wrap: wrap;
 }
 
 .car-card {
     width: 450px;
-    margin-right: 135px;
-}
-
-.car-card:nth-child(3n) {
-    margin-right: 0;
 }
