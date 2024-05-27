@@ -1,8 +1,9 @@
-html, body {
+html,
+body {
     width: 100%;
 }
 
-body > * {
+body>* {
     width: 1620px;
     margin: auto;
 }
@@ -35,7 +36,7 @@ header {
 }
 
 .search-form form {
-    width:auto;
+    width: auto;
     margin-left: 70px;
 }
 
@@ -93,7 +94,7 @@ form .filters-form {
     display: flex;
 }
 
-.filters > div {
+.filters>div {
     margin-top: 40px;
     font-size: 24px;
     text-align: center;
@@ -106,7 +107,7 @@ form .filters-form {
     width: 100px;
 }
 
-.car-filter > * {
+.car-filter>* {
     margin: 0;
 }
 
@@ -149,7 +150,8 @@ form .filters-form {
     width: 350px;
 }
 
-.mark, .rating {
+.mark,
+.rating {
     text-align: center;
 }
 

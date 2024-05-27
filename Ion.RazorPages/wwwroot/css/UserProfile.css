@@ -1,8 +1,9 @@
-html, body {
+html,
+body {
     width: 100%;
 }
 
-body > * {
+body>* {
     width: 1620px;
     margin: auto;
 }
@@ -73,7 +74,8 @@ header {
     width: 350px;
 }
 
-.mark, .rating {
+.mark,
+.rating {
     text-align: center;
 }
 
