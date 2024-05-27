@@ -1,0 +1,40 @@
+@page
+@model Ion.RazorPages.wwwroot.RazorPages.Registration
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="../css/Registration.css">
+</head>
+
+<body>
+<header>
+    <a href="#" class="logo-link">
+        <p>ION</p>
+    </a>
+    <a href="#" class="login-link">Вход</a>
+</header>
+<div class="registration-form">
+    <img src="#">
+    <form>
+        <p>Регистрация</p>
+        <input type="text" value="Логин">
+        <input type="email" value="Email">
+        <input type="text" value="Пароль">
+        <input type="text" value="Повторите пароль">
+        <div>
+            <input type="radio" class="user-choice-1" name="user-type" value="Арендатор" />
+            <label htmlfor="user-choice-1">Арендатор</label>
+          
+            <input type="radio" class="user-choice-2" name="user-type" value="Собственник" />
+            <label htmlfor="user-choice-2">Собственник</label>
+        </div>
+        <input type="submit" value="Продолжить">
+    </form>
+</div>
+</body>
