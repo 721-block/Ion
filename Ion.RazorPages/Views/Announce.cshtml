@@ -1,8 +1,14 @@
 @page
-@model Ion.RazorPages.wwwroot.RazorPages.Announce
-
+@model Ion.RazorPages.Views.Announce
 @{
     Layout = null;
+}
+@{
+    Model.AnnouncementId = (int)HttpContext.Request.RouteValues["id"];
+}
+
+@{
+    var score = Model.Reviews.Average(r => r.Rating);     
 }
 
 <!DOCTYPE html>
@@ -23,50 +29,35 @@
 <div class="car-info">
     <img src="static/UserLogo.png" height="150px">
     <div class="car-creds">
-        <p>Иванов Иван Иванович</p>
-        <p>8-800-535-35-35</p>
+        <p>@Model.Author.FirstName @Model.Author.LastName</p>
+        <p>@Model.Author.PhoneNumber</p>
         <div class="rating">
-            <p class="score">X,X</p>
-            <p class="reviews-count">xxx оценок</p>
+            <p class="score">@score</p>
+            <p class="reviews-count">@Model.Reviews.Count</p>
         </div>
     </div>
 </div>
 <div class="user-reviews">
     <p>Отзывы</p>
     <div class="reviews-list">
+    @foreach (var review in Model.Reviews)
+    {
         <div class="review">
             <div class="review-box">
-                <p>Отзыв</p>
+                <p>@review.Content</p>
             </div>
             <div class="reviewer">
-                <img src="static/UserLogo.png" height="25px">
-                <p>Иван Иванов</p>
+                <img src=@review.PathToPhoto height="25px">
+                <p>@review.UserFirstName @review.UserLastName</p>
             </div>
         </div>
-        <div class="review">
-            <div class="review-box">
-                <p>Отзыв</p>
-            </div>
-            <div class="reviewer">
-                <img src="static/UserLogo.png" height="25px">
-                <p>Иван Иванов</p>
-            </div>
-        </div>
-        <div class="review">
-            <div class="review-box">
-                <p>Отзыв</p>
-            </div>
-            <div class="reviewer">
-                <img src="static/UserLogo.png" height="25px">
-                <p>Иван Иванов</p>
-            </div>
-        </div>
+    }
     </div>
 </div>
 <div class="car-photos">
-    <img src="static/Car.png">
-    <img src="static/Car.png">
-    <img src="static/Car.png">
-    <img src="static/Car.png">
+    @foreach (var path in Directory.GetFiles(Model.Annoncement.PathToImages))
+    {
+        <img src=@path>
+    }
 </div>
 </body>

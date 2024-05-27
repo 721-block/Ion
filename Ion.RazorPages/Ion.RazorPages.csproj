@@ -6,4 +6,8 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <ProjectReference Include="..\Ion.Server\Ion.Server.csproj" />
+  </ItemGroup>
+
 </Project>

@@ -12,6 +12,7 @@ public class User : BaseEntity
     public string PhoneNumber { get; set; }
     public int? LicenseId { get; set; }
     public License License { get; set; }
+    public string PathToPhoto { get; set; }
     public virtual ICollection<Booking> UserBookings { get; set; }
     public virtual ICollection<Message> SendedMessages { get; set; }
     public virtual ICollection<Message> RecievedMessages { get; set; }

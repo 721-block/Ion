@@ -33,13 +33,13 @@
                 </div>
                 <div class="date-form">
                     <br/><label for="date">С какой даты</label>
-                    <input type="date" value="2017-06-01" name="date" class="date-start" required />
-                    <input type="time" value="13:30" name="time" class="time-start" required />
+                    <input type="date" value="@DateTime.Now" name="date" class="date-start" required />
+                    <input type="time" value="@DateTime.Now" name="time" class="time-start" required />
                 </div>
                 <div class="email-form">
                     <br/><label for="email">По какую дату</label>
-                    <input type="date" value="2017-06-01" name="date" class="date-start" required />
-                    <input type="time" value="13:30" name="time" class="time-start" required />
+                    <input type="date" value="@DateTime.Now" name="date" class="date-start" required />
+                    <input type="time" value="@DateTime.Now" name="time" class="time-start" required />
                 </div>
                 <div class="submit-search">
                     <input type="submit" value="Поиск автомобилей" />
@@ -99,55 +99,24 @@
             </div>
         </div>
     </div>
-    <div class="map">
-        <img src="static/Map-example.png" alt="Карта автомобилей" width="1620">
-    </div>
+<div class="map">
+    <img src="static/Map-example.png" alt="Карта автомобилей" width="1620">
+</div>
     <div class="cars-list">
-        <div class="car-card">
-            <img src="static/Car.png" width="450px">
-            <div class="car-info">
-                <p class="mark">Марка машины</p>
-                <div class="rating">
-                    <p class="score">X,X</p>
-                    <p class="reviews-count">xxx оценок</p>
+        @foreach (var announcement in Model.Annoncements)
+        {
+            <div class="car-card">
+                <img src=@Directory.GetFiles(announcement.PathToImages)[0] width="450px">
+                <div class="car-info">
+                    <p class="mark">@announcement.CarName</p>
+                    <div class="rating">
+                        <p class="score">@Model.GetAnnouncementRating(announcement)</p>
+                        <p class="reviews-count">@Model.GetReviewsCount(announcement)</p>
+                    </div>
+                    <p class="price">@announcement.PricePerUnit р/день</p>
                 </div>
-                <p class="price">xxx р/день</p>
             </div>
-        </div>
-        <div class="car-card">
-            <img src="static/Car.png" width="450px">
-            <div class="car-info">
-                <p class="mark">Марка машины</p>
-                <div class="rating">
-                    <p class="score">X,X</p>
-                    <p class="reviews-count">xxx оценок</p>
-                </div>
-                <p class="price">xxx р/день</p>
-            </div>
-        </div>
-        <div class="car-card">
-            <img src="static/Car.png" width="450px">
-            <div class="car-info">
-                <p class="mark">Марка машины</p>
-                <div class="rating">
-                    <p class="score">X,X</p>
-                    <p class="reviews-count">xxx оценок</p>
-                </div>
-                <p class="price">xxx р/день</p>
-            </div>
-        </div>
-        <div class="car-card">
-            <img src="static/Car.png" width="450px">
-            <div class="car-info">
-                <p class="mark">Марка машины</p>
-                <div class="rating">
-                    <p class="score">X,X</p>
-                    <p class="reviews-count">xxx оценок</p>
-                </div>
-                <p class="price">xxx р/день</p>
-            </div>
-        </div>
+        }
     </div>
 </body>
-
 </html>
