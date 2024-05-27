@@ -29,10 +29,45 @@ header {
 
 .search-form {
     width: 580px;
+    font-size: 24px;
+    background-color: #B1B3C2;
+}
+
+.search-form form {
+    width:auto;
+    margin-left: 70px;
+}
+
+.search-form input {
+    height: 29px;
+    margin-top: 16px;
+}
+
+.search-form div {
+    margin-top: 35px;
+}
+
+.search-form .address-form {
+    margin-top: 50px;
+}
+
+.submit-search input {
+    background-color: #FCD57E;
+    color: white;
+    border-radius: 10%;
 }
 
 .filters-box {
     width: 850px;
+}
+
+.filters-logo {
+    width: 269px;
+    margin-right: 43px;
+    background-color: #B1B3C2;
+    display: flex;
+    justify-content: space-around;
+    font-size: 26px;
 }
 
 .filters-buttons {
@@ -40,13 +75,57 @@ header {
     justify-content: center;
 }
 
+.filters-buttons button {
+    width: 269px;
+    font-size: 26px;
+    background-color: #B1B3C2;
+}
+
+.filters-buttons button:nth-of-type(1) {
+    width: 225px;
+    margin-right: 43px;
+    background-color: #FCD57E;
+    color: white;
+}
+
 form .filters-form {
     display: flex;
 }
 
 .filters > div {
+    margin-top: 40px;
+    font-size: 24px;
+    text-align: center;
     width: 225px;
+    background-color: #B1B3C2;
+    margin-right: 87px;
 }
+
+.filters > div:nth-child(3) {
+    margin-right: 0;
+}
+
+.filters > div:nth-child(5) {
+    margin-right: 0;
+}
+
+.filters input {
+    width: 100px;
+}
+
+.car-filter > * {
+    margin: 0;
+}
+
+.car-filter img {
+    margin-top: 20px;
+}
+
+.car-filter select {
+    margin-top: 5px;
+    margin-bottom: 15px;
+}
+
 
 .filters {
     display: flex;
@@ -66,7 +145,7 @@ form .filters-form {
     margin-right: 135px;
 }
 
-.car-card:nth-child(3) {
+.car-card:nth-child(3n) {
     margin-right: 0;
 }
 

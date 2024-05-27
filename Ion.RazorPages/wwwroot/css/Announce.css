@@ -45,7 +45,7 @@ header {
     margin-right: 95px;
 }
 
-.review:nth-child(3) {
+.review:nth-child(3n) {
     margin-right: 0;
 }
 
