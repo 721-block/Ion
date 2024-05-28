@@ -15,11 +15,7 @@ if (!app.Environment.IsDevelopment())
 
 app.UseHttpsRedirection();
 
-app.UseStaticFiles(new StaticFileOptions()
-{
-    FileProvider = new PhysicalFileProvider(Path.Combine(builder.Environment.ContentRootPath, "images")),
-    RequestPath = new PathString("/images")
-});
+app.UseStaticFiles();
 
 app.UseRouting();
 app.UseAuthorization();

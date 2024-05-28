@@ -7,8 +7,8 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Content Include="images\defaultCarImages\Car.png" />
-    <Content Include="images\defaultCarImages\CarMarkWhite.png" />
+    <None Include="wwwroot\static\images\defaultCarImages\Car.png" />
+    <None Include="wwwroot\static\images\defaultCarImages\CarMarkWhite.png" />
   </ItemGroup>
 
   <ItemGroup>
