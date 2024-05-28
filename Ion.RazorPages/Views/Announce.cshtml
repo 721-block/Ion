@@ -63,7 +63,7 @@
 <div class="car-photos">
     @foreach (var path in Directory.GetFiles(Model.Annoncement.PathToImages))
     {
-        <img src="@path">   
+        <img src=@path[path.IndexOf("/images/")..]>   
     }
 </div>
 </body>

@@ -7,11 +7,6 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Include="wwwroot\static\images\defaultCarImages\Car.png" />
-    <None Include="wwwroot\static\images\defaultCarImages\CarMarkWhite.png" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Ion.Server\Ion.Server.csproj" />
   </ItemGroup>
 

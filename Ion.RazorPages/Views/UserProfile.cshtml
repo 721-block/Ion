@@ -34,7 +34,8 @@
                 {
                     <a asp-controller="AnnouncementMVC" asp-action="Details" asp-route-id=@order.AnnouncementId>
                     <div class="car-card">
-                        <img src=@Directory.GetFiles(order.PathToImages)[0]>
+                        @{ var p = Directory.GetFiles(order.PathToImages)[0];}
+                        <img src=@p[p.IndexOf("/images/")..] width="450px">
                         <div class="car-info">
                             <p class="mark">@order.CarName</p>
                             <div class="rating">
