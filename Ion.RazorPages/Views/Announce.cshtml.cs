@@ -8,11 +8,7 @@ namespace Ion.RazorPages.Views;
 
 public class Announce : PageModel
 {
-    public UserToGet Author { get; set; }
-    public List<ReviewToGet> Reviews { get; set; }
-    [BindProperty(SupportsGet = true)]
-    public int AnnouncementId { get; set; }
-    public AnnouncementToGet Annoncement { get; set; }
+
     
     public void OnGet()
     {

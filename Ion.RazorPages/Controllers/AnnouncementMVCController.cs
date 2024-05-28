@@ -1,21 +1,28 @@
-﻿using Ion.RazorPages.Models;
+﻿using Ion.Application.IServices;
+using Ion.Domain.Entities;
+using Ion.RazorPages.Models;
 using Ion.Server.Controllers;
 using Ion.Server.RequestEntities.Announcement;
+using Ion.Server.RequestEntities.Review;
+using Ion.Server.RequestEntities.User;
+using MapsterMapper;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Ion.RazorPages.Controllers
 {
-    public class AnnouncementMVCController(AnnouncementController controller) : Controller
+    public class AnnouncementMVCController(
+        AnnouncementController announcementController, 
+        IUserService userService,
+        IReviewService reviewService,
+        IMapper mapper) : Controller
     {
-        private AnnouncementController controller = controller;
-
         [HttpGet]
         public IActionResult Index()
         {
             var result = new IndexModel();
-            var announcements = ((IEnumerable<AnnouncementToGet>)((ObjectResult)controller.GetAllAnnouncements().Result).Value).ToList();
+            var announcements = ((IEnumerable<AnnouncementToGet>)((ObjectResult)announcementController.GetAllAnnouncements().Result).Value).ToList();
 
             result.Announcements = announcements;
             result.Marks = announcements.Select(x => x.CarName).Distinct();
@@ -26,26 +33,33 @@ namespace Ion.RazorPages.Controllers
         [HttpGet]
         public IActionResult Details([FromRoute]int id)
         {
-            var actionResult = (ObjectResult)controller.GetAnnouncementById(id).Result;
-            var resultType = actionResult.GetType();
+            var result = new AnnounceModel();
+
+            var announcementResult = (ObjectResult)announcementController.GetAnnouncementById(id).Result;
+            var resultType = announcementResult.GetType();
 
             if (resultType == typeof(NotFoundResult))
-                return actionResult;
+                return announcementResult;
 
-            return View(actionResult.Value);
+            var announcement = (AnnouncementToGet)announcementResult.Value;
+            result.Reviews = reviewService.GetByAnnouncementId(id).Select(mapper.Map<ReviewToGet>);
+            result.Annoncement = announcement;
+            result.Author = mapper.Map<UserToGet>(userService.GetById(announcement.Id));
+
+            return View(result);
         }
 
         [HttpGet]
         public IActionResult AuthorAnnouncements([FromRoute]int authorId)
         {
-            var actionResult = controller.GetAnnouncementsByAuthorId(authorId);
+            var actionResult = announcementController.GetAnnouncementsByAuthorId(authorId);
             return View(actionResult.Value);
         }
 
         [HttpPost]
         public async Task<IActionResult> Create([FromForm]AnnouncementToPost announcement)
         {
-            var actionResult = await controller.CreateAnnouncement(announcement);
+            var actionResult = await announcementController.CreateAnnouncement(announcement);
             var actionType = actionResult.GetType();
 
             if (actionType == typeof(NotFoundResult) || actionType == typeof(UnprocessableEntity))
@@ -57,7 +71,7 @@ namespace Ion.RazorPages.Controllers
         [HttpPost]
         public async Task<IActionResult> Update([FromRoute]int id, [FromForm] AnnouncementToPatch announcementToPatch)
         {
-            var actionResult = await controller.UpdateAnnouncement(id, announcementToPatch);
+            var actionResult = await announcementController.UpdateAnnouncement(id, announcementToPatch);
 
             return View();
         }
@@ -66,7 +80,7 @@ namespace Ion.RazorPages.Controllers
         [HttpPost]
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
-            await controller.DeleteAnnouncement(id);
+            await announcementController.DeleteAnnouncement(id);
             return View();
         }
     }
