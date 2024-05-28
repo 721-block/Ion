@@ -1,7 +1,7 @@
 @using System.ComponentModel.DataAnnotations
 @using System.Reflection
 @using Ion.Domain.Enums
-@model IEnumerable<Ion.Server.RequestEntities.Announcement.AnnouncementToGet>
+@model IndexModel
 
 @{
     Layout = null;
@@ -114,7 +114,7 @@
     <img src="static/Map-example.png" alt="Карта автомобилей" width="1620">
 </div>
     <div class="cars-list">
-        @foreach (var announcement in Model)
+        @foreach (var announcement in Model.Announcements)
         {
             <div class="car-card">
                 <a asp-controller="AnnouncementMVC" asp-action="Details" asp-route-id=@announcement.Id>
