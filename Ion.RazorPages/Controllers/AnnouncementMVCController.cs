@@ -1,5 +1,6 @@
 ﻿using Ion.Application.IServices;
 using Ion.Domain.Entities;
+using Ion.RazorPages.Extensions;
 using Ion.RazorPages.Models;
 using Ion.Server.Controllers;
 using Ion.Server.RequestEntities.Announcement;
@@ -26,6 +27,7 @@ namespace Ion.RazorPages.Controllers
 
             result.Announcements = announcements;
             result.Marks = announcements.Select(x => x.CarName).Distinct();
+            this.AddUserDataInViewBag();
 
             return View("../Index", result);
         }
@@ -46,7 +48,7 @@ namespace Ion.RazorPages.Controllers
             result.Annoncement = announcement;
             result.Author = mapper.Map<UserToGet>(userService.GetById(announcement.Id));
 
-            return View(result);
+            return View("../Announce",result);
         }
 
         [HttpGet]
