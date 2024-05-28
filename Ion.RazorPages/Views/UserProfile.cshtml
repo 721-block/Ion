@@ -14,7 +14,7 @@
 <body>
     <header>
         <div class="header">
-            <a href="#" class="logo-link">
+            <a class="logo-link" asp-controller="AnnouncementMVC" asp-action="Index">
                 <p>ION</p>
             </a>
         </div>
@@ -32,6 +32,7 @@
             <div class="cars-list">
                 @foreach (var order in Model.TripRecords)
                 {
+                    <a asp-controller="AnnouncementMVC" asp-action="Details" asp-route-id=@order.AnnouncementId>
                     <div class="car-card">
                         <img src=@Directory.GetFiles(order.PathToImages)[0]>
                         <div class="car-info">
@@ -43,6 +44,7 @@
                             <p class="price">@order.PricePerUnit р/день</p>
                         </div>
                     </div>
+                    </a>
                 }
             </div>
         </div>

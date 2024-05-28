@@ -34,15 +34,17 @@
         @foreach (var announcement in Model.UserAnnouncements)
         {
             <div class="car-card">
+                <a asp-controller="AnnouncementMVC" asp-action="Details" asp-route-id=@announcement.Id>
                 <img src="@Directory.GetFiles(announcement.PathToImages)[0]">
-                <div class="car-info">
-                    <p class="mark">@announcement.CarName</p>
-                    <div class="rating">
-                        <p class="score">@Model.GetAnnouncementRating(announcement)</p>
-                        <p class="reviews-count">@Model.GetReviewsCount(announcement))</p>
+                    <div class="car-info">
+                        <p class="mark">@announcement.CarName</p>
+                        <div class="rating">
+                            <p class="score">@Model.GetAnnouncementRating(announcement)</p>
+                            <p class="reviews-count">@Model.GetReviewsCount(announcement))</p>
+                        </div>
+                        <p class="price">@announcement.PricePerUnit р/день</p>
                     </div>
-                    <p class="price">@announcement.PricePerUnit р/день</p>
-                </div>
+                </a>
             </div>
         }
     </div>
@@ -58,7 +60,7 @@
                     <p>Отзыв</p>
                 </div>
                 <div class="reviewer">
-                    <a href="#">
+                    <a asp-controller="UserMVC" asp-action="Details" asp-route-id=@review.UserId>
                         <img src=@review.PathToPhoto height="25px">
                         <p>@review.UserFirstName @review.UserLastName</p>
                     </a>

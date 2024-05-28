@@ -117,7 +117,7 @@
         @foreach (var announcement in Model)
         {
             <div class="car-card">
-                <a href="#">
+                <a asp-controller="AnnouncementMVC" asp-action="Details" asp-route-id=@announcement.Id>
                     <img src=@Directory.GetFiles(announcement.PathToImages)[0] width="450px">
                     <div class="car-info">
                         <p class="mark">@announcement.CarName</p>
