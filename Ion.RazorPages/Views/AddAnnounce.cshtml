@@ -1,3 +1,4 @@
+@using Ion.Domain.Enums
 @model Ion.Server.RequestEntities.Announcement.AnnouncementToPost
 
 @{
@@ -29,7 +30,10 @@
                 <p>Тип кузова</p>
                 <select class="body-type">
                     <option selected disabled></option>
-                    <option value="">Седан</option>
+                    @foreach (var el in Enum.GetValues(typeof(BodyType)))
+                    {
+                        <option value="">@el</option>
+                    }
                 </select>
             </div>
             <div class="car-feature">
@@ -37,16 +41,16 @@
                 <p>Тип КПП</p>
                 <select class="body-type">
                     <option selected disabled></option>
-                    <option value="">Механическая</option>
+                    @foreach (var el in Enum.GetValues(typeof(GearboxType)))
+                    {
+                        <option value="">@el</option>
+                    }
                 </select>
             </div>
             <div class="car-feature">
                 <img src="/static/CarMarkWhite.png" alt="Марка авто" width="161" height="100">
                 <p>Марка авто</p>
-                <select class="mark-type">
-                    <option selected disabled></option>
-                    <option value="">Lada</option>
-                </select>
+                <input type="text" value="Марка автомобиля"/>
             </div>
             <div class="car-feature">
                 <img src="/static/MoneyWhite.png" alt="Цена" width="107" height="100">
