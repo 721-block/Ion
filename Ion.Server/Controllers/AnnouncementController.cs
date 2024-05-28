@@ -21,9 +21,9 @@ public class AnnouncementController(IAnnouncementService announcementService, IM
     }
     
     [HttpGet(Name = nameof(GetAllAnnouncements))]
-    public ActionResult<List<AnnouncementToGet>> GetAllAnnouncements()
+    public ActionResult<IEnumerable<AnnouncementToGet>> GetAllAnnouncements()
     {
-        var announcements = announcementService.GetAll().Select(mapper.Map<AnnouncementToGet>).ToList();
+        var announcements = announcementService.GetAll().Select(mapper.Map<AnnouncementToGet>);
         return Ok(announcements);
     }
     
