@@ -1,8 +1,7 @@
-var builder = WebApplication.CreateBuilder(args);
+using Ion.RazorPages;
 
-// Add services to the container.
-builder.Services.AddControllersWithViews();
-builder.Services.AddRazorPages();
+var builder = DiContainerBuilder.BuildContainer(args);
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.
@@ -22,6 +21,6 @@ app.UseAuthorization();
 app.MapRazorPages();
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=AnnouncementMVC}/{action=Index}/{id?}");
 
 app.Run();

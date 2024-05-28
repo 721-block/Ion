@@ -21,9 +21,9 @@ public class AnnouncementController(IAnnouncementService announcementService, IM
     }
     
     [HttpGet(Name = nameof(GetAllAnnouncements))]
-    public ActionResult<IEnumerable<AnnouncementToGet>> GetAllAnnouncements()
+    public ActionResult<List<AnnouncementToGet>> GetAllAnnouncements()
     {
-        var announcements = announcementService.GetAll();
+        var announcements = announcementService.GetAll().Select(mapper.Map<AnnouncementToGet>).ToList();
         return Ok(announcements);
     }
     
@@ -31,7 +31,7 @@ public class AnnouncementController(IAnnouncementService announcementService, IM
     public ActionResult<IEnumerable<AnnouncementToGet>> GetAnnouncementsByAuthorId(int authorId)
     {
         var announcements = announcementService.GetByAuthorId(authorId);
-        var result = announcements.Select(mapper.Map<AnnouncementToGet>).ToList();
+        var result = announcements.Select(mapper.Map<AnnouncementToGet>);
         return Ok(result);
     }
 

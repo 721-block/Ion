@@ -10,7 +10,8 @@ public class AnnouncementService(
     IMapper mapper,
     IAnnouncementRepository repository,
     IUserRepository userRepository,
-    ICarRepository carRepository) : IAnnouncementService
+    ICarRepository carRepository,
+    IReviewsRepository reviewsRepository) : IAnnouncementService
 {
     public async Task<AnnouncementViewModel> AddAsync(AnnouncementViewModel model)
     {
@@ -27,7 +28,7 @@ public class AnnouncementService(
 
     public IEnumerable<AnnouncementViewModel> GetAll()
     {
-        return repository.GetAll().Select(SetUserAndCar).Select(mapper.Map<AnnouncementViewModel>);
+        return repository.GetAll().Select(SetUserAndCar).Select(mapper.Map<AnnouncementViewModel>).Select(SetRating);
     }
 
     public IEnumerable<AnnouncementViewModel> GetByAuthorId(int id)
@@ -42,6 +43,7 @@ public class AnnouncementService(
         var entity = repository.GetByID(id);
         entity = SetUserAndCar(entity);
         var viewModel = mapper.Map<AnnouncementViewModel>(entity);
+        SetRating(viewModel);
         return viewModel;
     }
 
@@ -56,8 +58,26 @@ public class AnnouncementService(
 
     private Announcement SetUserAndCar(Announcement announcement)
     {
-        announcement.Author = userRepository.GetByID(announcement.Id);
+        announcement.Author = userRepository.GetByID(announcement.AuthorId);
         announcement.Car = carRepository.GetByID(announcement.CarId);
+        return announcement;
+    }
+
+    private AnnouncementViewModel SetRating(AnnouncementViewModel announcement)
+    {
+        var count = 0;
+        var sum = 0f;
+        var reviews = reviewsRepository.GetByAnnouncementId(announcement.Id);
+
+        foreach (var review in reviews)
+        {
+            count++;
+            sum += review.Rating;
+        }
+
+        announcement.ReviewsCount = count;
+        announcement.Rating = count == 0 ? 0 : (float)Math.Round(sum / count, 1);
+
         return announcement;
     }
 }

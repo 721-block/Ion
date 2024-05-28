@@ -13,18 +13,18 @@ namespace Ion.RazorPages.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            var result = controller.GetAllAnnouncements().Value;
-            return View(result);
+            var result = ((ObjectResult)controller.GetAllAnnouncements().Result).Value;
+            return View("../Index", result);
         }
 
         [HttpGet]
         public IActionResult Details([FromRoute]int id)
         {
-            var actionResult = controller.GetAnnouncementById(id);
-            var resultType = actionResult.Result.GetType();
+            var actionResult = (ObjectResult)controller.GetAnnouncementById(id).Result;
+            var resultType = actionResult.GetType();
 
             if (resultType == typeof(NotFoundResult))
-                return actionResult.Result;
+                return actionResult;
 
             return View(actionResult.Value);
         }

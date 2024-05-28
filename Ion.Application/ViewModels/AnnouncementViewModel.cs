@@ -16,4 +16,6 @@ public class AnnouncementViewModel : BaseViewModel
     public Day? AvailableDays { get; set; }
     public bool? IsActive { get; set; }
     public string? PathToImages { get; set; }
+    public float? Rating { get; set; }
+    public int? ReviewsCount { get; set; }
 }

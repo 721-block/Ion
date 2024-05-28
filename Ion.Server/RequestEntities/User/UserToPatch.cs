@@ -10,4 +10,5 @@ public class UserToPatch
     public string? Password { get; set; }
     public string? PhoneNumber { get; set; }
     public LicenseToPatch? License { get; set; }
+    public string? PathToPhoto { get; set; }
 }
