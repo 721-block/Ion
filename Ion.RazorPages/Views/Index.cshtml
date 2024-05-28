@@ -67,7 +67,7 @@
                                 <option selected disabled></option>
                                 @foreach (var el in Enum.GetValues(typeof(BodyType)))
                                 {
-                                    <option value="">@el.GetType().GetMember(el.ToString()!).First()?.GetCustomAttribute<DisplayAttribute>()?.Name</option>
+                                    <option value="">@(el.GetType().GetMember(el.ToString()!).First()?.GetCustomAttribute<DisplayAttribute>()?.Name)</option>
                                 }
                             </select>
                         </div>
@@ -83,7 +83,7 @@
                                 <option selected disabled></option>
                                 @foreach (var el in Enum.GetValues(typeof(GearboxType)))
                                 {
-                                    <option value="">@el.GetType().GetMember(el.ToString()!).First()?.GetCustomAttribute<DisplayAttribute>()?.Name</option>
+                                    <option value="">@(el.GetType().GetMember(el.ToString()!).First()?.GetCustomAttribute<DisplayAttribute>()?.Name)</option>
                                 }
                             </select>
                         </div>

@@ -1,10 +1,6 @@
-@model Ion.RazorPages.Views.Announce
+@model AnnounceModel
 @{
     Layout = null;
-}
-
-@{
-    var score = Model.Reviews.Average(r => r.Rating);     
 }
 
 <!DOCTYPE html>
@@ -28,8 +24,8 @@
         <p>@Model.Author.FirstName @Model.Author.LastName</p>
         <p>@Model.Author.PhoneNumber</p>
         <div class="rating">
-            <p class="score">@score</p>
-            <p class="reviews-count">@Model.Reviews.Count</p>
+            <p class="score">@Model.Annoncement.Rating</p>
+            <p class="reviews-count">@Model.Annoncement.ReviewsCount</p>
         </div>
     </div>
     <div class="car-specs">
