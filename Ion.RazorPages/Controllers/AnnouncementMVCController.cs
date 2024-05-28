@@ -1,4 +1,5 @@
-﻿using Ion.Server.Controllers;
+﻿using Ion.RazorPages.Models;
+using Ion.Server.Controllers;
 using Ion.Server.RequestEntities.Announcement;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
@@ -13,7 +14,12 @@ namespace Ion.RazorPages.Controllers
         [HttpGet]
         public IActionResult Index()
         {
-            var result = ((ObjectResult)controller.GetAllAnnouncements().Result).Value;
+            var result = new IndexModel();
+            var announcements = ((IEnumerable<AnnouncementToGet>)((ObjectResult)controller.GetAllAnnouncements().Result).Value).ToList();
+
+            result.Announcements = announcements;
+            result.Marks = announcements.Select(x => x.CarName).Distinct();
+
             return View("../Index", result);
         }
 
