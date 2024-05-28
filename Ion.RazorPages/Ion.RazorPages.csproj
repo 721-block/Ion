@@ -7,6 +7,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Content Include="images\defaultCarImages\Car.png" />
+    <Content Include="images\defaultCarImages\CarMarkWhite.png" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Ion.Server\Ion.Server.csproj" />
   </ItemGroup>
 

@@ -19,8 +19,8 @@
     </div>
 </header>
 <div class="car-info">
-    <a asp-controller="UserMVC" asp-action="Details" asp-route-id=@user.Id>
-        <img src=@user.PathToPhoto height="150px">
+    <a asp-controller="UserMVC" asp-action="Details" asp-route-id=@ViewBag.Id>
+        <img src=@ViewBag.PathToPhoto height="150px">
     </a>
     <div class="car-creds">
         <p>@Model.Author.FirstName @Model.Author.LastName</p>
@@ -63,7 +63,7 @@
 <div class="car-photos">
     @foreach (var path in Directory.GetFiles(Model.Annoncement.PathToImages))
     {
-        <img src=@path>
+        <img src="@path">   
     }
 </div>
 </body>
