@@ -20,10 +20,12 @@
 <body>
     <header>
         <div class="header">
-            <a href="#" class="logo-link">
+            <a asp-controller="AnnouncementMVC" asp-action="Index" class="logo-link">
                 <p>ION</p>
             </a>
-            <img src="/static/UserLogo.png" height="150px">
+            <a asp-controller="UserMVC" asp-action="Details" asp-route-id=@user.Id>
+                <img src=@user.PathToPhoto height="150px">
+            </a>
         </div>
     </header>
     <div class="car-info">
