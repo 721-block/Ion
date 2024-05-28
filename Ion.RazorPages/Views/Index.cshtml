@@ -1,3 +1,5 @@
+@using System.ComponentModel.DataAnnotations
+@using System.Reflection
 @using Ion.Domain.Enums
 @model IEnumerable<Ion.Server.RequestEntities.Announcement.AnnouncementToGet>
 
@@ -65,7 +67,7 @@
                                 <option selected disabled></option>
                                 @foreach (var el in Enum.GetValues(typeof(BodyType)))
                                 {
-                                    <option value="">@el</option>
+                                    <option value="">@el.GetType().GetMember(el.ToString()!).First()?.GetCustomAttribute<DisplayAttribute>()?.Name</option>
                                 }
                             </select>
                         </div>
@@ -81,7 +83,7 @@
                                 <option selected disabled></option>
                                 @foreach (var el in Enum.GetValues(typeof(GearboxType)))
                                 {
-                                    <option value="">@el</option>
+                                    <option value="">@el.GetType().GetMember(el.ToString()!).First()?.GetCustomAttribute<DisplayAttribute>()?.Name</option>
                                 }
                             </select>
                         </div>
@@ -115,16 +117,18 @@
         @foreach (var announcement in Model)
         {
             <div class="car-card">
-                <img src=@Directory.GetFiles(announcement.PathToImages)[0] width="450px">
-                <div class="car-info">
-                    <p class="mark">@announcement.CarName</p>
-                    <div class="rating">
-                        <p class="score">@announcement.Rating</p>
-                        <p class="reviews-count">@announcement.ReviewsCount</p>
+                <a href="#">
+                    <img src=@Directory.GetFiles(announcement.PathToImages)[0] width="450px">
+                    <div class="car-info">
+                        <p class="mark">@announcement.CarName</p>
+                        <div class="rating">
+                            <p class="score">@announcement.Rating</p>
+                            <p class="reviews-count">@announcement.ReviewsCount</p>
+                        </div>
+                        <p class="price">@announcement.PricePerUnit р/день</p>
                     </div>
-                    <p class="price">@announcement.PricePerUnit р/день</p>
+                </a>
                 </div>
-            </div>
         }
     </div>
 </body>

@@ -1,4 +1,7 @@
+@using System.ComponentModel.DataAnnotations
+@using System.Reflection
 @using Ion.Domain.Enums
+@using Microsoft.AspNetCore.Mvc.TagHelpers
 @model Ion.Server.RequestEntities.Announcement.AnnouncementToPost
 
 @{
@@ -32,7 +35,7 @@
                     <option selected disabled></option>
                     @foreach (var el in Enum.GetValues(typeof(BodyType)))
                     {
-                        <option value="">@el</option>
+                        <option value="">@el.GetType().GetMember(el.ToString()!).First()?.GetCustomAttribute<DisplayAttribute>()?.Name</option>
                     }
                 </select>
             </div>
@@ -43,7 +46,7 @@
                     <option selected disabled></option>
                     @foreach (var el in Enum.GetValues(typeof(GearboxType)))
                     {
-                        <option value="">@el</option>
+                        <option value="">@el.GetType().GetMember(el.ToString()!).First()?.GetCustomAttribute<DisplayAttribute>()?.Name</option>
                     }
                 </select>
             </div>
