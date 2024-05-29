@@ -14,5 +14,5 @@ public class AnnouncementToPost
     public int CarId { get; set; }
     public Day? AvailableDays { get; set; }
     public bool? IsActive { get; set; } = true;
-    public List<IFormFile> Files { get; set; } = [];
+    public IEnumerable<IFormFile> Files { get; set; }
 }

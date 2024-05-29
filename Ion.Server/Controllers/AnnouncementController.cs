@@ -8,7 +8,7 @@ namespace Ion.Server.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class AnnouncementController(IAnnouncementService announcementService, IMapper mapper) : Controller
+public class AnnouncementController(IAnnouncementService announcementService, IUserImageService imageService, IMapper mapper) : Controller
 {
     [HttpGet("{announcementId:int}", Name = nameof(GetAnnouncementById))]
     public ActionResult<AnnouncementToGet> GetAnnouncementById(int announcementId)
@@ -42,7 +42,9 @@ public class AnnouncementController(IAnnouncementService announcementService, IM
             return BadRequest("Announcement is empty");
         if (!ModelState.IsValid)
             return UnprocessableEntity();
+        var imagePath = imageService.UploadImages(announcementToPost.Files, announcementToPost.AuthorId, announcementToPost.CarId);
         var announcementViewModel = mapper.Map<AnnouncementViewModel>(announcementToPost);
+        announcementViewModel.PathToImages = imagePath;
         var createdAnnouncement = await announcementService.AddAsync(announcementViewModel);
         return CreatedAtRoute(nameof(GetAnnouncementById), new {announcementId = createdAnnouncement.Id}, createdAnnouncement.Id);
     }
