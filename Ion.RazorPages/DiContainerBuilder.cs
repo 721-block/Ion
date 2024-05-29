@@ -24,7 +24,7 @@ namespace Ion.RazorPages
             builder.Services.AddServices();
             builder.Services.AddApiControllers();
 
-            builder.Services.AddControllersWithViews();
+            builder.Services.AddControllersWithViews(options => options.SuppressImplicitRequiredAttributeForNonNullableReferenceTypes = true);
             builder.Services.AddRazorPages();
             builder.Services.AddEndpointsApiExplorer();
 

@@ -1,4 +1,5 @@
-﻿using Ion.Server.Controllers;
+﻿using Ion.RazorPages.Extensions;
+using Ion.Server.Controllers;
 using Ion.Server.RequestEntities.Announcement;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;

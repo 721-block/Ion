@@ -9,4 +9,6 @@ public class TripRecordToGet
     public int PricePerUnit { get; set; }
     public int AnnouncementId { get; set; }
     public string PathToImages { get; set; }
+    public float Rating { get; set; }
+    public int ReviewsCount { get; set; }
 }

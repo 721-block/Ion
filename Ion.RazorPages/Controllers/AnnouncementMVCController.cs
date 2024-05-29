@@ -1,4 +1,5 @@
 ﻿using Ion.Application.IServices;
+using Ion.Application.ViewModels;
 using Ion.Domain.Entities;
 using Ion.RazorPages.Extensions;
 using Ion.RazorPages.Models;
@@ -17,6 +18,7 @@ namespace Ion.RazorPages.Controllers
         AnnouncementController announcementController, 
         IUserService userService,
         IReviewService reviewService,
+        ICarService carService,
         IMapper mapper) : Controller
     {
         [HttpGet]
@@ -58,10 +60,20 @@ namespace Ion.RazorPages.Controllers
             return View(actionResult.Value);
         }
 
-        [HttpPost]
-        public async Task<IActionResult> Create([FromForm]AnnouncementToPost announcement)
+        [HttpGet]
+        public IActionResult Create()
         {
-            var actionResult = await announcementController.CreateAnnouncement(announcement);
+            this.AddUserDataInViewBag();
+            return View("../AddAnnounce");
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> Create([FromForm]AddAnnounceModel announce)
+        {
+            var addedCar = await carService.AddAsync(mapper.Map<CarViewModel>(announce.Car));
+            var announcement = announce.Announcement;
+            announcement.CarId = addedCar.Id;
+            var actionResult = await announcementController.CreateAnnouncement(announce.Announcement);
             var actionType = actionResult.GetType();
 
             if (actionType == typeof(NotFoundResult) || actionType == typeof(UnprocessableEntity))

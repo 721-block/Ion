@@ -1,12 +1,17 @@
-﻿using Ion.Server.Controllers;
+﻿using Ion.Application.IServices;
+using Ion.RazorPages.Extensions;
+using Ion.RazorPages.Models;
+using Ion.Server.Controllers;
 using Ion.Server.RequestEntities.Announcement;
+using Ion.Server.RequestEntities.TripRecord;
 using Ion.Server.RequestEntities.User;
+using MapsterMapper;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
 namespace Ion.RazorPages.Controllers
 {
-    public class UserMVCController(UserController controller) : Controller
+    public class UserMVCController(UserController controller, ITripRecordService tripRecordService, IMapper mapper) : Controller
     {
         private UserController controller = controller;
 
@@ -20,13 +25,17 @@ namespace Ion.RazorPages.Controllers
         [HttpGet]
         public IActionResult Details([FromRoute] int id)
         {
-            var actionResult = controller.GetUserById(id);
-            var resultType = actionResult.Result.GetType();
+            this.AddUserDataInViewBag();
+            var actionResult = (ObjectResult)controller.GetUserById(id).Result;
+            var resultType = actionResult.GetType();
 
             if (resultType == typeof(NotFoundResult))
-                return actionResult.Result;
+                return actionResult;
+            var result = new UserModel();
+            result.UserToGet = (UserToGet)actionResult.Value;
+            result.TripRecords = tripRecordService.GetByUserId(id).Select(mapper.Map<TripRecordToGet>);
 
-            return View(actionResult.Value);
+            return View("../UserProfile", result);
         }
 
         [HttpPost]

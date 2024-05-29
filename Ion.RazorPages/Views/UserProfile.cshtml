@@ -1,4 +1,4 @@
-@model Ion.RazorPages.wwwroot.RazorPages.UserProfile
+@model UserModel
 
 @{
     Layout = null;
@@ -39,8 +39,8 @@
                         <div class="car-info">
                             <p class="mark">@order.CarName</p>
                             <div class="rating">
-                                <p class="score">@Model.GetAnnouncementRating(order.AnnouncementId)</p>
-                                <p class="reviews-count">@Model.GetReviewsCount(order.AnnouncementId)</p>
+                                <p class="score">@order.Rating</p>
+                                <p class="reviews-count">@order.ReviewsCount</p>
                             </div>
                             <p class="price">@order.PricePerUnit р/день</p>
                         </div>
