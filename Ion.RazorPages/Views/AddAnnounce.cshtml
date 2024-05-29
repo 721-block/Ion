@@ -2,8 +2,8 @@
 @using System.Reflection
 @using Ion.Domain.Enums
 @using Microsoft.AspNetCore.Mvc.TagHelpers
-@addTagHelper *, Microsoft.AspNetCore.Mvc.TagHelpers
-@model AddAnnounceModel
+@model Ion.Server.RequestEntities.Announcement.AnnouncementToPost
+
 @{
     Layout = null;
 }
@@ -29,52 +29,48 @@
         </div>
     </header>
     <div class="car-info">
-        <form class="add-announce-form" method="post" asp-action="Create">
+        <form class="add-announce-form">
             <div class="car-feature">
                 <img src="/static/CarBodyTypeWhite.png" alt="Тип кузова" width="161" height="100">
                 <p>Тип кузова</p>
-                <select class="body-type" asp-for="Car.BodyType">
+                <select class="body-type">
                     <option selected disabled></option>
                     @foreach (var el in Enum.GetValues(typeof(BodyType)))
                     {
-                        <option value="@el">@(el.GetType().GetMember(el.ToString()!).First()?.GetCustomAttribute<DisplayAttribute>()?.Name)</option>
+                        <option value="">@(el.GetType().GetMember(el.ToString()!).First()?.GetCustomAttribute<DisplayAttribute>()?.Name)</option>
                     }
                 </select>
             </div>
             <div class="car-feature">
                 <img src="/static/TransmissionWhite.png" alt="Тип КПП" width="99" height="100">
                 <p>Тип КПП</p>
-                <select class="gearbox-type" asp-for="Car.GearboxType">
+                <select class="body-type">
                     <option selected disabled></option>
                     @foreach (var el in Enum.GetValues(typeof(GearboxType)))
                     {
-                        <option value="@el">@(el.GetType().GetMember(el.ToString()!).First()?.GetCustomAttribute<DisplayAttribute>()?.Name)</option>
+                        <option value="">@(el.GetType().GetMember(el.ToString()!).First()?.GetCustomAttribute<DisplayAttribute>()?.Name)</option>
                     }
                 </select>
             </div>
             <div class="car-feature">
                 <img src="/static/CarMarkWhite.png" alt="Марка авто" width="161" height="100">
                 <p>Марка авто</p>
-                <input type="text" asp-for="Car.Name" value="Марка автомобиля"/>
+                <input type="text" value="Марка автомобиля"/>
             </div>
             <div class="car-feature">
                 <img src="/static/MoneyWhite.png" alt="Цена" width="107" height="100">
                 <p>Цена</p>
-                <input type="number" asp-for="Announcement.PricePerUnit" value="5000">
+                <input type="number" value="5000">
             </div>
             <div class="announce-description">
-                <p><label for="car-description">Review of W3Schools:</label></p>
-                <textarea id="car-description" rows="4" cols="50" asp-for="Announcement.Description">
-                    Особенности вашего автомобиля и условий аренды
-                </textarea>
+                <textarea id="car-description" name="car-description" rows="4"
+                    cols="50">Особенности вашего автомобиля и условий аренды</textarea>
                 <br>
             </div>
             <div class="car-photos">
                 <label for="file">Прикрепите фотографии автомобиля</label>
-                <input type="file" id="file" name="file" multiple />
+                <input type="file" accept="image/*" id="file" name="file" multiple />
             </div>
-            <input hidden value="@ViewBag.Id" asp-for="Announcement.AuthorId"/>
-            <input hidden value="@ViewBag.Id" asp-for="Car.UserId" />
             <div class="submit-form">
                 <input type="submit" value="Подать объявление">
             </div>
