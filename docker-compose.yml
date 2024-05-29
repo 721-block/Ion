@@ -1,0 +1,19 @@
+﻿services:
+  ion.server:
+    build: Ion.RazorPages/
+    container_name: ion.app
+    ports:
+      - "5000:8080"
+        
+    depends_on: 
+      - sql
+    
+  sql:
+    image: "mcr.microsoft.com/mssql/server:2022-latest"
+    container_name: sql
+    ports:
+      - "1433:1433"
+    restart: always
+    environment:
+      ACCEPT_EULA: "Y"
+      SA_PASSWORD: A&VeryComplex123Password

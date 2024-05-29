@@ -1,0 +1,22 @@
+# This is a generated file. Not intended for manual editing.
+services:
+  ion.server:
+    build:
+      context: "D:\\Unik\\Проект\\Ion\\Ion.RazorPages"
+      dockerfile: "Dockerfile"
+      target: "base"
+    command: []
+    entrypoint:
+    - "dotnet"
+    - "/app/bin/Debug/net8.0/Ion.RazorPages.dll"
+    environment:
+      ASPNETCORE_ENVIRONMENT: "Development"
+      ASPNETCORE_STATICWEBASSETS: "/app/bin/Debug/net8.0/Ion.RazorPages.staticwebassets.runtime.CT.json"
+      DOTNET_USE_POLLING_FILE_WATCHER: "true"
+    image: "ion.razorpages:dev"
+    ports: []
+    volumes:
+    - "C:\\Users\\zubko\\.nuget\\packages:/home/app/.nuget/packages"
+    - "D:\\Unik\\Проект\\Ion\\Ion.RazorPages:/app:rw"
+    - "D:\\Unik\\Проект\\Ion:/src:rw"
+    working_dir: "/app"
