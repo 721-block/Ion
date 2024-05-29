@@ -1,6 +1,6 @@
 ﻿services:
   ion.server:
-    build: Ion.RazorPages/
+    build: .
     container_name: ion.app
     ports:
       - "5000:8080"

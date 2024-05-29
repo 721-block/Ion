@@ -11,7 +11,6 @@ COPY ["Ion.RazorPages/Ion.RazorPages.csproj", "Ion.RazorPages/"]
 COPY ["Ion.Server/Ion.Server.csproj", "Ion.Server/"]
 COPY ["Ion.Application/Ion.Application.csproj", "Ion.Application/"]
 COPY ["Ion.Domain/Ion.Domain.csproj", "Ion.Domain/"]
-COPY ["ion.client/ion.client.esproj", "ion.client/"]
 COPY ["Ion.Infrastructure/Ion.Infrastructure.csproj", "Ion.Infrastructure/"]
 RUN dotnet restore "Ion.RazorPages/Ion.RazorPages.csproj"
 COPY . .
