@@ -19,4 +19,16 @@ public static class ServicesExtension
         collection.AddScoped<IUserService, UserService>();
         collection.AddScoped<IUserImageService>(x => new UserImageService(userImagesPath));
     }
+
+    public static void AddServices(this IServiceCollection collection)
+    {
+        collection.AddSingleton<IHasher, SHA256Hasher>();
+        collection.AddScoped<IAnnouncementService, AnnouncementService>();
+        collection.AddScoped<IBookingService, BookingService>();
+        collection.AddScoped<ICarService, CarService>();
+        collection.AddScoped<IMessageService, MessageService>();
+        collection.AddScoped<IReviewService, ReviewService>();
+        collection.AddScoped<ITripRecordService, TripRecordService>();
+        collection.AddScoped<IUserService, UserService>();
+    }
 }

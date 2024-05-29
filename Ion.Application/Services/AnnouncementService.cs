@@ -15,6 +15,7 @@ public class AnnouncementService(
 {
     public async Task<AnnouncementViewModel> AddAsync(AnnouncementViewModel model)
     {
+
         var announcement = await repository.AddAsync(mapper.Map<Announcement>(model));
         await repository.SaveChangesAsync();
         return mapper.Map<AnnouncementViewModel>(announcement);

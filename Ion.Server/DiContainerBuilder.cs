@@ -18,14 +18,15 @@ public static class DiContainerBuilder
                 .UseSqlServer(connectionString);
         });
 
+        var workingDirectory = Environment.CurrentDirectory + "\\images";
+
         builder.Services.AddRepositories();
         builder.Services.RegisterMapster();
-        //builder.Services.AddServices(projectDirectory);
+        builder.Services.AddServices();
 
         builder.Services.AddControllers();
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
-
 
         return builder;
     }

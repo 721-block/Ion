@@ -4,5 +4,5 @@ namespace Ion.Application.IServices;
 
 public interface IUserImageService
 {
-    public string UploadImages(IEnumerable<IFormFile> images, string userName, string carName);
+    public string UploadImages(IEnumerable<IFormFile> images, int userId, int carId);
 }
