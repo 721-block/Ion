@@ -10,4 +10,6 @@ public interface IReviewService
     Task<ReviewViewModel> AddAsync(ReviewViewModel model);
     Task UpdateAsync(ReviewViewModel model);
     Task DeleteAsync(ReviewViewModel model);
+
+    IEnumerable<ReviewViewModel> GetByUserId(int id);
 }

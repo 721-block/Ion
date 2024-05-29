@@ -24,7 +24,7 @@
             <p>@Model.User.PhoneNumber</p>
             <div class="rating">
                 <p class="score">@Model.UserRating</p>
-                <p class="reviews-count">@Model.UserReviews.Count</p>
+                <p class="reviews-count">@Model.UserReviewsCount</p>
             </div>
         </div>
     </div>
@@ -54,7 +54,7 @@
 <div class="user-reviews">
     <p>Отзывы</p>
     <div class="reviews-list">
-        @foreach (var review in Model.UserReviews)
+        @foreach (var review in Model.Reviews)
         {
             <div class="review">
                 <div class="review-box">

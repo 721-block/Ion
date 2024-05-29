@@ -1,8 +1,10 @@
 ﻿using Ion.Application.IServices;
+using Ion.Application.Services;
 using Ion.RazorPages.Extensions;
 using Ion.RazorPages.Models;
 using Ion.Server.Controllers;
 using Ion.Server.RequestEntities.Announcement;
+using Ion.Server.RequestEntities.Review;
 using Ion.Server.RequestEntities.TripRecord;
 using Ion.Server.RequestEntities.User;
 using MapsterMapper;
@@ -11,7 +13,12 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace Ion.RazorPages.Controllers
 {
-    public class UserMVCController(UserController controller, ITripRecordService tripRecordService, IMapper mapper) : Controller
+    public class UserMVCController(
+        UserController controller, 
+        ITripRecordService tripRecordService, 
+        IAnnouncementService announcementService, 
+        IReviewService reviewService, 
+        IMapper mapper) : Controller
     {
         private UserController controller = controller;
 
@@ -38,6 +45,7 @@ namespace Ion.RazorPages.Controllers
             return View("../UserProfile", result);
         }
 
+        [HttpGet]
         public IActionResult OwnerProfile([FromRoute] int id)
         {
             this.AddUserDataInViewBag();
@@ -46,9 +54,22 @@ namespace Ion.RazorPages.Controllers
 
             if (resultType == typeof(NotFoundResult))
                 return actionResult;
-            var result = new UserModel();
-            result.UserToGet = (UserToGet)actionResult.Value;
-            result.TripRecords = tripRecordService.GetByUserId(id).Select(mapper.Map<TripRecordToGet>);
+            var result = new OwnerProfileModel();
+            result.User = (UserToGet)actionResult.Value;
+            result.UserAnnouncements = announcementService.GetByAuthorId(id).Select(mapper.Map<AnnouncementToGet>);
+            result.Reviews = reviewService.GetByUserId(id).Select(mapper.Map<ReviewToGet>);
+
+            var count = 0;
+            var sum = 0f;
+
+            foreach (var announcement in result.UserAnnouncements)
+            {
+                count += 1;
+                sum += announcement.Rating;
+            }
+
+            result.UserReviewsCount = count;
+            result.UserRating = count != 0 ? (float)Math.Round(sum / count, 1) : 0;
 
             return View("../OwnerProfile", result);
         }

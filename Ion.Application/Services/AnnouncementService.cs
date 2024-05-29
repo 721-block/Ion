@@ -36,7 +36,7 @@ public class AnnouncementService(
     {
         var announcements = repository.GetByAuthorId(id);
         announcements = announcements.Select(SetUserAndCar);
-        return announcements.Select(mapper.Map<AnnouncementViewModel>);
+        return announcements.Select(mapper.Map<AnnouncementViewModel>).Select(SetRating);
     }
 
     public AnnouncementViewModel GetById(int id)
