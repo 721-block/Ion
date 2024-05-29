@@ -10,6 +10,11 @@ public class UserImageService : IUserImageService
     public string UploadImages(IEnumerable<IFormFile> images, string userName, string carName)
     {
         var pathToDirectory = Path.Combine(ImagesPath, userName, carName);
+        if (!Directory.Exists(pathToDirectory))
+        {
+            Directory.CreateDirectory(pathToDirectory);
+        }
+        
         var fileIndex = 0;
         foreach (var file in images)
         {
