@@ -47,15 +47,9 @@ namespace Ion.RazorPages.Controllers
             result.Reviews = reviewService.GetByAnnouncementId(id).Select(mapper.Map<ReviewToGet>);
             result.Annoncement = announcement;
             result.Author = mapper.Map<UserToGet>(userService.GetById(announcement.AuthorId));
+            this.AddUserDataInViewBag();
 
             return View("../Announce",result);
-        }
-
-        [HttpGet]
-        public IActionResult AuthorAnnouncements([FromRoute]int authorId)
-        {
-            var actionResult = announcementController.GetAnnouncementsByAuthorId(authorId);
-            return View(actionResult.Value);
         }
 
         [HttpGet]
@@ -68,7 +62,14 @@ namespace Ion.RazorPages.Controllers
         [HttpGet]
         public IActionResult Search([FromForm]IndexModel model)
         {
-            
+            var result = new IndexModel();
+            var actionResult = (ObjectResult)announcementController.SearchAnnouncement(model.Parameters).Result;
+            result.Marks = model.Marks;
+            result.Parameters = model.Parameters;
+            result.Announcements = (IEnumerable<AnnouncementToGet>)actionResult.Value;
+
+            this.AddUserDataInViewBag();
+            return View("../Index", result);
         }
 
         [HttpPost]
