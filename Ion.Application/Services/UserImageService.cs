@@ -5,11 +5,16 @@ namespace Ion.Application.Services;
 
 public class UserImageService : IUserImageService
 {
-    public string ImagesPath { get; set; }
+    private string imagesPath { get; set; }
     
+    public UserImageService(string imagesPath)
+    {
+        this.imagesPath = imagesPath;
+    }
+
     public string UploadImages(IEnumerable<IFormFile> images, string userName, string carName)
     {
-        var pathToDirectory = Path.Combine(ImagesPath, userName, carName);
+        var pathToDirectory = Path.Combine(imagesPath, userName, carName);
         var fileIndex = 0;
         foreach (var file in images)
         {

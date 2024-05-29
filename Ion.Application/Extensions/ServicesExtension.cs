@@ -7,7 +7,7 @@ namespace Ion.Application.Extensions;
 
 public static class ServicesExtension
 {
-    public static void AddServices(this IServiceCollection collection)
+    public static void AddServices(this IServiceCollection collection, string userImagesPath)
     {
         collection.AddSingleton<IHasher, SHA256Hasher>();
         collection.AddScoped<IAnnouncementService, AnnouncementService>();
@@ -17,5 +17,6 @@ public static class ServicesExtension
         collection.AddScoped<IReviewService, ReviewService>();
         collection.AddScoped<ITripRecordService, TripRecordService>();
         collection.AddScoped<IUserService, UserService>();
+        collection.AddScoped<IUserImageService>(x => new UserImageService(userImagesPath));
     }
 }
