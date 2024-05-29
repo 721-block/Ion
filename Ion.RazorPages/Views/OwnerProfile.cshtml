@@ -18,7 +18,7 @@
         </a>
     </header>
     <div class="user-info">
-        <img src="@Model.User.PathToPhoto" height="75px">
+        <img src="@Model.User.PathToPhoto" height="110px" width="110px">
         <div class="user-creds">
             <p>@Model.User.FirstName @Model.User.LastName</p>
             <p>@Model.User.PhoneNumber</p>
@@ -36,7 +36,7 @@
             <div class="car-card">
                 <a asp-controller="AnnouncementMVC" asp-action="Details" asp-route-id=@announcement.Id>
                     @{ var p = Directory.GetFiles(announcement.PathToImages)[0];}
-                    <img src=@p[p.IndexOf("/images/")..] width="450px">
+                    <img src=@p[p.IndexOf("/images/")..] width="450px" height="236px">
                     <div class="car-info">
                         <p class="mark">@announcement.CarName</p>
                         <div class="rating">
@@ -62,7 +62,7 @@
                 </div>
                 <div class="reviewer">
                     <a asp-controller="UserMVC" asp-action="Details" asp-route-id=@review.UserId>
-                        <img src=@review.PathToPhoto height="25px">
+                        <img src=@review.PathToPhoto height="65px" width="65px">
                         <p>@review.UserFirstName @review.UserLastName</p>
                     </a>
                 </div>

@@ -121,7 +121,7 @@
             <div class="car-card">
                 <a asp-controller="AnnouncementMVC" asp-action="Details" asp-route-id=@announcement.Id>
                     @{ var p = Directory.GetFiles(announcement.PathToImages)[0];}
-                    <img src=@p[p.IndexOf("/images/")..] width="450px">
+                    <img src=@p[p.IndexOf("/images/")..] width="450px" height="236px">
                     <div class="car-info">
                         <p class="mark">@announcement.CarName</p>
                         <div class="rating">

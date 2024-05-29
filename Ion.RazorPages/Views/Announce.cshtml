@@ -33,6 +33,10 @@
     <div class="car-specs">
         <div class="car-feature">
             <p>Коробка передач</p>
+            <p>@Model.Annoncement.CarGearboxType.ToString()</p>
+        </div>
+        <div class="car-feature">
+            <p>Тип кузова</p>
             <p>@Model.Annoncement.CarBodyType.ToString()</p>
         </div>
         <div class="car-price">
@@ -52,7 +56,7 @@
             </div>
             <div class="reviewer">
                 <a asp-controller="UserMVC" asp-action="Details" asp-route-id=@review.UserId>
-                    <img src=@review.PathToPhoto height="25px">
+                    <img src=@review.PathToPhoto height="65px" width="65px">
                     <p>@review.UserFirstName @review.UserLastName</p>
                 </a>
             </div>
@@ -63,7 +67,7 @@
 <div class="car-photos">
     @foreach (var path in Directory.GetFiles(Model.Annoncement.PathToImages))
     {
-        <img src=@path[path.IndexOf("/images/")..]>   
+        <img src=@path[path.IndexOf("/images/")..] width="450px" height="236px">   
     }
 </div>
 </body>
