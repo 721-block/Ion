@@ -46,7 +46,9 @@
                     <input type="time" value="@DateTime.Now" name="time" class="time-start" asp-for="Parameters.EndDate" required />
                 </div>
                 <div class="submit-search">
-                    <input type="submit" value="Поиск автомобилей" />
+                    <a asp-controller="AnnouncementMVC" asp-action="Search">
+                        <input type="submit" value="Поиск автомобилей"/>
+                    </a>
                 </div>
             </form>
         </div>
