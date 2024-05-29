@@ -1,6 +1,5 @@
 ﻿using Ion.Application.IServices;
 using Ion.Application.ViewModels;
-using Ion.Domain.Entities;
 using Ion.RazorPages.Extensions;
 using Ion.RazorPages.Models;
 using Ion.Server.Controllers;
@@ -8,7 +7,6 @@ using Ion.Server.RequestEntities.Announcement;
 using Ion.Server.RequestEntities.Review;
 using Ion.Server.RequestEntities.User;
 using MapsterMapper;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Http.HttpResults;
 using Microsoft.AspNetCore.Mvc;
 
@@ -65,6 +63,12 @@ namespace Ion.RazorPages.Controllers
         {
             this.AddUserDataInViewBag();
             return View("../AddAnnounce");
+        }
+
+        [HttpGet]
+        public IActionResult Search([FromForm]IndexModel model)
+        {
+            
         }
 
         [HttpPost]

@@ -37,13 +37,13 @@
                 </div>
                 <div class="date-form">
                     <br/><label for="date">С какой даты</label>
-                    <input type="date" value="@DateTime.Now" name="date" class="date-start" required />
-                    <input type="time" value="@DateTime.Now" name="time" class="time-start" required />
+                    <input type="date" value="@DateTime.Now" class="date-start" asp-for="Parameters.StartDate" required />
+                    <input type="time" value="@DateTime.Now" name="time" class="time-start" asp-for="Parameters.StartDate" required />
                 </div>
                 <div class="email-form">
                     <br/><label for="email">По какую дату</label>
-                    <input type="date" value="@DateTime.Now" name="date" class="date-start" required />
-                    <input type="time" value="@DateTime.Now" name="time" class="time-start" required />
+                    <input type="date" value="@DateTime.Now" name="date" class="date-start" asp-for="Parameters.EndDate" required />
+                    <input type="time" value="@DateTime.Now" name="time" class="time-start" asp-for="Parameters.EndDate" required />
                 </div>
                 <div class="submit-search">
                     <input type="submit" value="Поиск автомобилей" />
@@ -65,11 +65,11 @@
                         <div class="car-filter">
                             <img src="static/CarBodyTypeWhite.png" alt="Тип кузова" width="161" height="100">
                             <p>Тип кузова</p>
-                            <select class="body-type">
+                            <select class="body-type" asp-for="Parameters.BodyType">
                                 <option selected disabled></option>
                                 @foreach (var el in Enum.GetValues(typeof(BodyType)))
                                 {
-                                    <option value="">@(el.GetType().GetMember(el.ToString()!).First()?.GetCustomAttribute<DisplayAttribute>()?.Name)</option>
+                                    <option value=@el>@(el.GetType().GetMember(el.ToString()!).First()?.GetCustomAttribute<DisplayAttribute>()?.Name)</option>
                                 }
                             </select>
                         </div>
@@ -81,7 +81,7 @@
                         <div class="car-filter">
                             <img src="static/TransmissionWhite.png" alt="Тип КПП" width="99" height="100">
                             <p>Тип КПП</p>
-                            <select class="body-type">
+                            <select class="body-type" asp-for="Parameters.GearboxType">
                                 <option selected disabled></option>
                                 @foreach (var el in Enum.GetValues(typeof(GearboxType)))
                                 {
@@ -92,7 +92,7 @@
                         <div class="car-filter">
                             <img src="static/CarMarkWhite.png" alt="Марка авто" width="161" height="100">
                             <p>Марка авто</p>
-                            <select class="mark-type">
+                            <select class="mark-type" asp-for="Parameters.CarName">
                                 <option selected disabled></option>
                                 @foreach (var m in Model.Marks)
                                 {
@@ -104,7 +104,7 @@
                             <button>
                                 <img src="static/MoneyWhite.png" alt="Цена" width="107" height="100">
                                 <p>Цена</p>
-                                <input type="number" value="5000">
+                                <input type="number" value="5000" asp-for="Parameters.Price">
                             </button>
                         </div>
                     </div>

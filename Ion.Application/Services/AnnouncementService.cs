@@ -1,4 +1,5 @@
-﻿using Ion.Application.IRepositories;
+﻿using Ion.Application.Base;
+using Ion.Application.IRepositories;
 using Ion.Application.IServices;
 using Ion.Application.ViewModels;
 using Ion.Domain.Entities;
@@ -30,6 +31,17 @@ public class AnnouncementService(
     public IEnumerable<AnnouncementViewModel> GetAll()
     {
         return repository.GetAll().Select(SetUserAndCar).Select(mapper.Map<AnnouncementViewModel>).Select(SetRating);
+    }
+
+    public IEnumerable<AnnouncementViewModel> GetWithFilters(FilterParameters filterParameters)
+    {
+        var announcements = GetAll();
+        return announcements
+            .Where(a =>
+                (a.CarName == filterParameters.CarName || filterParameters.CarName is null)
+                && (filterParameters.Price >= a.PricePerUnit || filterParameters.Price is null)
+                && (filterParameters.BodyType == a.CarBodyType || filterParameters.BodyType is null)
+                && (filterParameters.GearboxType == a.CarGearboxType || filterParameters.GearboxType is null));
     }
 
     public IEnumerable<AnnouncementViewModel> GetByAuthorId(int id)

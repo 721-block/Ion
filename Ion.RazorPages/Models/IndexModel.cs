@@ -1,4 +1,5 @@
-﻿using Ion.Server.RequestEntities;
+﻿using Ion.Application.Base;
+using Ion.Server.RequestEntities;
 using Ion.Server.RequestEntities.Announcement;
 
 namespace Ion.RazorPages.Models

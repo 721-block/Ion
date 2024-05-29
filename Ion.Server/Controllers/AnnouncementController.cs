@@ -1,3 +1,4 @@
+using Ion.Application.Base;
 using Ion.Application.IServices;
 using Ion.Application.ViewModels;
 using Ion.Server.RequestEntities.Announcement;
@@ -31,6 +32,14 @@ public class AnnouncementController(IAnnouncementService announcementService, IU
     public ActionResult<IEnumerable<AnnouncementToGet>> GetAnnouncementsByAuthorId(int authorId)
     {
         var announcements = announcementService.GetByAuthorId(authorId);
+        var result = announcements.Select(mapper.Map<AnnouncementToGet>);
+        return Ok(result);
+    }
+
+    [HttpGet("Search", Name = nameof(SearchAnnouncement))]
+    public ActionResult<IEnumerable<AnnouncementToGet>> SearchAnnouncement([FromQuery] FilterParameters parameters)
+    {
+        var announcements = announcementService.GetWithFilters(parameters);
         var result = announcements.Select(mapper.Map<AnnouncementToGet>);
         return Ok(result);
     }
