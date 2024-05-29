@@ -14,4 +14,9 @@ public class ReviewRepository : BaseRepository<Review>, IReviewsRepository
     {
         return set.Where(r => r.AnnouncementId == id);
     }
+
+    public IEnumerable<Review> GetByUserId(int id)
+    {
+        return set.Where(r => r.UserId == id);
+    }
 }
