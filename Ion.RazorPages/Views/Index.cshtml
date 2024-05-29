@@ -54,13 +54,13 @@
         </div>
         <div class="filters-box">
             <div class="filters-buttons">
-                <form class="filters-form">
+                <form class="filters-form" method="post">
                     <div class="filters-buttons">
                         <div class="filters-logo">
                             <div><img src="static/Filters.jpg" alt="Фильтры"></div>
                             <P>Фильтры</P>
                         </div>
-                        <button type="submit">Применить</button>
+                        <button type="submit" asp-controller="AnnouncementMVC" asp-action="Index">Применить</button>
                         <button type="reset">Сбросить фильтры</button>
                     </div>
                     <div class="filters">

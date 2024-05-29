@@ -1,5 +1,6 @@
 ﻿using Ion.Application.IServices;
 using Ion.Application.ViewModels;
+using Ion.Domain.Entities;
 using Ion.RazorPages.Extensions;
 using Ion.RazorPages.Models;
 using Ion.Server.Controllers;
@@ -26,7 +27,7 @@ namespace Ion.RazorPages.Controllers
             var announcements = ((IEnumerable<AnnouncementToGet>)((ObjectResult)announcementController.GetAllAnnouncements().Result).Value).ToList();
 
             result.Announcements = announcements;
-            result.Marks = announcements.Select(x => x.CarName).Distinct();
+            result.Marks = GetUniqMarks(announcements);
             this.AddUserDataInViewBag();
 
             return View("../Index", result);
@@ -59,15 +60,15 @@ namespace Ion.RazorPages.Controllers
             return View("../AddAnnounce");
         }
 
-        [HttpGet]
-        public IActionResult Search([FromForm]IndexModel model)
+        [HttpPost]
+        public IActionResult Index([FromForm]IndexModel model)
         {
             var result = new IndexModel();
             var actionResult = (ObjectResult)announcementController.SearchAnnouncement(model.Parameters).Result;
-            result.Marks = model.Marks;
+            var announcements = (IEnumerable<AnnouncementToGet>)actionResult.Value;
             result.Parameters = model.Parameters;
-            result.Announcements = (IEnumerable<AnnouncementToGet>)actionResult.Value;
-
+            result.Announcements = announcements;
+            result.Marks = GetUniqMarks(announcements);
             this.AddUserDataInViewBag();
             return View("../Index", result);
         }
@@ -102,6 +103,11 @@ namespace Ion.RazorPages.Controllers
         {
             await announcementController.DeleteAnnouncement(id);
             return View();
+        }
+
+        private IEnumerable<string> GetUniqMarks(IEnumerable<AnnouncementToGet> announcements)
+        {
+            return announcements.Select(x => x.CarName).Distinct();
         }
     }
 }
