@@ -7,8 +7,10 @@ namespace Ion.RazorPages.Models
     public class OwnerProfileModel
     {
         public float UserRating { get; set; }
-        public IList<AnnouncementToGet> UserAnnouncements { get; set; }
+        public float UserReviewsCount { get; set; }
+        public IEnumerable<AnnouncementToGet> UserAnnouncements { get; set; }
+        public IEnumerable<ReviewToGet> Reviews { get; set; }
         public UserToGet User { get; set; }
-        public IList<ReviewToGet> UserReviews { get; set; }
+
     }
 }

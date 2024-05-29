@@ -45,6 +45,11 @@ public class ReviewService(IMapper mapper,
         return mapper.Map<ReviewViewModel>(SetUserAndAnnouncement(repository.GetByID(id)));
     }
 
+    public IEnumerable<ReviewViewModel> GetByUserId(int id)
+    {
+        return repository.GetByUserId(id).Select(SetUserAndAnnouncement).Select(mapper.Map<ReviewViewModel>);
+    }
+
     public async Task UpdateAsync(ReviewViewModel model)
     {
         var entity = repository.GetByID(model.Id);
