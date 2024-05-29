@@ -20,8 +20,8 @@
             <a asp-controller="AnnouncementMVC" asp-action="Index" class="logo-link">
                 <p class="logo">ION</p>
             </a>
-            <a asp-controller="UserMVC" asp-action="Details" asp-route-id=@ViewBag.Id class="profile-link">
-                <img src=@ViewBag.PathToPhoto alt="Фото профиля" width="50px">
+            <a asp-controller="UserMVC" asp-action="Profile" asp-route-id=@ViewBag.Id class="profile-link">
+                <img src="@ViewBag.PathToPhoto" alt="Фото профиля" width="50px">
             </a>
         </div>
     </header>
