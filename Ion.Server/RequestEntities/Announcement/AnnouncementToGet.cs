@@ -6,6 +6,7 @@ namespace Ion.Server.RequestEntities.Announcement;
 public class AnnouncementToGet
 {
     public int Id { get; set; }
+    public int AuthorId { get; set; }
     public Coordinate CarLocation { get; set; }
     public int PricePerUnit { get; set; }
     public string? Description { get; set; }

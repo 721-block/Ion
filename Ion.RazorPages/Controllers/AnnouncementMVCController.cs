@@ -48,7 +48,7 @@ namespace Ion.RazorPages.Controllers
             var announcement = (AnnouncementToGet)announcementResult.Value;
             result.Reviews = reviewService.GetByAnnouncementId(id).Select(mapper.Map<ReviewToGet>);
             result.Annoncement = announcement;
-            result.Author = mapper.Map<UserToGet>(userService.GetById(announcement.Id));
+            result.Author = mapper.Map<UserToGet>(userService.GetById(announcement.AuthorId));
 
             return View("../Announce",result);
         }
@@ -78,8 +78,9 @@ namespace Ion.RazorPages.Controllers
 
             if (actionType == typeof(NotFoundResult) || actionType == typeof(UnprocessableEntity))
                 return actionResult;
+            var objectResult = (ObjectResult)actionResult;
 
-            return actionResult;
+            return RedirectToAction(nameof(Details), new {id = objectResult.Value });
         }
 
         [HttpPost]

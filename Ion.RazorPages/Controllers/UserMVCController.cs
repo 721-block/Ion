@@ -23,7 +23,7 @@ namespace Ion.RazorPages.Controllers
         }
 
         [HttpGet]
-        public IActionResult Details([FromRoute] int id)
+        public IActionResult Profile([FromRoute] int id)
         {
             this.AddUserDataInViewBag();
             var actionResult = (ObjectResult)controller.GetUserById(id).Result;
@@ -36,6 +36,21 @@ namespace Ion.RazorPages.Controllers
             result.TripRecords = tripRecordService.GetByUserId(id).Select(mapper.Map<TripRecordToGet>);
 
             return View("../UserProfile", result);
+        }
+
+        public IActionResult OwnerProfile([FromRoute] int id)
+        {
+            this.AddUserDataInViewBag();
+            var actionResult = (ObjectResult)controller.GetUserById(id).Result;
+            var resultType = actionResult.GetType();
+
+            if (resultType == typeof(NotFoundResult))
+                return actionResult;
+            var result = new UserModel();
+            result.UserToGet = (UserToGet)actionResult.Value;
+            result.TripRecords = tripRecordService.GetByUserId(id).Select(mapper.Map<TripRecordToGet>);
+
+            return View("../OwnerProfile", result);
         }
 
         [HttpPost]
