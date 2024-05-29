@@ -7,6 +7,6 @@ namespace Ion.RazorPages.Models;
 [IgnoreAntiforgeryToken]
 public class AddAnnounceModel
 {
-    public AnnouncementToPost Announcement { get; set; }
+    public AnnouncementToPost Announcement { get; set; } = new();
     public CarToPost Car { get; set; }
 }
