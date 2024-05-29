@@ -68,7 +68,7 @@ namespace Ion.RazorPages.Controllers
             var announcements = (IEnumerable<AnnouncementToGet>)actionResult.Value;
             result.Parameters = model.Parameters;
             result.Announcements = announcements;
-            result.Marks = GetUniqMarks(announcements);
+            result.Marks = GetUniqMarks((IEnumerable<AnnouncementToGet>)((ObjectResult)announcementController.GetAllAnnouncements().Result).Value);
             this.AddUserDataInViewBag();
             return View("../Index", result);
         }
