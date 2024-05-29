@@ -8,5 +8,6 @@ public class ReviewViewModel : BaseViewModel
     public string? UserLastName { get; set; }
     public string? Content { get; set; }
     public float? Rating { get; set; }
+    public string? UserPathToPhoto { get; set; }
     public DateTimeOffset? CreationDate { get; set; }
 }

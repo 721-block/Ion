@@ -45,7 +45,7 @@ namespace Ion.RazorPages.Controllers
                 return announcementResult;
 
             var announcement = (AnnouncementToGet)announcementResult.Value;
-            result.Reviews = reviewService.GetByAnnouncementId(id).Select(mapper.Map<ReviewToGet>);
+            result.Reviews = reviewService.GetByAnnouncementId(id).Select(mapper.Map<ReviewToGet>).ToList();
             result.Annoncement = announcement;
             result.Author = mapper.Map<UserToGet>(userService.GetById(announcement.AuthorId));
             this.AddUserDataInViewBag();
