@@ -20,7 +20,7 @@ public static class DiContainerBuilder
 
         builder.Services.AddRepositories();
         builder.Services.RegisterMapster();
-        builder.Services.AddServices();
+        //builder.Services.AddServices(projectDirectory);
 
         builder.Services.AddControllers();
         builder.Services.AddEndpointsApiExplorer();

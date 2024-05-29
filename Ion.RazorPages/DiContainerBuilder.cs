@@ -19,9 +19,11 @@ namespace Ion.RazorPages
                     .UseSqlServer(connectionString);
             });
 
+            var workingDirectory = Environment.CurrentDirectory + "\\wwwroot\\images";
+
             builder.Services.AddRepositories();
             builder.Services.RegisterMapster();
-            builder.Services.AddServices();
+            builder.Services.AddServices(workingDirectory);
             builder.Services.AddApiControllers();
 
             builder.Services.AddControllersWithViews(options => options.SuppressImplicitRequiredAttributeForNonNullableReferenceTypes = true);
