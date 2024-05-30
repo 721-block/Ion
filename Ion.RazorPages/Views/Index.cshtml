@@ -68,7 +68,7 @@
                             <img src="static/CarBodyTypeWhite.png" alt="Тип кузова" width="161" height="100">
                             <p>Тип кузова</p>
                             <select class="body-type" asp-for="Parameters.BodyType">
-                                <option selected disabled></option>
+                                <option value="@Model.Parameters.BodyType"></option>
                                 @foreach (var el in Enum.GetValues(typeof(BodyType)))
                                 {
                                     <option value=@el>@(el.GetType().GetMember(el.ToString()!).First()?.GetCustomAttribute<DisplayAttribute>()?.Name)</option>
@@ -84,7 +84,7 @@
                             <img src="static/TransmissionWhite.png" alt="Тип КПП" width="99" height="100">
                             <p>Тип КПП</p>
                             <select class="body-type" asp-for="Parameters.GearboxType">
-                                <option selected disabled></option>
+                                <option value="@Model.Parameters.GearboxType"></option>
                                 @foreach (var el in Enum.GetValues(typeof(GearboxType)))
                                 {
                                     <option value="@el">@(el.GetType().GetMember(el.ToString()!).First()?.GetCustomAttribute<DisplayAttribute>()?.Name)</option>
@@ -95,7 +95,7 @@
                             <img src="static/CarMarkWhite.png" alt="Марка авто" width="161" height="100">
                             <p>Марка авто</p>
                             <select class="mark-type" asp-for="Parameters.CarName">
-                                <option selected disabled></option>
+                                <option value="@Model.Parameters.CarName"></option>
                                 @foreach (var m in Model.Marks)
                                 {
                                     <option value="@m">@m</option>
@@ -103,11 +103,9 @@
                             </select>
                         </div>
                         <div class="car-filter">
-                            <button>
-                                <img src="static/MoneyWhite.png" alt="Цена" width="107" height="100">
-                                <p>Цена</p>
-                                <input type="number" value="5000" asp-for="Parameters.Price">
-                            </button>
+                            <img src="static/MoneyWhite.png" alt="Цена" width="107" height="100">
+                            <p>Цена</p>
+                            <input type="number" value="@Model.Parameters.Price" asp-for="Parameters.Price">
                         </div>
                     </div>
                 </form>
