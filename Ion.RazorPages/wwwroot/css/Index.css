@@ -1,9 +1,19 @@
 html,
 body {
+    font-family: "Inter", sans-serif;
     width: 100%;
+    text-decoration: none;
 }
 
-body>* {
+.filters-wrapper, header {
+    background-color: #F2E9E4;
+}
+
+.cars-list-wrapper {
+    background-color: #22223B;
+}
+
+.search-car, .cars-list, .header {
     width: 1620px;
     margin: auto;
 }
@@ -13,68 +23,143 @@ header {
 }
 
 .logo-link {
-    color: orange;
-    font-size: 20pt;
+    color: black;
+    font-size: 35pt;
+    text-decoration: none;
 }
 
 .header {
+    height: 110px;
     display: flex;
     justify-content: space-between;
+    border-bottom: 3px solid #A1A1A1;
+}
+
+.add-announce {
+    margin: auto;
+    background-color: #FCD57E;
+    border-radius: 10%;
+    -webkit-box-shadow: 0 0 20px black;
+    box-shadow: 0 0 20px black;
+}
+
+.add-announce p {
+    margin: 7px;
+    font-size: 20px;
+    color: black;
+}
+
+.header img {
+    margin: auto;
+    border-radius: 50%;
+}
+
+.header .logo {
+    margin: auto;
+}
+
+.header .profile-link, .logo-link {
+    display: flex;
+    justify-content: center;
 }
 
 .search-car {
-    margin-top: 60px;
+    height: 647px;
+    padding-top: 50px;
+    padding-bottom: 50px;
+    margin-top: 0;
     display: flex;
     justify-content: space-between;
 }
 
 .search-form {
+    height: 647px;
     width: 580px;
-    font-size: 24px;
+    font-size: 29px;
+    color: white;
     background-color: #B1B3C2;
     border-radius: 20px;
 }
 
 .search-form form {
-    width: auto;
-    margin-left: 70px;
+    height: auto;
+    width: 440px;
+    margin: auto;
 }
 
 .search-form input {
     height: 29px;
+    font-size: 24px;
     margin-top: 16px;
 }
 
-.search-form div {
-    margin-top: 35px;
+select {
+    font-size: 24px;
+    background-color: white;
 }
 
-.search-form .address-form {
-    margin-top: 50px;
+.search-form div {
+    margin-top: 15px;
+}
+
+.address-list {
+    width: 50%;
+}
+
+.date-start {
+    width: 50%
+}
+
+.time-start {
+    width: 20%;
+}
+
+.submit-search {
+    margin-top: 80px !important;
 }
 
 .submit-search input {
+    margin: 0;
+    height: 50px;
+    font-size: 29px;
+    width: 100%;
     background-color: #FCD57E;
     color: white;
-    border-radius: 10%;
+    border-radius: 10px;
 }
 
 .filters-box {
     width: 850px;
+    color: white;
 }
 
 .filters-logo {
     width: 269px;
     margin-right: 43px;
-    background-color: #B1B3C2;
+    background-color: #E8E8F0;
+    color: #9A9CAD;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
     font-size: 26px;
+}
+
+.filters-logo div {
+    margin: auto 0;
+}
+
+.filters-logo img {
+    border-radius: 40%;
 }
 
 .filters-buttons {
     display: flex;
     justify-content: center;
+}
+
+.filters-buttons > * {
+    border-radius: 20px;
+    -webkit-box-shadow: 0 0 20px black;
+    box-shadow: 0 0 20px black;
 }
 
 .filters-buttons button {
@@ -83,11 +168,26 @@ header {
     background-color: #B1B3C2;
 }
 
+.filters-buttons button:hover {
+    outline: 5px solid white;
+}
+
+.filters-buttons-all select, input {
+    font-size: 20px;
+}
+
 .filters-buttons button:nth-of-type(1) {
     width: 225px;
     margin-right: 43px;
     background-color: #FCD57E;
     color: white;
+}
+
+.filters-buttons button:nth-of-type(2) {
+    width: 225px;
+    margin-right: 43px;
+    background-color: #E8E8F0;
+    color: #9A9CAD;
 }
 
 form .filters-form {
@@ -137,33 +237,67 @@ form .filters-form {
 .car-card {
     margin-top: 100px;
     width: 450px;
+    height: 510px;
     border-radius: 20px;
     background-color: #B1B3C2;
 }
 
+.car-card-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    height: 236px;
+    border-radius: 20px 20px 0 0;
+}
+
 .car-card img {
-    border-radius: 10px;
+    flex-shrink: 0;
+    min-width: 100%;
+    min-height: 100%;
+    border-radius: 10px 10px 0 0;
 }
 
 .car-info {
+    text-align: center;
     margin: auto;
     width: 350px;
+    font-size: 26px;
 }
 
-.mark,
-.rating {
-    text-align: center;
+.car-card a {
+    text-decoration: none;
+    color: white;
+}
+
+.car-card:hover {
+    outline: 5px solid white;
+}
+
+.mark {
+    margin: 0;
+    margin-top: 25px;
 }
 
 .rating {
+    margin: 0;
+    margin-top: 20px;
+    height: 112px;
     display: flex;
-    justify-content: space-around;
+    justify-content: space-evenly;
+}
+
+.score {
+    margin: auto 0;
+    font-size: 70px;
 }
 
 .price {
+    border-top: 1px solid white;
     text-align: right;
 }
 
 .map {
     margin-top: 100px;
+    text-align: center;
 }
