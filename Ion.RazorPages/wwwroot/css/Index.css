@@ -3,6 +3,7 @@ body {
     font-family: "Inter", sans-serif;
     width: 100%;
     text-decoration: none;
+    word-wrap: break-word;
 }
 
 .filters-wrapper, header {
