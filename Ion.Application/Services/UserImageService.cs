@@ -32,6 +32,6 @@ public class UserImageService : IUserImageService
             fileIndex++;
         }
 
-        return pathToDirectory[pathToDirectory.IndexOf("wwwroot\\")..].Replace('\\', '/');
+        return pathToDirectory.Replace('\\', '/');
     }
 }
