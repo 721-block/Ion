@@ -5,9 +5,10 @@
 }
 
 <!DOCTYPE html>
-<html>
+<html lang="ru">
 
 <head>
+    <meta charset="utf-8">
     <link rel="stylesheet" href="css/UserProfile.css">
 </head>
 
@@ -15,14 +16,14 @@
     <header>
         <div class="header">
             <a class="logo-link" asp-controller="AnnouncementMVC" asp-action="Index">
-                <p>ION</p>
+                <p>IONsdadsa</p>
             </a>
         </div>
     </header>
     <div class="user-info">
         <img src="@Model.UserToGet.PathToPhoto" height="150px">
         <div class="user-creds">
-            <p>@Model.UserToGet.FirstName @Model.UserToGet.LastName</p>
+            <p>@Html.Raw(@Model.UserToGet.FirstName + " " + @Model.UserToGet.LastName)</p>
             <p>@Model.UserToGet.PhoneNumber</p>
         </div>
     </div>

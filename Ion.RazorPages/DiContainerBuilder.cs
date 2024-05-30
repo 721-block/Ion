@@ -1,4 +1,6 @@
-﻿using Ion.Infrastructure;
+﻿using System.Text.Encodings.Web;
+using System.Text.Unicode;
+using Ion.Infrastructure;
 using Ion.Server.Extensions;
 using Microsoft.EntityFrameworkCore;
 using Ion.Application.Extensions;
@@ -29,6 +31,7 @@ namespace Ion.RazorPages
             builder.Services.AddControllersWithViews(options => options.SuppressImplicitRequiredAttributeForNonNullableReferenceTypes = true);
             builder.Services.AddRazorPages();
             builder.Services.AddEndpointsApiExplorer();
+            builder.Services.AddSingleton(HtmlEncoder.Create(allowedRanges: new[] { UnicodeRanges.BasicLatin, UnicodeRanges.Cyrillic }));
 
 
             return builder;
