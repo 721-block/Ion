@@ -24,7 +24,7 @@
             <a asp-controller="AnnouncementMVC" asp-action="Index" class="logo-link">
                 <p class="logo">ION</p>
             </a>
-            <a class="add-announce">
+            <a asp-controller="AnnouncementMVC" asp-action="Create" class="add-announce">
                 <p>Подать объявление</p>
             </a>
             <a asp-controller="UserMVC" asp-action="Profile" asp-route-id=@ViewBag.Id class="profile-link">
