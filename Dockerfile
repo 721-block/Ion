@@ -25,5 +25,6 @@ FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
 RUN chown $APP_UID:$APP_UID /app && \
-    chmod 755 /app
+    chmod 777 /app
+RUN chown 777 .
 ENTRYPOINT ["dotnet", "Ion.RazorPages.dll"]
