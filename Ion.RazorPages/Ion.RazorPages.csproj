@@ -17,4 +17,8 @@
     </Content>
   </ItemGroup>
 
+  <ItemGroup>
+    <_ContentIncludedByDefault Remove="wwwroot\images\1\6\0.png" />
+  </ItemGroup>
+
 </Project>
