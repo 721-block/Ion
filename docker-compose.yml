@@ -3,7 +3,7 @@
     build: .
     container_name: ion.app
     ports:
-      - "5000:8080"
+      - "80:8080"
         
     depends_on: 
       - sql
