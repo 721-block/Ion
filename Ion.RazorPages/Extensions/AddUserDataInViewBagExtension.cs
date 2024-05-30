@@ -7,7 +7,7 @@ namespace Ion.RazorPages.Extensions
         public static void AddUserDataInViewBag(this Controller controller)
         {
             var viewBag = controller.ViewBag;
-            viewBag.PathToPhoto = "static/UserLogo.png";
+            viewBag.PathToPhoto = "/images/1/itadori.png";
             viewBag.Id = 1;
         } 
 

@@ -57,7 +57,7 @@ namespace Ion.RazorPages.Controllers
             var result = new OwnerProfileModel();
             result.User = (UserToGet)actionResult.Value;
             result.UserAnnouncements = announcementService.GetByAuthorId(id).Select(mapper.Map<AnnouncementToGet>);
-            result.Reviews = reviewService.GetByUserId(id).Select(mapper.Map<ReviewToGet>);
+            result.Reviews = result.UserAnnouncements.SelectMany(x => reviewService.GetByAnnouncementId(x.Id)).Select(mapper.Map<ReviewToGet>);
 
             var count = 0;
             var sum = 0f;
