@@ -6,7 +6,7 @@ namespace Ion.RazorPages.Models
 {
     public class IndexModel
     {
-        public FilterParameters Parameters { get; set; }
+        public FilterParameters Parameters { get; set; } = new();
         public IEnumerable<AnnouncementToGet> Announcements { get; set; }
         public IEnumerable<string> Marks { get; set; }
     }
