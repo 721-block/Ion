@@ -23,7 +23,7 @@
     <div class="user-info">
         <img src="@Model.UserToGet.PathToPhoto" height="150px">
         <div class="user-creds">
-            <p>@Model.UserToGet.FirstName @Model.UserToGet.LastName</p>
+            <p>@Html.Raw(@Model.UserToGet.FirstName + " " + @Model.UserToGet.LastName)</p>
             <p>@Model.UserToGet.PhoneNumber</p>
         </div>
     </div>
