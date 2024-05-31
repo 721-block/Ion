@@ -2,7 +2,6 @@ html,
 body {
     font-family: "Inter", sans-serif;
     font-size: 30px;
-    width: 100%;
     text-decoration: none;
     word-wrap: break-word;
 }
@@ -60,6 +59,7 @@ header {
 }
 
 .car-specs {
+    width: 50%;
     margin: auto;
     color: white;
     background-color: #60616C;

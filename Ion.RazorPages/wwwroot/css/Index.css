@@ -1,7 +1,6 @@
 html,
 body {
     font-family: "Inter", sans-serif;
-    width: 100%;
     text-decoration: none;
     word-wrap: break-word;
 }
@@ -12,6 +11,7 @@ body {
 
 .cars-list-wrapper {
     background-color: #22223B;
+    padding-bottom: 80px;
 }
 
 .search-car, .cars-list, .header {
@@ -254,6 +254,7 @@ form .filters-form {
 
 .car-card img {
     flex-shrink: 0;
+    width: 450px;
     min-width: 100%;
     min-height: 100%;
     border-radius: 10px 10px 0 0;

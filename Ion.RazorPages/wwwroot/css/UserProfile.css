@@ -2,7 +2,6 @@ html,
 body {
     font-family: "Inter", sans-serif;
     font-size: 30px;
-    width: 100%;
     text-decoration: none;
     word-wrap: break-word;
 }
@@ -138,6 +137,7 @@ header {
 
 .car-card img {
     flex-shrink: 0;
+    width: 450px;
     min-width: 100%;
     min-height: 100%;
     border-radius: 10px 10px 0 0;
