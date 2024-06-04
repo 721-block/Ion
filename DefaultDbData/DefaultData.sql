@@ -1,9 +1,9 @@
 ﻿insert into IonDb.dbo.Users (LastName, FirstName, Email, PhoneNumber, PathToPhoto, HashPassword) values
-(N'Юдзи', N'Итадори', 'itadoriUdzi2004@mail.ru', '111', '/images/1/itadori.png', 'ee'),
-(N'Годжо', N'Сатору', 'sexyBoy@mail.ru', '222', '/images/2/satoru.png', 'vb'),
-(N'Aoi', N'Todo', 'todoAoi@mail.ru', '444', '/images/3/todo.png', '1233'),
-(N'Мей', N'Мей', 'iLoveMoney@mail.ru', '333', '/images/4/meymey.png', 'asd'),
-(N'Фушигура', N'Тодзи', 'tojiFushiguro@mail.ru', '555', '/images/5/todzi.png', '1233');
+(N'Юдзи', N'Итадори', 'itadoriUdzi2004@mail.ru', '+7(123)456-78-95', '/images/1/itadori.png', 'ee'),
+(N'Годжо', N'Сатору', 'sexyBoy@mail.ru', '+7(965)789-42-07', '/images/2/satoru.png', 'vb'),
+(N'Aoi', N'Todo', 'todoAoi@mail.ru', '+7(479)213-58-94', '/images/3/todo.png', '1233'),
+(N'Мей', N'Мей', 'iLoveMoney@mail.ru', '+7(963)440-24-24', '/images/4/meymey.png', 'asd'),
+(N'Фушигура', N'Тодзи', 'tojiFushiguro@mail.ru', '+7(597)485-21-47', '/images/5/todzi.png', '1233');
 
 insert into IonDb.dbo.Cars (UserId, GearboxType, Name, BodyType, IsAnnounced) values 
 (2, 1, 'BMW', 1, 1),
