@@ -7,7 +7,16 @@
         
     depends_on: 
       - sql
+  
+  ion.api:
+    build: ./
+    container_name: ion.api
+    ports:
+      - "5000:8080"
     
+    depends_on: 
+      - ion.server
+  
   sql:
     image: "mcr.microsoft.com/mssql/server:2022-latest"
     container_name: sql

@@ -24,7 +24,5 @@ RUN dotnet publish "Ion.RazorPages.csproj" -c $BUILD_CONFIGURATION -o /app/publi
 FROM base AS final
 WORKDIR /app
 COPY --from=publish /app/publish .
-RUN chown $APP_UID:$APP_UID /app && \
-    chmod 777 /app
-RUN chown 777 .
+
 ENTRYPOINT ["dotnet", "Ion.RazorPages.dll"]

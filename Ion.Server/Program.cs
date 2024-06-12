@@ -1,4 +1,7 @@
 using Ion.Server;
+using Microsoft.OpenApi.Extensions;
+using Microsoft.OpenApi.Models;
+using Swashbuckle.AspNetCore.Swagger;
 
 var builder = DiContainerBuilder.BuildContainer(args);
 

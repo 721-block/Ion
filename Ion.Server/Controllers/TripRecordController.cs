@@ -20,6 +20,7 @@ public class TripRecordController(ITripRecordService tripRecordService, IMapper 
         return Ok(tripRecord);
     }
 
+    [HttpGet]
     public ActionResult<IEnumerable<TripRecordToGet>> GetAllTripRecords()
     {
         var tripRecordViewModels = tripRecordService.GetAll().Select(mapper.Map<TripRecordToGet>);
