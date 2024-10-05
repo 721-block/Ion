@@ -1,0 +1,151 @@
+@using System.ComponentModel.DataAnnotations
+@using System.Reflection
+@using Ion.Domain.Enums
+@model IndexModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/Index.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="header">
+            <a asp-controller="AnnouncementMVC" asp-action="Index" class="logo-link">
+                <p class="logo">ION</p>
+            </a>
+            <a asp-controller="AnnouncementMVC" asp-action="Create" class="add-announce">
+                <p>Подать объявление</p>
+            </a>
+            <a asp-controller="UserMVC" asp-action="Profile" asp-route-id=@ViewBag.Id class="profile-link">
+                <img src="@ViewBag.PathToPhoto" alt="Фото профиля" width="50px">
+            </a>
+        </div>
+    </header>
+    <div class="filters-wrapper">
+        <div class="search-car">
+            <div class="search-form">
+                <form class="search-form">
+                    <div class="address-form">
+                        <br/><label for="address">Локация поиска автомобиля: </label>
+                        <br/><select name="address-menu" class="address-list">
+                            <option selected disabled></option>
+                            <option value="">Екатеринбург</option>
+                        </select>
+                    </div>
+                    <div class="date-start-form">
+                        <br/><label for="date">Время начала аренды:</label>
+                        <br/><input type="date" value="@DateTime.Now" class="date-start" asp-for="Parameters.StartDate" required />
+                        <input type="time" value="@DateTime.Now" name="time" class="time-start" asp-for="Parameters.StartDate" required />
+                    </div>
+                    <div class="date-end-form">
+                        <br/><label for="date">Время окончания аренды:</label>
+                        <br/><input type="date" value="@DateTime.Now" name="date" class="date-start" asp-for="Parameters.EndDate" required />
+                        <input type="time" value="@DateTime.Now" name="time" class="time-start" asp-for="Parameters.EndDate" required />
+                    </div>
+                    <div class="submit-search">
+                        <a asp-controller="AnnouncementMVC" asp-action="Search">
+                            <input type="submit" value="Поиск автомобилей"/>
+                        </a>
+                    </div>
+                </form>
+            </div>
+            <div class="filters-box">
+                <div class="filters-buttons-all">
+                    <form class="filters-form" method="post">
+                        <div class="filters-buttons">
+                            <div class="filters-logo">
+                                <div><img src="static/Filters.jpg" alt="Фильтры"></div>
+                                <P>Фильтры</P>
+                            </div>
+                            <button type="submit" asp-controller="AnnouncementMVC" asp-action="Index">Применить</button>
+                            <button type="reset">Сбросить фильтры</button>
+                        </div>
+                        <div class="filters">
+                            <div class="car-filter">
+                                <img src="static/CarBodyTypeWhite.png" alt="Тип кузова" width="161" height="100">
+                                <p>Тип кузова</p>
+                                <select class="body-type" asp-for="Parameters.BodyType">
+                                    <option value="@Model.Parameters.BodyType"></option>
+                                    @foreach (var el in Enum.GetValues(typeof(BodyType)))
+                                    {
+                                        <option value=@el>@(el.GetType().GetMember(el.ToString()!).First()?.GetCustomAttribute<DisplayAttribute>()?.Name)</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="car-filter">
+                                <img src="static/GroupPassengers.png" alt="Пассажиры" height="100">
+                                <p>Пассажиры</p>
+                                <input type="number" value="5">
+                            </div>
+                            <div class="car-filter">
+                                <img src="static/TransmissionWhite.png" alt="Тип КПП" width="99" height="100">
+                                <p>Тип КПП</p>
+                                <select class="body-type" asp-for="Parameters.GearboxType">
+                                    <option value="@Model.Parameters.GearboxType"></option>
+                                    @foreach (var el in Enum.GetValues(typeof(GearboxType)))
+                                    {
+                                        <option value="@el">@(el.GetType().GetMember(el.ToString()!).First()?.GetCustomAttribute<DisplayAttribute>()?.Name)</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="car-filter">
+                                <img src="static/CarMarkWhite.png" alt="Марка авто" width="161" height="100">
+                                <p>Марка авто</p>
+                                <select class="mark-type" asp-for="Parameters.CarName">
+                                    <option value="@Model.Parameters.CarName"></option>
+                                    @foreach (var m in Model.Marks)
+                                    {
+                                        <option value="@m">@m</option>
+                                    }
+                                </select>
+                            </div>
+                            <div class="car-filter">
+                                <img src="static/MoneyWhite.png" alt="Цена" width="107" height="100">
+                                <p>Цена</p>
+                                <input type="number" value="@Model.Parameters.Price" asp-for="Parameters.Price">
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="map">
+        <img src="static/Map-example.png" alt="Карта автомобилей" width="1620">
+    </div>
+    <div class="cars-list-wrapper">
+        <div class="cars-list">
+            @foreach (var announcement in Model.Announcements)
+            {
+                <div class="car-card">
+                    <a asp-controller="AnnouncementMVC" asp-action="Details" asp-route-id=@announcement.Id>
+                        @{ var p = Directory.GetFiles(announcement.PathToImages)[0];}
+                        <div class="car-card-img">
+                            <img src=@p[p.IndexOf("/images/")..]>
+                        </div>
+                        <div class="car-info">
+                            <p class="mark">@announcement.CarName</p>
+                            <div class="rating">
+                                <p class="score">@announcement.Rating</p>
+                                <p class="reviews-count">@announcement.ReviewsCount<br>число оценок</p>
+                            </div>
+                            <p class="price">@announcement.PricePerUnit р/день</p>
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+</body>
+</html>
