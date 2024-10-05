@@ -1,0 +1,83 @@
+@model OwnerProfileModel
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/css/OwnerProfile.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <header>
+        <div class="header">
+            <a asp-controller="AnnouncementMVC" asp-action="Index" class="logo-link">
+                <p>ION</p>
+            </a>
+        </div>
+    </header>
+    <div class="user-info-container">
+        <div class="user-info">
+            <img src="@Model.User.PathToPhoto" height="110px" width="110px">
+            <div class="user-creds">
+                <p>@Model.User.FirstName @Model.User.LastName</p>
+                <p>@Model.User.PhoneNumber</p>
+                <div class="rating">
+                    <p class="score">@Model.UserRating</p>
+                    <p class="reviews-count">@Model.UserReviewsCount<br/>оценок</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="orders-history">
+        <p>Поданные объявления</p>
+        <div class="cars-list">
+            @foreach (var announcement in Model.UserAnnouncements)
+            {
+                <div class="car-card">
+                    <a asp-controller="AnnouncementMVC" asp-action="Details" asp-route-id=@announcement.Id>
+                        <div class="car-card-img">
+                            @{ var p = Directory.GetFiles(announcement.PathToImages)[0];}
+                            <img src=@p[p.IndexOf("/images/")..]>
+                        </div>
+                        <div class="car-info">
+                            <p class="mark">@announcement.CarName</p>
+                            <div class="rating">
+                                <p class="score">@announcement.Rating</p>
+                                <p class="reviews-count">@announcement.ReviewsCount<br/>число оценок</p>
+                            </div>
+                            <p class="price">@announcement.PricePerUnit р/день</p>
+                        </div>
+                    </a>
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="user-reviews">
+        <p>Отзывы</p>
+        <div class="reviews-list">
+            @foreach (var review in Model.Reviews)
+            {
+                <div class="review">
+                    <div class="review-box">
+                        <p>@review.Content</p>
+                    </div>
+                    <div class="reviewer">
+                        <a asp-controller="UserMVC" asp-action="OwnerProfile" asp-route-id=@review.UserId>
+                            <img src=@review.UserPathToPhoto height="65px" width="65px">
+                            <p>@review.UserFirstName @review.UserLastName</p>
+                        </a>
+                    </div>
+                </div>
+            }
+        </div>
+    </div>
+</body>

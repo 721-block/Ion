@@ -1,0 +1,36 @@
+@model Ion.RazorPages.wwwroot.RazorPages.Login
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="css/Login.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+<header>
+    <a asp-controller="AnnouncementMVC" asp-action="Index" id="logo-link">
+        <p>ION</p>
+    </a>
+    <a href="#" id="login-link">Регистрация</a>
+</header>
+<div id="registration-form">
+    <img src="#">
+    <form>
+        <p>Авторизация</p>
+        <input type="email" value="Email" asp-for="UserToPost.Email">
+        <input type="text" value="Пароль" asp-for="UserToPost.Password">
+        <input type="submit" value="Продолжить">
+    </form>
+</div>
+</body>

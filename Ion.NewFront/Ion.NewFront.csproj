@@ -14,16 +14,35 @@
     </ItemGroup>
 
     <ItemGroup>
-      <AdditionalFiles Include="Views\Home\Index.cshtml" />
-      <AdditionalFiles Include="Views\Home\Privacy.cshtml" />
-      <AdditionalFiles Include="Views\Shared\Error.cshtml" />
-      <AdditionalFiles Include="Views\Shared\_Layout.cshtml" />
-      <AdditionalFiles Include="Views\Shared\_ValidationScriptsPartial.cshtml" />
-      <AdditionalFiles Include="Views\_ViewImports.cshtml" />
+      <Compile Include="wwwroot\CarMVCController.cs" />
     </ItemGroup>
 
     <ItemGroup>
-      <Compile Include="wwwroot\CarMVCController.cs" />
+      <_ContentIncludedByDefault Remove="Views\Home\Index.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Home\Privacy.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Shared\Error.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Shared\_Layout.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Shared\_ValidationScriptsPartial.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\Index.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\_ViewImports.cshtml" />
+      <_ContentIncludedByDefault Remove="Views\_ViewStart.cshtml" />
+    </ItemGroup>
+
+    <ItemGroup>
+      <AdditionalFiles Include="Views\AddAnnounce.cshtml" />
+      <AdditionalFiles Include="Views\Announce.cshtml" />
+      <AdditionalFiles Include="Views\Home\Index.cshtml" />
+      <AdditionalFiles Include="Views\Home\Privacy.cshtml" />
+      <AdditionalFiles Include="Views\Index.cshtml" />
+      <AdditionalFiles Include="Views\Login.cshtml" />
+      <AdditionalFiles Include="Views\OwnerProfile.cshtml" />
+      <AdditionalFiles Include="Views\Registration.cshtml" />
+      <AdditionalFiles Include="Views\Shared\Error.cshtml" />
+      <AdditionalFiles Include="Views\Shared\_Layout.cshtml" />
+      <AdditionalFiles Include="Views\Shared\_ValidationScriptsPartial.cshtml" />
+      <AdditionalFiles Include="Views\UserProfile.cshtml" />
+      <AdditionalFiles Include="Views\_ViewImports.cshtml" />
+      <AdditionalFiles Include="Views\_ViewStart.cshtml" />
     </ItemGroup>
 
 </Project>
