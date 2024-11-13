@@ -51,6 +51,13 @@ public class AnnouncementService(
         return mapper.Map<AnnouncementViewModel>(announcement);
     }
 
+    private Announcement SetUserAndCar(Announcement announcement)
+    {
+        announcement.Author = userRepository.GetByID(announcement.AuthorId);
+        announcement.Car = carRepository.GetByID(announcement.CarId);
+        return announcement;
+    }
+
     public IEnumerable<AnnouncementViewModel> GetByAuthorId(int id)
     {
         var announcements = repository.GetByAuthorId(id);
