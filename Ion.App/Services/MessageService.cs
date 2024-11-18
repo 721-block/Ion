@@ -44,6 +44,12 @@ public class MessageService(IMapper mapper,
     {
         return mapper.Map<MessageViewModel>(SetUsers(repository.GetByID(id)));
     }
+    public async Task<MessageViewModel> AddAsync(MessageViewModel model)
+    {
+        var message = await repository.AddAsync(mapper.Map<Message>(model));
+        await repository.SaveChangesAsync();
+        return mapper.Map<MessageViewModel>(message);
+    }
 
     public async Task UpdateAsync(MessageViewModel model)
     {
@@ -53,6 +59,15 @@ public class MessageService(IMapper mapper,
         repository.Update(updatedEntity);
         await repository.SaveChangesAsync();
     }
+
+    public IEnumerable<MessageViewModel> GetByAnnouncementId(int id)
+    {
+        return repository
+            .GetByAnnouncementId(id)
+            .Select(SetUsers)
+            .Select(mapper.Map<MessageViewModel>);
+    }
+
 
     private Message SetUsers(Message message)
     {

@@ -43,6 +43,13 @@ public class AnnouncementService(
                 && (filterParameters.BodyType == a.CarBodyType || filterParameters.BodyType is null)
                 && (filterParameters.GearboxType == a.CarGearboxType || filterParameters.GearboxType is null));
     }
+    public async Task<AnnouncementViewModel> AddAsync(AnnouncementViewModel model)
+    {
+
+        var announcement = await repository.AddAsync(mapper.Map<Announcement>(model));
+        await repository.SaveChangesAsync();
+        return mapper.Map<AnnouncementViewModel>(announcement);
+    }
 
     public IEnumerable<AnnouncementViewModel> GetByAuthorId(int id)
     {
@@ -92,5 +99,14 @@ public class AnnouncementService(
         announcement.Rating = count == 0 ? 0 : (float)Math.Round(sum / count, 1);
 
         return announcement;
+    }
+
+    public AnnouncementViewModel GetById(int id)
+    {
+        var entity = repository.GetByID(id);
+        entity = SetUserAndCar(entity);
+        var viewModel = mapper.Map<AnnouncementViewModel>(entity);
+        SetRating(viewModel);
+        return viewModel;
     }
 }
