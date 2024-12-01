@@ -1,0 +1,518 @@
+<style>
+    .profile-wrapper {
+      border-radius: 0;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .profile-container {
+      background-color: #fff;
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+    }
+    
+    @media (max-width: 991px) {
+      .profile-container {
+        max-width: 100%;
+      }
+    }
+    
+    .content-wrapper {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      min-height: 1080px;
+      width: 100%;
+      padding-bottom: 80px;
+      align-items: center;
+    }
+    
+    @media (max-width: 991px) {
+      .content-wrapper {
+        max-width: 100%;
+      }
+    }
+    
+    .background-image {
+      position: absolute;
+      inset: 0;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    
+    .header {
+      position: relative;
+      background-color: #282828;
+      align-self: stretch;
+      display: flex;
+      width: 100%;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding: 50px 65px;
+    }
+    
+    @media (max-width: 991px) {
+      .header {
+        max-width: 100%;
+        padding: 0 20px;
+      }
+    }
+    
+    .logo {
+      aspect-ratio: 3;
+      object-fit: contain;
+      object-position: center;
+      width: 150px;
+      max-width: 100%;
+    }
+    
+    .nav-wrapper {
+      display: flex;
+      gap: 40px 68px;
+    }
+    
+    .chat-link {
+      color: #FFE482;
+      flex-basis: auto;
+      margin: auto 0;
+      font: 600 23px Montserrat, sans-serif;
+    }
+    
+    .user-profile {
+      display: flex;
+      gap: 16px;
+    }
+    
+    .avatar-wrapper {
+      border-radius: 80px;
+      background-color: #fff;
+      display: flex;
+      height: 50px;
+      align-items: center;
+      gap: 10px;
+      overflow: hidden;
+      width: 50px;
+      justify-content: center;
+    }
+    
+    .avatar {
+      aspect-ratio: 1.04;
+      object-fit: contain;
+      object-position: center;
+      width: 52px;
+      align-self: stretch;
+      margin: auto 0;
+    }
+    
+    .username {
+      color: #fff;
+      text-align: center;
+      flex-basis: auto;
+      margin: auto 0;
+      font: 400 23px/1.2 Montserrat, sans-serif;
+    }
+    
+    .nav-container {
+      position: relative;
+      display: flex;
+      margin-top: 81px;
+      width: 100%;
+      max-width: 1706px;
+      gap: 40px 100px;
+      flex-wrap: wrap;
+    }
+    
+    @media (max-width: 991px) {
+      .nav-container {
+        max-width: 100%;
+        margin-top: 40px;
+      }
+    }
+    
+    .nav-tabs {
+      border-radius: 5px;
+      background-color: #282828;
+      flex-grow: 1;
+      flex-basis: auto;
+      padding: 36px 80px;
+    }
+    
+    @media (max-width: 991px) {
+      .nav-tabs {
+        max-width: 100%;
+        padding: 0 20px;
+      }
+    }
+    
+    .tab-wrapper {
+      gap: 20px;
+      display: flex;
+    }
+    
+    @media (max-width: 991px) {
+      .tab-wrapper {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+      }
+    }
+    
+    .tab-col {
+      display: flex;
+      flex-direction: column;
+      line-height: normal;
+      width: 50%;
+      margin-left: 0;
+    }
+    
+    @media (max-width: 991px) {
+      .tab-col {
+        width: 100%;
+      }
+    }
+    
+    .profile-tab {
+      color: #fff;
+      text-align: center;
+      font: 400 24px/1.2 Montserrat, sans-serif;
+    }
+    
+    @media (max-width: 991px) {
+      .profile-tab {
+        margin-top: 40px;
+      }
+    }
+    
+    .tab-col-2 {
+      display: flex;
+      flex-direction: column;
+      line-height: normal;
+      width: 50%;
+      margin-left: 20px;
+    }
+    
+    @media (max-width: 991px) {
+      .tab-col-2 {
+        width: 100%;
+      }
+    }
+    
+    .ads-tab {
+      color: #fff;
+      text-align: center;
+      font: 700 24px/1.2 Montserrat, sans-serif;
+    }
+    
+    @media (max-width: 991px) {
+      .ads-tab {
+        margin-top: 40px;
+      }
+    }
+    
+    .create-ad-btn {
+      border-radius: 5px;
+      background-color: #FFE482;
+      display: flex;
+      gap: 7px;
+      font-family: Montserrat, sans-serif;
+      color: #282828;
+      font-weight: 600;
+      text-align: center;
+      line-height: 1.2;
+      padding: 26px 36px;
+    }
+    
+    @media (max-width: 991px) {
+      .create-ad-btn {
+        padding: 0 20px;
+      }
+    }
+    
+    .plus-icon {
+      font-size: 40px;
+    }
+    
+    .btn-text {
+      font-size: 24px;
+      flex-basis: auto;
+      flex-grow: 1;
+      margin: auto 0;
+    }
+    
+    .listings-container {
+      position: relative;
+      margin-top: 68px;
+      width: 100%;
+      max-width: 1706px;
+    }
+    
+    @media (max-width: 991px) {
+      .listings-container {
+        max-width: 100%;
+        margin-top: 40px;
+      }
+    }
+    
+    .listings-grid {
+      gap: 20px;
+      display: flex;
+    }
+    
+    @media (max-width: 991px) {
+      .listings-grid {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+      }
+    }
+    
+    .listing-col {
+      display: flex;
+      flex-direction: column;
+      line-height: normal;
+      width: 33%;
+      margin-left: 0;
+    }
+    
+    @media (max-width: 991px) {
+      .listing-col {
+        width: 100%;
+      }
+    }
+    
+    .listing-card {
+      border-radius: 5px;
+      background-color: rgba(40, 40, 40, 0.5);
+      position: relative;
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+      margin: 0 auto;
+    }
+    
+    @media (max-width: 991px) {
+      .listing-card {
+        max-width: 100%;
+        margin-top: 28px;
+      }
+    }
+    
+    .card-content {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      min-height: 470px;
+      width: 100%;
+      align-items: flex-start;
+      gap: 40px 73px;
+      flex-wrap: wrap;
+      padding: 22px 19px;
+    }
+    
+    @media (max-width: 991px) {
+      .card-content {
+        max-width: 100%;
+      }
+    }
+    
+    .listing-details {
+      position: relative;
+      align-self: end;
+      display: flex;
+      margin-top: 227px;
+      flex-direction: column;
+      color: #fff;
+      flex-grow: 1;
+      flex-basis: 0;
+      width: fit-content;
+      font: 500 32px Montserrat, sans-serif;
+    }
+    
+    @media (max-width: 991px) {
+      .listing-details {
+        margin-top: 40px;
+      }
+    }
+    
+    .car-title {
+      align-self: start;
+    }
+    
+    .price {
+      font-weight: 700;
+      align-self: start;
+      margin-top: 4px;
+    }
+    
+    .date-added {
+      margin: 26px 36px 0 0;
+    }
+    
+    @media (max-width: 991px) {
+      .date-added {
+        margin-right: 10px;
+      }
+    }
+    
+    .status-available {
+      color: #282828;
+      align-self: end;
+      margin-top: 14px;
+    }
+    
+    .status-rented {
+      color: #FFE482;
+      align-self: end;
+      margin-top: 14px;
+    }
+    
+    .action-buttons {
+      position: relative;
+      align-self: start;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .edit-icon {
+      aspect-ratio: 1;
+      object-fit: contain;
+      object-position: center;
+      width: 34px;
+    }
+    
+    .delete-icon {
+      aspect-ratio: 0.82;
+      object-fit: contain;
+      object-position: center;
+      width: 32px;
+      margin-top: 201px;
+    }
+    
+    @media (max-width: 991px) {
+      .delete-icon {
+        margin: 40px 3px 0 0;
+      }
+    }
+    
+    .load-more {
+      position: relative;
+      color: #282828;
+      margin-top: 80px;
+      font: 400 32px/1.6 Montserrat, sans-serif;
+    }
+    
+    @media (max-width: 991px) {
+      .load-more {
+        margin-top: 40px;
+      }
+    }
+    
+    .bold-text {
+      font-weight: 700;
+    }
+    </style>
+    
+    <div class="profile-wrapper">
+      <div class="profile-container">
+        <div class="content-wrapper">
+          <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/dee089155c5ba244915ca6d243ce00a0ae6be09a7d5d80e4083324004e46cbf8?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" class="background-image" alt="" />
+          <div class="header">
+            <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/c5de912daa12569c8fbf4538371c73032570ac22188a3de3878b8735f328e7ef?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" class="logo" alt="Website Logo" />
+            <div class="nav-wrapper">
+              <div class="chat-link">Мои чаты</div>
+              <div class="user-profile">
+                <div class="avatar-wrapper">
+                  <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/1335a9875e06870d281c922fab5a705e1faf182462a1bd2a06779100cce72776?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" class="avatar" alt="User Avatar" />
+                </div>
+                <div class="username">Гето Сугуру</div>
+              </div>
+            </div>
+          </div>
+          <div class="nav-container">
+            <div class="nav-tabs">
+              <div class="tab-wrapper">
+                <div class="tab-col">
+                  <div class="profile-tab">Данные профиля</div>
+                </div>
+                <div class="tab-col-2">
+                  <div class="ads-tab">Объявления</div>
+                </div>
+              </div>
+            </div>
+            <div class="create-ad-btn" role="button" tabindex="0">
+              <div class="plus-icon">+</div>
+              <div class="btn-text">Создать объявление</div>
+            </div>
+          </div>
+          <div class="listings-container">
+            <div class="listings-grid">
+              <div class="listing-col">
+                <div class="listing-card">
+                  <div class="card-content">
+                    <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/8cd497b6f623ba07c0f5691e0b16e688224d6a9b9e8072c20acda6e1277b37b6?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" class="background-image" alt="Car Image" />
+                    <div class="listing-details">
+                      <div class="car-title">Марка авто год</div>
+                      <div class="price">Цена руб/сутки</div>
+                      <div class="date-added">
+                        <span class="bold-text">Добавлено:</span>
+                        13.01.2024
+                      </div>
+                      <div class="status-available">Сейчас свободен</div>
+                    </div>
+                    <div class="action-buttons">
+                      <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/96127e7c0827f68811a0db6b3ecca581d9a607dc3cd2b7ae8c62b5569efd064e?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" class="edit-icon" alt="Edit" />
+                      <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/6a309c04ed37e8eb1c9db048bd886049cead7dcd885e71b86b4d0e852f708c0f?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" class="delete-icon" alt="Delete" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="listing-col">
+                <div class="listing-card">
+                  <div class="card-content">
+                    <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/8cd497b6f623ba07c0f5691e0b16e688224d6a9b9e8072c20acda6e1277b37b6?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" class="background-image" alt="Car Image" />
+                    <div class="listing-details">
+                      <div class="car-title">Марка авто год</div>
+                      <div class="price">Цена руб/сутки</div>
+                      <div class="date-added">
+                        <span class="bold-text">Добавлено:</span>
+                        13.01.2024
+                      </div>
+                      <div class="status-rented">Сейчас в аренде</div>
+                    </div>
+                    <div class="action-buttons">
+                      <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/96127e7c0827f68811a0db6b3ecca581d9a607dc3cd2b7ae8c62b5569efd064e?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" class="edit-icon" alt="Edit" />
+                      <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/6a309c04ed37e8eb1c9db048bd886049cead7dcd885e71b86b4d0e852f708c0f?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" class="delete-icon" alt="Delete" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="listing-col">
+                <div class="listing-card">
+                  <div class="card-content">
+                    <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/8cd497b6f623ba07c0f5691e0b16e688224d6a9b9e8072c20acda6e1277b37b6?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" class="background-image" alt="Car Image" />
+                    <div class="listing-details">
+                      <div class="car-title">Марка авто год</div>
+                      <div class="price">Цена руб/сутки</div>
+                      <div class="date-added">
+                        <span class="bold-text">Добавлено:</span>
+                        13.01.2024
+                      </div>
+                      <div class="status-available">Сейчас свободен</div>
+                    </div>
+                    <div class="action-buttons">
+                      <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/96127e7c0827f68811a0db6b3ecca581d9a607dc3cd2b7ae8c62b5569efd064e?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" class="edit-icon" alt="Edit" />
+                      <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/6a309c04ed37e8eb1c9db048bd886049cead7dcd885e71b86b4d0e852f708c0f?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" class="delete-icon" alt="Delete" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="load-more" role="button" tabindex="0">Показать ещё</div>
+        </div>
+      </div>
+    </div>
