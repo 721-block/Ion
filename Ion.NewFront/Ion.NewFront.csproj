@@ -18,8 +18,4 @@
       <AdditionalFiles Include="Views\Home\Privacy.cshtml" />
     </ItemGroup>
 
-    <ItemGroup>
-      <Compile Include="wwwroot\CarMVCController.cs" />
-    </ItemGroup>
-
 </Project>
