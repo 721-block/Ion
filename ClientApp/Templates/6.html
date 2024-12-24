@@ -1,0 +1,288 @@
+<style>
+    .profile-wrapper {
+      border-radius: 0;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .profile-container {
+      background-color: #fff;
+      display: flex;
+      width: 100%;
+      padding: 0 0 108px;
+      flex-direction: column;
+    }
+    
+    .header {
+      background-color: #282828;
+      display: flex;
+      width: 100%;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding: 50px 65px;
+    }
+    
+    .logo {
+      aspect-ratio: 3;
+      object-fit: contain;
+      width: 150px;
+    }
+    
+    .nav-container {
+      display: flex;
+      gap: 40px 68px;
+    }
+    
+    .chat-link {
+      color: #FFE482;
+      margin: auto 0;
+      font: 600 23px Montserrat, sans-serif;
+    }
+    
+    .user-profile {
+      display: flex;
+      gap: 16px;
+    }
+    
+    .avatar-wrapper {
+      border-radius: 80px;
+      background-color: #fff;
+      display: flex;
+      height: 50px;
+      width: 50px;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    
+    .avatar {
+      aspect-ratio: 1.04;
+      width: 52px;
+    }
+    
+    .username {
+      color: #fff;
+      text-align: center;
+      margin: auto 0;
+      font: 400 23px/1.2 Montserrat, sans-serif;
+    }
+    
+    .main-content {
+      position: relative;
+      align-self: center;
+      z-index: 10;
+      display: flex;
+      width: 100%;
+      max-width: 1763px;
+      flex-direction: column;
+      align-items: start;
+      margin: 81px 0 -13px 29px;
+    }
+    
+    .tab-container {
+      border-radius: 5px;
+      background-color: #282828;
+      width: 769px;
+      max-width: 100%;
+      padding: 36px 80px;
+    }
+    
+    .tab-wrapper {
+      display: flex;
+      gap: 20px;
+    }
+    
+    .tab {
+      color: #fff;
+      text-align: center;
+      font: 400 24px/1.2 Montserrat, sans-serif;
+      width: 50%;
+    }
+    
+    .tab-active {
+      font-weight: 700;
+    }
+    
+    .profile-form {
+      margin-top: 68px;
+    }
+    
+    .form-row {
+      display: flex;
+      width: 100%;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      margin-bottom: 17px;
+    }
+    
+    .form-label {
+      color: #fff;
+      font: 400 24px/1.6 Montserrat, sans-serif;
+      margin: auto 0;
+    }
+    
+    .form-input {
+      border-radius: 10px;
+      background-color: #fff;
+      box-shadow: 2px 2px 30px rgba(0, 0, 0, 0.25);
+      min-height: 50px;
+      padding: 6px;
+      border: 1px solid #FF2121;
+    }
+    
+    .form-error {
+      color: #FF2121;
+      font: 18px Inter, sans-serif;
+      margin: -10px 0 17px 231px;
+    }
+    
+    .change-password {
+      border-radius: 5px;
+      background-color: rgba(40, 40, 40, 0.5);
+      margin-top: 22px;
+      width: 500px;
+      max-width: 100%;
+      color: #fff;
+      text-align: center;
+      padding: 10px 70px;
+      font: 400 26px/1.2 Montserrat, sans-serif;
+    }
+    
+    .button-container {
+      display: flex;
+      width: 500px;
+      max-width: 100%;
+      gap: 20px;
+      text-align: center;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      font: 400 26px/1.2 Montserrat, sans-serif;
+      margin: 35px 0;
+    }
+    
+    .btn-cancel {
+      border-radius: 5px;
+      background-color: rgba(40, 40, 40, 0.5);
+      color: #fff;
+      padding: 10px 50px;
+    }
+    
+    .btn-save {
+      border-radius: 5px;
+      background-color: #FFE482;
+      color: #000;
+      padding: 10px 38px;
+      border: 5px solid #FFE482;
+    }
+    
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      border: 0;
+    }
+    
+    @media (max-width: 991px) {
+      .profile-container {
+        max-width: 100%;
+        padding-bottom: 100px;
+      }
+      
+      .header {
+        max-width: 100%;
+        padding: 0 20px;
+      }
+      
+      .main-content {
+        max-width: 100%;
+        margin: 40px 0 10px;
+      }
+      
+      .tab-container {
+        padding: 0 20px;
+      }
+      
+      .form-error {
+        margin-left: 10px;
+      }
+      
+      .change-password {
+        padding: 0 20px;
+      }
+      
+      .btn-cancel,
+      .btn-save {
+        padding: 0 20px;
+      }
+    }
+    </style>
+    
+    <div class="profile-wrapper">
+      <div class="profile-container">
+        <header class="header">
+          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/a38f54f6d13c42a9c269f236d685e8456c960eff39173c719101a3e75f7f8987?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" alt="Company Logo" class="logo" />
+          <nav class="nav-container">
+            <a href="#chats" class="chat-link">Мои чаты</a>
+            <div class="user-profile">
+              <div class="avatar-wrapper">
+                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/1335a9875e06870d281c922fab5a705e1faf182462a1bd2a06779100cce72776?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" alt="User avatar" class="avatar" />
+              </div>
+              <span class="username">Гето Сугуру</span>
+            </div>
+          </nav>
+        </header>
+    
+        <main class="main-content">
+          <div class="tab-container">
+            <div class="tab-wrapper">
+              <div class="tab tab-active">Данные профиля</div>
+              <div class="tab">Объявления</div>
+            </div>
+          </div>
+    
+          <form class="profile-form">
+            <div class="form-row">
+              <label for="name" class="form-label">Имя:</label>
+              <input type="text" id="name" class="form-input" required aria-required="true" />
+            </div>
+            <span class="form-error">Поле обязательно для заполнения</span>
+    
+            <div class="form-row">
+              <label for="surname" class="form-label">Фамилия:</label>
+              <input type="text" id="surname" class="form-input" required aria-required="true" />
+            </div>
+            <span class="form-error">Поле обязательно для заполнения</span>
+    
+            <div class="form-row">
+              <label for="patronymic" class="form-label">Отчество:</label>
+              <input type="text" id="patronymic" class="form-input" required aria-required="true" />
+            </div>
+            <span class="form-error">Поле обязательно для заполнения</span>
+    
+            <div class="form-row">
+              <label for="phone" class="form-label">Телефон:</label>
+              <input type="tel" id="phone" class="form-input" required aria-required="true" />
+            </div>
+            <span class="form-error">Поле обязательно для заполнения</span>
+    
+            <div class="form-row">
+              <label for="email" class="form-label">Email:</label>
+              <input type="email" id="email" class="form-input" />
+            </div>
+    
+            <button type="button" class="change-password">Изменить пароль</button>
+          </form>
+    
+          <div class="button-container">
+            <button type="button" class="btn-cancel">Отмена</button>
+            <button type="submit" class="btn-save">Сохранить</button>
+          </div>
+        </main>
+      </div>
+    </div>

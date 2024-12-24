@@ -1,0 +1,636 @@
+<style>
+    .calendar-number {
+      align-self: stretch;
+      width: 42px;
+      margin: auto 0;
+    }
+    
+    .calendar-number-inactive {
+      color: rgba(200, 200, 200, 1);
+      align-self: stretch;
+      width: 42px;
+      margin: auto 0;
+    }
+    
+    .calendar-number-selected {
+      border-radius: 10px;
+      align-self: stretch;
+      height: 28px;
+      width: 42px;
+      margin: auto 0;
+    }
+    
+    .main-wrapper {
+      border-radius: 0;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .content-container {
+      background-color: rgba(255, 255, 255, 1);
+      display: flex;
+      width: 100%;
+      padding-bottom: 39px;
+      flex-direction: column;
+    }
+    
+    .header-section {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      min-height: 1080px;
+      width: 100%;
+      padding-bottom: 35px;
+    }
+    
+    .background-image {
+      position: absolute;
+      inset: 0;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    
+    .top-nav {
+      position: relative;
+      background-color: rgba(40, 40, 40, 1);
+      display: flex;
+      width: 100%;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding: 50px 65px;
+      font: 23px Montserrat, sans-serif;
+    }
+    
+    .logo {
+      aspect-ratio: 3;
+      object-fit: contain;
+      object-position: center;
+      width: 150px;
+      max-width: 100%;
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 40px 100px;
+      margin: auto 0;
+    }
+    
+    .active-link {
+      color: rgba(255, 228, 130, 1);
+      font-weight: 600;
+    }
+    
+    .user-name {
+      color: rgba(255, 255, 255, 1);
+      font-weight: 400;
+      line-height: 1.2;
+      text-align: center;
+    }
+    
+    .car-details {
+      position: relative;
+      border-radius: 5px;
+      background-color: rgba(40, 40, 40, 1);
+      align-self: center;
+      margin-top: 80px;
+      width: 1765px;
+      max-width: 100%;
+      padding: 37px 40px 65px;
+    }
+    
+    .details-grid {
+      gap: 20px;
+      display: flex;
+    }
+    
+    .image-column {
+      display: flex;
+      flex-direction: column;
+      line-height: normal;
+      width: 64%;
+      margin-left: 0;
+    }
+    
+    .image-gallery {
+      position: relative;
+      display: flex;
+      margin-top: 28px;
+      width: 100%;
+      flex-direction: column;
+    }
+    
+    .main-image-container {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+    
+    .nav-arrow {
+      aspect-ratio: 0.55;
+      object-fit: contain;
+      object-position: center;
+      width: 21px;
+      align-self: stretch;
+      margin: auto 0;
+    }
+    
+    .main-photo {
+      border-radius: 5px;
+      background-color: rgba(255, 255, 255, 1);
+      align-self: stretch;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 142px 80px;
+    }
+    
+    .car-photo {
+      aspect-ratio: 1;
+      object-fit: contain;
+      object-position: center;
+      width: 246px;
+      max-width: 100%;
+    }
+    
+    .thumbnail-gallery {
+      align-self: center;
+      display: flex;
+      margin-top: 65px;
+      width: 610px;
+      max-width: 100%;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+    
+    .thumbnail {
+      display: flex;
+      flex-direction: column;
+      border-radius: 5px;
+      position: relative;
+      aspect-ratio: 1.778;
+      width: 160px;
+    }
+    
+    .thumbnail-img {
+      aspect-ratio: 1.78;
+      object-fit: contain;
+      object-position: center;
+      width: 100%;
+      border-radius: 0;
+    }
+    
+    .info-column {
+      display: flex;
+      flex-direction: column;
+      line-height: normal;
+      width: 36%;
+      margin-left: 20px;
+    }
+    
+    .car-info {
+      position: relative;
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+    }
+    
+    .car-title {
+      color: rgba(255, 255, 255, 1);
+      text-align: center;
+      margin: 0 13px 0 16px;
+      font: 500 50px/1.6 Montserrat, sans-serif;
+    }
+    
+    .specs-grid {
+      margin-top: 40px;
+      display: flex;
+      gap: 20px;
+    }
+    
+    .specs-labels {
+      display: flex;
+      flex-grow: 1;
+      flex-direction: column;
+      align-items: start;
+      color: rgba(255, 255, 255, 1);
+      text-align: center;
+      font: 400 28px/1.6 Montserrat, sans-serif;
+    }
+    
+    .spec-label {
+      margin-top: 30px;
+    }
+    
+    .specs-values {
+      display: flex;
+      flex-grow: 1;
+      flex-direction: column;
+      color: rgba(255, 255, 255, 1);
+      text-align: right;
+      font: 400 28px/1.6 Inter, sans-serif;
+    }
+    
+    .spec-values-group {
+      display: flex;
+      padding-left: 35px;
+      flex-direction: column;
+      align-items: start;
+    }
+    
+    .spec-value {
+      margin-top: 30px;
+    }
+    
+    .rental-price {
+      margin-top: 26px;
+    }
+    
+    .bottom-section {
+      display: flex;
+      margin-top: 4px;
+      width: 100%;
+      flex-direction: column;
+      padding: 0 78px;
+    }
+    
+    .calendar-section {
+      border-radius: 5px;
+      background-color: rgba(40, 40, 40, 1);
+      display: flex;
+      flex-grow: 1;
+      flex-direction: column;
+      justify-content: center;
+      width: 100%;
+      padding: 50px 57px;
+    }
+    
+    .calendar-header {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      gap: 40px 100px;
+      justify-content: space-between;
+    }
+    
+    .month-year {
+      align-self: stretch;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      color: rgba(255, 255, 255, 1);
+      text-align: center;
+      justify-content: start;
+      width: 193px;
+      margin: auto 0;
+      font: 36px/1.6 Montserrat, sans-serif;
+    }
+    
+    .month {
+      font-weight: 600;
+      align-self: stretch;
+      margin: auto 0;
+    }
+    
+    .nav-arrows {
+      align-self: stretch;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      justify-content: center;
+      margin: auto 0;
+    }
+    
+    .calendar-arrow {
+      aspect-ratio: 0.5;
+      object-fit: contain;
+      object-position: center;
+      width: 10px;
+      align-self: stretch;
+      margin: auto 0;
+    }
+    
+    .calendar-grid {
+      align-self: center;
+      display: flex;
+      margin-top: 12px;
+      min-height: 226px;
+      width: 100%;
+      max-width: 330px;
+      flex-direction: column;
+      color: rgba(255, 255, 255, 1);
+      text-align: center;
+      justify-content: center;
+      font: 20px/32px Montserrat, sans-serif;
+    }
+    
+    .weekday-row {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      gap: 6px;
+      font-weight: 600;
+      justify-content: space-between;
+    }
+    
+    .weekday {
+      align-self: stretch;
+      width: 42px;
+      margin: auto 0;
+    }
+    
+    .dates-grid {
+      display: flex;
+      min-height: 184px;
+      width: 100%;
+      flex-direction: column;
+      font-weight: 400;
+      justify-content: space-between;
+    }
+    
+    .date-row {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      gap: 6px;
+      justify-content: space-between;
+    }
+    
+    .action-buttons {
+      align-self: end;
+      display: flex;
+      margin-top: 39px;
+      gap: 17px;
+      text-align: center;
+      font: 500 26px/1.2 Montserrat, sans-serif;
+    }
+    
+    .cancel-btn {
+      border-radius: 5px;
+      background-color: rgba(255, 255, 255, 1);
+      color: rgba(40, 40, 40, 1);
+      padding: 10px 58px;
+      border: 1px solid rgba(255, 228, 130, 1);
+    }
+    
+    .save-btn {
+      border-radius: 5px;
+      background-color: rgba(255, 228, 130, 1);
+      color: rgba(0, 0, 0, 1);
+      padding: 10px 38px;
+      border: 5px solid rgba(255, 228, 130, 1);
+    }
+    
+    @media (max-width: 991px) {
+      .content-container {
+        max-width: 100%;
+      }
+      
+      .header-section {
+        max-width: 100%;
+      }
+      
+      .top-nav {
+        max-width: 100%;
+        padding: 0 20px;
+      }
+      
+      .car-details {
+        max-width: 100%;
+        margin-top: 40px;
+        padding: 0 20px;
+      }
+      
+      .details-grid {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+      }
+      
+      .image-column {
+        width: 100%;
+      }
+      
+      .image-gallery {
+        max-width: 100%;
+        margin-top: 40px;
+      }
+      
+      .main-image-container {
+        max-width: 100%;
+      }
+      
+      .main-photo {
+        max-width: 100%;
+        padding: 100px 20px;
+      }
+      
+      .thumbnail-gallery {
+        margin-top: 40px;
+      }
+      
+      .info-column {
+        width: 100%;
+      }
+      
+      .car-info {
+        max-width: 100%;
+        margin-top: 40px;
+      }
+      
+      .car-title {
+        max-width: 100%;
+        margin-right: 10px;
+        font-size: 40px;
+      }
+      
+      .specs-grid {
+        max-width: 100%;
+      }
+      
+      .specs-labels {
+        margin-top: 40px;
+      }
+      
+      .specs-values {
+        margin-top: 40px;
+      }
+      
+      .spec-values-group {
+        padding-left: 20px;
+      }
+      
+      .bottom-section {
+        max-width: 100%;
+        padding: 0 20px;
+      }
+      
+      .calendar-section {
+        max-width: 100%;
+        margin-top: 39px;
+        padding: 0 20px;
+      }
+      
+      .action-buttons {
+        white-space: initial;
+      }
+      
+      .cancel-btn,
+      .save-btn {
+        padding: 0 20px;
+      }
+    }
+    </style>
+    
+    <div class="main-wrapper">
+      <div class="content-container">
+        <div class="header-section">
+          <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/96385f9e527e4a0cfefdc0c3d8bfad93490d5d25728189bcb0db5fc43fb4b1f5?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" class="background-image" alt="" />
+          <div class="top-nav">
+            <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/aef341b73acb812530737f8ce131991979e82e5b7e3efae16bd6c6d03529fed0?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" class="logo" alt="Company Logo" />
+            <div class="nav-links">
+              <div class="active-link">Мои чаты</div>
+              <div class="user-name">Гето Сугуру</div>
+            </div>
+          </div>
+          <div class="car-details">
+            <div class="details-grid">
+              <div class="image-column">
+                <div class="image-gallery">
+                  <div class="main-image-container">
+                    <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/db23be35219d3f3f7a532392c65aa7bc0caef79911e03875fd5097519d3ec576?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" class="nav-arrow" alt="" />
+                    <div class="main-photo">
+                      <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/0ab161e88e4c0c779e3a27f1e53fe2355be042c9d9ee122278ccf82ad3115624?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" class="car-photo" alt="Main car photo" />
+                    </div>
+                    <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/ab27a3f5242352659668af82800c8cca639c074ea58c84fac0ed1bdaf05bcc4d?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" class="nav-arrow" alt="" />
+                  </div>
+                  <div class="thumbnail-gallery">
+                    <div class="thumbnail">
+                      <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/ff4ded6ed884de41240ceaa811c880653bd1157f928e64b294f3becb0f86068e?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" class="thumbnail-img" alt="Car thumbnail 1" />
+                      <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/5f921de439760c71043568c022a06d8134e7cd2c443a339a4b44a10e9142bf99?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" class="thumbnail-img" alt="Car thumbnail overlay" />
+                    </div>
+                    <div class="thumbnail">
+                      <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/ae30cdcd10f61ce4096ff7a9dcd40753eb1dac0b80e7368bf2895a25049c94f7?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" class="thumbnail-img" alt="Car thumbnail 2" />
+                      <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/5f921de439760c71043568c022a06d8134e7cd2c443a339a4b44a10e9142bf99?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" class="thumbnail-img" alt="Car thumbnail overlay" />
+                    </div>
+                    <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/5f921de439760c71043568c022a06d8134e7cd2c443a339a4b44a10e9142bf99?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" class="thumbnail-img" alt="Car thumbnail 3" />
+                  </div>
+                </div>
+              </div>
+              <div class="info-column">
+                <div class="car-info">
+                  <div class="car-title">Марка и модель авто</div>
+                  <div class="specs-grid">
+                    <div class="specs-labels">
+                      <div>Марка</div>
+                      <div class="spec-label">Модель</div>
+                      <div class="spec-label">Тип кузова</div>
+                      <div class="spec-label">Год</div>
+                      <div class="spec-label">КПП</div>
+                      <div class="spec-label">Тип топлива</div>
+                      <div class="spec-label">Число пассажиров</div>
+                      <div class="spec-label">Стоимость аренды</div>
+                    </div>
+                    <div class="specs-values">
+                      <div class="spec-values-group">
+                        <div>ххххххххх</div>
+                        <div class="spec-value">ххххххххх</div>
+                        <div class="spec-value">ххххххххх</div>
+                        <div class="spec-value">хххх</div>
+                        <div class="spec-value">ххххххххх</div>
+                        <div class="spec-value">ххххххххх</div>
+                        <div class="spec-value">хх</div>
+                      </div>
+                      <div class="rental-price">ххххх Р/день</div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="bottom-section">
+          <div class="calendar-section">
+            <div class="calendar-header">
+              <div class="month-year">
+                <div class="month">Май</div>
+                <div>2024</div>
+              </div>
+              <div class="nav-arrows">
+                <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/4d546753bee293992a1aebff431b8e393bf98e82745e3d49013a031b1ab30481?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" class="calendar-arrow" alt="" />
+                <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/b31ab72a7fab8c61bea07193cc5e6e81d512792c2a954767cf0376aeea37c19c?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" class="calendar-arrow" alt="" />
+              </div>
+            </div>
+            <div class="calendar-grid">
+              <div class="weekday-row">
+                <div class="weekday">ПН</div>
+                <div class="weekday">ВТ</div>
+                <div class="weekday">СР</div>
+                <div class="weekday">ЧТ</div>
+                <div class="weekday">ПТ</div>
+                <div class="weekday">СБ</div>
+                <div class="weekday">ВС</div>
+              </div>
+              <div class="dates-grid">
+                <div class="date-row">
+                  <div class="calendar-number-inactive">29</div>
+                  <div class="calendar-number-inactive">30</div>
+                  <div class="calendar-number">01</div>
+                  <div class="calendar-number">02</div>
+                  <div class="calendar-number">03</div>
+                  <div class="calendar-number">04</div>
+                  <div class="calendar-number">05</div>
+                </div>
+                <div class="date-row">
+                  <div class="calendar-number">06</div>
+                  <div class="calendar-number-selected">07</div>
+                  <div class="calendar-number">08</div>
+                  <div class="calendar-number">09</div>
+                  <div class="calendar-number">10</div>
+                  <div class="calendar-number">11</div>
+                  <div class="calendar-number">12</div>
+                </div>
+                <div class="date-row">
+                  <div class="calendar-number">13</div>
+                  <div class="calendar-number-selected">14</div>
+                  <div class="calendar-number">15</div>
+                  <div class="calendar-number">16</div>
+                  <div class="calendar-number">17</div>
+                  <div class="calendar-number">18</div>
+                  <div class="calendar-number-selected">19</div>
+                </div>
+                <div class="date-row">
+                  <div class="calendar-number">20</div>
+                  <div class="calendar-number">21</div>
+                  <div class="calendar-number">22</div>
+                  <div class="calendar-number-selected">23</div>
+                  <div class="calendar-number">24</div>
+                  <div class="calendar-number">25</div>
+                  <div class="calendar-number">26</div>
+                </div>
+                <div class="date-row">
+                  <div class="calendar-number">27</div>
+                  <div class="calendar-number">28</div>
+                  <div class="calendar-number">29</div>
+                  <div class="calendar-number">30</div>
+                  <div class="calendar-number">31</div>
+                  <div class="calendar-number-inactive">1</div>
+                  <div class="calendar-number-inactive">2</div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="action-buttons">
+            <button class="cancel-btn">Отмена</button>
+            <button class="save-btn">Сохранить</button>
+          </div>
+        </div>
+      </div>
+    </div>
+</div>

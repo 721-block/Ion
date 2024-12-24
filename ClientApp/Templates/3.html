@@ -1,0 +1,262 @@
+<style>
+    .profile-container {
+      display: flex;
+      flex-direction: column;
+      border-radius: 0;
+    }
+    
+    .header {
+      background-color: #282828;
+      display: flex;
+      width: 100%;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding: 50px;
+      font: 23px Montserrat, sans-serif;
+    }
+    
+    .logo {
+      aspect-ratio: 3;
+      object-fit: contain;
+      width: 150px;
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 100px;
+      margin: auto 0;
+    }
+    
+    .nav-link {
+      color: #FFE482;
+      font-weight: 600;
+    }
+    
+    .nav-link-secondary {
+      color: #FFF;
+      line-height: 1.2;
+      text-align: center;
+    }
+    
+    .main-content {
+      display: flex;
+      width: 100%;
+      max-width: 1767px;
+      margin: 117px 0 0 27px;
+    }
+    
+    .profile-section {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .section-title {
+      color: #FFF;
+      text-align: center;
+      margin-left: 84px;
+      font: 700 24px/1.2 Montserrat, sans-serif;
+    }
+    
+    .profile-card {
+      border-radius: 5px;
+      background-color: rgba(40, 40, 40, 0.5);
+      display: flex;
+      width: 100%;
+      padding-bottom: 128px;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .profile-header {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      z-index: 10;
+      min-height: 362px;
+      margin-top: -138px;
+      width: 100%;
+      padding: 52px 80px 0 1px;
+    }
+    
+    .profile-banner {
+      position: absolute;
+      inset: 0;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+    }
+    
+    .back-button {
+      position: relative;
+      display: flex;
+      gap: 15px;
+      color: #282828;
+      font: 500 32px/1.6 Montserrat, sans-serif;
+    }
+    
+    .back-icon {
+      aspect-ratio: 0.55;
+      object-fit: contain;
+      width: 21px;
+      margin: auto 0;
+    }
+    
+    .avatar-wrapper {
+      position: relative;
+      border-radius: 80px;
+      background-color: #FFF;
+      z-index: 10;
+      display: flex;
+      height: 110px;
+      width: 110px;
+      align-items: center;
+      justify-content: center;
+      margin: 194px 0 -45px;
+      overflow: hidden;
+    }
+    
+    .avatar {
+      aspect-ratio: 1.19;
+      object-fit: contain;
+      width: 131px;
+      align-self: stretch;
+      margin: auto 0;
+    }
+    
+    .profile-info {
+      color: #FFF;
+      text-align: center;
+      margin-top: 63px;
+      width: 486px;
+      font: 400 24px/38px Montserrat, sans-serif;
+    }
+    
+    .rating-container {
+      display: flex;
+      width: 277px;
+      max-width: 100%;
+      gap: 27px;
+      margin: 36px 0 -26px;
+    }
+    
+    .rating-score {
+      color: #FFF;
+      text-align: center;
+      flex-grow: 1;
+      font: 400 70px/1.6 Montserrat, sans-serif;
+    }
+    
+    .rating-stars {
+      display: flex;
+      flex-direction: column;
+      margin: auto 0;
+    }
+    
+    .star-row {
+      display: flex;
+      gap: 8px;
+    }
+    
+    .star {
+      aspect-ratio: 1;
+      object-fit: contain;
+      width: 23px;
+    }
+    
+    .rating-count {
+      color: #FFF;
+      text-align: center;
+      align-self: center;
+      font: 400 24px/1.6 Montserrat, sans-serif;
+    }
+    
+    /* Media Queries */
+    @media (max-width: 991px) {
+      .header {
+        max-width: 100%;
+        padding: 0 20px;
+      }
+    
+      .main-content {
+        max-width: 100%;
+        margin-top: 40px;
+      }
+    
+      .section-title {
+        margin-left: 10px;
+      }
+    
+      .profile-card {
+        max-width: 100%;
+        padding-bottom: 100px;
+      }
+    
+      .profile-header {
+        max-width: 100%;
+        padding-right: 20px;
+      }
+    
+      .avatar-wrapper {
+        margin: 40px 0 10px;
+      }
+    
+      .profile-info {
+        margin-top: 40px;
+      }
+    
+      .rating-score {
+        font-size: 40px;
+      }
+    }
+    </style>
+    
+    <div class="profile-container">
+      <header class="header">
+        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/a93ae0dde6c9c0bc02075f1fff104fc0a9b7c1665d65fd91c00adbcfc14fc31c?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" alt="" class="logo" />
+        <nav class="nav-links">
+          <a href="#" class="nav-link">Мои чаты</a>
+          <span class="nav-link-secondary">Годжо Сатору</span>
+        </nav>
+      </header>
+    
+      <main class="main-content">
+        <section class="profile-section">
+          <h1 class="section-title">Данные профиля</h1>
+          
+          <div class="profile-card">
+            <div class="profile-header">
+              <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/5bfcb4f5729c8e209ac24dd2a27b0ba7ad7d50cee7e29a66b2c7d13d33b99234?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" alt="Profile banner" class="profile-banner" />
+              
+              <a href="#" class="back-button">
+                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/091b6d231253f2fd14893406b5e62873511592445fdc6869ea22289128ddabab?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" alt="" class="back-icon" />
+                <span>Назад</span>
+              </a>
+    
+              <div class="avatar-wrapper">
+                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/f7c97ec350c3d9704505520ce0c64860a42d6f68c6a79fdb38b91b550d092040?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" alt="User avatar" class="avatar" />
+              </div>
+            </div>
+    
+            <div class="profile-info">
+              Инумаки Тоге<br />
+              +7(950) 123-45-67
+            </div>
+    
+            <div class="rating-container">
+              <div class="rating-score">5,0</div>
+              <div class="rating-stars">
+                <div class="star-row">
+                  <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/3d25b47f218a6a40fc27520af34cb96725c098b7f869de0fb517dd11db827fa8?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" alt="" class="star" />
+                  <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/10b68988bb365fa36a5dc38e6f465d4420c5d3d756737ef842da568a32d15fd9?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" alt="" class="star" />
+                  <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/3d25b47f218a6a40fc27520af34cb96725c098b7f869de0fb517dd11db827fa8?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" alt="" class="star" />
+                  <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/10b68988bb365fa36a5dc38e6f465d4420c5d3d756737ef842da568a32d15fd9?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" alt="" class="star" />
+                  <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/3d25b47f218a6a40fc27520af34cb96725c098b7f869de0fb517dd11db827fa8?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" alt="" class="star" />
+                </div>
+                <span class="rating-count">3 оценки</span>
+              </div>
+            </div>
+          </div>
+        </section>
+      </main>
+    </div>

@@ -1,0 +1,445 @@
+<style>
+    .profile-section {
+      border-radius: 0;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .profile-wrapper {
+      background-color: #fff;
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+    }
+    
+    .content-container {
+      display: flex;
+      flex-direction: column;
+      min-height: 1080px;
+      width: 100%;
+      padding-bottom: 80px;
+      align-items: center;
+    }
+    
+    .background-image {
+      position: absolute;
+      inset: 0;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    
+    .header {
+      position: relative;
+      background-color: #282828;
+      align-self: stretch;
+      display: flex;
+      width: 100%;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding: 50px 65px;
+    }
+    
+    .logo {
+      aspect-ratio: 3;
+      object-fit: contain;
+      object-position: center;
+      width: 150px;
+    }
+    
+    .header-nav {
+      display: flex;
+      gap: 40px 68px;
+    }
+    
+    .chat-link {
+      color: #FFE482;
+      margin: auto 0;
+      font: 600 23px Montserrat, sans-serif;
+    }
+    
+    .user-profile {
+      display: flex;
+      gap: 16px;
+    }
+    
+    .avatar-container {
+      border-radius: 80px;
+      background-color: #fff;
+      display: flex;
+      height: 50px;
+      align-items: center;
+      width: 50px;
+      justify-content: center;
+      overflow: hidden;
+    }
+    
+    .avatar {
+      aspect-ratio: 1.04;
+      object-fit: contain;
+      width: 52px;
+      align-self: stretch;
+      margin: auto 0;
+    }
+    
+    .username {
+      color: #fff;
+      text-align: center;
+      margin: auto 0;
+      font: 400 23px/1.2 Montserrat, sans-serif;
+    }
+    
+    .nav-container {
+      position: relative;
+      display: flex;
+      margin-top: 81px;
+      width: 100%;
+      max-width: 1706px;
+      gap: 40px 100px;
+      flex-wrap: wrap;
+    }
+    
+    .nav-tabs {
+      border-radius: 5px;
+      background-color: #282828;
+      flex-grow: 1;
+      padding: 36px 80px;
+    }
+    
+    .tab-wrapper {
+      gap: 20px;
+      display: flex;
+    }
+    
+    .tab-col {
+      display: flex;
+      flex-direction: column;
+      line-height: normal;
+      width: 50%;
+      margin-left: 0;
+    }
+    
+    .tab-text {
+      color: #fff;
+      text-align: center;
+      font: 400 24px/1.2 Montserrat, sans-serif;
+    }
+    
+    .tab-active {
+      color: #fff;
+      text-align: center;
+      font: 700 24px/1.2 Montserrat, sans-serif;
+    }
+    
+    .create-btn {
+      border-radius: 5px;
+      background-color: #FFE482;
+      display: flex;
+      gap: 7px;
+      font: 600 24px/1.2 Montserrat, sans-serif;
+      color: #282828;
+      text-align: center;
+      padding: 26px 36px;
+    }
+    
+    .plus-icon {
+      font-size: 40px;
+    }
+    
+    .btn-text {
+      flex-grow: 1;
+      margin: auto 0;
+    }
+    
+    .listings-container {
+      position: relative;
+      margin-top: 68px;
+      width: 100%;
+      max-width: 1706px;
+    }
+    
+    .listings-grid {
+      gap: 20px;
+      display: flex;
+    }
+    
+    .listing-col {
+      display: flex;
+      flex-direction: column;
+      line-height: normal;
+      width: 33%;
+    }
+    
+    .listing-card {
+      border-radius: 5px;
+      background-color: rgba(40, 40, 40, 0.5);
+      position: relative;
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+    }
+    
+    .card-content {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      min-height: 470px;
+      width: 100%;
+      align-items: flex-start;
+      gap: 40px 73px;
+      flex-wrap: wrap;
+      padding: 22px 19px;
+    }
+    
+    .card-details {
+      position: relative;
+      align-self: end;
+      display: flex;
+      margin-top: 227px;
+      flex-direction: column;
+      color: #fff;
+      flex-grow: 1;
+      flex-basis: 0;
+      width: fit-content;
+      font: 500 32px Montserrat, sans-serif;
+    }
+    
+    .car-title {
+      align-self: start;
+    }
+    
+    .price {
+      font-weight: 700;
+      align-self: start;
+      margin-top: 4px;
+    }
+    
+    .date-added {
+      margin: 26px 36px 0 0;
+    }
+    
+    .status {
+      color: #282828;
+      align-self: end;
+      margin-top: 14px;
+    }
+    
+    .status-rented {
+      color: #FFE482;
+    }
+    
+    .card-actions {
+      position: relative;
+      align-self: start;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .action-icon {
+      aspect-ratio: 1;
+      object-fit: contain;
+      object-position: center;
+      width: 34px;
+    }
+    
+    .action-icon-secondary {
+      aspect-ratio: 0.82;
+      object-fit: contain;
+      object-position: center;
+      width: 32px;
+      margin-top: 201px;
+    }
+    
+    .load-more {
+      position: relative;
+      color: #282828;
+      margin-top: 80px;
+      font: 400 32px/1.6 Montserrat, sans-serif;
+    }
+    
+    @media (max-width: 991px) {
+      .profile-wrapper {
+        max-width: 100%;
+      }
+      
+      .content-container {
+        max-width: 100%;
+      }
+      
+      .header {
+        max-width: 100%;
+        padding: 0 20px;
+      }
+      
+      .nav-container {
+        max-width: 100%;
+        margin-top: 40px;
+      }
+      
+      .nav-tabs {
+        max-width: 100%;
+        padding: 0 20px;
+      }
+      
+      .tab-wrapper {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+      }
+      
+      .tab-col {
+        width: 100%;
+      }
+      
+      .tab-text {
+        margin-top: 40px;
+      }
+      
+      .tab-active {
+        margin-top: 40px;
+      }
+      
+      .create-btn {
+        padding: 0 20px;
+      }
+      
+      .listings-container {
+        max-width: 100%;
+        margin-top: 40px;
+      }
+      
+      .listings-grid {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+      }
+      
+      .listing-col {
+        width: 100%;
+      }
+      
+      .listing-card {
+        max-width: 100%;
+        margin-top: 28px;
+      }
+      
+      .card-content {
+        max-width: 100%;
+      }
+      
+      .card-details {
+        margin-top: 40px;
+      }
+      
+      .date-added {
+        margin-right: 10px;
+      }
+      
+      .action-icon-secondary {
+        margin: 40px 3px 0 0;
+      }
+      
+      .load-more {
+        margin-top: 40px;
+      }
+    }
+    </style>
+    
+    <div class="profile-section">
+      <div class="profile-wrapper">
+        <div class="content-container">
+          <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/dee089155c5ba244915ca6d243ce00a0ae6be09a7d5d80e4083324004e46cbf8?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" alt="" class="background-image" />
+          <header class="header">
+            <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/c5de912daa12569c8fbf4538371c73032570ac22188a3de3878b8735f328e7ef?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" alt="Website Logo" class="logo" />
+            <nav class="header-nav">
+              <a href="#chats" class="chat-link">Мои чаты</a>
+              <div class="user-profile">
+                <div class="avatar-container">
+                  <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/1335a9875e06870d281c922fab5a705e1faf182462a1bd2a06779100cce72776?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" alt="User Avatar" class="avatar" />
+                </div>
+                <span class="username">Гето Сугуру</span>
+              </div>
+            </nav>
+          </header>
+    
+          <div class="nav-container">
+            <nav class="nav-tabs">
+              <div class="tab-wrapper">
+                <div class="tab-col">
+                  <div class="tab-text">Данные профиля</div>
+                </div>
+                <div class="tab-col">
+                  <div class="tab-active">Объявления</div>
+                </div>
+              </div>
+            </nav>
+            <button class="create-btn">
+              <span class="plus-icon">+</span>
+              <span class="btn-text">Создать объявление</span>
+            </button>
+          </div>
+    
+          <div class="listings-container">
+            <div class="listings-grid">
+              <div class="listing-col">
+                <div class="listing-card">
+                  <div class="card-content">
+                    <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/8cd497b6f623ba07c0f5691e0b16e688224d6a9b9e8072c20acda6e1277b37b6?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" alt="Car Image" class="background-image" />
+                    <div class="card-details">
+                      <h2 class="car-title">Марка авто год</h2>
+                      <p class="price">Цена руб/сутки</p>
+                      <p class="date-added"><strong>Добавлено:</strong> 13.01.2024</p>
+                      <p class="status">Сейчас свободен</p>
+                    </div>
+                    <div class="card-actions">
+                      <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/96127e7c0827f68811a0db6b3ecca581d9a607dc3cd2b7ae8c62b5569efd064e?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" alt="Edit" class="action-icon" />
+                      <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/6a309c04ed37e8eb1c9db048bd886049cead7dcd885e71b86b4d0e852f708c0f?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" alt="Delete" class="action-icon-secondary" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+    
+              <div class="listing-col">
+                <div class="listing-card">
+                  <div class="card-content">
+                    <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/8cd497b6f623ba07c0f5691e0b16e688224d6a9b9e8072c20acda6e1277b37b6?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" alt="Car Image" class="background-image" />
+                    <div class="card-details">
+                      <h2 class="car-title">Марка авто год</h2>
+                      <p class="price">Цена руб/сутки</p>
+                      <p class="date-added"><strong>Добавлено:</strong> 13.01.2024</p>
+                      <p class="status status-rented">Сейчас в аренде</p>
+                    </div>
+                    <div class="card-actions">
+                      <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/96127e7c0827f68811a0db6b3ecca581d9a607dc3cd2b7ae8c62b5569efd064e?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" alt="Edit" class="action-icon" />
+                      <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/6a309c04ed37e8eb1c9db048bd886049cead7dcd885e71b86b4d0e852f708c0f?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" alt="Delete" class="action-icon-secondary" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+    
+              <div class="listing-col">
+                <div class="listing-card">
+                  <div class="card-content">
+                    <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/8cd497b6f623ba07c0f5691e0b16e688224d6a9b9e8072c20acda6e1277b37b6?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" alt="Car Image" class="background-image" />
+                    <div class="card-details">
+                      <h2 class="car-title">Марка авто год</h2>
+                      <p class="price">Цена руб/сутки</p>
+                      <p class="date-added"><strong>Добавлено:</strong> 13.01.2024</p>
+                      <p class="status">Сейчас свободен</p>
+                    </div>
+                    <div class="card-actions">
+                      <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/96127e7c0827f68811a0db6b3ecca581d9a607dc3cd2b7ae8c62b5569efd064e?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" alt="Edit" class="action-icon" />
+                      <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/6a309c04ed37e8eb1c9db048bd886049cead7dcd885e71b86b4d0e852f708c0f?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" alt="Delete" class="action-icon-secondary" />
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+    
+          <button class="load-more">Показать ещё</button>
+        </div>
+      </div>
+    </div>

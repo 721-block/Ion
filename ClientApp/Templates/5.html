@@ -1,0 +1,262 @@
+<style>
+    .chat-container {
+      border-radius: 0;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .chat-content {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      min-height: 1126px;
+      width: 100%;
+      padding-bottom: 55px;
+      align-items: center;
+    }
+    
+    .background-image {
+      position: absolute;
+      inset: 0;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    
+    .header {
+      position: relative;
+      background-color: rgb(40, 40, 40);
+      align-self: stretch;
+      display: flex;
+      width: 100%;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding: 50px 55px;
+    }
+    
+    .logo {
+      aspect-ratio: 3;
+      object-fit: contain;
+      object-position: center;
+      width: 150px;
+      max-width: 100%;
+    }
+    
+    .user-profile {
+      display: flex;
+      gap: 16px;
+    }
+    
+    .avatar {
+      border-radius: 80px;
+      background-color: rgb(255, 255, 255);
+      display: flex;
+      height: 50px;
+      width: 50px;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    
+    .avatar-image {
+      aspect-ratio: 1.04;
+      object-fit: contain;
+      object-position: center;
+      width: 52px;
+      align-self: stretch;
+      margin: auto 0;
+    }
+    
+    .username {
+      color: rgb(255, 255, 255);
+      text-align: center;
+      margin: auto 0;
+      font: 400 23px/1.2 Montserrat, sans-serif;
+    }
+    
+    .navigation {
+      position: relative;
+      display: flex;
+      margin-top: 55px;
+      width: 100%;
+      max-width: 1706px;
+      gap: 40px 55px;
+      color: rgb(40, 40, 40);
+      flex-wrap: wrap;
+      font: 500 32px Montserrat, sans-serif;
+    }
+    
+    .back-button {
+      display: flex;
+      gap: 15px;
+      white-space: nowrap;
+      line-height: 1.6;
+      margin: auto 0;
+    }
+    
+    .back-icon {
+      aspect-ratio: 0.55;
+      object-fit: contain;
+      object-position: center;
+      width: 21px;
+      margin: auto 0;
+    }
+    
+    .search-container {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      min-height: 86px;
+      width: fit-content;
+      text-align: center;
+      line-height: 1.2;
+      flex-grow: 1;
+      padding: 24px 30px;
+    }
+    
+    .chat-item {
+      position: relative;
+      border-radius: 5px;
+      background-color: rgba(40, 40, 40, 0.5);
+      display: flex;
+      margin-top: 56px;
+      width: 1706px;
+      max-width: 100%;
+      gap: 27px;
+      color: rgb(255, 255, 255);
+      text-align: center;
+      flex-wrap: wrap;
+      padding: 54px 80px 54px 29px;
+      font: 700 32px/1.2 Montserrat, sans-serif;
+    }
+    
+    .chat-avatar {
+      background-color: rgb(120, 215, 232);
+      border-radius: 50%;
+      display: flex;
+      width: 130px;
+      height: 130px;
+    }
+    
+    .chat-details {
+      display: flex;
+      flex-direction: column;
+      align-items: start;
+    }
+    
+    .chat-name {
+      font-size: 36px;
+    }
+    
+    .chat-title {
+      font-weight: 500;
+      align-self: stretch;
+    }
+    
+    .chat-message {
+      color: rgba(40, 40, 40, 0.5);
+      margin-top: 11px;
+    }
+    
+    .bold-text {
+      font-weight: 600;
+    }
+    
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      border: 0;
+    }
+    
+    @media (max-width: 991px) {
+      .chat-content,
+      .header,
+      .navigation,
+      .chat-details,
+      .chat-title,
+      .chat-message {
+        max-width: 100%;
+      }
+      
+      .header {
+        padding: 0 20px;
+      }
+      
+      .navigation {
+        margin-top: 40px;
+      }
+      
+      .back-button {
+        white-space: initial;
+      }
+      
+      .search-container {
+        padding: 0 20px;
+      }
+      
+      .chat-item {
+        margin-top: 40px;
+        padding: 0 20px;
+      }
+    }
+    </style>
+    
+    <div class="chat-container">
+      <div class="chat-content">
+        <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/a73d35dfc341380ab334b754739d4d67e423ae42e4a3cc5e381aa0218a1c2465?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" class="background-image" alt="" />
+        <header class="header">
+          <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/6066b3af0cd6519e863fadcf808c3a686c49e2207c64195d1e7dd6a3b77b609f?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" class="logo" alt="Company Logo" />
+          <div class="user-profile">
+            <div class="avatar">
+              <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/1335a9875e06870d281c922fab5a705e1faf182462a1bd2a06779100cce72776?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" class="avatar-image" alt="User Avatar" />
+            </div>
+            <span class="username">Годжу Сатору</span>
+          </div>
+        </header>
+        
+        <nav class="navigation">
+          <div class="back-button" tabindex="0" role="button">
+            <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/091b6d231253f2fd14893406b5e62873511592445fdc6869ea22289128ddabab?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" class="back-icon" alt="" />
+            <span>Назад</span>
+          </div>
+          <div class="search-container" role="search">
+            <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/395e6cab7cf3d73869c7704afe910e258c4a5d059c23584928e59364187a7cb8?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" class="background-image" alt="" />
+            Поиск по сообщениям
+          </div>
+        </nav>
+    
+        <div class="chat-item">
+          <div class="chat-avatar"></div>
+          <div class="chat-details">
+            <h2 class="chat-name">Итадори</h2>
+            <p class="chat-title">Volkswagen Passat CC 2.0 AMT - <span class="bold-text">1500</span> руб/сутки</p>
+            <p class="chat-message">Текст последнего сообщения</p>
+          </div>
+        </div>
+    
+        <div class="chat-item">
+          <div class="chat-avatar" style="background-color: rgb(120, 232, 165);"></div>
+          <div class="chat-details">
+            <h2 class="chat-name">Нишимия</h2>
+            <p class="chat-title">Toyota Century 5.0 AT - <span class="bold-text">3000</span> руб/сутки</p>
+            <p class="chat-message">Текст последнего сообщения</p>
+          </div>
+        </div>
+    
+        <div class="chat-item">
+          <div class="chat-avatar" style="background-color: rgb(243, 151, 237);"></div>
+          <div class="chat-details">
+            <h2 class="chat-name">Фушигуро</h2>
+            <p class="chat-title">Audi A3 2.0 AT - <span class="bold-text">4300</span> руб/сутки</p>
+            <p class="chat-message">Текст последнего сообщения</p>
+          </div>
+        </div>
+      </div>
+    </div>

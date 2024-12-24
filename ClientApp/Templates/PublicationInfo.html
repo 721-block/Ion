@@ -1,0 +1,410 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Rental Details</title>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #282828;
+            --accent-color: #FFE482;
+            --white: #FFFFFF;
+            --text-primary: #282828;
+            --border-radius: 5px;
+            --spacing-sm: 10px;
+            --spacing-md: 20px;
+            --spacing-lg: 40px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            line-height: 1.6;
+            color: var(--text-primary);
+        }
+
+        .visually-hidden {
+            position: absolute;
+            width: 1px;
+            height: 1px;
+            padding: 0;
+            margin: -1px;
+            overflow: hidden;
+            clip: rect(0, 0, 0, 0);
+            white-space: nowrap;
+            border: 0;
+        }
+
+        .page-wrapper {
+            min-height: 100vh;
+            background-color: var(--white);
+        }
+
+        .header {
+            background-color: var(--primary-color);
+            padding: 50px 55px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            width: 150px;
+            height: auto;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: var(--spacing-lg);
+            align-items: center;
+        }
+
+        .nav-link {
+            color: var(--accent-color);
+            font-weight: 600;
+            font-size: 23px;
+            text-decoration: none;
+        }
+
+        .user-name {
+            color: var(--white);
+            font-size: 23px;
+        }
+
+        .main-content {
+            max-width: 1767px;
+            margin: 0 auto;
+            padding: var(--spacing-lg);
+        }
+
+        .back-button {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-sm);
+            font-size: 32px;
+            font-weight: 500;
+            margin-bottom: var(--spacing-lg);
+            cursor: pointer;
+            border: none;
+            background: none;
+        }
+
+        .car-details {
+            background-color: var(--primary-color);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-lg);
+            color: var(--white);
+        }
+
+        .car-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .user-profile {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+        }
+
+        .profile-image {
+            width: 100px;
+            height: 100px;
+            border-radius: 50%;
+            background-color: #FDC372;
+        }
+
+        .profile-name {
+            font-size: 40px;
+            font-weight: 500;
+        }
+
+        .message-button {
+            background-color: var(--white);
+            color: var(--text-primary);
+            border: 1px solid var(--accent-color);
+            border-radius: var(--border-radius);
+            padding: 7px 40px;
+            font-size: 40px;
+            font-weight: 600;
+            cursor: pointer;
+        }
+
+        .car-info-grid {
+            display: grid;
+            grid-template-columns: auto 1fr;
+            gap: var(--spacing-md);
+            font-size: 28px;
+        }
+
+        .info-label {
+            font-weight: 500;
+        }
+
+        .calendar-section {
+            margin-top: var(--spacing-lg);
+            background-color: var(--primary-color);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-lg);
+            color: var(--white);
+        }
+
+        .calendar-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: var(--spacing-md);
+        }
+
+        .calendar-title {
+            font-size: 36px;
+            font-weight: 600;
+        }
+
+        .calendar-grid {
+            display: grid;
+            grid-template-columns: repeat(7, 1fr);
+            gap: 6px;
+            text-align: center;
+        }
+
+        .calendar-day {
+            padding: 5px;
+            font-size: 20px;
+        }
+
+        .calendar-day.selected {
+            background-color: var(--accent-color);
+            border-radius: 10px;
+        }
+
+        .reviews-section {
+            margin-top: var(--spacing-lg);
+            background-color: var(--primary-color);
+            border-radius: var(--border-radius);
+            padding: var(--spacing-lg);
+            color: var(--white);
+        }
+
+        .rating-summary {
+            display: flex;
+            align-items: center;
+            gap: var(--spacing-md);
+        }
+
+        .rating-number {
+            font-size: 64px;
+            font-weight: 500;
+        }
+
+        .star-rating {
+            display: flex;
+            gap: 7px;
+        }
+
+        .star-icon {
+            width: 23px;
+            height: 23px;
+        }
+
+        .review-count {
+            font-size: 24px;
+            font-weight: 600;
+        }
+
+        .review-list {
+            margin-top: var(--spacing-lg);
+        }
+
+        .review-item {
+            display: flex;
+            gap: var(--spacing-md);
+            margin-bottom: var(--spacing-lg);
+        }
+
+        .reviewer-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+        }
+
+        .review-content {
+            flex: 1;
+        }
+
+        .reviewer-name {
+            font-size: 32px;
+            font-weight: 600;
+        }
+
+        .review-date {
+            font-size: 24px;
+            color: #999;
+        }
+
+        .review-text {
+            font-size: 36px;
+            margin-top: var(--spacing-sm);
+        }
+
+        @media (max-width: 991px) {
+            .header {
+                padding: var(--spacing-md);
+            }
+
+            .main-content {
+                padding: var(--spacing-md);
+            }
+
+            .car-header {
+                flex-direction: column;
+                gap: var(--spacing-md);
+            }
+
+            .message-button {
+                width: 100%;
+                font-size: 32px;
+            }
+
+            .car-info-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .rating-number {
+                font-size: 40px;
+            }
+
+            .review-item {
+                flex-direction: column;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="page-wrapper">
+        <header class="header" role="banner">
+            <img src="logo.svg" alt="Car Rental Logo" class="logo">
+            <nav class="nav-links" role="navigation">
+                <a href="/chats" class="nav-link">Мои чаты</a>
+                <span class="user-name">Годжу Сатору</span>
+            </nav>
+        </header>
+
+        <main class="main-content" role="main">
+            <button class="back-button" aria-label="Go back">
+                <img src="back-arrow.svg" alt="" aria-hidden="true">
+                Назад
+            </button>
+
+            <section class="car-details" aria-labelledby="car-details-title">
+                <h1 id="car-details-title" class="visually-hidden">Car Details</h1>
+                
+                <div class="car-header">
+                    <div class="user-profile">
+                        <div class="profile-image" role="img" aria-label="Profile picture"></div>
+                        <span class="profile-name">Инумаки Тоге</span>
+                    </div>
+                    <button class="message-button">Написать</button>
+                </div>
+
+                <dl class="car-info-grid">
+                    <dt class="info-label">Марка</dt>
+                    <dd>ххххххххх</dd>
+                    <dt class="info-label">Модель</dt>
+                    <dd>ххххххххх</dd>
+                    <dt class="info-label">Тип кузова</dt>
+                    <dd>ххххххххх</dd>
+                    <dt class="info-label">Год</dt>
+                    <dd>хххх</dd>
+                    <dt class="info-label">КПП</dt>
+                    <dd>ххххххххх</dd>
+                    <dt class="info-label">Тип топлива</dt>
+                    <dd>ххххххххх</dd>
+                    <dt class="info-label">Число пассажиров</dt>
+                    <dd>хх</dd>
+                    <dt class="info-label">Стоимость аренды</dt>
+                    <dd>ххххх Р/день</dd>
+                </dl>
+            </section>
+
+            <section class="calendar-section" aria-labelledby="calendar-title">
+                <div class="calendar-header">
+                    <h2 id="calendar-title" class="calendar-title">Май 2024</h2>
+                    <div class="calendar-navigation">
+                        <button aria-label="Previous month">
+                            <img src="prev-arrow.svg" alt="" aria-hidden="true">
+                        </button>
+                        <button aria-label="Next month">
+                            <img src="next-arrow.svg" alt="" aria-hidden="true">
+                        </button>
+                    </div>
+                </div>
+
+                <div class="calendar-grid" role="grid">
+                    <div role="columnheader">ПН</div>
+                    <div role="columnheader">ВТ</div>
+                    <div role="columnheader">СР</div>
+                    <div role="columnheader">ЧТ</div>
+                    <div role="columnheader">ПТ</div>
+                    <div role="columnheader">СБ</div>
+                    <div role="columnheader">ВС</div>
+                    <!-- Calendar days would be dynamically generated -->
+                </div>
+            </section>
+
+            <section class="reviews-section" aria-labelledby="reviews-title">
+                <h2 id="reviews-title" class="visually-hidden">Reviews</h2>
+                
+                <div class="rating-summary">
+                    <span class="rating-number">5,0</span>
+                    <div class="star-rating" aria-label="5 out of 5 stars">
+                        <img src="star-filled.svg" alt="" class="star-icon" aria-hidden="true">
+                        <img src="star-filled.svg" alt="" class="star-icon" aria-hidden="true">
+                        <img src="star-filled.svg" alt="" class="star-icon" aria-hidden="true">
+                        <img src="star-filled.svg" alt="" class="star-icon" aria-hidden="true">
+                        <img src="star-filled.svg" alt="" class="star-icon" aria-hidden="true">
+                    </div>
+                    <span class="review-count">на основании 3 оценок</span>
+                </div>
+
+                <div class="review-list">
+                    <article class="review-item">
+                        <div class="reviewer-avatar" style="background-color: #FFC3C3;" role="img" aria-label="Махито's profile picture"></div>
+                        <div class="review-content">
+                            <h3 class="reviewer-name">Махито</h3>
+                            <time class="review-date">11 сентября</time>
+                            <p class="review-text">Текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст тек</p>
+                        </div>
+                    </article>
+
+                    <article class="review-item">
+                        <div class="reviewer-avatar" style="background-color: #D1FFC3;" role="img" aria-label="Ханами's profile picture"></div>
+                        <div class="review-content">
+                            <h3 class="reviewer-name">Ханами</h3>
+                            <time class="review-date">7 февраля</time>
+                            <p class="review-text">Текст текст текст</p>
+                        </div>
+                    </article>
+
+                    <article class="review-item">
+                        <div class="reviewer-avatar" style="background-color: #C3F5FF;" role="img" aria-label="Чосо's profile picture"></div>
+                        <div class="review-content">
+                            <h3 class="reviewer-name">Чосо</h3>
+                            <time class="review-date">1 февраля</time>
+                            <p class="review-text">Текст текст текст</p>
+                        </div>
+                    </article>
+                </div>
+            </section>
+        </main>
+    </div>
+</body>
+</htm

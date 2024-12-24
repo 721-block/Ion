@@ -1,0 +1,449 @@
+<style>
+    .search-container {
+      border-radius: 0;
+      display: flex;
+      flex-direction: column;
+    }
+    .main-wrapper {
+      background-color: #fff;
+      display: flex;
+      width: 100%;
+      padding-bottom: 51px;
+      flex-direction: column;
+    }
+    .content-section {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      min-height: 1080px;
+      width: 100%;
+      padding-bottom: 27px;
+      align-items: center;
+    }
+    .background-image {
+      position: absolute;
+      inset: 0;
+      height: 100%;
+      width: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    .header {
+      position: relative;
+      background-color: #282828;
+      align-self: stretch;
+      display: flex;
+      width: 100%;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding: 50px 55px;
+    }
+    .logo-container {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      aspect-ratio: 3;
+      width: 150px;
+    }
+    .logo {
+      aspect-ratio: 3;
+      object-fit: contain;
+      object-position: center;
+      width: 100%;
+    }
+    .nav-section {
+      display: flex;
+      gap: 40px 68px;
+    }
+    .nav-link {
+      color: #FFE482;
+      flex-basis: auto;
+      margin: auto 0;
+      font: 600 23px Montserrat, sans-serif;
+    }
+    .user-profile {
+      display: flex;
+      gap: 16px;
+    }
+    .avatar-wrapper {
+      border-radius: 80px;
+      background-color: #fff;
+      display: flex;
+      height: 50px;
+      align-items: center;
+      gap: 10px;
+      overflow: hidden;
+      width: 50px;
+      justify-content: center;
+    }
+    .avatar {
+      aspect-ratio: 1.04;
+      object-fit: contain;
+      object-position: center;
+      width: 52px;
+      align-self: stretch;
+      margin: auto 0;
+    }
+    .username {
+      color: #fff;
+      text-align: center;
+      flex-basis: auto;
+      margin: auto 0;
+      font: 400 23px/1.2 Montserrat, sans-serif;
+    }
+    .search-form {
+      position: relative;
+      border-radius: 5px;
+      background-color: #282828;
+      display: flex;
+      margin-top: 49px;
+      width: 1650px;
+      max-width: 100%;
+      align-items: start;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding: 20px 80px 20px 28px;
+    }
+    .location-group {
+      display: flex;
+      margin-top: 13px;
+      flex-direction: column;
+    }
+    .location-label {
+      color: #fff;
+      text-align: center;
+      align-self: start;
+      font: 400 24px/1.2 Montserrat, sans-serif;
+    }
+    .location-input {
+      color: #6F6F6F;
+      margin-top: 37px;
+      font: 200 20px/1.6 "Codec Pro", sans-serif;
+      background: transparent;
+      border: none;
+    }
+    .divider {
+      align-self: stretch;
+      width: 1px;
+      height: 160px;
+      border: 1px solid #fff;
+    }
+    .date-group {
+      display: flex;
+      margin-top: 13px;
+      flex-direction: column;
+    }
+    .date-label {
+      color: #fff;
+      text-align: center;
+      align-self: start;
+      font: 400 24px/1.2 Montserrat, sans-serif;
+    }
+    .date-time-wrapper {
+      display: flex;
+      margin-top: 38px;
+      width: 100%;
+      gap: 20px;
+      color: #6F6F6F;
+      justify-content: space-between;
+      font: 200 20px/1.6 "Codec Pro", sans-serif;
+    }
+    .date-input-group {
+      display: flex;
+      gap: 8px;
+    }
+    .date-input {
+      flex-grow: 1;
+      background: transparent;
+      border: none;
+      color: #6F6F6F;
+    }
+    .time-input-group {
+      display: flex;
+      gap: 5px;
+    }
+    .time-input {
+      flex-grow: 1;
+      background: transparent;
+      border: none;
+      color: #6F6F6F;
+    }
+    .calendar-icon {
+      aspect-ratio: 1.05;
+      object-fit: contain;
+      object-position: center;
+      width: 21px;
+      border-radius: 0;
+      margin: auto 0;
+    }
+    .clock-icon {
+      aspect-ratio: 1;
+      object-fit: contain;
+      object-position: center;
+      width: 19px;
+      border-radius: 0;
+      margin: auto 0;
+    }
+    .filters-section {
+      position: relative;
+      display: flex;
+      margin-top: 37px;
+      width: 100%;
+      max-width: 1649px;
+      gap: 20px;
+      color: #fff;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      font: 500 22px Montserrat, sans-serif;
+    }
+    .filter-groups {
+      display: flex;
+      gap: 40px 64px;
+      flex-wrap: wrap;
+    }
+    .filter-item {
+      border-radius: 5px;
+      background-color: rgba(40, 40, 40, 0.5);
+      display: flex;
+      gap: 20px;
+      justify-content: space-between;
+      padding: 19px 20px;
+    }
+    .filter-icon {
+      aspect-ratio: 1.64;
+      object-fit: contain;
+      object-position: center;
+      width: 18px;
+      margin: auto 0;
+    }
+    .price-group {
+      display: flex;
+      gap: 31px;
+      flex-wrap: wrap;
+    }
+    .price-label {
+      color: #000;
+      margin: auto 0;
+    }
+    .price-input {
+      border-radius: 5px;
+      background-color: rgba(40, 40, 40, 0.5);
+      padding: 19px 24px;
+      color: #fff;
+      border: none;
+    }
+    .results-grid {
+      position: relative;
+      display: flex;
+      margin-top: 21px;
+      width: 100%;
+      max-width: 1649px;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+    .result-card {
+      aspect-ratio: 0.88;
+      object-fit: contain;
+      object-position: center;
+      width: 100%;
+      border-radius: 0;
+      align-self: start;
+      margin-top: 17px;
+    }
+    .empty-state {
+      border-radius: 5px;
+      background-color: #A0A0A0;
+      display: flex;
+      flex-direction: column;
+      padding: 19px 0 473px;
+    }
+    .empty-indicator {
+      border-radius: 5px;
+      background-color: #282828;
+      display: flex;
+      height: 50px;
+    }
+    .map-section {
+      aspect-ratio: 1.17;
+      object-fit: contain;
+      object-position: center;
+      width: 100%;
+      border-radius: 0;
+    }
+    .additional-results {
+      z-index: 10;
+      width: 899px;
+      max-width: 100%;
+      margin: -44px 0 0 136px;
+    }
+    .results-row {
+      gap: 20px;
+      display: flex;
+    }
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      border: 0;
+    }
+    @media (max-width: 991px) {
+      .main-wrapper {
+        max-width: 100%;
+      }
+      .content-section {
+        max-width: 100%;
+      }
+      .header {
+        max-width: 100%;
+        padding: 0 20px;
+      }
+      .search-form {
+        margin-top: 40px;
+        padding: 0 20px;
+      }
+      .filters-section {
+        max-width: 100%;
+      }
+      .filter-groups {
+        max-width: 100%;
+      }
+      .price-group {
+        max-width: 100%;
+      }
+      .price-input {
+        padding: 0 20px;
+      }
+      .results-grid {
+        max-width: 100%;
+      }
+      .empty-state {
+        padding-bottom: 100px;
+      }
+      .map-section {
+        max-width: 100%;
+      }
+      .results-row {
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+      }
+      .column {
+        width: 100%;
+      }
+      .result-card {
+        margin-top: 40px;
+      }
+    }
+  </style>
+  
+  <form class="search-container" role="search">
+    <div class="main-wrapper">
+      <div class="content-section">
+        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/abcc6cd4d9f8b8078811559df616a7b244e55f3a42fb9d3a3d292fc1a241700a?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" alt="" class="background-image" />
+        
+        <header class="header">
+          <div class="logo-container">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/a93ae0dde6c9c0bc02075f1fff104fc0a9b7c1665d65fd91c00adbcfc14fc31c?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" alt="Logo" class="logo" />
+          </div>
+          <nav class="nav-section">
+            <a href="#" class="nav-link">Мои чаты</a>
+            <div class="user-profile">
+              <div class="avatar-wrapper">
+                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/1335a9875e06870d281c922fab5a705e1faf182462a1bd2a06779100cce72776?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" alt="User avatar" class="avatar" />
+              </div>
+              <span class="username">Годжу Сатору</span>
+            </div>
+          </nav>
+        </header>
+  
+        <div class="search-form">
+          <div class="location-group">
+            <label for="location" class="location-label">Адрес</label>
+            <input type="text" id="location" class="location-input" placeholder="Город, вокзал, аэропорт или адрес" />
+          </div>
+          
+          <div class="divider"></div>
+          
+          <div class="date-group">
+            <label for="start-date" class="date-label">С какой даты</label>
+            <div class="date-time-wrapper">
+              <div class="date-input-group">
+                <input type="date" id="start-date" class="date-input" />
+                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/6c6a20d0e96861b1514c6005144163811bdfbf3e0184b576d94b47959a4093b3?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" alt="" class="calendar-icon" />
+              </div>
+              <div class="time-input-group">
+                <input type="time" id="start-time" class="time-input" />
+                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/39ee57336671248cb4a31c00bdb7ff8954fb3c21424e44e4dc4655ecaabc4198?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" alt="" class="clock-icon" />
+              </div>
+            </div>
+          </div>
+  
+          <div class="divider"></div>
+          
+          <div class="date-group">
+            <label for="end-date" class="date-label">По какую дату</label>
+            <div class="date-time-wrapper">
+              <div class="date-input-group">
+                <input type="date" id="end-date" class="date-input" />
+                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/6c6a20d0e96861b1514c6005144163811bdfbf3e0184b576d94b47959a4093b3?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" alt="" class="calendar-icon" />
+              </div>
+              <div class="time-input-group">
+                <input type="time" id="end-time" class="time-input" />
+                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/39ee57336671248cb4a31c00bdb7ff8954fb3c21424e44e4dc4655ecaabc4198?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" alt="" class="clock-icon" />
+              </div>
+            </div>
+          </div>
+        </div>
+  
+        <div class="filters-section">
+          <div class="filter-groups">
+            <div class="filter-item">
+              <span>Тип КПП</span>
+              <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/e9b07e715c759d6c8f7cc8b4a06ee9c0421e577850ca1784e03bdf175472ea84?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" alt="" class="filter-icon" />
+            </div>
+            <div class="filter-item">
+              <span>Тип кузова</span>
+              <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/e9b07e715c759d6c8f7cc8b4a06ee9c0421e577850ca1784e03bdf175472ea84?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" alt="" class="filter-icon" />
+            </div>
+            <div class="filter-item">
+              <span>Марка авто</span>
+              <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/e9b07e715c759d6c8f7cc8b4a06ee9c0421e577850ca1784e03bdf175472ea84?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" alt="" class="filter-icon" />
+            </div>
+          </div>
+          
+          <div class="price-group">
+            <label for="price-min" class="price-label">Цена:</label>
+            <input type="number" id="price-min" class="price-input" placeholder="От" />
+            <input type="number" id="price-max" class="price-input" placeholder="до" />
+          </div>
+        </div>
+  
+        <div class="results-grid">
+          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/2e46c3c5893508d588cdf7c34385e9b02dc4369d3fe9bf5928c868d29fb18826?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" alt="Search result 1" class="result-card" />
+          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/2e46c3c5893508d588cdf7c34385e9b02dc4369d3fe9bf5928c868d29fb18826?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" alt="Search result 2" class="result-card" />
+          <div class="empty-state">
+            <div class="empty-indicator"></div>
+          </div>
+          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/b6a3440740d6ba1df9334feeaa6c0ed43017b2636acb8ac26bf46e15a3bf524f?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" alt="Map view" class="map-section" />
+        </div>
+      </div>
+  
+      <div class="additional-results">
+        <div class="results-row">
+          <div class="column">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/2e46c3c5893508d588cdf7c34385e9b02dc4369d3fe9bf5928c868d29fb18826?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" alt="Additional result 1" class="result-card" />
+          </div>
+          <div class="column">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/2e46c3c5893508d588cdf7c34385e9b02dc4369d3fe9bf5928c868d29fb18826?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" alt="Additional result 2" class="result-card" />
+          </div>
+        </div>
+      </div>
+    </div>
+  </form>

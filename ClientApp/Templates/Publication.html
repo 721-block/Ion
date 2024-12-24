@@ -1,0 +1,431 @@
+<style>
+    .calendar-container {
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+      justify-content: start;
+    }
+    
+    .calendar-header {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      gap: 40px 100px;
+      justify-content: space-between;
+    }
+    
+    .month-year-display {
+      align-self: stretch;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      color: #fff;
+      text-align: center;
+      justify-content: start;
+      width: 193px;
+      margin: auto 0;
+      font: 36px/1.6 Montserrat, sans-serif;
+    }
+    
+    .calendar-navigation {
+      align-self: stretch;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      justify-content: center;
+      margin: auto 0;
+    }
+    
+    .calendar-grid {
+      align-self: center;
+      display: flex;
+      margin-top: 12px;
+      min-height: 226px;
+      width: 100%;
+      max-width: 330px;
+      flex-direction: column;
+      color: #fff;
+      text-align: center;
+      justify-content: center;
+      font: 20px/32px Montserrat, sans-serif;
+    }
+    
+    .weekday-header {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      gap: 6px;
+      font-weight: 600;
+      justify-content: space-between;
+    }
+    
+    .calendar-days {
+      display: flex;
+      min-height: 184px;
+      width: 100%;
+      flex-direction: column;
+      font-weight: 400;
+      justify-content: space-between;
+    }
+    
+    .day-row {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      gap: 6px;
+      justify-content: space-between;
+    }
+    
+    .day-cell {
+      align-self: stretch;
+      width: 42px;
+      margin: auto 0;
+    }
+    
+    .day-cell-selected {
+      border-radius: 10px;
+      background-color: #FFE482;
+      align-self: stretch;
+      height: 28px;
+      width: 42px;
+      margin: auto 0;
+    }
+    
+    .day-cell-disabled {
+      color: #C8C8C8;
+    }
+    
+    .car-details-container {
+      border-radius: 5px;
+      background-color: #282828;
+      display: flex;
+      width: 100%;
+      padding: 37px 40px 65px;
+    }
+    
+    .car-info-section {
+      display: flex;
+      flex-direction: column;
+      width: 74%;
+    }
+    
+    .car-specs-section {
+      display: flex;
+      flex-direction: column;
+      width: 26%;
+    }
+    
+    .car-title {
+      color: #fff;
+      text-align: center;
+      font: 500 50px/1.6 Montserrat, sans-serif;
+    }
+    
+    .car-description {
+      font-size: 32px;
+      font-weight: 400;
+      color: #fff;
+      margin-top: 10px;
+    }
+    
+    .specs-label {
+      color: #fff;
+      font: 400 28px/1.6 Montserrat, sans-serif;
+      margin-top: 30px;
+    }
+    
+    .specs-value {
+      color: #fff;
+      text-align: right;
+      font: 400 28px/1.6 Inter, sans-serif;
+      margin-top: 30px;
+    }
+    
+    .action-buttons {
+      display: flex;
+      margin-top: 39px;
+      gap: 17px;
+      text-align: center;
+      font: 500 26px/1.2 Montserrat, sans-serif;
+    }
+    
+    .btn-cancel {
+      border-radius: 5px;
+      background-color: #fff;
+      color: #282828;
+      padding: 10px 58px;
+      border: 1px solid #FFE482;
+    }
+    
+    .btn-save {
+      border-radius: 5px;
+      background-color: #FFE482;
+      color: #000;
+      padding: 10px 38px;
+      border: 5px solid #FFE482;
+    }
+    
+    .header {
+      background-color: #282828;
+      display: flex;
+      width: 100%;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding: 50px 65px;
+      font: 23px Montserrat, sans-serif;
+    }
+    
+    .header-nav {
+      display: flex;
+      gap: 40px 100px;
+      margin: auto 0;
+    }
+    
+    .nav-link-active {
+      color: #FFE482;
+      font-weight: 600;
+    }
+    
+    .nav-link {
+      color: #fff;
+      font-weight: 400;
+      line-height: 1.2;
+      text-align: center;
+    }
+    
+    .logo {
+      aspect-ratio: 3;
+      object-fit: contain;
+      object-position: center;
+      width: 150px;
+    }
+    
+    .car-gallery {
+      display: flex;
+      margin-top: 28px;
+      width: 100%;
+      flex-direction: column;
+    }
+    
+    .main-image-container {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+    
+    .thumbnail-container {
+      align-self: center;
+      display: flex;
+      margin-top: 65px;
+      width: 610px;
+      max-width: 100%;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+    
+    .nav-arrow {
+      aspect-ratio: 0.55;
+      object-fit: contain;
+      object-position: center;
+      width: 21px;
+    }
+    
+    .car-image {
+      aspect-ratio: 1.77;
+      object-fit: contain;
+      object-position: center;
+      width: 100%;
+      border-radius: 5px;
+    }
+    
+    .thumbnail {
+      aspect-ratio: 1.78;
+      object-fit: contain;
+      object-position: center;
+      width: 160px;
+      border-radius: 5px;
+    }
+    
+    @media (max-width: 991px) {
+      .car-details-container {
+        max-width: 100%;
+        padding: 0 20px;
+      }
+      
+      .header {
+        max-width: 100%;
+        padding: 0 20px;
+      }
+      
+      .car-title {
+        max-width: 100%;
+        margin-right: 10px;
+        font-size: 40px;
+      }
+      
+      .car-description {
+        max-width: 100%;
+      }
+      
+      .btn-cancel,
+      .btn-save {
+        padding: 0 20px;
+      }
+      
+      .car-gallery,
+      .main-image-container,
+      .thumbnail-container {
+        max-width: 100%;
+      }
+      
+      .car-info-section,
+      .car-specs-section {
+        width: 100%;
+        margin-top: 40px;
+      }
+    }
+    </style>
+    
+    <div class="car-details-container">
+      <header class="header">
+        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/aef341b73acb812530737f8ce131991979e82e5b7e3efae16bd6c6d03529fed0?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" alt="Company Logo" class="logo" />
+        <nav class="header-nav">
+          <a href="#" class="nav-link-active">Мои чаты</a>
+          <span class="nav-link">Гето Сугуру</span>
+        </nav>
+      </header>
+    
+      <div class="car-gallery">
+        <div class="main-image-container">
+          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/db23be35219d3f3f7a532392c65aa7bc0caef79911e03875fd5097519d3ec576?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" alt="Previous" class="nav-arrow" />
+          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/e0b182315dcfac557251183a2fd8cb0bbc7dadf14af788140930b111309c90ac?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" alt="Main car view" class="car-image" />
+          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/ab27a3f5242352659668af82800c8cca639c074ea58c84fac0ed1bdaf05bcc4d?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" alt="Next" class="nav-arrow" />
+        </div>
+        
+        <div class="thumbnail-container">
+          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/ff4ded6ed884de41240ceaa811c880653bd1157f928e64b294f3becb0f86068e?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" alt="Car thumbnail 1" class="thumbnail" />
+          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/ae30cdcd10f61ce4096ff7a9dcd40753eb1dac0b80e7368bf2895a25049c94f7?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" alt="Car thumbnail 2" class="thumbnail" />
+          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/5f921de439760c71043568c022a06d8134e7cd2c443a339a4b44a10e9142bf99?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" alt="Car thumbnail 3" class="thumbnail" />
+        </div>
+      </div>
+    
+      <section class="car-info-section">
+        <h1 class="car-title">Марка и модель авто</h1>
+        <p class="car-description">
+          текст текст текст текст текст текст текст текст текст текст текст текст
+          текст текст текст текст текст текст
+        </p>
+        
+        <div class="specs-container">
+          <div class="specs-label">Марка</div>
+          <div class="specs-value">ххххххххх</div>
+          
+          <div class="specs-label">Модель</div>
+          <div class="specs-value">ххххххххх</div>
+          
+          <div class="specs-label">Тип кузова</div>
+          <div class="specs-value">ххххххххх</div>
+          
+          <div class="specs-label">Год</div>
+          <div class="specs-value">хххх</div>
+          
+          <div class="specs-label">КПП</div>
+          <div class="specs-value">ххххххххх</div>
+          
+          <div class="specs-label">Тип топлива</div>
+          <div class="specs-value">ххххххххх</div>
+          
+          <div class="specs-label">Число пассажиров</div>
+          <div class="specs-value">хх</div>
+          
+          <div class="specs-label">Стоимость аренды</div>
+          <div class="specs-value">ххххх Р/день</div>
+        </div>
+      </section>
+    
+      <section class="calendar-container">
+        <div class="calendar-header">
+          <div class="month-year-display">
+            <span>Май</span>
+            <span>2024</span>
+          </div>
+          <div class="calendar-navigation">
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/4d546753bee293992a1aebff431b8e393bf98e82745e3d49013a031b1ab30481?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" alt="Previous month" class="nav-arrow" />
+            <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/b31ab72a7fab8c61bea07193cc5e6e81d512792c2a954767cf0376aeea37c19c?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" alt="Next month" class="nav-arrow" />
+          </div>
+        </div>
+    
+        <div class="calendar-grid">
+          <div class="weekday-header">
+            <span class="day-cell">ПН</span>
+            <span class="day-cell">ВТ</span>
+            <span class="day-cell">СР</span>
+            <span class="day-cell">ЧТ</span>
+            <span class="day-cell">ПТ</span>
+            <span class="day-cell">СБ</span>
+            <span class="day-cell">ВС</span>
+          </div>
+    
+          <div class="calendar-days">
+            <div class="day-row">
+              <span class="day-cell day-cell-disabled">29</span>
+              <span class="day-cell day-cell-disabled">30</span>
+              <span class="day-cell">1</span>
+              <span class="day-cell">2</span>
+              <span class="day-cell">3</span>
+              <span class="day-cell">4</span>
+              <span class="day-cell">5</span>
+            </div>
+            
+            <div class="day-row">
+              <span class="day-cell">6</span>
+              <span class="day-cell-selected">7</span>
+              <span class="day-cell">8</span>
+              <span class="day-cell">9</span>
+              <span class="day-cell">10</span>
+              <span class="day-cell">11</span>
+              <span class="day-cell">12</span>
+            </div>
+            
+            <div class="day-row">
+              <span class="day-cell">13</span>
+              <span class="day-cell-selected">14</span>
+              <span class="day-cell">15</span>
+              <span class="day-cell">16</span>
+              <span class="day-cell">17</span>
+              <span class="day-cell">18</span>
+              <span class="day-cell-selected">19</span>
+            </div>
+            
+            <div class="day-row">
+              <span class="day-cell">20</span>
+              <span class="day-cell">21</span>
+              <span class="day-cell">22</span>
+              <span class="day-cell-selected">23</span>
+              <span class="day-cell">24</span>
+              <span class="day-cell">25</span>
+              <span class="day-cell">26</span>
+            </div>
+            
+            <div class="day-row">
+              <span class="day-cell">27</span>
+              <span class="day-cell">28</span>
+              <span class="day-cell">29</span>
+              <span class="day-cell">30</span>
+              <span class="day-cell">31</span>
+              <span class="day-cell day-cell-disabled">1</span>
+              <span class="day-cell day-cell-disabled">2</span>
+            </div>
+          </div>
+        </div>
+      </section>
+    
+      <div class="action-buttons">
+        <button class="btn-cancel">Отмена</button>
+        <button class="btn-save">Сохранить</button>
+      </div>
+    </div>

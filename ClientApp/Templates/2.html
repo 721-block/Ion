@@ -1,0 +1,422 @@
+<style>
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0, 0, 0, 0);
+      border: 0;
+    }
+    
+    .container {
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .header {
+      background-color: rgba(40, 40, 40, 1);
+      display: flex;
+      width: 100%;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding: 50px;
+      font: 23px Montserrat, sans-serif;
+    }
+    
+    .logo {
+      aspect-ratio: 3;
+      object-fit: contain;
+      width: 150px;
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 40px;
+      margin: auto 0;
+    }
+    
+    .nav-link {
+      color: rgba(255, 228, 130, 1);
+      font-weight: 600;
+    }
+    
+    .user-name {
+      color: rgba(255, 255, 255, 1);
+      font-weight: 400;
+      line-height: 1.2;
+      text-align: center;
+    }
+    
+    .back-button {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+      color: rgba(40, 40, 40, 1);
+      font: 500 32px/1.6 Montserrat, sans-serif;
+      cursor: pointer;
+    }
+    
+    .back-icon {
+      aspect-ratio: 0.55;
+      width: 21px;
+    }
+    
+    .car-details {
+      border-radius: 5px;
+      background-color: rgba(40, 40, 40, 1);
+      padding: 91px 79px;
+      display: flex;
+      gap: 40px;
+      flex-wrap: wrap;
+    }
+    
+    .car-info {
+      flex-grow: 1;
+      display: flex;
+      gap: 20px;
+    }
+    
+    .avatar {
+      background-color: rgba(253, 255, 114, 1);
+      border-radius: 50%;
+      width: 100px;
+      height: 100px;
+    }
+    
+    .owner-name {
+      color: rgba(255, 255, 255, 1);
+      font: 500 40px/1.6 Montserrat, sans-serif;
+    }
+    
+    .message-button {
+      border-radius: 5px;
+      background-color: rgba(255, 255, 255, 1);
+      color: rgba(40, 40, 40, 1);
+      padding: 7px 40px;
+      font: 600 40px/1.6 Montserrat, sans-serif;
+      border: 1px solid rgba(255, 228, 130, 1);
+      cursor: pointer;
+    }
+    
+    .car-specs {
+      display: flex;
+      flex-direction: column;
+      margin-top: 40px;
+    }
+    
+    .specs-title {
+      color: rgba(255, 255, 255, 1);
+      text-align: center;
+      font: 500 50px/1.6 Montserrat, sans-serif;
+    }
+    
+    .specs-grid {
+      display: grid;
+      grid-template-columns: auto auto;
+      gap: 30px;
+      color: rgba(255, 255, 255, 1);
+      font: 400 28px/1.6 Montserrat, sans-serif;
+      margin-top: 40px;
+    }
+    
+    .specs-label {
+      text-align: right;
+    }
+    
+    .calendar-section {
+      border-radius: 5px;
+      background-color: rgba(40, 40, 40, 1);
+      padding: 50px;
+    }
+    
+    .calendar-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      color: rgba(255, 255, 255, 1);
+      font: 36px/1.6 Montserrat, sans-serif;
+    }
+    
+    .calendar-nav {
+      display: flex;
+      gap: 20px;
+    }
+    
+    .calendar-nav-button {
+      cursor: pointer;
+      width: 10px;
+    }
+    
+    .calendar-grid {
+      display: grid;
+      grid-template-columns: repeat(7, 1fr);
+      gap: 6px;
+      margin-top: 12px;
+      color: rgba(255, 255, 255, 1);
+      text-align: center;
+      font: 20px/32px Montserrat, sans-serif;
+    }
+    
+    .calendar-day {
+      width: 42px;
+      height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .calendar-day.selected {
+      border-radius: 10px;
+      background-color: rgba(255, 228, 130, 1);
+    }
+    
+    .calendar-day.disabled {
+      color: rgba(200, 200, 200, 1);
+    }
+    
+    .reviews-section {
+      border-radius: 5px;
+      background-color: rgba(40, 40, 40, 1);
+      padding: 37px 74px;
+    }
+    
+    .rating {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+    }
+    
+    .rating-score {
+      color: rgba(255, 255, 255, 1);
+      font: 500 64px/1.6 Montserrat, sans-serif;
+    }
+    
+    .rating-stars {
+      display: flex;
+      gap: 7px;
+    }
+    
+    .star-icon {
+      width: 23px;
+      aspect-ratio: 1;
+    }
+    
+    .rating-count {
+      color: rgba(255, 255, 255, 1);
+      font: 600 24px/1.6 Montserrat, sans-serif;
+    }
+    
+    .review {
+      display: flex;
+      gap: 19px;
+      margin-top: 26px;
+    }
+    
+    .review-avatar {
+      border-radius: 50%;
+      width: 80px;
+      height: 80px;
+    }
+    
+    .review-content {
+      color: rgba(255, 255, 255, 1);
+      font: 400 36px/1.6 Montserrat, sans-serif;
+    }
+    
+    @media (max-width: 991px) {
+      .header {
+        padding: 20px;
+      }
+      
+      .car-details {
+        padding: 20px;
+      }
+      
+      .specs-title {
+        font-size: 40px;
+      }
+      
+      .calendar-section {
+        padding: 20px;
+      }
+      
+      .reviews-section {
+        padding: 20px;
+      }
+      
+      .rating-score {
+        font-size: 40px;
+      }
+      
+      .car-info {
+        flex-direction: column;
+      }
+      
+      .message-button {
+        width: 100%;
+        text-align: center;
+      }
+    }
+    </style>
+    
+    <div class="container">
+      <header class="header">
+        <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/0d14bb6d078d4230d078b717a6a6537e11b3c14bb8d9c9b1f3fb920ed1fe61c3?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" alt="" class="logo" />
+        <nav class="nav-links">
+          <a href="#" class="nav-link">Мои чаты</a>
+          <span class="user-name">Годжу Сатору</span>
+        </nav>
+      </header>
+    
+      <main>
+        <button class="back-button">
+          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/091b6d231253f2fd14893406b5e62873511592445fdc6869ea22289128ddabab?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" alt="" class="back-icon" />
+          <span>Назад</span>
+        </button>
+    
+        <section class="car-details">
+          <div class="car-info">
+            <div class="avatar" aria-hidden="true"></div>
+            <h1 class="owner-name">Инумаки Тоге</h1>
+          </div>
+          <button class="message-button">Написать</button>
+        </section>
+    
+        <section class="car-specs">
+          <h2 class="specs-title">Марка и модель авто</h2>
+          <div class="specs-grid">
+            <span class="specs-label">Марка</span>
+            <span>ххххххххх</span>
+            <span class="specs-label">Модель</span>
+            <span>ххххххххх</span>
+            <span class="specs-label">Тип кузова</span>
+            <span>ххххххххх</span>
+            <span class="specs-label">Год</span>
+            <span>хххх</span>
+            <span class="specs-label">КПП</span>
+            <span>ххххххххх</span>
+            <span class="specs-label">Тип топлива</span>
+            <span>ххххххххх</span>
+            <span class="specs-label">Число пассажиров</span>
+            <span>хх</span>
+            <span class="specs-label">Стоимость аренды</span>
+            <span>ххххх Р/день</span>
+          </div>
+        </section>
+    
+        <section class="calendar-section">
+          <div class="calendar-header">
+            <div>
+              <span>Май</span>
+              <span>2024</span>
+            </div>
+            <div class="calendar-nav">
+              <button class="calendar-nav-button">
+                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/4d546753bee293992a1aebff431b8e393bf98e82745e3d49013a031b1ab30481?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" alt="Previous month" />
+              </button>
+              <button class="calendar-nav-button">
+                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/b31ab72a7fab8c61bea07193cc5e6e81d512792c2a954767cf0376aeea37c19c?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" alt="Next month" />
+              </button>
+            </div>
+          </div>
+    
+          <div class="calendar-grid">
+            <div class="calendar-day">ПН</div>
+            <div class="calendar-day">ВТ</div>
+            <div class="calendar-day">СР</div>
+            <div class="calendar-day">ЧТ</div>
+            <div class="calendar-day">ПТ</div>
+            <div class="calendar-day">СБ</div>
+            <div class="calendar-day">ВС</div>
+            
+            <div class="calendar-day disabled">29</div>
+            <div class="calendar-day disabled">30</div>
+            <div class="calendar-day">1</div>
+            <div class="calendar-day">2</div>
+            <div class="calendar-day">3</div>
+            <div class="calendar-day">4</div>
+            <div class="calendar-day">5</div>
+            
+            <div class="calendar-day">6</div>
+            <div class="calendar-day selected">7</div>
+            <div class="calendar-day">8</div>
+            <div class="calendar-day">9</div>
+            <div class="calendar-day">10</div>
+            <div class="calendar-day">11</div>
+            <div class="calendar-day">12</div>
+            
+            <div class="calendar-day">13</div>
+            <div class="calendar-day selected">14</div>
+            <div class="calendar-day">15</div>
+            <div class="calendar-day">16</div>
+            <div class="calendar-day">17</div>
+            <div class="calendar-day">18</div>
+            <div class="calendar-day">19</div>
+            
+            <div class="calendar-day">20</div>
+            <div class="calendar-day">21</div>
+            <div class="calendar-day selected">22</div>
+            <div class="calendar-day">23</div>
+            <div class="calendar-day">24</div>
+            <div class="calendar-day">25</div>
+            <div class="calendar-day">26</div>
+            
+            <div class="calendar-day">27</div>
+            <div class="calendar-day">28</div>
+            <div class="calendar-day">29</div>
+            <div class="calendar-day">30</div>
+            <div class="calendar-day">31</div>
+            <div class="calendar-day disabled">1</div>
+            <div class="calendar-day disabled">2</div>
+          </div>
+        </section>
+    
+        <section class="reviews-section">
+          <div class="rating">
+            <span class="rating-score">5,0</span>
+            <div>
+              <div class="rating-stars">
+                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/2077c20e0999e3cfd6c73caf3824672dbdd5fe01b81323326726d7980b9da179?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" alt="5 out of 5 stars" class="star-icon" />
+                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/2077c20e0999e3cfd6c73caf3824672dbdd5fe01b81323326726d7980b9da179?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" alt="" class="star-icon" aria-hidden="true" />
+                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/2077c20e0999e3cfd6c73caf3824672dbdd5fe01b81323326726d7980b9da179?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" alt="" class="star-icon" aria-hidden="true" />
+                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/2077c20e0999e3cfd6c73caf3824672dbdd5fe01b81323326726d7980b9da179?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" alt="" class="star-icon" aria-hidden="true" />
+                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/2077c20e0999e3cfd6c73caf3824672dbdd5fe01b81323326726d7980b9da179?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" alt="" class="star-icon" aria-hidden="true" />
+              </div>
+              <p class="rating-count">на основании 3 оценок</p>
+            </div>
+          </div>
+    
+          <div class="reviews">
+            <article class="review">
+              <div class="review-avatar" style="background-color: rgba(255, 195, 195, 1);" aria-hidden="true"></div>
+              <div>
+                <h3>Махито</h3>
+                <time>11 сентября</time>
+                <p class="review-content">Текст текст текст текст текст текст текст текст текст текст текст текст текст текст текст тек</p>
+              </div>
+            </article>
+    
+            <article class="review">
+              <div class="review-avatar" style="background-color: rgba(209, 255, 195, 1);" aria-hidden="true"></div>
+              <div>
+                <h3>Ханами</h3>
+                <time>7 февраля</time>
+                <p class="review-content">Текст текст текст</p>
+              </div>
+            </article>
+    
+            <article class="review">
+              <div class="review-avatar" style="background-color: rgba(195, 245, 255, 1);" aria-hidden="true"></div>
+              <div>
+                <h3>Чосо</h3>
+                <time>1 февраля</time>
+                <p class="review-content">Текст текст текст</p>
+              </div>
+            </article>
+          </div>
+        </section>
+      </main>
+    </div>

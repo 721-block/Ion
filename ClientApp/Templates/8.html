@@ -1,0 +1,440 @@
+<style>
+    .calendar-wrapper {
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+      justify-content: start;
+    }
+    
+    .calendar-header {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      gap: 40px 100px;
+      justify-content: space-between;
+    }
+    
+    .month-year {
+      align-self: stretch;
+      display: flex;
+      align-items: center;
+      gap: 24px;
+      color: #fff;
+      text-align: center;
+      justify-content: start;
+      width: 193px;
+      margin: auto 0;
+      font: 36px/1.6 Montserrat, sans-serif;
+    }
+    
+    .month {
+      font-weight: 600;
+      align-self: stretch;
+      margin: auto 0;
+    }
+    
+    .year {
+      font-weight: 400;
+      align-self: stretch;
+      margin: auto 0;
+    }
+    
+    .nav-arrows {
+      align-self: stretch;
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      justify-content: center;
+      margin: auto 0;
+    }
+    
+    .nav-arrow {
+      aspect-ratio: 0.5;
+      object-fit: contain;
+      object-position: center;
+      width: 10px;
+      align-self: stretch;
+      margin: auto 0;
+    }
+    
+    .calendar-grid {
+      align-self: center;
+      display: flex;
+      margin-top: 12px;
+      min-height: 226px;
+      width: 100%;
+      max-width: 330px;
+      flex-direction: column;
+      color: #fff;
+      text-align: center;
+      justify-content: center;
+      font: 20px/32px Montserrat, sans-serif;
+    }
+    
+    .weekdays {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      gap: 6px;
+      font-weight: 600;
+      justify-content: space-between;
+    }
+    
+    .weekday {
+      align-self: stretch;
+      width: 42px;
+      margin: auto 0;
+    }
+    
+    .calendar-days {
+      display: flex;
+      min-height: 184px;
+      width: 100%;
+      flex-direction: column;
+      font-weight: 400;
+      justify-content: space-between;
+    }
+    
+    .week {
+      display: flex;
+      width: 100%;
+      align-items: center;
+      gap: 6px;
+      justify-content: space-between;
+    }
+    
+    .day {
+      align-self: stretch;
+      width: 42px;
+      margin: auto 0;
+    }
+    
+    .day-inactive {
+      color: #c8c8c8;
+    }
+    
+    .day-selected {
+      border-radius: 10px;
+      background-color: #ffe482;
+      height: 28px;
+    }
+    
+    .header {
+      background-color: #282828;
+      display: flex;
+      width: 100%;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding: 50px 65px;
+      font: 23px Montserrat, sans-serif;
+    }
+    
+    .logo {
+      aspect-ratio: 3;
+      object-fit: contain;
+      object-position: center;
+      width: 150px;
+      max-width: 100%;
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 40px 100px;
+      margin: auto 0;
+    }
+    
+    .nav-active {
+      color: #ffe482;
+      font-weight: 600;
+    }
+    
+    .nav-link {
+      color: #fff;
+      font-weight: 400;
+      line-height: 1.2;
+      text-align: center;
+    }
+    
+    .car-details {
+      border-radius: 5px;
+      background-color: #282828;
+      align-self: center;
+      margin-top: 80px;
+      width: 1765px;
+      max-width: 100%;
+      padding: 37px 40px 65px;
+    }
+    
+    .car-gallery {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      min-height: 1080px;
+      width: 100%;
+      padding-bottom: 35px;
+    }
+    
+    .gallery-main {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+    
+    .gallery-nav {
+      aspect-ratio: 0.55;
+      object-fit: contain;
+      object-position: center;
+      width: 21px;
+      align-self: stretch;
+      margin: auto 0;
+    }
+    
+    .gallery-image {
+      aspect-ratio: 1.77;
+      object-fit: contain;
+      object-position: center;
+      width: 100%;
+      border-radius: 5px;
+      align-self: stretch;
+    }
+    
+    .gallery-thumbnails {
+      align-self: center;
+      display: flex;
+      margin-top: 65px;
+      width: 610px;
+      max-width: 100%;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: space-between;
+    }
+    
+    .thumbnail {
+      aspect-ratio: 1.78;
+      object-fit: contain;
+      object-position: center;
+      width: 160px;
+      border-radius: 5px;
+      max-width: 100%;
+    }
+    
+    .car-info {
+      display: flex;
+      margin-top: 4px;
+      width: 100%;
+      flex-direction: column;
+      padding: 0 78px;
+    }
+    
+    .info-section {
+      border-radius: 5px;
+      background-color: #282828;
+      display: flex;
+      flex-grow: 1;
+      flex-direction: column;
+      font-family: Montserrat, sans-serif;
+      color: #fff;
+      width: 100%;
+      padding: 20px 80px 190px;
+    }
+    
+    .info-title {
+      font-size: 36px;
+      font-weight: 500;
+      line-height: 1.6;
+      text-align: center;
+      align-self: center;
+    }
+    
+    .info-text {
+      font-size: 32px;
+      font-weight: 400;
+      margin-top: 10px;
+    }
+    
+    .action-buttons {
+      align-self: end;
+      display: flex;
+      margin-top: 39px;
+      gap: 17px;
+      text-align: center;
+      font: 500 26px/1.2 Montserrat, sans-serif;
+    }
+    
+    .btn-cancel {
+      border-radius: 5px;
+      background-color: #fff;
+      color: #282828;
+      padding: 10px 58px;
+      border: 1px solid #ffe482;
+    }
+    
+    .btn-save {
+      border-radius: 5px;
+      background-color: #ffe482;
+      color: #000;
+      padding: 10px 38px;
+      border: 5px solid #ffe482;
+    }
+    
+    @media (max-width: 991px) {
+      .header {
+        max-width: 100%;
+        padding: 0 20px;
+      }
+      
+      .car-details {
+        margin-top: 40px;
+        padding: 0 20px;
+      }
+      
+      .gallery-main {
+        max-width: 100%;
+      }
+      
+      .gallery-image {
+        max-width: 100%;
+      }
+      
+      .gallery-thumbnails {
+        margin-top: 40px;
+      }
+      
+      .car-info {
+        max-width: 100%;
+        padding: 0 20px;
+      }
+      
+      .info-section {
+        max-width: 100%;
+        margin-top: 39px;
+        padding: 0 20px;
+      }
+      
+      .info-text {
+        max-width: 100%;
+      }
+      
+      .btn-cancel,
+      .btn-save {
+        padding: 0 20px;
+      }
+    }
+    </style>
+    
+    <div class="car-gallery">
+      <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/e0141e9eb1ec71da6c8dea2119f5a845f67e45357b63f148078319e12ab2e916?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" class="gallery-background" alt="Car gallery background" />
+      
+      <header class="header">
+        <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/aef341b73acb812530737f8ce131991979e82e5b7e3efae16bd6c6d03529fed0?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" class="logo" alt="Company logo" />
+        <nav class="nav-links">
+          <a href="#" class="nav-active">Мои чаты</a>
+          <a href="#" class="nav-link">Гето Сугуру</a>
+        </nav>
+      </header>
+    
+      <section class="car-details">
+        <div class="gallery-main">
+          <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/db23be35219d3f3f7a532392c65aa7bc0caef79911e03875fd5097519d3ec576?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" class="gallery-nav" alt="Previous image" />
+          <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/e0b182315dcfac557251183a2fd8cb0bbc7dadf14af788140930b111309c90ac?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" class="gallery-image" alt="Main car image" />
+          <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/ab27a3f5242352659668af82800c8cca639c074ea58c84fac0ed1bdaf05bcc4d?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" class="gallery-nav" alt="Next image" />
+        </div>
+    
+        <div class="gallery-thumbnails">
+          <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/ff4ded6ed884de41240ceaa811c880653bd1157f928e64b294f3becb0f86068e?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" class="thumbnail" alt="Car thumbnail 1" />
+          <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/ae30cdcd10f61ce4096ff7a9dcd40753eb1dac0b80e7368bf2895a25049c94f7?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" class="thumbnail" alt="Car thumbnail 2" />
+          <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/5f921de439760c71043568c022a06d8134e7cd2c443a339a4b44a10e9142bf99?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" class="thumbnail" alt="Car thumbnail 3" />
+        </div>
+      </section>
+    
+      <section class="car-info">
+        <div class="info-section">
+          <h1 class="info-title">Информация об авто</h1>
+          <p class="info-text">
+            текст текст текст текст текст текст текст текст текст текст текст текст
+            текст текст текст текст текст текст
+          </p>
+        </div>
+    
+        <div class="calendar-wrapper">
+          <div class="calendar-header">
+            <div class="month-year">
+              <span class="month">Май</span>
+              <span class="year">2024</span>
+            </div>
+            <div class="nav-arrows">
+              <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/4d546753bee293992a1aebff431b8e393bf98e82745e3d49013a031b1ab30481?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" class="nav-arrow" alt="Previous month" />
+              <img loading="lazy" src="https://cdn.builder.io/api/v1/image/assets/TEMP/b31ab72a7fab8c61bea07193cc5e6e81d512792c2a954767cf0376aeea37c19c?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" class="nav-arrow" alt="Next month" />
+            </div>
+          </div>
+    
+          <div class="calendar-grid">
+            <div class="weekdays">
+              <span class="weekday">ПН</span>
+              <span class="weekday">ВТ</span>
+              <span class="weekday">СР</span>
+              <span class="weekday">ЧТ</span>
+              <span class="weekday">ПТ</span>
+              <span class="weekday">СБ</span>
+              <span class="weekday">ВС</span>
+            </div>
+    
+            <div class="calendar-days">
+              <div class="week">
+                <span class="day day-inactive">29</span>
+                <span class="day day-inactive">30</span>
+                <span class="day">1</span>
+                <span class="day">2</span>
+                <span class="day">3</span>
+                <span class="day">4</span>
+                <span class="day">5</span>
+              </div>
+              <div class="week">
+                <span class="day">6</span>
+                <span class="day day-selected">7</span>
+                <span class="day">8</span>
+                <span class="day">9</span>
+                <span class="day">10</span>
+                <span class="day">11</span>
+                <span class="day">12</span>
+              </div>
+              <div class="week">
+                <span class="day">13</span>
+                <span class="day day-selected">14</span>
+                <span class="day">15</span>
+                <span class="day">16</span>
+                <span class="day">17</span>
+                <span class="day">18</span>
+                <span class="day day-selected">19</span>
+              </div>
+              <div class="week">
+                <span class="day">20</span>
+                <span class="day">21</span>
+                <span class="day">22</span>
+                <span class="day day-selected">23</span>
+                <span class="day">24</span>
+                <span class="day">25</span>
+                <span class="day">26</span>
+              </div>
+              <div class="week">
+                <span class="day">27</span>
+                <span class="day">28</span>
+                <span class="day">29</span>
+                <span class="day">30</span>
+                <span class="day">31</span>
+                <span class="day day-inactive">1</span>
+                <span class="day day-inactive">2</span>
+              </div>
+            </div>
+          </div>
+        </div>
+    
+        <div class="action-buttons">
+          <button class="btn-cancel">Отмена</button>
+          <button class="btn-save">Сохранить</button>
+        </div>
+      </section>
+    </div>

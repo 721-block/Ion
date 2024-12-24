@@ -1,0 +1,404 @@
+<style>
+    .booking-container {
+      border-radius: 0;
+      display: flex;
+      flex-direction: column;
+    }
+    
+    .booking-wrapper {
+      background-color: #fff;
+      display: flex;
+      width: 100%;
+      padding: 62px 0;
+      flex-direction: column;
+      align-items: center;
+    }
+    
+    .header-section {
+      background-color: #282828;
+      display: flex;
+      width: 100%;
+      gap: 20px;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      padding: 50px 55px;
+    }
+    
+    .logo {
+      aspect-ratio: 3;
+      object-fit: contain;
+      width: 150px;
+    }
+    
+    .header-nav {
+      display: flex;
+      gap: 40px 68px;
+    }
+    
+    .nav-title {
+      color: #FFE482;
+      margin: auto 0;
+      font: 600 23px Montserrat, sans-serif;
+    }
+    
+    .user-profile {
+      display: flex;
+      gap: 16px;
+      align-items: center;
+    }
+    
+    .avatar-wrapper {
+      border-radius: 80px;
+      background-color: #fff;
+      display: flex;
+      height: 50px;
+      width: 50px;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+    
+    .avatar {
+      aspect-ratio: 1.04;
+      object-fit: contain;
+      width: 52px;
+    }
+    
+    .username {
+      color: #fff;
+      text-align: center;
+      margin: auto 0;
+      font: 400 23px/1.2 Montserrat, sans-serif;
+    }
+    
+    .tab-section {
+      position: relative;
+      align-self: center;
+      z-index: 10;
+      display: flex;
+      width: 100%;
+      max-width: 1706px;
+      flex-direction: column;
+      margin: 68px 0 -317px;
+    }
+    
+    .tab-switcher {
+      border-radius: 5px;
+      background-color: #282828;
+      display: flex;
+      width: 769px;
+      max-width: 100%;
+      align-items: center;
+      gap: 36px;
+      padding: 18px 80px;
+    }
+    
+    .tab-item {
+      color: #fff;
+      text-align: center;
+      font: 400 24px/1.2 Montserrat, sans-serif;
+      flex-grow: 1;
+    }
+    
+    .tab-item.active {
+      font-weight: 700;
+    }
+    
+    .tab-divider {
+      width: 1px;
+      height: 65px;
+      border: 1px solid #fff;
+    }
+    
+    .booking-list {
+      border-radius: 5px;
+      background-color: rgba(40, 40, 40, 0.5);
+      display: flex;
+      margin-top: 104px;
+      width: 100%;
+      flex-direction: column;
+      padding: 127px 80px;
+    }
+    
+    .booking-card {
+      display: flex;
+      flex-direction: column;
+      margin: 80px 0;
+    }
+    
+    .booking-details {
+      display: flex;
+      gap: 20px;
+    }
+    
+    .rental-period {
+      display: flex;
+      flex-direction: column;
+      color: #6F6F6F;
+      font: 200 20px/1.6 'Codec Pro', sans-serif;
+    }
+    
+    .section-title {
+      color: #fff;
+      text-align: center;
+      font: 500 24px/1.2 Montserrat, sans-serif;
+    }
+    
+    .date-time-picker {
+      display: flex;
+      margin-top: 38px;
+      gap: 20px;
+      justify-content: space-between;
+    }
+    
+    .date-picker,
+    .time-picker {
+      display: flex;
+      gap: 8px;
+      align-items: center;
+    }
+    
+    .picker-icon {
+      width: 21px;
+      object-fit: contain;
+    }
+    
+    .picker-text {
+      color: #6F6F6F;
+    }
+    
+    .address-section {
+      display: flex;
+      flex-direction: column;
+      color: #fff;
+      text-align: center;
+      font: 24px/1.2 Montserrat, sans-serif;
+    }
+    
+    .contact-section {
+      display: flex;
+      flex-direction: column;
+      color: #fff;
+      font: 24px Montserrat, sans-serif;
+    }
+    
+    .contact-card {
+      display: flex;
+      margin-top: 28px;
+      gap: 16px;
+      align-items: start;
+    }
+    
+    .contact-avatar {
+      background-color: #D9D9D9;
+      border-radius: 50%;
+      width: 80px;
+      height: 80px;
+    }
+    
+    .contact-info {
+      display: flex;
+      margin-top: 6px;
+      flex-direction: column;
+      font-weight: 300;
+      line-height: 1.6;
+    }
+    
+    .chat-button {
+      color: #fff;
+      align-self: end;
+      margin-top: 94px;
+      font: 600 24px Montserrat, sans-serif;
+      cursor: pointer;
+    }
+    
+    .car-details {
+      border-radius: 5px;
+      background-color: #282828;
+      display: flex;
+      width: 100%;
+      flex-direction: column;
+      text-align: center;
+      padding: 45px 53px 135px;
+      font: 24px/1.2 Montserrat, sans-serif;
+    }
+    
+    .car-title {
+      color: #fff;
+      font-weight: 600;
+      font-size: 32px;
+    }
+    
+    .price-details {
+      display: flex;
+      margin-top: 37px;
+      gap: 20px;
+      font-weight: 500;
+      justify-content: space-between;
+    }
+    
+    .price-labels {
+      display: flex;
+      flex-direction: column;
+      color: #fff;
+    }
+    
+    .total-price {
+      color: #FFE482;
+      margin-top: 36px;
+    }
+    
+    .car-image {
+      aspect-ratio: 1.98;
+      object-fit: contain;
+      width: 100%;
+      border-radius: 5px;
+    }
+    
+    .load-more {
+      color: #000;
+      margin-top: 62px;
+      font: 400 32px/1.6 Montserrat, sans-serif;
+      cursor: pointer;
+    }
+    
+    .visually-hidden {
+      position: absolute;
+      width: 1px;
+      height: 1px;
+      padding: 0;
+      margin: -1px;
+      overflow: hidden;
+      clip: rect(0,0,0,0);
+      border: 0;
+    }
+    
+    @media (max-width: 991px) {
+      .booking-wrapper,
+      .tab-section,
+      .booking-list,
+      .booking-card,
+      .car-details {
+        max-width: 100%;
+      }
+      
+      .header-section {
+        padding: 20px;
+      }
+      
+      .tab-switcher {
+        padding: 20px;
+      }
+      
+      .booking-list {
+        margin-top: 40px;
+        padding: 100px 20px;
+      }
+      
+      .booking-details {
+        flex-direction: column;
+        gap: 40px;
+      }
+      
+      .chat-button,
+      .load-more {
+        margin-top: 40px;
+      }
+      
+      .car-details {
+        padding: 20px 20px 100px;
+      }
+    }
+    </style>
+    
+    <div class="booking-container">
+      <div class="booking-wrapper">
+        <header class="header-section">
+          <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/5d22e2d2115885dd9260a1d80f6c7fc8bd36bf0760b3843c357de0a4ce8c9240?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" alt="Company Logo" class="logo" />
+          <nav class="header-nav">
+            <h1 class="nav-title">Мои чаты</h1>
+            <div class="user-profile">
+              <div class="avatar-wrapper">
+                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/1335a9875e06870d281c922fab5a705e1faf182462a1bd2a06779100cce72776?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" alt="User Avatar" class="avatar" />
+              </div>
+              <span class="username">Годжу Сатору</span>
+            </div>
+          </nav>
+        </header>
+    
+        <section class="tab-section">
+          <div class="tab-switcher">
+            <span class="tab-item">Данные профиля</span>
+            <div class="tab-divider"></div>
+            <span class="tab-item active">Текущие бронирования</span>
+          </div>
+    
+          <div class="booking-list">
+            <article class="booking-card">
+              <div class="booking-details">
+                <div class="rental-period">
+                  <h2 class="section-title">Период аренды</h2>
+                  <div class="date-time-picker">
+                    <div class="date-picker">
+                      <span class="picker-text">DD/MM/YYYY</span>
+                      <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/6c6a20d0e96861b1514c6005144163811bdfbf3e0184b576d94b47959a4093b3?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" alt="" class="picker-icon" />
+                    </div>
+                    <div class="time-picker">
+                      <span class="picker-text">HH:MM</span>
+                      <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/454d5cd910caad9f4732e96973858c0573f28d54421e09d67b3bf3d533646d9f?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" alt="" class="picker-icon" />
+                    </div>
+                  </div>
+                  <div class="date-time-picker">
+                    <div class="date-picker">
+                      <span class="picker-text">DD/MM/YYYY</span>
+                      <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/ed515e69c525e2fa864ff03255896f05ae96b231c8a375b96e55f31c94a9b982?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" alt="" class="picker-icon" />
+                    </div>
+                    <div class="time-picker">
+                      <span class="picker-text">HH:MM</span>
+                      <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/3d867bd3b44483f0e674951df4a524272fcd2e8d1e91ed9f5266293bd2c155df?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" alt="" class="picker-icon" />
+                    </div>
+                  </div>
+                </div>
+    
+                <div class="address-section">
+                  <h2 class="section-title">Адрес подачи</h2>
+                  <p>Адрес</p>
+                </div>
+    
+                <div class="contact-section">
+                  <h2 class="section-title">Контакты владельца</h2>
+                  <div class="contact-card">
+                    <div class="contact-avatar"></div>
+                    <div class="contact-info">
+                      <span>Инумаки</span>
+                      <span>8(950) 123-45-67</span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+    
+              <button class="chat-button" tabindex="0">Перейти в чат</button>
+    
+              <div class="booking-card">
+                <div class="car-details">
+                  <h3 class="car-title">Модель автомобиля (тип кузова)</h3>
+                  <div class="price-details">
+                    <div class="price-labels">
+                      <span>Цена за сутки:</span>
+                      <span class="total-price">Итоговая сумма:</span>
+                    </div>
+                    <div class="price-labels">
+                      <span>1234 р</span>
+                      <span class="total-price">12340 р</span>
+                    </div>
+                  </div>
+                </div>
+                <img src="https://cdn.builder.io/api/v1/image/assets/TEMP/4fe9b8f09d2ef81fcee2b02957d303fe90f5d50cc9de3fc39f993bb3d5105996?placeholderIfAbsent=true&apiKey=2cdb52b684fa4ee8b28d9f51e97dec07" alt="Vehicle Image" class="car-image" />
+              </div>
+            </article>
+          </div>
+        </section>
+    
+        <button class="load-more" tabindex="0">Показать ещё</button>
+      </div>
+    </div>
