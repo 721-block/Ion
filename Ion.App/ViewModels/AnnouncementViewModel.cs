@@ -12,12 +12,10 @@ public class AnnouncementViewModel : BaseViewModel
     public int? CarId { get; set; }
     public string? CarName { get; set; }
     public GearboxType? CarGearboxType { get; set; }
-    public GearboxType? CarGearboxType { get; set; }
     public BodyType? CarBodyType { get; set; }
     public Day? AvailableDays { get; set; }
     public bool? IsActive { get; set; }
     public string? PathToImages { get; set; }
     public float? Rating { get; set; }
     public int? ReviewsCount { get; set; }
-    public GearboxType? CarGearboxType { get; set; }
 }

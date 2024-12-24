@@ -8,4 +8,5 @@ public class UserViewModel : BaseViewModel
     public string? Password { get; set; }
     public string? PhoneNumber { get; set; }
     public LicenseViewModel? License { get; set; }
+    public string PathToPhoto { get; set; }
 }
