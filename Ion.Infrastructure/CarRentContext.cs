@@ -44,7 +44,13 @@ public class CarRentContext : DbContext
         modelBuilder
             .Entity<User>()
             .HasMany(u => u.RecievedMessages)
-            .WithOne(m => m.Reciever)
+            .WithOne(m => m.Receiver)
+            .OnDelete(DeleteBehavior.ClientCascade);
+        
+        modelBuilder
+            .Entity<Announcement>()
+            .HasMany(a => a.Messages)
+            .WithOne(m => m.Announcement)
             .OnDelete(DeleteBehavior.ClientCascade);
 
         modelBuilder

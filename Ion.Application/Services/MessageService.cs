@@ -42,12 +42,12 @@ public class MessageService(IMapper mapper,
 
     public MessageViewModel GetById(int id)
     {
-        return mapper.Map<MessageViewModel>(SetUsers(repository.GetByID(id)));
+        return mapper.Map<MessageViewModel>(SetUsers(repository.GetById(id)));
     }
 
     public async Task UpdateAsync(MessageViewModel model)
     {
-        var entity = repository.GetByID(model.Id);
+        var entity = repository.GetById(model.Id);
         var updatedEntity = mapper.Map(model, entity);
 
         repository.Update(updatedEntity);
@@ -56,8 +56,8 @@ public class MessageService(IMapper mapper,
 
     private Message SetUsers(Message message)
     {
-        message.Sender = userRepository.GetByID(message.SenderId);
-        message.Reciever = userRepository.GetByID(message.ReceiverId);
+        message.Sender = userRepository.GetById(message.SenderId);
+        message.Receiver = userRepository.GetById(message.ReceiverId);
         return message;
     }
 }

@@ -28,7 +28,7 @@ public class CarService(IMapper mapper, ICarRepository repository) : ICarService
 
     public CarViewModel GetById(int id)
     {
-        return mapper.Map<CarViewModel>(repository.GetByID(id));
+        return mapper.Map<CarViewModel>(repository.GetById(id));
     }
 
     public IEnumerable<CarViewModel> GetByUserId(int id)
@@ -38,7 +38,7 @@ public class CarService(IMapper mapper, ICarRepository repository) : ICarService
 
     public async Task UpdateAsync(CarViewModel model)
     {
-        var entity = repository.GetByID(model.Id);
+        var entity = repository.GetById(model.Id);
         var updatedEntity = mapper.Map(model, entity);
 
         repository.Update(updatedEntity);
