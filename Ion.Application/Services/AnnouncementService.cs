@@ -53,7 +53,7 @@ public class AnnouncementService(
 
     public AnnouncementViewModel GetById(int id)
     {
-        var entity = repository.GetByID(id);
+        var entity = repository.GetById(id);
         entity = SetUserAndCar(entity);
         var viewModel = mapper.Map<AnnouncementViewModel>(entity);
         SetRating(viewModel);
@@ -62,7 +62,7 @@ public class AnnouncementService(
 
     public async Task UpdateAsync(AnnouncementViewModel model)
     {
-        var entity = repository.GetByID(model.Id);
+        var entity = repository.GetById(model.Id);
         var updatedEntity = mapper.Map(model, entity);
 
         repository.Update(updatedEntity);
@@ -71,8 +71,8 @@ public class AnnouncementService(
 
     private Announcement SetUserAndCar(Announcement announcement)
     {
-        announcement.Author = userRepository.GetByID(announcement.AuthorId);
-        announcement.Car = carRepository.GetByID(announcement.CarId);
+        announcement.Author = userRepository.GetById(announcement.AuthorId);
+        announcement.Car = carRepository.GetById(announcement.CarId);
         return announcement;
     }
 

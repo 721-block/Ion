@@ -72,13 +72,13 @@ internal class BookingService(
 
     public BookingViewModel GetById(int id)
     {
-        var booking = SetUserAndAnnouncement(bookingRepository.GetByID(id));
+        var booking = SetUserAndAnnouncement(bookingRepository.GetById(id));
         return mapper.Map<BookingViewModel>(booking);
     }
 
     public async Task UpdateAsync(BookingViewModel model)
     {
-        var entity = bookingRepository.GetByID(model.Id);
+        var entity = bookingRepository.GetById(model.Id);
         var updatedEntity = mapper.Map(model, entity);
 
         bookingRepository.Update(updatedEntity);
@@ -87,8 +87,8 @@ internal class BookingService(
 
     private Booking SetUserAndAnnouncement(Booking booking)
     {
-        booking.Announcement = announcementRepository.GetByID(booking.AnnouncementId);
-        booking.Client = userRepository.GetByID(booking.ClientId);
+        booking.Announcement = announcementRepository.GetById(booking.AnnouncementId);
+        booking.Client = userRepository.GetById(booking.ClientId);
         return booking;
     }
 }

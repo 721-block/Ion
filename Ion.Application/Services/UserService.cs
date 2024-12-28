@@ -24,7 +24,7 @@ internal class UserService(
 
     public async Task<LicenseViewModel> AddLicenseToUserAsync(int userId, LicenseViewModel license)
     {
-        var user = userRepository.GetByID(userId);
+        var user = userRepository.GetById(userId);
         var newLicense = await licenseRepository.AddAsync(mapper.Map<License>(license));
 
         user.LicenseId = newLicense.Id;
@@ -48,7 +48,7 @@ internal class UserService(
 
     public UserViewModel GetById(int id)
     {
-        return mapper.Map<UserViewModel>(userRepository.GetByID(id));
+        return mapper.Map<UserViewModel>(userRepository.GetById(id));
     }
 
     public UserViewModel GetByNamesAndEmail(string firstName, string lastName, string email)
@@ -58,7 +58,7 @@ internal class UserService(
 
     public async Task UpdateAsync(UserViewModel model)
     {
-        var entity = userRepository.GetByID(model.Id);
+        var entity = userRepository.GetById(model.Id);
         var updatedEntity = mapper.Map(model, entity);
 
         userRepository.Update(updatedEntity);
@@ -67,7 +67,7 @@ internal class UserService(
 
     public async Task UpdateLicenseAsync(LicenseViewModel license)
     {
-        var entity = licenseRepository.GetByID(license.Id);
+        var entity = licenseRepository.GetById(license.Id);
         var updatedEntity = mapper.Map(license, entity);
 
         licenseRepository.Update(updatedEntity);

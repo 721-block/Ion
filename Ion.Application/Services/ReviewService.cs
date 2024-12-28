@@ -42,7 +42,7 @@ public class ReviewService(IMapper mapper,
 
     public ReviewViewModel GetById(int id)
     {
-        return mapper.Map<ReviewViewModel>(SetUserAndAnnouncement(repository.GetByID(id)));
+        return mapper.Map<ReviewViewModel>(SetUserAndAnnouncement(repository.GetById(id)));
     }
 
     public IEnumerable<ReviewViewModel> GetByUserId(int id)
@@ -52,7 +52,7 @@ public class ReviewService(IMapper mapper,
 
     public async Task UpdateAsync(ReviewViewModel model)
     {
-        var entity = repository.GetByID(model.Id);
+        var entity = repository.GetById(model.Id);
         var updatedEntity = mapper.Map(model, entity);
 
         repository.Update(updatedEntity);
@@ -61,8 +61,8 @@ public class ReviewService(IMapper mapper,
 
     private Review SetUserAndAnnouncement(Review review)
     {
-        review.Announcement = announcementRepository.GetByID(review.AnnouncementId);
-        review.User = userRepository.GetByID(review.UserId);
+        review.Announcement = announcementRepository.GetById(review.AnnouncementId);
+        review.User = userRepository.GetById(review.UserId);
         return review;
     }
 }
