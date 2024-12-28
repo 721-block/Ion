@@ -41,7 +41,9 @@ internal class BookingService(
 
     public IEnumerable<BookingViewModel> GetAll()
     {
-        return bookingRepository.GetAll().Select(mapper.Map<BookingViewModel>);
+        var allBookings = bookingRepository.GetAll().Select(SetUserAndAnnouncement).Select(mapper.Map<BookingViewModel>);
+        
+        return allBookings;
     }
 
     public IEnumerable<BookingViewModel> GetByAnnouncementId(int id)
@@ -71,7 +73,7 @@ internal class BookingService(
     public BookingViewModel GetById(int id)
     {
         var booking = SetUserAndAnnouncement(bookingRepository.GetByID(id));
-        return mapper.Map<BookingViewModel>(SetUserAndAnnouncement(bookingRepository.GetByID(id)));
+        return mapper.Map<BookingViewModel>(booking);
     }
 
     public async Task UpdateAsync(BookingViewModel model)

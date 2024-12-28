@@ -37,6 +37,7 @@ public class BookingController(IBookingService bookingService, IMapper mapper) :
             return BadRequest("Booking is empty");
         if (!ModelState.IsValid)
             return UnprocessableEntity();
+        
         var bookingViewModel = mapper.Map<BookingViewModel>(bookingToPost);
         var createdBooking = await bookingService.AddAsync(bookingViewModel);
         
