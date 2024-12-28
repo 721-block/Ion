@@ -18,6 +18,7 @@ public class BookingController(IBookingService bookingService, IMapper mapper) :
         if (bookingViewModel is null)
             return NotFound();
         var bookingToGet = mapper.Map<BookingToGet>(bookingViewModel);
+        
         return Ok(bookingToGet);
     }
     
@@ -25,6 +26,7 @@ public class BookingController(IBookingService bookingService, IMapper mapper) :
     public ActionResult<IEnumerable<BookingToGet>> GetAllBookings()
     {
         var bookingViewModels = bookingService.GetAll();
+        
         return Ok(bookingViewModels);
     }
     
@@ -35,8 +37,10 @@ public class BookingController(IBookingService bookingService, IMapper mapper) :
             return BadRequest("Booking is empty");
         if (!ModelState.IsValid)
             return UnprocessableEntity();
+        
         var bookingViewModel = mapper.Map<BookingViewModel>(bookingToPost);
         var createdBooking = await bookingService.AddAsync(bookingViewModel);
+        
         return CreatedAtRoute(nameof(GetBookingById), new {bookingId = createdBooking.Id}, createdBooking.Id);
     }
 
@@ -46,6 +50,7 @@ public class BookingController(IBookingService bookingService, IMapper mapper) :
         var bookingViewModel = mapper.Map<BookingViewModel>(bookingToPatch);
         bookingViewModel.Id = bookingId;
         await bookingService.UpdateAsync(bookingViewModel);
+        
         return Ok();
     }
 
@@ -53,6 +58,7 @@ public class BookingController(IBookingService bookingService, IMapper mapper) :
     public async Task<IActionResult> DeleteBooking(int bookingId)
     {
         await bookingService.DeleteAsync(new BookingViewModel {Id = bookingId});
+        
         return Ok();
     }
 }

@@ -16,7 +16,9 @@ public class TripRecordController(ITripRecordService tripRecordService, IMapper 
         var tripRecordViewModel = tripRecordService.GetById(tripRecordId);
         if (tripRecordViewModel is null)
             return NotFound();
+        
         var tripRecord = mapper.Map<TripRecordToGet>(tripRecordViewModel);
+        
         return Ok(tripRecord);
     }
 
@@ -24,6 +26,7 @@ public class TripRecordController(ITripRecordService tripRecordService, IMapper 
     public ActionResult<IEnumerable<TripRecordToGet>> GetAllTripRecords()
     {
         var tripRecordViewModels = tripRecordService.GetAll().Select(mapper.Map<TripRecordToGet>);
+        
         return Ok(tripRecordViewModels);
     }
 
@@ -31,6 +34,7 @@ public class TripRecordController(ITripRecordService tripRecordService, IMapper 
     public ActionResult<IEnumerable<TripRecordToGet>> GetByUserId(int userId)
     {
         var tripRecordViewModels = tripRecordService.GetByUserId(userId);
+        
         return Ok(tripRecordViewModels.Select(mapper.Map<TripRecordToGet>));
     }
     
@@ -38,6 +42,7 @@ public class TripRecordController(ITripRecordService tripRecordService, IMapper 
     public async Task<IActionResult> DeleteTripRecord(int tripRecordId)
     {
         await tripRecordService.DeleteAsync(new TripRecordViewModel {Id = tripRecordId});
+        
         return Ok();
     }
 }

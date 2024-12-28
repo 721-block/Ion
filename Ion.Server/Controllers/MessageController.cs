@@ -16,7 +16,9 @@ public class MessageController(IMessageService messageService, IMapper mapper) :
         var messageViewModel = messageService.GetById(messageId);
         if (messageViewModel is null)
             return NotFound();
+        
         var message = mapper.Map<MessageToGet>(messageViewModel);
+        
         return Ok(message);
     }
     
@@ -24,6 +26,7 @@ public class MessageController(IMessageService messageService, IMapper mapper) :
     public ActionResult<IEnumerable<MessageToGet>> GetAllMessages()
     {
         var messageViewModels = messageService.GetAll();
+        
         return Ok(messageViewModels);
     }
     
@@ -34,8 +37,10 @@ public class MessageController(IMessageService messageService, IMapper mapper) :
             return BadRequest("Message is empty");
         if (!ModelState.IsValid)
             return UnprocessableEntity();
+        
         var messageViewModel = mapper.Map<MessageViewModel>(messageToPost);
         var createdMessage = await messageService.AddAsync(messageViewModel);
+        
         return CreatedAtRoute(nameof(GetMessageById), new {messageId = createdMessage.Id}, createdMessage.Id);
     }
 
@@ -45,6 +50,7 @@ public class MessageController(IMessageService messageService, IMapper mapper) :
         var messageViewModel = mapper.Map<MessageViewModel>(carToPatch);
         messageViewModel.Id = messageId;
         await messageService.UpdateAsync(messageViewModel);
+        
         return Ok();
     }
 
@@ -52,6 +58,7 @@ public class MessageController(IMessageService messageService, IMapper mapper) :
     public async Task<IActionResult> DeleteMessage(int messageId)
     {
         await messageService.DeleteAsync(new MessageViewModel {Id = messageId});
+        
         return Ok();
     }
 }
