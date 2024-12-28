@@ -18,6 +18,7 @@ public class AnnouncementController(IAnnouncementService announcementService, IU
         if (announcementViewModel is null)
             return NotFound();
         var announcementToGet = mapper.Map<AnnouncementToGet>(announcementViewModel);
+        
         return Ok(announcementToGet);
     }
     
@@ -25,6 +26,7 @@ public class AnnouncementController(IAnnouncementService announcementService, IU
     public ActionResult<IEnumerable<AnnouncementToGet>> GetAllAnnouncements()
     {
         var announcements = announcementService.GetAll().Select(mapper.Map<AnnouncementToGet>);
+        
         return Ok(announcements);
     }
     
@@ -33,6 +35,7 @@ public class AnnouncementController(IAnnouncementService announcementService, IU
     {
         var announcements = announcementService.GetByAuthorId(authorId);
         var result = announcements.Select(mapper.Map<AnnouncementToGet>);
+        
         return Ok(result);
     }
 
@@ -41,6 +44,7 @@ public class AnnouncementController(IAnnouncementService announcementService, IU
     {
         var announcements = announcementService.GetWithFilters(parameters);
         var result = announcements.Select(mapper.Map<AnnouncementToGet>);
+        
         return Ok(result);
     }
 
@@ -51,10 +55,12 @@ public class AnnouncementController(IAnnouncementService announcementService, IU
             return BadRequest("Announcement is empty");
         if (!ModelState.IsValid)
             return UnprocessableEntity();
+        
         var imagePath = imageService.UploadImages(announcementToPost.Files, announcementToPost.AuthorId, announcementToPost.CarId);
         var announcementViewModel = mapper.Map<AnnouncementViewModel>(announcementToPost);
         announcementViewModel.PathToImages = imagePath;
         var createdAnnouncement = await announcementService.AddAsync(announcementViewModel);
+        
         return CreatedAtRoute(nameof(GetAnnouncementById), new {announcementId = createdAnnouncement.Id}, createdAnnouncement.Id);
     }
 
@@ -63,7 +69,9 @@ public class AnnouncementController(IAnnouncementService announcementService, IU
     {
         var announcementViewModel = mapper.Map<AnnouncementViewModel>(announcementToPatch);
         announcementViewModel.Id = announcementId;
+        
         await announcementService.UpdateAsync(announcementViewModel);
+        
         return Ok();
     }
 
@@ -71,6 +79,7 @@ public class AnnouncementController(IAnnouncementService announcementService, IU
     public async Task<IActionResult> DeleteAnnouncement(int announcementId)
     {
         await announcementService.DeleteAsync(new AnnouncementViewModel {Id = announcementId});
+        
         return Ok();
     }
 }

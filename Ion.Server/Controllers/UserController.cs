@@ -16,7 +16,9 @@ public class UserController(IUserService userService, IMapper mapper) : Controll
         var user = userService.GetById(userId);
         if (user is null)
             return NotFound();
+        
         var userToGet = mapper.Map<UserToGet>(user);
+        
         return Ok(userToGet);
     }
 
@@ -24,6 +26,7 @@ public class UserController(IUserService userService, IMapper mapper) : Controll
     public ActionResult<IEnumerable<UserToGet>> GetAllUsers()
     {
         var users = userService.GetAll();
+        
         return Ok(users.Select(mapper.Map<UserToGet>));
     }
 
@@ -34,8 +37,10 @@ public class UserController(IUserService userService, IMapper mapper) : Controll
             return BadRequest("User is empty");
         if (!ModelState.IsValid)
             return UnprocessableEntity();
+        
         var userToPost = mapper.Map<UserViewModel>(user);
         var createdUser = await userService.AddAsync(userToPost);
+        
         return CreatedAtRoute(nameof(GetUserById), new {userId = createdUser.Id}, createdUser.Id);
     }
 
@@ -44,7 +49,9 @@ public class UserController(IUserService userService, IMapper mapper) : Controll
     {
         var user = mapper.Map<UserViewModel>(userToPatch);
         user.Id = userId;
+        
         await userService.UpdateAsync(user);
+        
         return Ok();
     }
 
@@ -52,6 +59,7 @@ public class UserController(IUserService userService, IMapper mapper) : Controll
     public async Task<IActionResult> DeleteUser(int userId)
     {
         await userService.DeleteAsync(new UserViewModel {Id = userId});
+        
         return Ok();
     }
 }

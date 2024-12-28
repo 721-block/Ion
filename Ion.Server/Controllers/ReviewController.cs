@@ -16,6 +16,7 @@ public class ReviewController(IReviewService reviewService, IMapper mapper) : Co
         var reviewViewModel = reviewService.GetById(reviewId);
         if (reviewViewModel is null)
             return NotFound();
+        
         var message = mapper.Map<ReviewToGet>(reviewViewModel);
         return Ok(message);
     }
@@ -24,6 +25,7 @@ public class ReviewController(IReviewService reviewService, IMapper mapper) : Co
     public ActionResult<IEnumerable<ReviewToGet>> GetAllReviews()
     {
         var reviewViewModels = reviewService.GetAll().Select(mapper.Map<ReviewToGet>);
+        
         return Ok(reviewViewModels);
     }
 
@@ -31,6 +33,7 @@ public class ReviewController(IReviewService reviewService, IMapper mapper) : Co
     public ActionResult<IEnumerable<ReviewToGet>> GetByAnnouncementId(int announcementId)
     {
         var reviews = reviewService.GetByAnnouncementId(announcementId);
+        
         return Ok(reviews.Select(mapper.Map<ReviewToGet>));
     }
     
@@ -41,8 +44,10 @@ public class ReviewController(IReviewService reviewService, IMapper mapper) : Co
             return BadRequest("Review is empty");
         if (!ModelState.IsValid)
             return UnprocessableEntity();
+        
         var reviewViewModel = mapper.Map<ReviewViewModel>(reviewToPost);
         var createdReview = await reviewService.AddAsync(reviewViewModel);
+        
         return CreatedAtRoute(nameof(GetReviewById), new {reviewId = createdReview.Id}, createdReview.Id);
     }
 
@@ -51,7 +56,9 @@ public class ReviewController(IReviewService reviewService, IMapper mapper) : Co
     {
         var reviewViewModel = mapper.Map<ReviewViewModel>(reviewToPatch);
         reviewViewModel.Id = reviewId;
+        
         await reviewService.UpdateAsync(reviewViewModel);
+        
         return Ok();
     }
 
@@ -59,6 +66,7 @@ public class ReviewController(IReviewService reviewService, IMapper mapper) : Co
     public async Task<IActionResult> DeleteReview(int reviewId)
     {
         await reviewService.DeleteAsync(new ReviewViewModel {Id = reviewId});
+        
         return Ok();
     }
 }
