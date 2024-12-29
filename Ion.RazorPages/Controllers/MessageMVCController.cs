@@ -21,7 +21,7 @@ namespace Ion.RazorPages.Controllers
         public IActionResult Details([FromRoute] int id)
         {
             var actionResult = controller.GetMessageById(id);
-            var resultType = actionResult.Result.GetType();
+            var resultType = actionResult.Result!.GetType();
 
             if (resultType == typeof(NotFoundResult))
                 return actionResult.Result;
@@ -38,7 +38,7 @@ namespace Ion.RazorPages.Controllers
             if (actionType == typeof(NotFoundResult) || actionType == typeof(UnprocessableEntity))
                 return actionResult;
 
-            return actionResult;
+            return View();
         }
 
         [HttpPost]
@@ -54,6 +54,7 @@ namespace Ion.RazorPages.Controllers
         public async Task<IActionResult> Delete([FromRoute] int id)
         {
             await controller.DeleteMessage(id);
+
             return View();
         }
     }
