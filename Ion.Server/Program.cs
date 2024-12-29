@@ -1,9 +1,8 @@
 using Ion.Server;
-using Microsoft.OpenApi.Extensions;
-using Microsoft.OpenApi.Models;
-using Swashbuckle.AspNetCore.Swagger;
+using Ion.Server.Hubs;
 
 var builder = DiContainerBuilder.BuildContainer(args);
+builder.Services.AddSignalR();
 
 var app = builder.Build();
 
@@ -21,6 +20,7 @@ app.UseHttpsRedirection();
 app.UseAuthentication();
 app.UseAuthorization();
 
+app.MapHub<AnnouncementChatHub>("/chat");
 app.MapControllers();
 
 app.MapFallbackToFile("/index.html");

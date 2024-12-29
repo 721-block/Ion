@@ -1,6 +1,5 @@
 ﻿using Ion.Application.IServices;
 using Ion.Application.ViewModels;
-using Ion.Domain.Entities;
 using Ion.RazorPages.Extensions;
 using Ion.RazorPages.Models;
 using Ion.Server.Controllers;
@@ -14,7 +13,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Ion.RazorPages.Controllers
 {
     public class AnnouncementMVCController(
-        AnnouncementController announcementController, 
+        AnnouncementController announcementController,
         IUserService userService,
         IReviewService reviewService,
         ICarService carService,

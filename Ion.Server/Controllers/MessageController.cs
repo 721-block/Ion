@@ -1,14 +1,16 @@
 using Ion.Application.IServices;
 using Ion.Application.ViewModels;
+using Ion.Server.Hubs;
 using Ion.Server.RequestEntities.Message;
 using MapsterMapper;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.SignalR;
 
 namespace Ion.Server.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class MessageController(IMessageService messageService, IMapper mapper) : Controller
+public class MessageController(IMessageService messageService, IMapper mapper, IHubContext<AnnouncementChatHub> chatHub) : Controller
 {
     [HttpGet("{messageId:int}", Name = nameof(GetMessageById))]
     public ActionResult<MessageToGet> GetMessageById(int messageId)
@@ -16,31 +18,35 @@ public class MessageController(IMessageService messageService, IMapper mapper) :
         var messageViewModel = messageService.GetById(messageId);
         if (messageViewModel is null)
             return NotFound();
-        
+
         var message = mapper.Map<MessageToGet>(messageViewModel);
-        
+
         return Ok(message);
     }
-    
+
     [HttpGet(Name = nameof(GetAllMessages))]
     public ActionResult<IEnumerable<MessageToGet>> GetAllMessages()
     {
         var messageViewModels = messageService.GetAll();
-        
+
         return Ok(messageViewModels);
     }
-    
+
     [HttpPost(Name = nameof(CreateMessage))]
     public async Task<IActionResult> CreateMessage([FromBody] MessageToPost messageToPost)
     {
-        if (messageToPost is null) 
+        if (messageToPost is null)
             return BadRequest("Message is empty");
         if (!ModelState.IsValid)
             return UnprocessableEntity();
-        
+
+        await chatHub.Clients
+            .Groups(messageToPost.SenderId.ToString(), messageToPost.ReceiverId.ToString())
+            .SendAsync("Receive", messageToPost);
+
         var messageViewModel = mapper.Map<MessageViewModel>(messageToPost);
         var createdMessage = await messageService.AddAsync(messageViewModel);
-        
+
         return CreatedAtRoute(nameof(GetMessageById), new {messageId = createdMessage.Id}, createdMessage.Id);
     }
 
@@ -50,7 +56,7 @@ public class MessageController(IMessageService messageService, IMapper mapper) :
         var messageViewModel = mapper.Map<MessageViewModel>(carToPatch);
         messageViewModel.Id = messageId;
         await messageService.UpdateAsync(messageViewModel);
-        
+
         return Ok();
     }
 
@@ -58,7 +64,7 @@ public class MessageController(IMessageService messageService, IMapper mapper) :
     public async Task<IActionResult> DeleteMessage(int messageId)
     {
         await messageService.DeleteAsync(new MessageViewModel {Id = messageId});
-        
+
         return Ok();
     }
 }
