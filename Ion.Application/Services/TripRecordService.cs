@@ -38,13 +38,13 @@ internal class TripRecordService(IMapper mapper,
 
     public TripRecordViewModel GetById(int id)
     {
-        return mapper.Map<TripRecordViewModel>(SetAnnouncementAndUser(repository.GetByID(id)));
+        return mapper.Map<TripRecordViewModel>(SetAnnouncementAndUser(repository.GetById(id)));
     }
 
     private TripRecord SetAnnouncementAndUser(TripRecord tripRecord)
     {
-        tripRecord.Announcement = announcementRepository.GetByID(tripRecord.AnnouncementId);
-        tripRecord.User = userRepository.GetByID(tripRecord.UserId);
+        tripRecord.Announcement = announcementRepository.GetById(tripRecord.AnnouncementId);
+        tripRecord.User = userRepository.GetById(tripRecord.UserId);
         return tripRecord;
     }
 

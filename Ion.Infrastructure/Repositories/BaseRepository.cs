@@ -56,7 +56,7 @@ public abstract class BaseRepository<TEntity> : IBaseRepository<TEntity> where T
         return set;
     }
 
-    public TEntity GetByID(int id)
+    public TEntity GetById(int id)
     {
         return set.First(el => el.Id == id);
     }

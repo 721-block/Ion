@@ -47,3 +47,6 @@ insert into IonDb.dbo.Reviews (AnnouncementId, UserId, Content, Rating, Creation
 (5, 3, N'Отличная машина в отличном состоянии', 4.5, '2024-03-15'),
 (5, 4, N'Крутяк, но как-то слишком быстро ездит', 4.5, '2024-02-03'),
 (5, 1, N'4 из-за того, что у меня нет такой машины', 4, '2024-04-17')
+
+insert into IonDb.dbo.Messages (SenderId, ReceiverId, AnnouncementId, Text, CreationTime) values
+(1, 2, 1, N'Привет, как дела?', '2024-03-13')
