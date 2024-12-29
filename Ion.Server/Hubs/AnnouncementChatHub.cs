@@ -6,16 +6,18 @@ namespace Ion.Server.Hubs;
 [Authorize]
 public class AnnouncementChatHub : Hub
 {
+    private readonly string userId = 1.ToString();
+
     public async Task Send(string message,  string receiverId, int announcementId)
     {
         await Clients
-            .Groups(1.ToString(), receiverId)
-            .SendAsync("Receive", message, 1, announcementId);
+            .Groups(userId, receiverId)
+            .SendAsync("Receive", message, userId, announcementId);
     }
 
     public override Task OnConnectedAsync()
     {
-        Groups.AddToGroupAsync(Context.ConnectionId, 1.ToString());
+        Groups.AddToGroupAsync(Context.ConnectionId, userId);
 
         return base.OnConnectedAsync();
     }
