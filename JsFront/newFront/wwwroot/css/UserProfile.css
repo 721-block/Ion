@@ -1,0 +1,224 @@
+html,
+body {
+    font-family: "Inter", sans-serif;
+    font-size: 30px;
+    text-decoration: none;
+    word-wrap: break-word;
+}
+
+body>* {
+    width: 1620px;
+    margin: auto;
+}
+
+.header {
+    width: 1620px;
+    margin: auto;
+}
+
+header {
+    margin-top: 0;
+}
+
+.logo-link {
+    color: #FCD57E;
+    font-size: 35pt;
+    text-decoration: none;
+}
+
+.header {
+    height: 110px;
+    display: flex;
+    justify-content: left;
+    border-bottom: 3px solid #A1A1A1;
+}
+
+.header .logo {
+    margin: auto;
+}
+
+.header .logo-link {
+    display: flex;
+    justify-content: center;
+}
+
+.user-info-container {
+    margin-top: 100px;
+}
+
+.user-info {
+    margin: auto;
+    width: 750px;
+    color: white;
+    background-color: #60616C;
+    padding: 35px;
+    border-radius: 40px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.user-info img {
+    margin: auto 0;
+    border-radius: 50%;
+}
+
+.rating {
+    margin: 0;
+    margin-top: 20px;
+    height: 112px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.score {
+    margin: auto 0;
+    font-size: 70px;
+}
+
+.reviews-count {
+    margin-left: 20px;
+    text-align: right;
+}
+
+
+.user-reviews {
+    margin-top: 80px;
+    text-align: center;
+}
+
+.orders-history {
+    color: white;
+    margin-top: 80px;
+    padding-top: 30px;
+    text-align: center;
+    border-radius: 40px;
+    background-color: #B1B3C2;
+}
+
+.orders-history > p {
+    text-decoration: underline;
+    text-underline-offset: 25px;
+}
+
+.reviews-list {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.review {
+    width: 430px;
+}
+
+.cars-list {
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    padding-bottom: 50px;
+}
+
+.car-card {
+    margin-top: 100px;
+    width: 450px;
+    height: 510px;
+    border-radius: 20px;
+    background-color: #60616C;
+}
+
+.car-card-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    height: 236px;
+    border-radius: 20px 20px 0 0;
+}
+
+.car-card img {
+    flex-shrink: 0;
+    width: 450px;
+    min-width: 100%;
+    min-height: 100%;
+    border-radius: 10px 10px 0 0;
+}
+
+.car-info {
+    text-align: center;
+    margin: auto;
+    width: 350px;
+    font-size: 26px;
+}
+
+.car-card a {
+    text-decoration: none;
+    color: white;
+}
+
+.car-card:hover {
+    outline: 5px solid white;
+}
+
+.mark {
+    margin: 0;
+    margin-top: 25px;
+}
+
+.rating {
+    margin: 0;
+    margin-top: 20px;
+    height: 112px;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.score {
+    margin: auto 0;
+    font-size: 70px;
+}
+
+.price {
+    border-top: 1px solid white;
+    text-align: right;
+}
+
+.user-reviews {
+    color: white;
+    margin-top: 80px;
+    padding-top: 30px;
+    text-align: center;
+    border-radius: 40px;
+    background-color: #B1B3C2;
+    padding-bottom: 40px;
+}
+
+.user-reviews > p {
+    text-decoration: underline;
+    text-underline-offset: 25px;
+}
+
+.review {
+    text-align: center;
+}
+
+.review-box {
+    margin-top: 100px;
+    width: 450px;
+    border-radius: 20px;
+    background-color: #60616C;
+}
+
+.reviewer a {
+    display: flex;
+    justify-content: space-evenly;
+    text-decoration: none;
+    color: black
+}
+
+.reviewer img {
+    border-radius: 50%;
+}
+
+.reviewer p {
+    margin: auto;
+}

@@ -1,0 +1,128 @@
+html,
+body {
+    font-family: "Inter", sans-serif;
+    text-decoration: none;
+    word-wrap: break-word;
+}
+
+.filters-wrapper, header {
+    background-color: #282828;
+}
+
+.cars-list-wrapper {
+    background-color: #22223B;
+    padding-bottom: 80px;
+}
+
+header {
+    margin-top: 0;
+}
+
+.logo-link {
+    display: flex;
+    align-self: center;
+}
+
+.header {
+    margin: 0 5%;
+    height: 150px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.header a {
+    color: #FFE482;
+}
+
+.user-buttons {
+    font-size: 23pt;
+    width: 30%;
+    display: flex;
+    align-items: center;
+}
+
+.user-buttons a { 
+    text-decoration: none;
+}
+
+.profile-link {
+    width: 70%;
+    align-items: center;
+}
+
+.profile-link img {
+    margin-right: 30px;
+    border-radius: 50%;
+}
+
+.profile-link p {
+    color: white;
+    margin-bottom: 0;
+}
+
+.main-container {
+    background-image: url('../static/background-img.png');
+    background-repeat: no-repeat;
+    background-position-y: 15%;
+    background-size: contain;
+}
+
+.header .logo {
+    margin: auto;
+}
+
+.header .profile-link, .logo-link {
+    display: flex;
+    justify-content: center;
+}
+
+
+
+.chats-list {
+    margin-top: 39px;
+    margin-right: auto;
+    margin-left: auto;
+    width: 1705px;
+}
+
+.chat {
+    border-radius: 5px;
+    text-decoration: none;
+    color: white;
+    font-size: 32px;
+    display: inherit;
+    margin-bottom: 10px;
+    padding: 45px;
+    height: 238px;
+    background-color: rgba(40, 40, 40, 0.5);
+}
+
+.chat:hover {
+    background-color: rgba(40, 40, 40, 0.7);
+}
+
+.avatar p:nth-child(1) {
+    font-size: 36px;
+    font-weight: 700;
+}
+
+.avatar p:nth-child(3) {
+    color: #282828;
+}
+
+.avatar {
+    display: flex;
+    margin: auto;
+    align-items: center;
+    text-decoration: none;
+}
+
+.avatar img {
+    margin-right: 30px;
+    border-radius: 50%;
+}
+
+.avatar p {
+    color: white;
+    margin-bottom: 0;
+}

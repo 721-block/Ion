@@ -1,0 +1,178 @@
+html,
+body {
+    font-family: "Inter", sans-serif;
+    text-decoration: none;
+    word-wrap: break-word;
+}
+
+.filters-wrapper, header {
+    background-color: #282828;
+}
+
+.cars-list-wrapper {
+    background-color: #22223B;
+    padding-bottom: 80px;
+}
+
+header {
+    margin-top: 0;
+}
+
+.logo-link {
+    display: flex;
+    align-self: center;
+}
+
+.header {
+    margin: 0 5%;
+    height: 150px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.header a {
+    color: #FFE482;
+}
+
+.user-buttons {
+    font-size: 23pt;
+    width: 30%;
+    display: flex;
+    align-items: center;
+}
+
+.user-buttons a { 
+    text-decoration: none;
+}
+
+.profile-link {
+    width: 70%;
+    align-items: center;
+}
+
+.profile-link img {
+    margin-right: 30px;
+    border-radius: 50%;
+}
+
+.profile-link p {
+    color: white;
+    margin-bottom: 0;
+}
+
+.main-container {
+    background-image: url('../static/background-img.png');
+    background-repeat: no-repeat;
+    background-position-y: 15%;
+    background-size: contain;
+}
+
+.header .logo {
+    margin: auto;
+}
+
+.header .profile-link, .logo-link {
+    display: flex;
+    justify-content: center;
+}
+
+
+
+.chat-container {
+    width: 1705px;
+    height: 870px;
+    background-color: rgba(40, 40, 40, 0.5);
+    margin: auto;
+    margin-top: 35px;
+    border-radius: 5px;
+    font-size: 24px;
+}
+
+.chat-window {
+    height: 630px;
+}
+
+.chat-header {
+    display: flex;
+    justify-content: left;
+    height: 120px;
+    background-color: #282828;
+}
+
+
+
+
+.avatar {
+    display: flex;
+    margin-left: 35px;
+    align-items: center;
+    text-decoration: none;
+}
+
+.chat-info p:nth-child(1) {
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.avatar img {
+    margin-right: 30px;
+    border-radius: 50%;
+}
+
+.avatar p {
+    color: white;
+    margin-bottom: 0;
+}
+
+.message {
+    display: flex;
+    text-align: center;
+    margin: 30px
+}
+
+.message-date {
+    margin-top: auto;
+    margin-right: 10px;
+    margin-left: 10px;
+    color: white;
+}
+
+.message-text {
+    border-radius: 40px;
+    padding: 15px;
+}
+
+.my-message {
+    justify-content: right;
+}
+
+.other-message {
+    justify-content: left;
+    flex-direction: row-reverse;
+}
+
+.my-message .message-text {
+    background-color: white;
+}
+
+.other-message .message-text {
+    background-color: #282828;
+    color: white
+}
+
+.input-field {
+    display: flex;
+    justify-content: space-between;
+    border-radius: 5px;
+    width: 1586px;
+    background-color: white;
+    margin: auto;
+}
+
+.input-field a {
+    margin: auto;
+}
+
+.input-field textarea {
+    width: 95%;
+}
