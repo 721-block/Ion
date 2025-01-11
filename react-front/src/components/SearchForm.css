@@ -1,0 +1,184 @@
+.search-car {
+    padding-top: 50px;
+    padding-bottom: 50px;
+    margin-top: 0;
+}
+
+.search-form {
+    display: flex;
+    justify-content: space-evenly;
+    height: 200px;
+    width: 100%;
+    font-size: 29px;
+    color: white;
+    background-color: #282828;
+    border-radius: 5px;
+}
+
+.search-form div {
+    width: 30%;
+    border-right: thin solid #6F6F6F;
+}
+
+.search-form div:nth-child(3) {
+    border-right: none;
+}
+
+.search-form form {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+.search-form label {
+    margin-top: 15px;
+}
+
+.search-form input, .search-form select {
+    height: 29px;
+    font-size: 24px;
+    margin-top: 37px;
+    background-color: transparent;
+    color: #6F6F6F;
+    border: none;
+    border-bottom-width: medium;
+    border-bottom-style: none;
+    border-bottom-color: currentcolor;
+    border-bottom: 1px solid #6F6F6F;
+}
+
+select {
+    font-size: 24px;
+    background-color: white;
+}
+
+.address-list {
+    width: 50%;
+}
+
+.date-start {
+    width: 50%
+}
+
+.time-start {
+    width: 20%;
+}
+
+.submit-search {
+    margin-top: 80px !important;
+}
+
+.submit-search input {
+    margin: 0;
+    height: 50px;
+    font-size: 29px;
+    width: 100%;
+    background-color: #FCD57E;
+    color: white;
+    border-radius: 10px;
+}
+
+.filters-box {
+    margin-top: 35px;
+    color: white;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+form .filters-form {
+    display: flex;
+}
+
+.filters-form {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 40px;
+    font-size: 22px;
+    font-weight: 500;
+    text-align: center;
+    background-color: #B1B3C2;
+}
+
+.filters-form input {
+    height: 53px;
+    background-color: rgba(40, 40, 40, 0.5);
+    color: white;
+    padding-left: 25px;
+}
+
+.filters-form div {
+    height: 53px;
+}
+
+.filters input {
+    width: 100px;
+}
+
+.filters>*>* {
+    width: 254px;
+    height: 53px;
+}
+
+.filters img {
+    margin-top: 20px;
+}
+
+.filters select {
+    margin-bottom: 15px;
+    background-color: rgba(40, 40, 40, 0.5);
+    color: white;
+    padding-left: 25px;
+}
+
+.filters {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+.car-filter {
+    margin-right: 66px;
+}
+
+.price-filter {
+    width: 100%;
+    display: flex;
+}
+
+.price-filter p {
+    color: black;
+    font-size: 22px;
+    margin: auto;
+    margin-right: 25px;
+}
+
+.price-range {
+    font-size: 32px;
+    height: 64px;
+    display: flex;
+    justify-content: space-between;
+}
+
+.price-range input {
+    font-size: 24px;
+    width: 254px;
+    margin-bottom: 15px;
+    background-color: rgba(40, 40, 40, 0.5);
+    color: white;
+    padding-left: 25px;
+}
+
+.price-range input:nth-child(1) {
+    margin-right: 34px;
+}

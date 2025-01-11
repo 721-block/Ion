@@ -1,0 +1,18 @@
+.main-container.index {
+    background-image: url('../assets/images/background-img.png');
+    background-repeat: no-repeat;
+    background-position-y: 15%;
+    background-size: contain;
+}
+
+.main-container.index > div {
+    width: 95%;
+    margin: auto;
+}
+
+.main-content.index {
+    width: 1650px;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+}

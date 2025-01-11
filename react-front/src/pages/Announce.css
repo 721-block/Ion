@@ -1,0 +1,25 @@
+.main-container.announce {
+    background-image: url('../assets/images/background-img.png');
+    background-repeat: no-repeat;
+    background-position-y: 15%;
+    background-size: contain;
+}
+
+.main-container.announce > div > div {
+    width: 95%;
+    margin: auto;
+    background-color: #282828;
+    border-radius: 10px;
+    margin-top: 39px;
+    width: 1765px;
+    margin-right: auto;
+    margin-left: auto;
+    color: white;
+}
+
+.main-content.announce {
+    width: 1650px;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+}

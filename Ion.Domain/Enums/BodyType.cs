@@ -1,7 +1,9 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace Ion.Domain.Enums;
 
+[JsonConverter(typeof(JsonStringEnumConverter))]
 public enum BodyType
 {
     [Display(Name = "Седан")]

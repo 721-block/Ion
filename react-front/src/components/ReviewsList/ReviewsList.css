@@ -1,0 +1,31 @@
+.reviews-list .user-reviews {
+    font-size: 36px;
+}
+
+.reviews-list .announcement-details .user-reviews > p {
+    padding-left: 75px;
+    padding-top: 75px;
+    margin-bottom: 0;
+}
+
+.reviews-list .announcement-details .reviews-list {
+    margin-top: 0;
+    padding: 75px;
+}
+
+.reviews-list .announcement-details .review {
+    margin-bottom: 35px;
+}
+
+.reviews-list .announcement-details .review-box p {
+    color: #b9b9b9;
+}
+
+.reviews-list .announcement-details .reviewer {
+    font-size: 32px;
+    margin-bottom: 25px;
+}
+
+.reviews-list .announcement-details .reviewer .avatar {
+    display: flex;;
+}

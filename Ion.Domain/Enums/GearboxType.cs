@@ -1,7 +1,10 @@
 ﻿using System.ComponentModel.DataAnnotations;
+using System.Text.Json.Serialization;
 
 namespace Ion.Domain.Enums;
 
+
+[JsonConverter(typeof(JsonStringEnumConverter))]
 public enum GearboxType
 {
     [Display(Name = "Механика")]

@@ -1,0 +1,149 @@
+.announcement-details .owner-info {
+    display: flex;
+    justify-content: center;
+    margin-top: 117px;
+    height: 288px;
+}
+
+.announcement-details .owner-name {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.announcement-details .owner-name p {
+    width: 340px;
+}
+
+.announcement-details .owner-data {
+    width: 400px;
+    display: flex;
+    justify-content: center;
+    margin: auto 0;
+    margin-left: 80px;
+}
+
+.announcement-details .owner-name {
+    font-size: 40px;
+}
+
+.announcement-details .avatar {
+    margin: auto;
+    align-items: center;
+    text-decoration: none;
+}
+
+.announcement-details .avatar img {
+    margin-right: 30px;
+    border-radius: 50%;
+}
+
+.announcement-details .avatar p {
+    margin: 0;
+    color: white;
+    margin-bottom: 0;
+}
+
+
+.announcement-details .car-info {
+    display: flex;
+    height: 835px;
+}
+
+.announcement-details .car-data {
+    width: 580px;
+    margin: auto;
+    font-size: 32px;
+    text-align: center;
+}
+
+.announcement-details .car-data h3 {
+    font-size: 50px;
+}
+
+.announcement-details .car-parameter {
+    border-bottom: 2px solid whitesmoke;
+    display: flex;
+    justify-content: space-between;
+}
+
+
+
+
+
+.announcement-details .car-images {
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+    width: 50%;
+    margin: auto;
+}
+
+.announcement-details .car-images img {
+    width: 160px;
+    height: 90px;
+    margin-top: 65px;
+}
+
+.announcement-details .car-images img:nth-child(1) {
+    width: 90%;
+    height: auto;
+}
+
+
+.announcement-details .car-info-additional {
+    background-color: white !important;
+    display: flex;
+    justify-content: space-between;
+}
+
+.announcement-details .car-info-additional > div {
+    background-color: #282828;
+    border-radius: 10px;
+}
+
+.announcement-details .announce-description {
+    width: 100%;
+    text-align: center;
+}
+
+.announcement-details .announce-description h3 {
+    margin-top: 25px;
+    font-size: 36px;
+}
+
+.announcement-details .announce-description p {
+    font-size: 32px;
+}
+
+
+.announcement-details .user-reviews {
+    font-size: 36px;
+}
+
+.announcement-details .user-reviews > p {
+    padding-left: 75px;
+    padding-top: 75px;
+    margin-bottom: 0;
+}
+
+.announcement-details .reviews-list {
+    margin-top: 0;
+    padding: 75px;
+}
+
+.announcement-details .review {
+    margin-bottom: 35px;
+}
+
+.announcement-details .review-box p {
+    color: #b9b9b9;
+}
+
+.announcement-details .reviewer {
+    font-size: 32px;
+    margin-bottom: 25px;
+}
+
+.announcement-details .reviewer .avatar {
+    display: flex;;
+}

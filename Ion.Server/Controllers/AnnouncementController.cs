@@ -9,7 +9,7 @@ namespace Ion.Server.Controllers;
 
 [Route("api/[controller]")]
 [ApiController]
-public class AnnouncementController(IAnnouncementService announcementService, IUserImageService imageService, IMapper mapper) : Controller
+public class AnnouncementController(IAnnouncementService announcementService, IUserImageService imageService, IMapper mapper, IWebHostEnvironment appEnvironment) : Controller
 {
     [HttpGet("{announcementId:int}", Name = nameof(GetAnnouncementById))]
     public ActionResult<AnnouncementToGet> GetAnnouncementById(int announcementId)
@@ -80,6 +80,23 @@ public class AnnouncementController(IAnnouncementService announcementService, IU
     {
         await announcementService.DeleteAsync(new AnnouncementViewModel {Id = announcementId});
         
+        return Ok();
+    }
+
+    [HttpPost("uploadImage")]
+    public async Task<IActionResult> UploadImage(string imageName, IFormFile uploadedFile)
+    {
+        if (uploadedFile != null)
+        {
+            // путь к папке Files
+            string path = $"/images/1/{imageName}.png";
+            // сохраняем файл в папку Files в каталоге wwwroot
+            using (var fileStream = new FileStream(appEnvironment.WebRootPath + path, FileMode.Create))
+            {
+                await uploadedFile.CopyToAsync(fileStream);
+            }
+        }
+
         return Ok();
     }
 }

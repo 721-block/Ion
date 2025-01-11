@@ -1,0 +1,154 @@
+.main-container.profile {
+    background-image: url('background-img.png');
+    background-repeat: no-repeat;
+    background-position-y: 15%;
+    background-size: contain;
+}
+
+.main-container.profile > div > div {
+    width: 95%;
+    margin: auto;
+    background-color: rgba(40, 40, 40, 0.5);
+    border-radius: 10px;
+    margin-top: 39px;
+    width: 90%;
+    margin-right: auto;
+    margin-left: auto;
+    color: white;
+}
+
+.main-container.profile .top-container {
+    display: flex;
+    width: 90%;
+    margin: auto;
+}
+
+.main-container.profile .orders-history {
+    width: 60%;
+}
+
+.main-container.profile .user-info {
+    width: 30%;
+    margin: auto;
+    text-align: center;
+    padding-top: 35px;
+    padding-bottom: 35px;
+}
+
+.main-container.profile .user-creds {
+
+}
+
+/*
+.main-content {
+    width: 1650px;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+}
+
+.top-container-1 {
+    display: flex;
+    justify-content: space-between;
+    height: 622px;
+}
+
+.user-info-1 {
+    width: 500px;
+    background-color: rgba(40, 40, 40, 0.5);
+}
+
+.orders-history-1 {
+    background-color: rgba(40, 40, 40, 0.5);
+    width: 1205px;
+    text-align: center;
+    font-size: 36px;
+}
+
+.cars-list-1 {
+    padding: 35px;
+    margin-top: 30px;
+    display: flex;
+    justify-content: space-evenly;
+    flex-wrap: wrap;
+}
+
+.car-card-1 {
+    margin-bottom: 38px;
+    width: 415px;
+    height: 470px;
+    border-radius: 10px;
+    background-color: rgba(40, 40, 40, 0.5);
+}
+
+.car-card-img-1 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    border-radius: 10px 10px 0 0;
+}
+
+.car-card-img-1 {
+    flex-shrink: 0;
+    min-width: 100%;
+    height: 235px;
+    border-radius: 10px 10px 0 0;
+}
+
+.car-info-1 {
+    text-align: left;
+    margin: auto;
+    width: 350px;
+    font-size: 26px;
+}
+
+.car-card-1 a {
+    text-decoration: none;
+    color: white;
+}
+
+.car-card-1:hover {
+    outline: 5px solid white;
+}
+
+.mark-1, .price-1 {
+    padding: 0 !important;
+    font-size: 36px;
+    background-color: transparent !important;
+}
+
+.mark-1 {
+    margin-bottom: 0;
+}
+
+.price-1 {
+    font-weight: 700;
+}
+
+.avatar-1 {
+    display: flex;
+    margin: auto;
+    align-items: center;
+    text-decoration: none;
+}
+
+.avatar-1 img {
+    margin-right: 30px;
+    border-radius: 50%;
+}
+
+.avatar-1 p {
+    color: white;
+    margin-bottom: 0;
+}
+
+.score-1 {
+    margin: auto 0;
+    font-size: 70px;
+}
+
+.user-reviews-1 {
+    background-color: rgba(40, 40, 40, 0.5);
+}
+*/
