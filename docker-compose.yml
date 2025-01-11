@@ -2,7 +2,7 @@
   ion.front:
     build: ./react-front/Dockerfile
     ports:
-      - "3000:3000"
+      - "1337:80"
     volumes:
       - .:/app
       - ./node_modules:/app/node_modules
