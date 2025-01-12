@@ -1,21 +1,4 @@
-﻿services:
-  ion.front:
-    build: ./react-front/Dockerfile
-    ports:
-      - "1337:80"
-    volumes:
-      - .:/app
-      - ./node_modules:/app/node_modules
-    environment:
-      NODE_ENV: development
-    stdin_open: true
-    tty: true
-    command: npm start
-    container_name: react.front
-    
-    depends_on: 
-      - ion.api
-  
+﻿services:  
   ion.server:
     build: .
     container_name: ion.app
