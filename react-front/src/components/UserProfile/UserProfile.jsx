@@ -9,7 +9,7 @@ const UserProfile = ({ data, reviews, cars, ownerId }) => {
         <>
         <div className="top-container user-profile">
             <div className="user-info">
-                <img src={`http://localhost:5000/${data.pathToPhoto}`} height="75px" width="75px" className="avatar"/>
+                <img src={`http://721block.ru:5000/${data.pathToPhoto}`} height="75px" width="75px" className="avatar"/>
                 <div className="user-creds">
                     <p>{data.firstName} {data.lastName}</p>
                     <p>{data.phoneNumber}</p>

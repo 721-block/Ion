@@ -8,7 +8,7 @@ const AnnouncementDetails = ({ announcement }) => {
             <div className="owner-info">
                 <div className="owner-data">
                     <Link to={`/user/${announcement.authorId}`} className="avatar">
-                        <img src={`http://localhost:5000/images/${announcement.authorId}/1.png`} alt="Фото профиля" width="100" />
+                        <img src={`http://721block.ru:5000/images/${announcement.authorId}/1.png`} alt="Фото профиля" width="100" />
                     </Link>
                     <div className="owner-name">
                         <p>{announcement.author.firstName} {announcement.author.lastName}</p>
@@ -19,7 +19,7 @@ const AnnouncementDetails = ({ announcement }) => {
             <div className="car-info">
                 <div className="car-images">
                     {announcement.images.map((image) => (
-                        <img src={`http://localhost:5000/${image}`} alt="CarImage" />
+                        <img src={`http://721block.ru:5000/${image}`} alt="CarImage" />
                     ))}
                 </div>
                 <div className="car-data">
@@ -51,7 +51,7 @@ const AnnouncementDetails = ({ announcement }) => {
                         <div key={index} className="review">
                             <div className="reviewer">
                                 <Link to={`/user/${review.userId}`} className="avatar">
-                                    <img src={`http://localhost:5000/images/${review.userId}/1.png`} height="80" width="80" alt="Reviewer" />
+                                    <img src={`http://721block.ru:5000/images/${review.userId}/1.png`} height="80" width="80" alt="Reviewer" />
                                     <p>{review.userFirstName} {review.userLastName} - {review.rating}</p>
                                 </Link>
                             </div>

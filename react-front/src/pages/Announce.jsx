@@ -14,12 +14,12 @@ const Announce = () => {
 
     const fetchAnnouncement = async () => {
         try {
-            const response = await fetch(`http://localhost:5000/api/Announcement/${announcementId}`);
+            const response = await fetch(`http://721block.ru:5000/api/Announcement/${announcementId}`);
             let data = await response.json();
-            const userResponse = await fetch(`http://localhost:5000/api/User/${data["authorId"]}`);
+            const userResponse = await fetch(`http://721block.ru:5000/api/User/${data["authorId"]}`);
             let authorInfo = await userResponse.json();
             data["author"] = authorInfo;
-            const reviews = await fetch(`http://localhost:5000/api/Review/GetByAnnouncementId/${announcementId}`);
+            const reviews = await fetch(`http://721block.ru:5000/api/Review/GetByAnnouncementId/${announcementId}`);
             let reviewsList = await reviews.json();
             data["reviews"] = reviewsList;
             data["images"] = [`${data.pathToImages}1.png`, `${data.pathToImages}2.png`, `${data.pathToImages}3.png`];

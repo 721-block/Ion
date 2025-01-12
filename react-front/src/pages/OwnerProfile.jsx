@@ -15,16 +15,16 @@ const OwnerProfile = () => {
     }, [userId]);
 
     const fetchProfile = async () => {
-        const response = await fetch(`http://localhost:5000/api/User/${userId}`);
+        const response = await fetch(`http://721block.ru:5000/api/User/${userId}`);
         let data = await response.json();
-        const carsResponse = await fetch(`http://localhost:5000/api/Announcement/GetAnnouncementsByAuthorId/${userId}`);
+        const carsResponse = await fetch(`http://721block.ru:5000/api/Announcement/GetAnnouncementsByAuthorId/${userId}`);
         let carss = await carsResponse.json();
         for(var k in carss){
-            const userResponse = await fetch(`http://localhost:5000/api/User/${carss[k].authorId}`);
+            const userResponse = await fetch(`http://721block.ru:5000/api/User/${carss[k].authorId}`);
             let authorInfo = await userResponse.json();
             carss[k]["author"] = authorInfo;
         }
-        const reviewsResponse = await fetch(`http://localhost:5000/api/Review`);
+        const reviewsResponse = await fetch(`http://721block.ru:5000/api/Review`);
         let reviewss = await reviewsResponse.json();
         
         setReviews(reviewss);

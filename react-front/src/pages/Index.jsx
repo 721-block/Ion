@@ -20,17 +20,17 @@ const Index = () => {
     }, []);
 
     const getAnnouncements = async () => {
-        let response = await fetch('http://localhost:5000/api/Announcement');
+        let response = await fetch('http://721block.ru:5000/api/Announcement');
         return await response.json();
     }
 
     const fetchAnnouncements = async () => {
         try {
-            let response = await fetch('http://localhost:5000/api/Announcement');
+            let response = await fetch('http://721block.ru:5000/api/Announcement');
             let data = await response.json();
 
             for(var k in data){
-                const userResponse = await fetch(`http://localhost:5000/api/User/${data[k].authorId}`);
+                const userResponse = await fetch(`http://721block.ru:5000/api/User/${data[k].authorId}`);
                 let authorInfo = await userResponse.json();
                 data[k]["author"] = authorInfo;
             }
@@ -43,11 +43,11 @@ const Index = () => {
 
     const handleSearch = async (searchParams) => {
         const queryParams = new URLSearchParams(searchParams);
-        const response = await fetch(`http://localhost:5000/api/Announcement/Search?${queryParams}`);
+        const response = await fetch(`http://721block.ru:5000/api/Announcement/Search?${queryParams}`);
         if (!response.ok) throw new Error('Failed to search announcements');
         const data = await response.json();
         for(var k in data){
-            const userResponse = await fetch(`http://localhost:5000/api/User/${data[k].authorId}`);
+            const userResponse = await fetch(`http://721block.ru:5000/api/User/${data[k].authorId}`);
             let authorInfo = await userResponse.json();
             data[k]["author"] = authorInfo;
         }

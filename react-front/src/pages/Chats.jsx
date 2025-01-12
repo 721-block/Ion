@@ -12,7 +12,7 @@ const Chats = () => {
 
     const fetchChats = async () => {
         try {
-            const response = await fetch('http://localhost:5000/api/Message'); // Assuming there's an endpoint for fetching chats
+            const response = await fetch('http://721block.ru:5000/api/Message'); // Assuming there's an endpoint for fetching chats
             if (!response.ok) throw new Error('Failed to fetch chats');
             let data = await response.json();
             console.log(data);

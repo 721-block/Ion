@@ -9,7 +9,7 @@ const ReviewsList = ({ reviews, ownerId }) => {
                 <div key={index} className="review">
                     <div className="reviewer">
                         <Link to={`/user/${review.userId}`} className="avatar">
-                            <img src={`http://localhost:5000/images/${review.userId}/1.png`} height="80" width="80" alt="Reviewer" />
+                            <img src={`http://721block.ru:5000/images/${review.userId}/1.png`} height="80" width="80" alt="Reviewer" />
                             <p>{review.userFirstName} {review.userLastName} - {review.rating}</p>
                         </Link>
                     </div>

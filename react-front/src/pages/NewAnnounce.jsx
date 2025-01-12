@@ -42,7 +42,7 @@ const AddAnnounce = () => {
         }
 
         try {
-            const response = await fetch('http://localhost:5000/api/Announcement', {
+            const response = await fetch('http://721block.ru:5000/api/Announcement', {
                 method: 'POST',
                 body: formDataToSend
             });
