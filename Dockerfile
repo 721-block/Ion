@@ -16,6 +16,8 @@ COPY . .
 WORKDIR "/src/Ion.Server"
 RUN dotnet build "Ion.Server.csproj" -c $BUILD_CONFIGURATION -o /api/build
 
+FROM build AS publish
+ARG BUILD_CONFIGURATION=Release
 RUN dotnet publish "Ion.Server.csproj" -c $BUILD_CONFIGURATION -o /api/publish /p:UseAppHost=false
 
 FROM api AS final
