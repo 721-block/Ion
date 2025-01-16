@@ -7,6 +7,7 @@ import Index from './pages/Index';
 import Announce from './pages/Announce';
 import Chats from './pages/Chats';
 import OwnerProfile from './pages/OwnerProfile';
+import NewAnnounce from './pages/NewAnnounce';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <Route path="/announcement/:announcementId" element={<Announce/>} />
         <Route path="/user/:userId" element={<OwnerProfile/>} />
         <Route path="/chats" element={<Chats/>}/>
+        <Route path="/announcement/new" element={<NewAnnounce/>}/>
       </Routes>
     </BrowserRouter>
   );

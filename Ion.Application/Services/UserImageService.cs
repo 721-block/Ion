@@ -19,7 +19,7 @@ public class UserImageService : IUserImageService
         {
             Directory.CreateDirectory(pathToDirectory);
         }
-        var fileIndex = 0;
+        var fileIndex = 1;
         foreach (var file in images)
         {
             if (file.Length <= 0) continue;
@@ -32,6 +32,6 @@ public class UserImageService : IUserImageService
             fileIndex++;
         }
 
-        return pathToDirectory.Replace('\\', '/');
+        return Path.Combine("images", userId.ToString(), carId.ToString()) + "\\";
     }
 }

@@ -19,15 +19,24 @@ const OwnerProfile = () => {
         let data = await response.json();
         const carsResponse = await fetch(`http://721block.ru:5000/api/Announcement/GetAnnouncementsByAuthorId/${userId}`);
         let carss = await carsResponse.json();
+        let rl = [];
         for(var k in carss){
             const userResponse = await fetch(`http://721block.ru:5000/api/User/${carss[k].authorId}`);
             let authorInfo = await userResponse.json();
             carss[k]["author"] = authorInfo;
+            const r = await fetch(`http://721block.ru:5000/api/Review/GetByAnnouncementId/${userId}`)
+            if(rl.length > 0){
+                continue;
+            }
+            let reviewsL = await r.json();
+            for(var ii in reviewsL){
+                rl.push(reviewsL[ii]);
+                console.log(rl, k);
+            }
         }
-        const reviewsResponse = await fetch(`http://721block.ru:5000/api/Review`);
-        let reviewss = await reviewsResponse.json();
         
-        setReviews(reviewss);
+        setReviews(rl);
+        console.log(reviews.length);
         setCars(carss);
         setData(data);
     };

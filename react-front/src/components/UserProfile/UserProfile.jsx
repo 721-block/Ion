@@ -15,7 +15,7 @@ const UserProfile = ({ data, reviews, cars, ownerId }) => {
                     <p>{data.phoneNumber}</p>
                     <div className="rating">
                         <p className="score">4,3</p>
-                        <p className="reviews-count">12 оценок</p>
+                        <p className="reviews-count">{reviews.length} оценок</p>
                     </div>
                 </div>
             </div>

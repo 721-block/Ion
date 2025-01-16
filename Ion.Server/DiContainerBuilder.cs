@@ -18,7 +18,7 @@ public static class DiContainerBuilder
                 .UseSqlServer(connectionString);
         });
 
-        var workingDirectory = Environment.CurrentDirectory + "\\images";
+        var workingDirectory = Path.Combine(Environment.CurrentDirectory, "wwwroot", "images");
 
         builder.Services.AddRepositories();
         builder.Services.RegisterMapster();

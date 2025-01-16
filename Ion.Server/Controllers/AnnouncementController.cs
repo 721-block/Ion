@@ -49,7 +49,8 @@ public class AnnouncementController(IAnnouncementService announcementService, IU
     }
 
     [HttpPost(Name = nameof(CreateAnnouncement))]
-    public async Task<IActionResult> CreateAnnouncement([FromBody] AnnouncementToPost announcementToPost)
+    [Consumes("multipart/form-data")]
+    public async Task<IActionResult> CreateAnnouncement([FromForm] AnnouncementToPost announcementToPost)
     {
         if (announcementToPost is null) 
             return BadRequest("Announcement is empty");

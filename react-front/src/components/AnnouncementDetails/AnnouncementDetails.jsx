@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import './AnnouncementDetails.css';
+import { YMaps, Map, ObjectManager, Placemark } from '@pbe/react-yandex-maps';
 
 const AnnouncementDetails = ({ announcement }) => {
     return (
@@ -36,6 +37,39 @@ const AnnouncementDetails = ({ announcement }) => {
                         <p>Цена</p>
                         <p>{announcement.pricePerUnit} руб/день</p>
                     </div>
+                    <YMaps>
+                        <div className="map-container details">
+                            <Map className="map-map details" defaultState={{ center: [announcement.carLocation.x, announcement.carLocation.y], zoom: 13.71 }}>
+                                <ObjectManager
+                                    options={{
+                                        clusterize: true,
+                                        gridSize: 32,
+                                    }}
+                                    objects={{
+                                        openBalloonOnClick: true,
+                                        preset: "islands#greenDotIcon",
+                                    }}
+                                    clusters={{
+                                        preset: "islands#redClusterIcons",
+                                    }}
+                                    modules={[
+                                        "objectManager.addon.objectsBalloon",
+                                        "objectManager.addon.objectsHint",
+                                    ]}
+                                />
+                                        <Placemark geometry={[announcement.carLocation.x, announcement.carLocation.y]} properties={{
+                                            balloonContent: () => '',
+                                            iconCaption: `${announcement.carName} - ${announcement.pricePerUnit} руб`
+
+                                        }} options={{
+                                            preset: 'islands#greenDotIconWithCaption',
+                                            iconColor: '#aeca3b',
+                                            controls: []
+                                        }} />
+
+                            </Map>
+                        </div>
+                    </YMaps>
                 </div>
             </div>
             <div className="car-info-additional">

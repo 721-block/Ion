@@ -2,10 +2,10 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 //import './ReviewsList.css'
 
-const ReviewsList = ({ reviews, ownerId }) => {
+const ReviewsList = ({ reviews }) => {
     return (
         <div className="reviews-list">
-            {reviews.map((review, index) => (review.userId !== ownerId) && (review.userId > ownerId) && (index < ownerId + 2) && (
+            {reviews.map((review, index) => (
                 <div key={index} className="review">
                     <div className="reviewer">
                         <Link to={`/user/${review.userId}`} className="avatar">

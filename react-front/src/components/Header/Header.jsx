@@ -11,7 +11,7 @@ const Header = () => {
             </Link>
             <div className="user-buttons">
                 <Link to="/chats" className="chats-link">Мои чаты</Link>
-                <Link to="/profile" className="profile-link">
+                <Link to="/user/1" className="profile-link">
                     <img src="http://721block.ru:5000/images/1/1.png" alt="Фото профиля" width="50" />
                     <p>Юдзи Итадори</p>
                 </Link>

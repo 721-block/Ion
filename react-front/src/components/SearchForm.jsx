@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import './SearchForm.css';
 
-const SearchForm = ({ onSearch }) => {
+const SearchForm = ({ onSearch, carNames }) => {
     const [searchData, setSearchData] = useState({
         address: '',
         startDate: '',
@@ -120,9 +120,13 @@ const SearchForm = ({ onSearch }) => {
                             onChange={handleChange}
                         >
                             <option value="">Марка машины</option>
-                            <option value="Lada">Lada</option>
-                            <option value="Mercedes">Mercedes</option>
-                            <option value="Jaguar">Jaguar</option>
+                            {
+                                carNames.map((i) => {
+                                    return (
+                                        <option value={`${i}`}>{i}</option>
+                                    )
+                                })
+                            }
                         </select>
                         </div>
                     </div>
