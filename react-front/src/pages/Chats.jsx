@@ -24,7 +24,7 @@ const Chats = () => {
 
     return (
         <div>
-            <Header />
+            <Header showAdd=''/>
             <div className="main-container chats-page">
                 <ChatList chats={chats} />
             </div>

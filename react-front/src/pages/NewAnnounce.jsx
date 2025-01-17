@@ -93,7 +93,7 @@ const AddAnnounce = () => {
 
     return (
         <div>
-            <Header />
+            <Header showAdd=''/>
             <div className="main-container add-desc">
                 <div className="car-info add-desc">
                     <div className="car-images add-desc">
@@ -154,6 +154,7 @@ const AddAnnounce = () => {
                             </select>
                         </div>
                         <div className='car-parameter add-desc'>
+                            <p>Тип КПП</p>
                             <select 
                                 name="gearboxType"
                                 value={formData.gearboxType}

@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import './Header.css'
 import IONLogo from '../../assets/images/ion-logo.png'
 
-const Header = ({ showAdd="" }) => {
+const Header = ({ showAdd }) => {
     return (
         <div className="header">
             <Link to="/" className="logo-link">

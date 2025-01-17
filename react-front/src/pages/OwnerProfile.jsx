@@ -43,7 +43,7 @@ const OwnerProfile = () => {
 
     return (
         <div>
-            <Header />
+            <Header showAdd=''/>
             <div className="main-container profile">
                 <UserProfile data={userData} reviews={reviews} cars={cars} ownerId={userId}/>
             </div>
