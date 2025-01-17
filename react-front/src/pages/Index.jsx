@@ -60,7 +60,7 @@ const Index = () => {
 
     return (
         <div>
-            <Header />
+            <Header showAdd='123' />
             <div className="main-container index">
                 <SearchForm onSearch={handleSearch} carNames={carNames} />
                 <div className="main-content index">

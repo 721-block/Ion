@@ -29,8 +29,8 @@ body {
 }
 
 .user-buttons {
+    text-align: center;
     font-size: 23pt;
-    width: 30%;
     display: flex;
     align-items: center;
 }

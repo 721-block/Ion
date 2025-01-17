@@ -1,3 +1,22 @@
+.main-container.add-desc {
+    background-image: url('../assets/images/background-img.png');
+    background-repeat: no-repeat;
+    background-position-y: 15%;
+    background-size: contain;
+}
+
+.main-container.add-desc > div {
+    width: 95%;
+    margin: auto;
+}
+
+.main-content.add-desc {
+    width: 1650px;
+    display: flex;
+    justify-content: space-between;
+    margin: auto;
+}
+
 .main-container.add-desc > div {
     background-color: #282828;
     border-radius: 10px;
